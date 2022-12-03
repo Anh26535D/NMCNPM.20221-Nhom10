@@ -2,26 +2,11 @@ package service;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 import dbservice.DatabaseConnector;
 
 public class LocationService {
-	public boolean isExistAccount(String username, String password) {
-		try {
-	        String sql = "Select * from accounts where username=? and password=?";
-	    	PreparedStatement st = DatabaseConnector.connect.prepareStatement(sql);
-	        st.setString(1, username);
-	        st.setString(2, password);
-	        ResultSet result = st.executeQuery();
-	        return result.next();			
-		} catch(SQLException ex) {
-			ex.printStackTrace();
-		}
-		return false;
-	}
 	public ArrayList<String> getAllProvince(){
 		ArrayList<String> result = new ArrayList<String>();
 		try {
