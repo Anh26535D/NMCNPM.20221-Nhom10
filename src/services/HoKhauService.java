@@ -152,9 +152,9 @@ public class HoKhauService {
                         + "FROM ho_khau "
                         + "JOIN nhan_khau "
                         + "ON ho_khau.idChuHo = nhan_khau.ID "
-                        + "WHERE MATCH(maHoKhau) AGAINST ('"
+                        + "WHERE CONTAINS(maHoKhau, '"
                         + key
-                        + "' IN NATURAL LANGUAGE MODE);";
+                        + "');";
             PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()){

@@ -19,7 +19,7 @@ public class QuanLyNhanKhau {
     
 }
 
-//Note: Phan SEARCH trong HoKhauService can` chuyen doi sang sql server (thieu fulltext index)
-//Note: Phan SEARCH trong NhanKhauService can` chuyen doi sang sql server (thieu fulltext index)
+//Note (Da~ fix xong, nhung tim kiem chua day du): Phan SEARCH trong HoKhauService can` chuyen doi sang sql server (thieu fulltext index)
+//Note (Da~ fix xong, nhung tim kiem chua day du): Phan SEARCH trong NhanKhauService can` chuyen doi sang sql server (thieu fulltext index)
 //Note: Chua check cac chuc nang khac
 

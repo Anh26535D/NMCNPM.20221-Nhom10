@@ -263,9 +263,11 @@ public class NhanKhauService {
                     + "FROM nhan_khau "
                     + "JOIN chung_minh_thu "
                     + "ON nhan_khau.ID = chung_minh_thu.idNhanKhau "
-                    + "WHERE MATCH(hoTen, bietDanh) AGAINST ('"
+                    + "WHERE CONTAINS(hoTen,'"
                     + keyword
-                    + "' IN NATURAL LANGUAGE MODE);";
+                    + "') OR CONTAINS(bietDanh, '" 
+                    + keyword
+                    + "');";
         }
         
         // execute query
