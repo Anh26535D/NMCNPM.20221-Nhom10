@@ -244,35 +244,19 @@ public class NhanKhauService {
      */
     public List<NhanKhauBean> search(String keyword) {
         List<NhanKhauBean> list = new  ArrayList<>();
-        String query;
         if (keyword.trim().isEmpty()) {
             return this.getListNhanKhau();
         }
-
-        try {
-            long a = Long.parseLong(keyword);
-            query = "SELECT * "
-                    + "FROM nhan_khau "
-                    + "JOIN chung_minh_thu "
-                    + "ON nhan_khau.ID = chung_minh_thu.idNhanKhau "
-                    + "WHERE chung_minh_thu.soCMT LIKE '%"
-                    + keyword
-                    + "%'";
-        } catch (Exception e) {
-            query = "SELECT * "
-                    + "FROM nhan_khau "
-                    + "JOIN chung_minh_thu "
-                    + "ON nhan_khau.ID = chung_minh_thu.idNhanKhau "
-                    + "WHERE CONTAINS(hoTen,'"
-                    + keyword
-                    + "') OR CONTAINS(bietDanh, '" 
-                    + keyword
-                    + "');";
-        }
         
-        // execute query
         try {
             Connection connection = SQLConnection.getMysqlConnection();
+            String query = "SELECT * FROM nhan_khau "
+            	      + "JOIN chung_minh_thu ON nhan_khau.ID = chung_minh_thu.idNhanKhau "
+            	      + "WHERE CONTAINS(hoTen,'\"*"
+            	      + keyword
+            	      + "*\"') OR CONTAINS(bietDanh, '\"*" 
+            	      + keyword
+            	      + "*\"');";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()){

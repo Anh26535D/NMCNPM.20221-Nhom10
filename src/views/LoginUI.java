@@ -9,23 +9,35 @@ import javax.swing.JTextField;
 
 public class LoginUI extends javax.swing.JFrame {
     
-    private LoginController cont = new  LoginController();
+    private static final long serialVersionUID = 1L;
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLogin;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jpnLogin;
+    private javax.swing.JPasswordField txbPasswd;
+    private javax.swing.JTextField txbUserName;
+    // End of variables declaration//GEN-END:variables
+    
+	private LoginController cont = new  LoginController();
     
     public LoginUI() {
-        initComponents();
-        setLocationRelativeTo(null);
-        setResizable(false);
-        setTitle("Login");
-        keyListenner(txbUserName);
-        keyListenner(txbPasswd);
+        this.initComponents();
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        this.setTitle("Login");
+        this.keyListenner(txbUserName);
+        this.keyListenner(txbPasswd);
     }
-    
-    // xu ly su kien nhan enter
-    private void keyListenner(JTextField jtf) {
+        private void keyListenner(JTextField jtf) {
         jtf.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                // neu keycode == 10 ~ enter
                 if (e.getKeyCode() == 10) {
                     login();
                 }
@@ -33,13 +45,12 @@ public class LoginUI extends javax.swing.JFrame {
         }); 
     }
 
-    // dang nhap
     private void login() {
         String userName = txbUserName.getText();
         String password = String.valueOf(txbPasswd.getPassword());
         try {
             if (this.cont.login(userName, password)) {
-                dispose();
+                this.dispose();
                 MainFrame mainFrame = new MainFrame();
                 mainFrame.setLocationRelativeTo(null);
                 mainFrame.setResizable(false);
@@ -52,10 +63,7 @@ public class LoginUI extends javax.swing.JFrame {
         }
     }
             
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
         jpnLogin = new javax.swing.JPanel();
         txbUserName = new javax.swing.JTextField();
         txbPasswd = new javax.swing.JPasswordField();
@@ -67,13 +75,11 @@ public class LoginUI extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jpnLogin.setBackground(new java.awt.Color(102, 102, 102));
         jpnLogin.setForeground(new java.awt.Color(0, 153, 153));
 
-        txbUserName.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        txbUserName.setName("txtUserName"); // NOI18N
+        txbUserName.setFont(new java.awt.Font("Arial", 1, 14));
+        txbUserName.setName("txtUserName");
         txbUserName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txbUserNameActionPerformed(evt);
@@ -111,11 +117,11 @@ public class LoginUI extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(59, 59, 59));
 
-        jLabel4.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 10));
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("@Adventure is the best way to learn");
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/login.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/login.png")));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -197,12 +203,10 @@ public class LoginUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jpnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void txbUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txbUserNameActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txbUserNameActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
@@ -210,19 +214,5 @@ public class LoginUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
-        
     }//GEN-LAST:event_btnLoginMouseClicked
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnLogin;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jpnLogin;
-    private javax.swing.JPasswordField txbPasswd;
-    private javax.swing.JTextField txbUserName;
-    // End of variables declaration//GEN-END:variables
 }

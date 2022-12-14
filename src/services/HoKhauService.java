@@ -148,13 +148,12 @@ public class HoKhauService {
         List<HoKhauBean> list = new ArrayList<>();
         try {
             Connection connection = SQLConnection.getMysqlConnection();
-            String query = "SELECT * "
-                        + "FROM ho_khau "
-                        + "JOIN nhan_khau "
-                        + "ON ho_khau.idChuHo = nhan_khau.ID "
-                        + "WHERE CONTAINS(maHoKhau, '"
+            String query = "SELECT * FROM ho_khau "
+                        + "JOIN nhan_khau ON ho_khau.idChuHo = nhan_khau.ID "
+                        + "WHERE CONTAINS(maHoKhau, '\"*"
                         + key
-                        + "');";
+                        + "*\"');";
+            
             PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()){
