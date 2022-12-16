@@ -1,10 +1,11 @@
 package utility;
 
-import Bean.HoKhauBean;
-import Bean.MemOfFamily;
-import Bean.NhanKhauBean;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+
+import bean.HoKhauBean;
+import bean.MemOfFamily;
+import bean.NhanKhauBean;
 /**
  *
  * @author Hai

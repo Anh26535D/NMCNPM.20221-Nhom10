@@ -1,8 +1,9 @@
 package utility;
 
-import Bean.HoKhauBean;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+
+import bean.HoKhauBean;
 import models.GiaDinhModel;
 import models.NhanKhauModel;
 import models.TieuSuModel;

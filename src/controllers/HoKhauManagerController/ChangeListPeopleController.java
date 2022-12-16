@@ -1,7 +1,5 @@
 package controllers.HoKhauManagerController;
 
-import Bean.MemOfFamily;
-import Bean.NhanKhauBean;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -18,6 +16,9 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+
+import bean.MemOfFamily;
+import bean.NhanKhauBean;
 import services.HoKhauService;
 import services.NhanKhauService;
 import utility.TableModelHoKhau;

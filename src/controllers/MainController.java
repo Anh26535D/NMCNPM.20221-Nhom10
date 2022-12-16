@@ -1,10 +1,5 @@
-/*
- * lớp xử lý sự kiện chuyển qua lại giữa các màn hình tại mainFrame
- * tạo ra các hiệu ứng lựa chọn các label
- */
 package controllers;
 
-import Bean.DanhMucBean;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
@@ -13,16 +8,14 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import bean.DanhMucBean;
 import views.HoKhauManagePanel;
 import views.HomePagePanel;
 import views.NhanKhauManagePanel;
 import views.ThongKePanel;
 import views.TimKiemPanel;
 
-/**
- *
- * @author Hai
- */
 public class MainController {
     private JFrame jfrMain;
     private JPanel root;
@@ -34,13 +27,12 @@ public class MainController {
         this.root = root;
     }
     
-    
     // set panel for root
     public void setView(JPanel jpnItem, JLabel jlbItem, String kind) {
         this.kindSelected = kind;
         jpnItem.setBackground(new Color(0));
         jlbItem.setBackground(new Color(0));
-        JPanel view = new  JPanel();
+        JPanel view = new JPanel();
         switch(kind) {
                 case "TrangChu":
                     view = new HomePagePanel();

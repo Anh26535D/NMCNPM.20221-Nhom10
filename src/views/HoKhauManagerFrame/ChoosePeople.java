@@ -1,11 +1,12 @@
 package views.HoKhauManagerFrame;
 
-import Bean.NhanKhauBean;
 import controllers.HoKhauManagerController.ChoosePeopleController;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
+import bean.NhanKhauBean;
 
 /**
  *

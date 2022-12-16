@@ -2,15 +2,11 @@
  * lớp tạo ra để hỗ trợ việc bắt sự kiện mỗi khi nhấn vào 1 label trong mainFrame
  * tạo danh sách các panel trong mainframe
  */
-package Bean;
+package bean;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-/**
- *
- * @author Hai
- */
 public class DanhMucBean {
     private String kind;
     private JPanel jpn;
@@ -48,6 +44,5 @@ public class DanhMucBean {
     public void setJlb(JLabel jlb) {
         this.jlb = jlb;
     }
-    
     
 }
