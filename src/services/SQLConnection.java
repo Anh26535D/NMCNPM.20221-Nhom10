@@ -9,8 +9,12 @@ public class SQLConnection {
 	public static String password = "123456";
 	
     public static Connection getMysqlConnection() throws SQLException, ClassNotFoundException {
-    	String url = "jdbc:sqlserver://" + SQLConnection.serverName + ":1433;DatabaseName=" + SQLConnection.databaseName  + ";encrypt=true;trustServerCertificate=true;";
-        return DriverManager.getConnection(url, SQLConnection.userName, SQLConnection.password);
+
+    	String serverName = "127.0.0.1";
+    	String url = "jdbc:sqlserver://" + serverName + ":1433;DatabaseName=quan_ly_nhan_khau"  + ";encrypt=true;trustServerCertificate=true;";
+        String userName = "sa";
+        String password = "12345678*A";
+        return DriverManager.getConnection(url, userName, password);
     }
     
     public static Connection getMysqlConnection(String serverName, String dbName, String userName, String password) throws SQLException, ClassNotFoundException{
