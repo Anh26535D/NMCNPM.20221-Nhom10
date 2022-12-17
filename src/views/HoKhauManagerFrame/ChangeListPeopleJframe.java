@@ -172,7 +172,7 @@ public class ChangeListPeopleJframe extends javax.swing.JFrame {
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
         this.listMember.clear();
         this.listMember.addAll(this.listMemberTemp);
-        ThemMoiHoKhauFrame themMoiHoKhau = (ThemMoiHoKhauFrame)this.parentJframe;
+        NewHouseholdFrame themMoiHoKhau = (NewHouseholdFrame)this.parentJframe;
         themMoiHoKhau.setDataThanhVien();
         close();
     }//GEN-LAST:event_saveBtnActionPerformed

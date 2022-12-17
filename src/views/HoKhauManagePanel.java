@@ -4,7 +4,7 @@ import controllers.HoKhauPanelController;
 import javax.swing.JFrame;
 import views.HoKhauManagerFrame.ChuyenDiNoiKhac;
 import views.HoKhauManagerFrame.TachHoKhau;
-import views.HoKhauManagerFrame.ThemMoiHoKhauFrame;
+import views.HoKhauManagerFrame.NewHouseholdFrame;
 
 public class HoKhauManagePanel extends javax.swing.JPanel {
     
@@ -124,7 +124,7 @@ public class HoKhauManagePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_chuyenDiBtnActionPerformed
 
     private void themMoiBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themMoiBtnActionPerformed
-        ThemMoiHoKhauFrame themMoiHoKhau = new ThemMoiHoKhauFrame(this.parentFrame);
+        NewHouseholdFrame themMoiHoKhau = new NewHouseholdFrame(this.parentFrame);
         themMoiHoKhau.setLocationRelativeTo(null);
         themMoiHoKhau.setResizable(false);
         themMoiHoKhau.setVisible(true);

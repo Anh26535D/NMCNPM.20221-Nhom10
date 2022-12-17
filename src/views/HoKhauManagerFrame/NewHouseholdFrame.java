@@ -25,7 +25,7 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ThemMoiHoKhauFrame extends JFrame {
+public class NewHouseholdFrame extends JFrame {
 
 	/**
 	 * 
@@ -54,7 +54,7 @@ public class ThemMoiHoKhauFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ThemMoiHoKhauFrame(JFrame parentJFrame) {
+	public NewHouseholdFrame(JFrame parentJFrame) {
 		init();
 		this.parentJFrame = parentJFrame;
 		parentJFrame.setEnabled(false);

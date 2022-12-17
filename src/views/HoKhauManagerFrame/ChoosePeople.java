@@ -173,7 +173,7 @@ public class ChoosePeople extends javax.swing.JFrame {
         this.nhanKhauBean.setListGiaDinhModels(this.nhanKhauBeanTemp.getListGiaDinhModels());
         this.nhanKhauBean.setListTieuSuModels(this.nhanKhauBeanTemp.getListTieuSuModels());
         this.parentJFrame.setEnabled(true);
-        ThemMoiHoKhauFrame themMoiHoKhau = (ThemMoiHoKhauFrame)this.parentJFrame;
+        NewHouseholdFrame themMoiHoKhau = (NewHouseholdFrame)this.parentJFrame;
         themMoiHoKhau.setDataChuHo();
         dispose();
     }//GEN-LAST:event_confirmBtnActionPerformed
