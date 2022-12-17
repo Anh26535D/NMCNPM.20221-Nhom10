@@ -26,7 +26,7 @@ public class HoKhauService {
     public boolean addNew(HoKhauBean hoKhauBean) throws ClassNotFoundException, SQLException{
         Connection connection = SQLConnection.getMysqlConnection();
         String query = "INSERT INTO ho_khau(maHoKhau, idChuHo, maKhuVuc, diaChi, ngayLap)" 
-                    + " values (?, ?, ?, ?, NOW())";
+                    + " values (?, ?, ?, ?, GETDATE())";
         PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
         preparedStatement.setString(1, hoKhauBean.getHoKhauModel().getMaHoKhau());
         preparedStatement.setInt(2, hoKhauBean.getChuHo().getID());
@@ -261,7 +261,7 @@ public class HoKhauService {
         String sql = "UPDATE ho_khau SET lyDoChuyen = '"
                 + lyDoChuyen
                 + "',"
-                + "ngayChuyenDi = NOW(), "
+                + "ngayChuyenDi = GETDATE(), "
                 + "diaChi = '"
                 + noiChuyenDen
                 + "',"

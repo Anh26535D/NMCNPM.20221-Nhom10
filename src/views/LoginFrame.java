@@ -20,6 +20,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
+import javax.swing.border.CompoundBorder;
 
 public class LoginFrame extends JFrame {
 
@@ -37,6 +38,12 @@ public class LoginFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public LoginFrame() {
+		init();
+        this.keyListenner(txbUserName);
+        this.keyListenner(txbPasswd);
+	}
+	
+	private void init() {
 		this.setResizable(false);
 		this.setTitle("Login");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -72,7 +79,7 @@ public class LoginFrame extends JFrame {
 		
 		txbUserName = new JTextField();
 		txbUserName.setFont(new Font("Tahoma", Font.BOLD, 12));
-		txbUserName.setBorder(new LineBorder(new Color(255, 255, 255), 1, true));
+		txbUserName.setBorder(new CompoundBorder(new LineBorder(new Color(255, 255, 255), 1, true), new EmptyBorder(0, 5, 0, 0)));
 		txbUserName.setBackground(new Color(245, 245, 245));
 		txbUserName.setBounds(65, 72, 326, 29);
 	       txbUserName.setName("txtUserName");
@@ -92,7 +99,7 @@ public class LoginFrame extends JFrame {
 		
 		txbPasswd = new JPasswordField();
 		txbPasswd.setFont(new Font("Tahoma", Font.BOLD, 12));
-		txbPasswd.setBorder(new LineBorder(new Color(255, 255, 255), 1, true));
+		txbPasswd.setBorder(new CompoundBorder(new LineBorder(new Color(255, 255, 255), 1, true), new EmptyBorder(0, 5, 0, 0)));
 		txbPasswd.setBackground(new Color(245, 245, 245));
 		txbPasswd.setBounds(65, 144, 326, 29);
 		txbPasswd.setName("txtPasswd");
@@ -117,9 +124,6 @@ public class LoginFrame extends JFrame {
             }
         });
 		panel.add(btnLogin);
-		
-        this.keyListenner(txbUserName);
-        this.keyListenner(txbPasswd);
 	}
 	
 	private void login() {
@@ -128,10 +132,10 @@ public class LoginFrame extends JFrame {
         try {
             if (this.cont.login(userName, password)) {
                 this.dispose();
-                MainFrame mainFrame = new MainFrame();
-                mainFrame.setLocationRelativeTo(null);
-                mainFrame.setResizable(false);
-                mainFrame.setVisible(true);
+                DashBoardFrame dashBoard = new DashBoardFrame();
+                dashBoard.setLocationRelativeTo(null);
+                dashBoard.setResizable(false);
+                dashBoard.setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Sai thong tin dang nhap", "Warning", JOptionPane.WARNING_MESSAGE);
             }
