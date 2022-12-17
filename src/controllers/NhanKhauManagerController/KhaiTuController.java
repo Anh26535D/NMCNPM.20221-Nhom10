@@ -15,7 +15,7 @@ import services.SQLConnection;
 public class KhaiTuController {
     public int checkCMT(String cmt) {
         try {
-            Connection connection = SQLConnection.getMysqlConnection();
+            Connection connection = SQLConnection.getDbConnection();
             String query = "SELECT * FROM nhan_khau LEFT JOIN chung_minh_thu ON nhan_khau.ID = chung_minh_thu.idNhanKhau WHERE soCMT = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, cmt);
@@ -31,7 +31,7 @@ public class KhaiTuController {
     
     public boolean addNew(KhaiTuModel khaiTuModel) {
         try {
-            Connection connection = SQLConnection.getMysqlConnection();
+            Connection connection = SQLConnection.getDbConnection();
             String query = "INSERT INTO khai_tu(idNhanKhau, , lyDo)" + " value (?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 //            preparedStatement.setInt(1, tamTruModel.getIdNhanKhau());

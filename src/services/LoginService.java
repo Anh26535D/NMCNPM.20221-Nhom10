@@ -12,7 +12,7 @@ public class LoginService {
     public static UserMoldel currentUser = new UserMoldel();
     
     public boolean login(String userName, String passwod) throws SQLException, ClassNotFoundException{
-        Connection connection = SQLConnection.getMysqlConnection();
+        Connection connection = SQLConnection.getDbConnection();
         String sql = "SELECT * FROM users WHERE userName=? AND passwd=?";
         PreparedStatement st = connection.prepareStatement(sql);
         st.setString(1, userName);

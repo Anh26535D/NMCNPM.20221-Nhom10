@@ -23,7 +23,7 @@ public class AddNewController {
     public boolean addNewPeople(NhanKhauBean nhanKhauBean) throws SQLException, ClassNotFoundException{
         NhanKhauModel nhanKhau = nhanKhauBean.getNhanKhauModel();
         ChungMinhThuModel chungMinhThu = nhanKhauBean.getChungMinhThuModel();
-        Connection connection = SQLConnection.getMysqlConnection();
+        Connection connection = SQLConnection.getDbConnection();
         // 1 - 19
         String query = "INSERT INTO nhan_khau (hoTen, bietDanh, namSinh, gioiTinh, noiSinh, nguyenQuan, danToc, tonGiao, quocTich, soHoChieu, noiThuongTru, diaChiHienNay, trinhDoHocVan, TrinhDoChuyenMon, bietTiengDanToc, trinhDoNgoaiNgu, ngheNghiep, noiLamViec, idNguoiTao, ngayTao)" 
                         + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";

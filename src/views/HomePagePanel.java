@@ -4,7 +4,7 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
 
-import controllers.HomeCotroller;
+import controllers.HomeController;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -18,7 +18,7 @@ public class HomePagePanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private HomeCotroller cotroller;
+	private HomeController cotroller;
 	
     private javax.swing.JLabel nhanKhauTamTruLb;
     private javax.swing.JLabel nhanKhauTamVangLb;
@@ -30,7 +30,7 @@ public class HomePagePanel extends JPanel {
 	 */
 	public HomePagePanel() {
         init();
-        this.cotroller = new HomeCotroller(tongNhanKhauLb, tongHoKhauLb, nhanKhauTamTruLb, nhanKhauTamVangLb);
+        this.cotroller = new HomeController(tongNhanKhauLb, tongHoKhauLb, nhanKhauTamTruLb, nhanKhauTamVangLb);
         this.cotroller.setData();
 
 	}
