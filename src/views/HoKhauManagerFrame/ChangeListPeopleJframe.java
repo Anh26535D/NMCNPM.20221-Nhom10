@@ -15,10 +15,6 @@ import javax.swing.JOptionPane;
 
 import bean.MemOfFamily;
 
-/**
- *
- * @author Hai
- */
 public class ChangeListPeopleJframe extends javax.swing.JFrame {
 
     /**
@@ -176,7 +172,7 @@ public class ChangeListPeopleJframe extends javax.swing.JFrame {
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
         this.listMember.clear();
         this.listMember.addAll(this.listMemberTemp);
-        ThemMoiHoKhau themMoiHoKhau = (ThemMoiHoKhau)this.parentJframe;
+        ThemMoiHoKhauFrame themMoiHoKhau = (ThemMoiHoKhauFrame)this.parentJframe;
         themMoiHoKhau.setDataThanhVien();
         close();
     }//GEN-LAST:event_saveBtnActionPerformed
