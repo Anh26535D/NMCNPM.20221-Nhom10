@@ -195,16 +195,4 @@ public class SingleSelection extends JComboBox {
         });
         setPrototypeDisplayValue("This is Text");
     }
-
-    public static void  main(String args[]){
-        String test[] = {"Đông Anh","Đông Anh","Đông Anh","Đông Anh","Đông Anh","Đông Anh","Đông Anh","Đông Anh","Đông Anh","Đông Anh",};
-        JFrame testFrame = new JFrame();
-        testFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        JPanel testPanel= new JPanel(new FlowLayout());
-        testFrame.setContentPane(testPanel);
-        testFrame.setSize(300,300);
-        SingleSelection asd= new SingleSelection(test);
-        testPanel.add(asd);
-        testFrame.setVisible(true);
-    }
 }
