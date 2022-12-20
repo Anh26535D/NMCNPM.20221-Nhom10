@@ -1,21 +1,18 @@
 package services;
 
-import Bean.NhanKhauBean;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+
+import bean.NhanKhauBean;
 import models.ChungMinhThuModel;
 import models.GiaDinhModel;
 import models.NhanKhauModel;
 import models.TieuSuModel;
 
-/**
- *
- * @author Hai
- */
 public class NhanKhauService {
     
     /* 
@@ -25,7 +22,7 @@ public class NhanKhauService {
         NhanKhauBean nhanKhauBean = new NhanKhauBean();  
         // truy cap db
         try {
-            Connection connection = SQLConnection.getMysqlConnection();
+            Connection connection = SQLConnection.getDbConnection();
             String query = "SELECT * FROM nhan_khau JOIN chung_minh_thu ON nhan_khau.ID = chung_minh_thu.idNhanKhau WHERE soCMT = " + cmt;
             PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
@@ -102,7 +99,7 @@ public class NhanKhauService {
     public List<NhanKhauBean> getListNhanKhau() {
         List<NhanKhauBean> list = new ArrayList<>();
         try {
-            Connection connection = SQLConnection.getMysqlConnection();
+            Connection connection = SQLConnection.getDbConnection();
             String query = "SELECT TOP 10 * FROM nhan_khau JOIN chung_minh_thu ON nhan_khau.ID = chung_minh_thu.idNhanKhau ORDER BY ngayTao DESC";
             PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
@@ -164,7 +161,7 @@ public class NhanKhauService {
         }
         query += " ORDER BY ngayTao DESC";
          try {
-            Connection connection = SQLConnection.getMysqlConnection();
+            Connection connection = SQLConnection.getDbConnection();
             PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
             int idNhanKhau = -1;
@@ -249,7 +246,7 @@ public class NhanKhauService {
         }
         
         try {
-            Connection connection = SQLConnection.getMysqlConnection();
+            Connection connection = SQLConnection.getDbConnection();
             String query = "SELECT * FROM nhan_khau "
             	      + "JOIN chung_minh_thu ON nhan_khau.ID = chung_minh_thu.idNhanKhau "
             	      + "WHERE CONTAINS(hoTen,'\"*"

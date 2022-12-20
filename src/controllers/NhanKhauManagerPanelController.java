@@ -1,6 +1,5 @@
 package controllers;
 
-import Bean.NhanKhauBean;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -18,6 +17,8 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+
+import bean.NhanKhauBean;
 import models.NhanKhauModel;
 import services.NhanKhauService;
 import utility.ClassTableModel;

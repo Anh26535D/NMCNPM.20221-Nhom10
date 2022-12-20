@@ -5,7 +5,6 @@
  */
 package views.HoKhauManagerFrame;
 
-import Bean.MemOfFamily;
 import controllers.HoKhauManagerController.ChangeListPeopleController;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -14,10 +13,8 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Hai
- */
+import bean.MemOfFamily;
+
 public class ChangeListPeopleJframe extends javax.swing.JFrame {
 
     /**
@@ -175,7 +172,7 @@ public class ChangeListPeopleJframe extends javax.swing.JFrame {
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
         this.listMember.clear();
         this.listMember.addAll(this.listMemberTemp);
-        ThemMoiHoKhau themMoiHoKhau = (ThemMoiHoKhau)this.parentJframe;
+        NewHouseholdFrame themMoiHoKhau = (NewHouseholdFrame)this.parentJframe;
         themMoiHoKhau.setDataThanhVien();
         close();
     }//GEN-LAST:event_saveBtnActionPerformed

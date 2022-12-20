@@ -1,4 +1,4 @@
-package Bean;
+package bean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,10 +7,6 @@ import models.GiaDinhModel;
 import models.NhanKhauModel;
 import models.TieuSuModel;
 
-/**
- *
- * @author Hai
- */
 public class NhanKhauBean {
     private NhanKhauModel nhanKhauModel;
     private ChungMinhThuModel chungMinhThuModel;

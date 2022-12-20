@@ -1,6 +1,5 @@
 package controllers.NhanKhauManagerController;
 
-import Bean.NhanKhauBean;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Dimension;
@@ -13,6 +12,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.event.ChangeEvent;
 import javax.swing.table.DefaultTableModel;
+
+import bean.NhanKhauBean;
 import models.GiaDinhModel;
 import models.TieuSuModel;
 import utility.ClassTableModel;
