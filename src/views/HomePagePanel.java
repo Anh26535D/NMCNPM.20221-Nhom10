@@ -44,7 +44,7 @@ public class HomePagePanel extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(204, 204, 255), 2, true));
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(10, 43, 767, 550);
+		panel.setBounds(10, 43, 767, 540);
 		add(panel);
 		panel.setLayout(null);
 		

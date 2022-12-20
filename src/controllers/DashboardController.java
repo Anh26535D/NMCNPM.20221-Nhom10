@@ -9,10 +9,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import bean.DanhMucBean;
-import views.HoKhauManagePanel;
+import views.HouseholdPanel;
 import views.HomePagePanel;
-import views.HomePagePanel;
-import views.NhanKhauManagePanel;
+import views.PeoplePanel;
 import views.ThongKePanel;
 import views.TimKiemPanel;
 
@@ -47,10 +46,10 @@ public class DashboardController {
                     view = new HomePagePanel();
                     break;
                 case "NhanKhau":
-                    view = new NhanKhauManagePanel(this.jfrMain);
+                    view = new PeoplePanel(this.jfrMain);
                     break;
                 case "HoKhau":
-                    view = new HoKhauManagePanel(this.jfrMain);
+                    view = new HouseholdPanel(this.jfrMain);
                     break;
                 case "TimKiem":
                     view = new TimKiemPanel(this.jfrMain);
@@ -115,10 +114,10 @@ public class DashboardController {
                     view = new HomePagePanel();
                     break;
                 case "NhanKhau":
-                    view = new NhanKhauManagePanel(this.jfrMain);
+                    view = new PeoplePanel(this.jfrMain);
                     break;
                  case "HoKhau":
-                    view = new HoKhauManagePanel(this.jfrMain);
+                    view = new HouseholdPanel(this.jfrMain);
                     break;
                 case "TimKiem":
                     view = new TimKiemPanel(this.jfrMain);

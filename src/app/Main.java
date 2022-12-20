@@ -15,7 +15,7 @@ public class Main {
         } catch (Exception e) {
         }
         LoginFrame loginFrame = new LoginFrame();
-        loginFrame.setVisible(true); 
+        loginFrame.setVisible(true);
       }  
 }
 

@@ -22,7 +22,6 @@ import java.awt.Font;
 
 public class DashBoardFrame extends JFrame {
 
-
 	private static final long serialVersionUID = 1L;
 	
 	private JPanel contentPane;
@@ -71,29 +70,29 @@ public class DashBoardFrame extends JFrame {
 		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
-		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setContentPane(contentPane);
+
 		
 		jpnContainer = new JPanel();
 		jpnContainer.setBackground(new Color(204, 204, 255));
 		jpnContainer.setBounds(0, 0, 986, 613);
-		contentPane.add(jpnContainer);
 		jpnContainer.setLayout(null);
+		contentPane.add(jpnContainer);
 		
 		jpnMenu = new JPanel();
 		jpnMenu.setBorder(new LineBorder(new Color(204, 153, 255), 3, true));
 		jpnMenu.setBackground(new Color(240, 255, 255));
 		jpnMenu.setBounds(20, 10, 130, 593);
-		jpnContainer.add(jpnMenu);
 		jpnMenu.setLayout(null);
+		jpnContainer.add(jpnMenu);
 		
 		Home = new JPanel();
 		Home.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(255, 204, 255), null, new Color(204, 255, 255), null));
 		Home.setBackground(new Color(220, 152, 255));
 		Home.setBounds(10, 10, 110, 54);
-		jpnMenu.add(Home);
 		Home.setLayout(null);
+		jpnMenu.add(Home);
 		
 		jlbTrangChu = new JLabel("Trang chủ");
 		jlbTrangChu.setForeground(new Color(255, 255, 255));
@@ -106,8 +105,8 @@ public class DashBoardFrame extends JFrame {
 		NhanKhauBtn.setBorder(new LineBorder(new Color(255, 204, 255), 1, true));
 		NhanKhauBtn.setBackground(new Color(102, 153, 255));
 		NhanKhauBtn.setBounds(10, 108, 110, 54);
-		jpnMenu.add(NhanKhauBtn);
 		NhanKhauBtn.setLayout(null);
+		jpnMenu.add(NhanKhauBtn);
 		
 		jlbNhanKhau = new JLabel("Nhân khẩu");
 		jlbNhanKhau.setToolTipText("Nhân khẩu");
@@ -124,8 +123,8 @@ public class DashBoardFrame extends JFrame {
 		HoKhauBtn.setBackground(new Color(102, 153, 255));
 		HoKhauBtn.setForeground(new Color(204, 204, 255));
 		HoKhauBtn.setBounds(10, 172, 110, 54);
-		jpnMenu.add(HoKhauBtn);
 		HoKhauBtn.setLayout(null);
+		jpnMenu.add(HoKhauBtn);
 		
 		jlbHoKhau = new JLabel("Hộ khẩu");
 		jlbHoKhau.setBackground(new Color(102, 153, 255));
@@ -141,8 +140,8 @@ public class DashBoardFrame extends JFrame {
 		ThongKeBtn.setBackground(new Color(102, 153, 255));
 		ThongKeBtn.setBorder(new LineBorder(new Color(255, 204, 255), 1, true));
 		ThongKeBtn.setBounds(10, 236, 110, 54);
-		jpnMenu.add(ThongKeBtn);
 		ThongKeBtn.setLayout(null);
+		jpnMenu.add(ThongKeBtn);
 		
 		jlbThongKe = new JLabel("Thống kê");
 		jlbThongKe.setBackground(new Color(102, 102, 255));

@@ -11,10 +11,6 @@ import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author User
- */
 public class TachHoKhau extends javax.swing.JFrame {
 
     private TachHoKhauController controller;
@@ -46,7 +42,7 @@ public class TachHoKhau extends javax.swing.JFrame {
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                close(); //To change body of generated methods, choose Tools | Templates.
+                close();
             }
             
         });

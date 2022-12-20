@@ -2,7 +2,7 @@ package views.NhanKhauManagerFrame;
 
 import controllers.LoginController;
 import controllers.NhanKhauManagerController.AddNewController;
-import controllers.NhanKhauManagerPanelController;
+import controllers.PeoplePanelController;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
@@ -21,7 +21,7 @@ public class AddNewPeopleJFrame extends javax.swing.JFrame {
     /**
      * Creates new form AddNewPeopleJFrame
      */
-    private NhanKhauManagerPanelController parentController;
+    private PeoplePanelController parentController;
     private JFrame parentFrame;
     private NhanKhauBean nhanKhauBean;
     private AddNewController controller;
@@ -34,7 +34,7 @@ public class AddNewPeopleJFrame extends javax.swing.JFrame {
 //        controller = new AddNewController();
 //    }
 
-    public AddNewPeopleJFrame(NhanKhauManagerPanelController parentController, JFrame parentJFrame) {
+    public AddNewPeopleJFrame(PeoplePanelController parentController, JFrame parentJFrame) {
         this.parentController = parentController;
         this.parentFrame = parentJFrame;
         this.parentFrame.setEnabled(false);
@@ -56,7 +56,7 @@ public class AddNewPeopleJFrame extends javax.swing.JFrame {
     }
     
     public AddNewPeopleJFrame(JFrame parentJFrame) {
-        this.parentController = new NhanKhauManagerPanelController(){
+        this.parentController = new PeoplePanelController(){
             @Override
             public void refreshData() {
                 // do nothing

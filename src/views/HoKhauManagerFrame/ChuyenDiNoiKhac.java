@@ -8,10 +8,6 @@ import javax.swing.JOptionPane;
 
 import bean.HoKhauBean;
 
-/**
- *
- * @author User
- */
 public class ChuyenDiNoiKhac extends javax.swing.JFrame {
 
     private ChuyenDiNoiKhacController controller;
@@ -31,7 +27,6 @@ public class ChuyenDiNoiKhac extends javax.swing.JFrame {
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                parentJFrame.setEnabled(true);
                 close();
             }
             
