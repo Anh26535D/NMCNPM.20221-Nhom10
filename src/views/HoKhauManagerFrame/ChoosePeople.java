@@ -1,11 +1,12 @@
 package views.HoKhauManagerFrame;
 
-import Bean.NhanKhauBean;
 import controllers.HoKhauManagerController.ChoosePeopleController;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
+import bean.NhanKhauBean;
 
 /**
  *
@@ -172,7 +173,7 @@ public class ChoosePeople extends javax.swing.JFrame {
         this.nhanKhauBean.setListGiaDinhModels(this.nhanKhauBeanTemp.getListGiaDinhModels());
         this.nhanKhauBean.setListTieuSuModels(this.nhanKhauBeanTemp.getListTieuSuModels());
         this.parentJFrame.setEnabled(true);
-        ThemMoiHoKhau themMoiHoKhau = (ThemMoiHoKhau)this.parentJFrame;
+        NewHouseholdFrame themMoiHoKhau = (NewHouseholdFrame)this.parentJFrame;
         themMoiHoKhau.setDataChuHo();
         dispose();
     }//GEN-LAST:event_confirmBtnActionPerformed

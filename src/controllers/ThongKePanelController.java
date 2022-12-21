@@ -1,13 +1,10 @@
 package controllers;
 
-import Bean.NhanKhauBean;
-import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.ButtonGroup;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -15,16 +12,14 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+
+import bean.NhanKhauBean;
 import models.NhanKhauModel;
 import services.NhanKhauService;
 import services.StringService;
 import utility.ClassTableModel;
 
 
-/**
- *
- * @author Hai
- */
 public class ThongKePanelController {
     private JComboBox GenderJcb;
     private JComboBox StatusJcb;

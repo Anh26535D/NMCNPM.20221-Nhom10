@@ -1,12 +1,13 @@
 package controllers.NhanKhauManagerController;
 
-import Bean.NhanKhauBean;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import bean.NhanKhauBean;
 import models.ChungMinhThuModel;
 import models.NhanKhauModel;
 import services.SQLConnection;
@@ -22,7 +23,7 @@ public class AddNewController {
     public boolean addNewPeople(NhanKhauBean nhanKhauBean) throws SQLException, ClassNotFoundException{
         NhanKhauModel nhanKhau = nhanKhauBean.getNhanKhauModel();
         ChungMinhThuModel chungMinhThu = nhanKhauBean.getChungMinhThuModel();
-        Connection connection = SQLConnection.getMysqlConnection();
+        Connection connection = SQLConnection.getDbConnection();
         // 1 - 19
         String query = "INSERT INTO nhan_khau (hoTen, bietDanh, namSinh, gioiTinh, noiSinh, nguyenQuan, danToc, tonGiao, quocTich, soHoChieu, noiThuongTru, diaChiHienNay, trinhDoHocVan, TrinhDoChuyenMon, bietTiengDanToc, trinhDoNgoaiNgu, ngheNghiep, noiLamViec, idNguoiTao, ngayTao)" 
                         + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -47,7 +48,7 @@ public class AddNewController {
         preparedStatement.setString(17, nhanKhau.getNgheNghiep());
         preparedStatement.setString(18, nhanKhau.getNoiLamViec());
         preparedStatement.setInt(19, nhanKhau.getIdNguoiTao());
-        java.sql.Date createDate = new java.sql.Date(quanlynhankhau.QuanLyNhanKhau.calendar.getTime().getTime());
+        java.sql.Date createDate = new java.sql.Date(app.Main.calendar.getTime().getTime());
         preparedStatement.setDate(20, createDate);
         
         preparedStatement.executeUpdate();

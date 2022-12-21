@@ -1,8 +1,5 @@
 package controllers.HoKhauManagerController;
 
-import Bean.HoKhauBean;
-import Bean.MemOfFamily;
-import Bean.NhanKhauBean;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -13,6 +10,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import bean.HoKhauBean;
+import bean.MemOfFamily;
+import bean.NhanKhauBean;
 import services.HoKhauService;
 import utility.TableModelHoKhau;
 

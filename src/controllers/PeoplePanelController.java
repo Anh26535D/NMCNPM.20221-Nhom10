@@ -1,7 +1,8 @@
 package controllers;
 
-import Bean.NhanKhauBean;
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
@@ -10,24 +11,24 @@ import java.util.ArrayList;
 import java.util.EventObject;
 import java.util.List;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableCellRenderer;
+
+import bean.NhanKhauBean;
 import models.NhanKhauModel;
 import services.NhanKhauService;
 import utility.ClassTableModel;
 import views.infoViews.InfoJframe;
 
-/**
- *
- * @author Hai
- */
-public class NhanKhauManagerPanelController {
+public class PeoplePanelController {
     
     private JPanel jpnView;
     private JTextField jtfSearch;
@@ -37,7 +38,7 @@ public class NhanKhauManagerPanelController {
     private final String[] COLUMNS = {"ID", "Họ tên", "Ngày sinh", "Giới tính", "Địa chỉ hiện nay"};
     private JFrame parentJFrame;
 
-    public NhanKhauManagerPanelController(JPanel jpnView, JTextField jtfSearch) {
+    public PeoplePanelController(JPanel jpnView, JTextField jtfSearch) {
         this.jpnView = jpnView;
         this.jtfSearch = jtfSearch;
         classTableModel = new ClassTableModel();
@@ -46,65 +47,86 @@ public class NhanKhauManagerPanelController {
         initAction();
     }
 
-    public NhanKhauManagerPanelController() {
+    public PeoplePanelController() {
     }
     
-    
-    //
     public void initAction(){
         this.jtfSearch.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
                 String key = jtfSearch.getText();
                 listNhanKhauBeans = nhanKhauService.search(key.trim());
-                setDataTable();
+                setData();
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
                 String key = jtfSearch.getText();
                 listNhanKhauBeans = nhanKhauService.search(key.trim());
-                setDataTable();
+                setData();
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
                 String key = jtfSearch.getText();
                 listNhanKhauBeans = nhanKhauService.search(key.trim());
-                setDataTable();
+                setData();
             }
         });
     }
     
-    public void setDataTable() {
+    public void setData() {
         List<NhanKhauModel> listItem = new ArrayList<>();
         this.listNhanKhauBeans.forEach(nhankhau -> {
             listItem.add(nhankhau.getNhanKhauModel());
         });
+        
         DefaultTableModel model = classTableModel.setTableNhanKhau(listItem, COLUMNS);
         JTable table = new JTable(model) {
-            @Override
+            private static final long serialVersionUID = 1L;
+
+			@Override
             public boolean editCellAt(int row, int column, EventObject e) {
                 return false;
             }
+			
+            @Override
+	        public Component prepareRenderer(TableCellRenderer renderer,int row,int column){
+	            Component comp=super.prepareRenderer(renderer,row, column);
+	           int modelRow=convertRowIndexToModel(row);
+	           if(!isRowSelected(modelRow))
+	               comp.setBackground(Color.WHITE);
+	           else
+	               comp.setBackground(new Color(102, 102, 255));
+	           return comp;
+	        }
             
         };
+       
+        //Set style for table header
+        JTableHeader header = table.getTableHeader();
+        header.setReorderingAllowed(false);
+        header.setResizingAllowed(false);
+        header.setFont(new Font("Tahoma", Font.BOLD, 15));
         
-        // thiet ke bang
+        header.setOpaque(false);
+        header.setBackground(new Color(230, 230, 255));
+        header.setForeground(Color.black);
         
-        table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
-        table.getTableHeader().setPreferredSize(new Dimension(100, 50));
-        table.setRowHeight(50);
+        header.setPreferredSize(new Dimension(100, 50));
+        
+        //Set style for table content
+        table.setRowHeight(30);
         table.validate();
         table.repaint();
-        table.setFont(new Font("Arial", Font.PLAIN, 14));
+        table.setFont(new Font("Tahoma", Font.PLAIN, 14));
         table.getColumnModel().getColumn(0).setMaxWidth(80);
         table.getColumnModel().getColumn(0).setMinWidth(80);
         table.getColumnModel().getColumn(0).setPreferredWidth(80);
+        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         table.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-//                JOptionPane.showConfirmDialog(null, table.getSelectedRow());
                 if (e.getClickCount() > 1) {
                     NhanKhauBean temp = listNhanKhauBeans.get(table.getSelectedRow());
                     NhanKhauBean info = nhanKhauService.getNhanKhau(temp.getChungMinhThuModel().getSoCMT());
@@ -117,8 +139,8 @@ public class NhanKhauManagerPanelController {
         });
         
         JScrollPane scroll = new JScrollPane();
+        scroll.getViewport().setBackground(Color.white);
         scroll.getViewport().add(table);
-        scroll.setPreferredSize(new Dimension(1350, 400));
         jpnView.removeAll();
         jpnView.setLayout(new BorderLayout());
         jpnView.add(scroll);
@@ -132,7 +154,7 @@ public class NhanKhauManagerPanelController {
     
     public void refreshData() {
         this.listNhanKhauBeans = this.nhanKhauService.getListNhanKhau();
-        setDataTable();
+        setData();
     }
     public JPanel getJpnView() {
         return jpnView;

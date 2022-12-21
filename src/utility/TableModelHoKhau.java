@@ -1,19 +1,18 @@
 package utility;
 
-import Bean.HoKhauBean;
-import Bean.MemOfFamily;
-import Bean.NhanKhauBean;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-/**
- *
- * @author Hai
- */
+
+import bean.HoKhauBean;
+import bean.MemOfFamily;
+import bean.NhanKhauBean;
+
 public class TableModelHoKhau {
     public DefaultTableModel setTableNhanKhau(List<NhanKhauBean> listItem, String[] listColumn) {
         final int columns = listColumn.length;
         DefaultTableModel dtm = new DefaultTableModel()  {
-            @Override
+            private static final long serialVersionUID = 1L;
+			@Override
             public boolean isCellEditable(int row, int column) {
                 return super.isCellEditable(row, column); //To change body of generated methods, choose Tools | Templates.
             }
@@ -39,7 +38,8 @@ public class TableModelHoKhau {
     public DefaultTableModel setTableMember(List<MemOfFamily> listItem, String[] listColumn) {
         final int columns = listColumn.length;
         DefaultTableModel dtm = new DefaultTableModel()  {
-            @Override
+            private static final long serialVersionUID = 1L;
+			@Override
             public boolean isCellEditable(int row, int column) {
                 return super.isCellEditable(row, column); //To change body of generated methods, choose Tools | Templates.
             }
@@ -63,7 +63,8 @@ public class TableModelHoKhau {
     public DefaultTableModel setTableHoKhau(List<HoKhauBean> listItem, String[] listColumn) {
         final int columns = listColumn.length;
         DefaultTableModel dtm = new DefaultTableModel()  {
-            @Override
+            private static final long serialVersionUID = 1L;
+			@Override
             public boolean isCellEditable(int row, int column) {
                 return super.isCellEditable(row, column); //To change body of generated methods, choose Tools | Templates.
             }

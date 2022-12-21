@@ -1,21 +1,18 @@
 package services;
 
-import Bean.NhanKhauBean;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+
+import bean.NhanKhauBean;
 import models.ChungMinhThuModel;
 import models.GiaDinhModel;
 import models.NhanKhauModel;
 import models.TieuSuModel;
 
-/**
- *
- * @author Hai
- */
 public class NhanKhauService {
     
     /* 
@@ -25,8 +22,8 @@ public class NhanKhauService {
         NhanKhauBean nhanKhauBean = new NhanKhauBean();  
         // truy cap db
         try {
-            Connection connection = SQLConnection.getMysqlConnection();
-            String query = "SELECT * FROM nhan_khau JOIN chung_minh_thu ON nhan_khau.ID = chung_minh_thu.idNhanKhau WHERE soCMT = " + cmt;
+            Connection connection = SQLConnection.getDbConnection();
+            String query = "SELECT * FROM nhan_khau JOIN chung_minh_thu ON nhan_khau.ID = chung_minh_thu.idNhanKhau WHERE soCMT = '" + cmt + "'";
             PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
             int idNhanKhau = -1;
@@ -102,7 +99,7 @@ public class NhanKhauService {
     public List<NhanKhauBean> getListNhanKhau() {
         List<NhanKhauBean> list = new ArrayList<>();
         try {
-            Connection connection = SQLConnection.getMysqlConnection();
+            Connection connection = SQLConnection.getDbConnection();
             String query = "SELECT TOP 10 * FROM nhan_khau JOIN chung_minh_thu ON nhan_khau.ID = chung_minh_thu.idNhanKhau ORDER BY ngayTao DESC";
             PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
@@ -136,16 +133,16 @@ public class NhanKhauService {
                     + " JOIN chung_minh_thu ON nhan_khau.ID = chung_minh_thu.idNhanKhau"
                     + " LEFT JOIN tam_tru ON nhan_khau.ID = tam_tru.idNhanKhau "
                     + " LEFT JOIN tam_vang ON nhan_khau.ID = tam_vang.idNhanKhau "
-                    + " WHERE ROUND(DATEDIFF(CURDATE(),namSinh)/365 , 0) >= "
+                    + " WHERE ROUND(DATEDIFF(dayofyear,GETDATE(),namSinh)/365 , 0) >= "
                     + TuTuoi
-                    + " AND ROUND(DATEDIFF(CURDATE(),namSinh)/365 , 0) <= "
+                    + " AND ROUND(DATEDIFF(dayofyear, GETDATE(),namSinh)/365 , 0) <= "
                     + denTuoi;
         if (!gender.equalsIgnoreCase("Toan Bo")) {
             query += " AND nhan_khau.gioiTinh = '" + gender + "'";
         }
         if (Status.equalsIgnoreCase("Toan bo")) {
-            query += " AND (tam_tru.denNgay >= CURDATE() OR tam_tru.denNgay IS NULL)"
-                    + " AND (tam_vang.denNgay <= CURDATE() OR tam_vang.denNgay IS NULL)";
+            query += " AND (tam_tru.denNgay >= GETDATE() OR tam_tru.denNgay IS NULL)"
+                    + " AND (tam_vang.denNgay <= GETDATE() OR tam_vang.denNgay IS NULL)";
         } else if (Status.equalsIgnoreCase("Thuong tru")) {
             query += " AND tam_tru.denNgay IS NULL";
             
@@ -164,7 +161,7 @@ public class NhanKhauService {
         }
         query += " ORDER BY ngayTao DESC";
          try {
-            Connection connection = SQLConnection.getMysqlConnection();
+            Connection connection = SQLConnection.getDbConnection();
             PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
             int idNhanKhau = -1;
@@ -249,7 +246,7 @@ public class NhanKhauService {
         }
         
         try {
-            Connection connection = SQLConnection.getMysqlConnection();
+            Connection connection = SQLConnection.getDbConnection();
             String query = "SELECT * FROM nhan_khau "
             	      + "JOIN chung_minh_thu ON nhan_khau.ID = chung_minh_thu.idNhanKhau "
             	      + "WHERE CONTAINS(hoTen,'\"*"
