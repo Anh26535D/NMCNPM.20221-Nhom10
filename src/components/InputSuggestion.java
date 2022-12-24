@@ -7,13 +7,16 @@ import javax.swing.event.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 import java.util.List;
 
 import static java.awt.event.KeyEvent.*;
 
 public abstract class InputSuggestion extends JTextField {
-    private JPopupMenu popupMenu;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JPopupMenu popupMenu;
     private JList<String> listComp;
     DefaultListModel<String> listModel;
     private boolean disableTextEvent = false;
@@ -222,5 +225,5 @@ public abstract class InputSuggestion extends JTextField {
         }
     }
 
-    abstract List<String> getSuggestions(String textContent);
+    public abstract List<String> getSuggestions(String textContent);
 }
