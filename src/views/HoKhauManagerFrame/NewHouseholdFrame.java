@@ -27,9 +27,7 @@ import java.util.List;
 
 public class NewHouseholdFrame extends JFrame {
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
     private JTextField maHoKhauJtf;
