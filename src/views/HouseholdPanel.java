@@ -6,9 +6,9 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import controllers.HouseholdPanelController;
-import views.HoKhauManagerFrame.ChuyenDiNoiKhac;
+import views.HoKhauManagerFrame.ChangeResidence;
 import views.HoKhauManagerFrame.NewHouseholdFrame;
-import views.HoKhauManagerFrame.TachHoKhau;
+import views.HoKhauManagerFrame.HouseholdSeper;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -151,7 +151,7 @@ public class HouseholdPanel extends JPanel {
     }//GEN-LAST:event_jtfSearchActionPerformed
 
     private void chuyenDiBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chuyenDiBtnActionPerformed
-        ChuyenDiNoiKhac chuyenDiNoiKhac = new ChuyenDiNoiKhac(this.parentFrame);
+        ChangeResidence chuyenDiNoiKhac = new ChangeResidence(this.parentFrame);
         chuyenDiNoiKhac.setLocationRelativeTo(null);
         chuyenDiNoiKhac.setResizable(false);
         chuyenDiNoiKhac.setVisible(true);
@@ -165,7 +165,7 @@ public class HouseholdPanel extends JPanel {
     }//GEN-LAST:event_themMoiBtnActionPerformed
 
     private void tachHoKhauBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tachHoKhauBtnActionPerformed
-        TachHoKhau tachHoKhau = new TachHoKhau(this.parentFrame);
+        HouseholdSeper tachHoKhau = new HouseholdSeper(this.parentFrame);
         tachHoKhau.setLocationRelativeTo(null);
         tachHoKhau.setResizable(false);
         tachHoKhau.setVisible(true);
