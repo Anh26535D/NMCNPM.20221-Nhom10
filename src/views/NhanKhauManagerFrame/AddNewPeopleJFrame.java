@@ -1,5 +1,4 @@
 package views.NhanKhauManagerFrame;
-
 import controllers.LoginController;
 import controllers.NhanKhauManagerController.AddNewController;
 import controllers.PeoplePanelController;
@@ -12,10 +11,7 @@ import bean.NhanKhauBean;
 import models.ChungMinhThuModel;
 import models.NhanKhauModel;
 
-/**
- *
- * @author Hai
- */
+
 public class AddNewPeopleJFrame extends javax.swing.JFrame {
 
     /**

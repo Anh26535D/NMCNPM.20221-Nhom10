@@ -23,6 +23,9 @@ import java.awt.Font;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.GroupLayout;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JButton;
 
 public class HouseholdSeper extends javax.swing.JFrame {
 
@@ -45,10 +48,14 @@ public class HouseholdSeper extends javax.swing.JFrame {
         controller.setMaHoKhauMoiJtf(maHoKhauMoiJtf);
         controller.setMaKhuVucJtf(maKhuVucJtf);
         controller.setRemoveBtn(removeBtn);
-        controller.setSearchJtf(searchJtf);
         controller.setTableBotJpn(tableBotJpn);
         controller.setTableRightJpn(tableRigthJtf);
         controller.setTableTopJpn(tableTopJpn);
+        
+
+        
+        
+        
         controller.init();
         this.setTitle("Tách hộ khẩu");
         
@@ -75,35 +82,121 @@ public class HouseholdSeper extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+    	jPanel2.setLayout(null);
+        jPanel2.add(jLabel1);
+        jPanel2.add(tableTopJpn);
+        tableTopJpn.setLayout(null);
+        jPanel2.add(tableBotJpn);
+        tableBotJpn.setLayout(null);
+        jPanel2.add(jLabel3);
+        jPanel2.add(cancelBtn);
+        jPanel2.add(acceptBtn);
+        jPanel2.add(removeBtn);
+        jPanel2.add(addBtn);
+        jPanel2.add(jLabel18);
+        jPanel2.add(tableRigthJtf);
+        tableRigthJtf.setLayout(null);
+        jPanel2.add(jPanel1);
+        jPanel1.setLayout(null);
+        jPanel1.add(jLabel4);
+        jPanel1.add(jLabel5);
+        jPanel1.add(jLabel13);
+        jPanel1.add(jLabel14);
+        jPanel1.add(jLabel16);
+        jPanel1.add(chuHoHienTaiJtf);
+        jPanel1.add(chuHoMoiJtf);
+        jPanel1.add(maKhuVucJtf);
+        jPanel1.add(diaChiJtf);
+        jPanel1.add(maHoKhauMoiJtf);
+        jPanel1.add(jLabel6);
+        jPanel1.add(jLabel7);
+        jPanel1.add(jLabel12);
+        jPanel1.add(jLabel15);
+        jPanel1.add(jLabel17);
+        jPanel2.add(jLabel2);
+        
 
+        searchJtf = new javax.swing.JTextField("Search");
+        searchJtf.setBounds(213, 12, 363, 28);
+        jPanel2.add(searchJtf);
+        searchJtf.setForeground(Color.GRAY);
+		searchJtf.addFocusListener(new FocusListener() {
+		    @Override
+		    public void focusGained(FocusEvent e) {
+		        if (searchJtf.getText().equals("Search")) {
+		        	searchJtf.setText("");
+		        	searchJtf.setForeground(Color.BLACK);
+		        }
+		    }
+		    @Override
+		    public void focusLost(FocusEvent e) {
+		        if (searchJtf.getText().isEmpty()) {
+		        	searchJtf.setForeground(Color.GRAY);
+		        	searchJtf.setText("Search");
+		        }
+		    }
+		    });
+		searchJtf.setSelectionColor(new Color(204, 153, 255));
+		searchJtf.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		searchJtf.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(153, 102, 255), null, null, null), new EmptyBorder(0, 10, 0, 0)));
+		searchJtf.setColumns(10);
         jPanel2 = new javax.swing.JPanel();
         tableTopJpn = new javax.swing.JPanel();
+        tableTopJpn.setBounds(10, 80, 347, 205);
         jPanel1 = new javax.swing.JPanel();
+        jPanel1.setBounds(384, 80, 571, 205);
         jLabel4 = new javax.swing.JLabel();
+        jLabel4.setBounds(9, 9, 102, 30);
         chuHoHienTaiJtf = new javax.swing.JTextField();
+        chuHoHienTaiJtf.setBounds(133, 10, 379, 30);
         jLabel5 = new javax.swing.JLabel();
+        jLabel5.setBounds(9, 163, 77, 30);
         chuHoMoiJtf = new javax.swing.JTextField();
+        chuHoMoiJtf.setBounds(133, 164, 379, 30);
         chuHoMoiJtf.setBackground(new Color(255, 255, 255));
         jLabel6 = new javax.swing.JLabel();
+        jLabel6.setBounds(522, 9, 28, 30);
         jLabel7 = new javax.swing.JLabel();
+        jLabel7.setBounds(522, 157, 28, 30);
         jLabel12 = new javax.swing.JLabel();
+        jLabel12.setBounds(522, 46, 28, 30);
         jLabel13 = new javax.swing.JLabel();
+        jLabel13.setBounds(9, 43, 78, 30);
         maKhuVucJtf = new javax.swing.JTextField();
+        maKhuVucJtf.setBounds(133, 44, 379, 30);
         jLabel14 = new javax.swing.JLabel();
+        jLabel14.setBounds(9, 83, 46, 30);
         diaChiJtf = new javax.swing.JTextField();
+        diaChiJtf.setBounds(133, 84, 379, 30);
         jLabel15 = new javax.swing.JLabel();
+        jLabel15.setBounds(522, 83, 28, 30);
         jLabel16 = new javax.swing.JLabel();
+        jLabel16.setBounds(9, 123, 108, 30);
         maHoKhauMoiJtf = new javax.swing.JTextField();
+        maHoKhauMoiJtf.setBounds(133, 124, 379, 30);
         jLabel17 = new javax.swing.JLabel();
+        jLabel17.setBounds(522, 120, 28, 30);
         jLabel1 = new javax.swing.JLabel();
+        jLabel1.setBounds(10, 48, 161, 30);
         jLabel2 = new javax.swing.JLabel();
-        searchJtf = new javax.swing.JTextField();
+        jLabel2.setBounds(28, 10, 164, 30);
+
         tableBotJpn = new javax.swing.JPanel();
+        tableBotJpn.setBounds(10, 346, 347, 212);
         jLabel3 = new javax.swing.JLabel();
+        jLabel3.setBounds(10, 306, 225, 30);
         tableRigthJtf = new javax.swing.JPanel();
+        tableRigthJtf.setBounds(479, 346, 476, 182);
         jLabel18 = new javax.swing.JLabel();
+        jLabel18.setBounds(452, 298, 208, 30);
         addBtn = new javax.swing.JButton();
+        addBtn.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        	}
+        });
+        addBtn.setBounds(401, 346, 39, 21);
         removeBtn = new javax.swing.JButton();
+        removeBtn.setBounds(401, 389, 39, 21);
         acceptBtn = new javax.swing.JButton();
         cancelBtn = new javax.swing.JButton();
 
@@ -113,17 +206,6 @@ public class HouseholdSeper extends javax.swing.JFrame {
 
 
         tableTopJpn.setBackground(new Color(255, 255, 255));
-
-        javax.swing.GroupLayout tableTopJpnLayout = new javax.swing.GroupLayout(tableTopJpn);
-        tableTopJpn.setLayout(tableTopJpnLayout);
-        tableTopJpnLayout.setHorizontalGroup(
-            tableTopJpnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 309, Short.MAX_VALUE)
-        );
-        tableTopJpnLayout.setVerticalGroup(
-            tableTopJpnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 212, Short.MAX_VALUE)
-        );
 
         jPanel1.setBackground(new java.awt.Color(240, 248, 255));
 
@@ -174,125 +256,19 @@ public class HouseholdSeper extends javax.swing.JFrame {
         jLabel17.setForeground(new java.awt.Color(255, 0, 0));
         jLabel17.setText("(*)");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel16))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chuHoHienTaiJtf)
-                    .addComponent(chuHoMoiJtf)
-                    .addComponent(maKhuVucJtf)
-                    .addComponent(diaChiJtf)
-                    .addComponent(maHoKhauMoiJtf))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 9, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chuHoHienTaiJtf, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(maKhuVucJtf, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(diaChiJtf, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(maHoKhauMoiJtf, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chuHoMoiJtf, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17))
-        );
-
         jLabel1.setFont(new java.awt.Font("Tahoma", Font.BOLD, 18)); // NOI18N
         jLabel1.setText("Chọn hộ cần tách");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", Font.BOLD, 18)); // NOI18N
         jLabel2.setText("Nhập mã hộ khẩu");
 
-       
-        searchJtf.setForeground(Color.GRAY);
-		searchJtf.addFocusListener(new FocusListener() {
-		    @Override
-		    public void focusGained(FocusEvent e) {
-		        if (searchJtf.getText().equals("Search")) {
-		        	searchJtf.setText("");
-		        	searchJtf.setForeground(Color.BLACK);
-		        }
-		    }
-		    @Override
-		    public void focusLost(FocusEvent e) {
-		        if (searchJtf.getText().isEmpty()) {
-		        	searchJtf.setForeground(Color.GRAY);
-		        	searchJtf.setText("Search");
-		        }
-		    }
-		    });
-		searchJtf.setSelectionColor(new Color(204, 153, 255));
-		searchJtf.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		searchJtf.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(153, 102, 255), null, null, null), new EmptyBorder(0, 10, 0, 0)));
-		searchJtf.setBounds(247, 12, 200, 50);
-		jPanel2.add(searchJtf);
-		searchJtf.setColumns(10);
-
 
         tableBotJpn.setBackground(new Color(255, 255, 255));
-
-        javax.swing.GroupLayout tableBotJpnLayout = new javax.swing.GroupLayout(tableBotJpn);
-        tableBotJpn.setLayout(tableBotJpnLayout);
-        tableBotJpnLayout.setHorizontalGroup(
-            tableBotJpnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        tableBotJpnLayout.setVerticalGroup(
-            tableBotJpnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
 
         jLabel3.setFont(new java.awt.Font("Tahoma", Font.BOLD, 18)); // NOI18N
         jLabel3.setText("Chọn người sang hộ mới");
 
         tableRigthJtf.setBackground(new Color(255, 255, 255));
-
-        javax.swing.GroupLayout tableRigthJtfLayout = new javax.swing.GroupLayout(tableRigthJtf);
-        tableRigthJtf.setLayout(tableRigthJtfLayout);
-        tableRigthJtfLayout.setHorizontalGroup(
-            tableRigthJtfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        tableRigthJtfLayout.setVerticalGroup(
-            tableRigthJtfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
 
         jLabel18.setFont(new java.awt.Font("Tahoma", Font.BOLD, 18)); // NOI18N
         jLabel18.setText("Những người ở hộ mới");
@@ -314,7 +290,7 @@ public class HouseholdSeper extends javax.swing.JFrame {
 
         acceptBtn.setText("Xác nhận");
         acceptBtn.setBorderPainted(false);
-        acceptBtn.setBounds(983, 708, 100, 25);
+        acceptBtn.setBounds(800, 538, 100, 29);
         acceptBtn.setBorder(new LineBorder(new Color(186, 85, 211), 1, true));
         acceptBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
         acceptBtn.setForeground(new Color(255, 255, 255));
@@ -327,7 +303,7 @@ public class HouseholdSeper extends javax.swing.JFrame {
 
         cancelBtn.setText("Hủy");
         cancelBtn.setBorderPainted(false);
-        cancelBtn.setBounds(850, 708, 100, 25);
+        cancelBtn.setBounds(682, 538, 100, 28);
         cancelBtn.setBorder(new LineBorder(new Color(186, 85, 211), 1, true));
         cancelBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
         cancelBtn.setForeground(new Color(255, 255, 255));
@@ -340,100 +316,24 @@ public class HouseholdSeper extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2Layout.setHorizontalGroup(
-        	jPanel2Layout.createParallelGroup(Alignment.LEADING)
-        		.addGroup(jPanel2Layout.createSequentialGroup()
-        			.addContainerGap()
-        			.addGroup(jPanel2Layout.createParallelGroup(Alignment.LEADING)
-        				.addGroup(jPanel2Layout.createSequentialGroup()
-        					.addGroup(jPanel2Layout.createParallelGroup(Alignment.LEADING)
-        						.addComponent(jLabel1)
-        						.addComponent(tableTopJpn, GroupLayout.PREFERRED_SIZE, 297, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(tableBotJpn, GroupLayout.PREFERRED_SIZE, 300, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(jLabel3))
-        					.addPreferredGap(ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-        					.addGroup(jPanel2Layout.createParallelGroup(Alignment.LEADING)
-        						.addGroup(jPanel2Layout.createSequentialGroup()
-        							.addGap(357)
-        							.addComponent(cancelBtn, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-        							.addGap(18)
-        							.addComponent(acceptBtn, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
-        						.addGroup(jPanel2Layout.createSequentialGroup()
-        							.addGap(15)
-        							.addGroup(jPanel2Layout.createParallelGroup(Alignment.TRAILING, false)
-        								.addComponent(removeBtn, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        								.addComponent(addBtn, GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE))
-        							.addGap(18)
-        							.addGroup(jPanel2Layout.createParallelGroup(Alignment.LEADING)
-        								.addGroup(jPanel2Layout.createSequentialGroup()
-        									.addComponent(jLabel18)
-        									.addGap(0, 350, Short.MAX_VALUE))
-        								.addGroup(jPanel2Layout.createSequentialGroup()
-        									.addGap(10)
-        									.addComponent(tableRigthJtf, GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE))))
-        						.addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)))
-        				.addGroup(jPanel2Layout.createSequentialGroup()
-        					.addGap(18)
-        					.addComponent(jLabel2)
-        					.addGap(33)
-        					.addComponent(searchJtf, GroupLayout.PREFERRED_SIZE, 274, GroupLayout.PREFERRED_SIZE)))
-        			.addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-        	jPanel2Layout.createParallelGroup(Alignment.TRAILING)
-        		.addGroup(jPanel2Layout.createSequentialGroup()
-        			.addContainerGap()
-        			.addGroup(jPanel2Layout.createParallelGroup(Alignment.BASELINE)
-        				.addComponent(searchJtf, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-        				.addComponent(jLabel2, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
-        			.addPreferredGap(ComponentPlacement.RELATED)
-        			.addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-        			.addGap(2)
-        			.addGroup(jPanel2Layout.createParallelGroup(Alignment.LEADING)
-        				.addComponent(tableTopJpn, 0, 0, Short.MAX_VALUE)
-        				.addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-        			.addGroup(jPanel2Layout.createParallelGroup(Alignment.LEADING)
-        				.addGroup(jPanel2Layout.createSequentialGroup()
-        					.addGap(21)
-        					.addComponent(jLabel18, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-        					.addGroup(jPanel2Layout.createParallelGroup(Alignment.LEADING)
-        						.addGroup(jPanel2Layout.createSequentialGroup()
-        							.addGap(18)
-        							.addComponent(addBtn)
-        							.addGap(18)
-        							.addComponent(removeBtn))
-        						.addGroup(jPanel2Layout.createSequentialGroup()
-        							.addPreferredGap(ComponentPlacement.RELATED)
-        							.addComponent(tableRigthJtf, GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)))
-        					.addPreferredGap(ComponentPlacement.UNRELATED)
-        					.addGroup(jPanel2Layout.createParallelGroup(Alignment.BASELINE)
-        						.addComponent(acceptBtn, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(cancelBtn, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE))
-        					.addGap(19))
-        				.addGroup(jPanel2Layout.createSequentialGroup()
-        					.addGap(13)
-        					.addComponent(jLabel3, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-        					.addGap(18)
-        					.addComponent(tableBotJpn, GroupLayout.PREFERRED_SIZE, 212, GroupLayout.PREFERRED_SIZE)
-        					.addContainerGap())))
-        );
-        jPanel2.setLayout(jPanel2Layout);
-
         tableTopJpn.getAccessibleContext().setAccessibleName("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addComponent(jPanel2, GroupLayout.PREFERRED_SIZE, 967, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap(13, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(Alignment.TRAILING, layout.createSequentialGroup()
+        			.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        			.addComponent(jPanel2, GroupLayout.PREFERRED_SIZE, 579, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap())
         );
+        getContentPane().setLayout(layout);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -472,8 +372,8 @@ public class HouseholdSeper extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField maHoKhauMoiJtf;
     private javax.swing.JTextField maKhuVucJtf;
-    private javax.swing.JButton removeBtn;
     private javax.swing.JTextField searchJtf;
+    private javax.swing.JButton removeBtn;
     private javax.swing.JPanel tableBotJpn;
     private javax.swing.JPanel tableRigthJtf;
     private javax.swing.JPanel tableTopJpn;
@@ -482,5 +382,4 @@ public class HouseholdSeper extends javax.swing.JFrame {
     public JFrame getParentJFrame() {
         return parentJFrame;
     }
-
 }
