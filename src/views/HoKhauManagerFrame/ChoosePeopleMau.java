@@ -1,27 +1,18 @@
 package views.HoKhauManagerFrame;
 
-import bean.NhanKhauBean;
 import controllers.HoKhauManagerController.ChoosePeopleController;
-
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 
-import java.awt.Color;
-import java.awt.Font;
+import bean.NhanKhauBean;
 
 /**
  *
  * @author Hai
  */
-public class ChoosePeople extends javax.swing.JFrame {
+public class ChoosePeopleMau extends javax.swing.JFrame {
 
     private NhanKhauBean nhanKhauBean;
     private NhanKhauBean nhanKhauBeanTemp;
@@ -33,7 +24,7 @@ public class ChoosePeople extends javax.swing.JFrame {
      * @param nhanKhauBean nhan khau duoc truyen vao tu frame cha
      * @param parentJframe frame cha de disable
      */
-    public ChoosePeople(NhanKhauBean nhanKhauBean, JFrame parentJframe) {
+    public ChoosePeopleMau(NhanKhauBean nhanKhauBean, JFrame parentJframe) {
         initComponents();
         this.nhanKhauBean = nhanKhauBean;
         this.parentJFrame = parentJframe;
@@ -84,39 +75,16 @@ public class ChoosePeople extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         searchJtf = new javax.swing.JTextField();
-        searchJtf.setText("Search");
         tableJpn = new javax.swing.JPanel();
-        tableJpn.setBackground(new Color(255, 255, 255));
         confirmBtn = new javax.swing.JButton();
         cancelBtn = new javax.swing.JButton();
         selectedJtf = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(230, 230, 250));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-   
-        searchJtf.setForeground(Color.GRAY);
-		searchJtf.addFocusListener(new FocusListener() {
-		    @Override
-		    public void focusGained(FocusEvent e) {
-		        if (searchJtf.getText().equals("Search")) {
-		        	searchJtf.setText("");
-		        	searchJtf.setForeground(Color.BLACK);
-		        }
-		    }
-		    @Override
-		    public void focusLost(FocusEvent e) {
-		        if (searchJtf.getText().isEmpty()) {
-		        	searchJtf.setForeground(Color.GRAY);
-		        	searchJtf.setText("Search");
-		        }
-		    }
-		    });
-		searchJtf.setSelectionColor(new Color(204, 153, 255));
-		searchJtf.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		searchJtf.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(153, 102, 255), null, null, null), new EmptyBorder(0, 10, 0, 0)));
-		searchJtf.setColumns(10);
+        searchJtf.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout tableJpnLayout = new javax.swing.GroupLayout(tableJpn);
         tableJpn.setLayout(tableJpnLayout);
@@ -129,39 +97,23 @@ public class ChoosePeople extends javax.swing.JFrame {
             .addGap(0, 272, Short.MAX_VALUE)
         );
 
-       confirmBtn.setText("Xác nhận");
-       confirmBtn.setBorderPainted(false);
-   
-       confirmBtn.setBorder(new LineBorder(new Color(186, 85, 211), 1, true));
-       confirmBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
-       confirmBtn.setForeground(new Color(255, 255, 255));
-       confirmBtn.setBackground(new Color(147, 112, 219));
-       confirmBtn.addActionListener(new java.awt.event.ActionListener() {
+        confirmBtn.setText("Xác nhận");
+        confirmBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-               confirmBtnActionPerformed(evt);
+                confirmBtnActionPerformed(evt);
             }
         });
 
         cancelBtn.setText("Hủy");
-        cancelBtn.setBorderPainted(false);
-        //cancelBtn.setBounds(850, 708, 100, 25);
-        cancelBtn.setBorder(new LineBorder(new Color(186, 85, 211), 1, true));
-        cancelBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
-        cancelBtn.setForeground(new Color(255, 255, 255));
-        cancelBtn.setBackground(new Color(147, 112, 219));
-        
-
+        cancelBtn.setToolTipText("");
         cancelBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelBtnActionPerformed(evt);
             }
         });
 
-
         selectedJtf.setEnabled(false);
-        selectedJtf.setBackground(new java.awt.Color(240, 248, 255));
 
-        
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(

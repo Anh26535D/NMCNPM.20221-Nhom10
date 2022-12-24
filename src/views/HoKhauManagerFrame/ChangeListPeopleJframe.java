@@ -12,9 +12,28 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
 import bean.MemOfFamily;
+import java.awt.Color;
+import java.awt.Font;
 
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.GroupLayout;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+
+import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JPanel;
+
+/**
+ *
+ * @author Hai
+ */
 public class ChangeListPeopleJframe extends javax.swing.JFrame {
 
     /**
@@ -36,7 +55,9 @@ public class ChangeListPeopleJframe extends javax.swing.JFrame {
         this.listMemberTemp = new ArrayList<>();
         this.listMemberTemp.addAll(listMember);
         this.parentJframe = parentJFrame;
-        this.controller = new ChangeListPeopleController(this.listMemberTemp, addBtn, removeBtn, jTextField1, PeopleTableJpn, MemTableJpn);
+        this.controller = new ChangeListPeopleController(this.listMemberTemp, addBtn, removeBtn, searchJtf, PeopleTableJpn, MemTableJpn);
+        MemTableJpn.setLayout(null);
+        PeopleTableJpn.setLayout(null);
         this.parentJframe.setEnabled(false);
         this.addWindowListener(new WindowAdapter() {
             @Override
@@ -63,108 +84,116 @@ public class ChangeListPeopleJframe extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        PeopleTableJpn = new javax.swing.JPanel();
-        MemTableJpn = new javax.swing.JPanel();
-        addBtn = new javax.swing.JButton();
-        removeBtn = new javax.swing.JButton();
-        saveBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        
+        JPanel Jpanel1 = new JPanel();
+        Jpanel1.setBackground(new Color(230, 230, 250));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        jTextField1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        javax.swing.GroupLayout PeopleTableJpnLayout = new javax.swing.GroupLayout(PeopleTableJpn);
-        PeopleTableJpn.setLayout(PeopleTableJpnLayout);
-        PeopleTableJpnLayout.setHorizontalGroup(
-            PeopleTableJpnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        PeopleTableJpnLayout.setVerticalGroup(
-            PeopleTableJpnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout MemTableJpnLayout = new javax.swing.GroupLayout(MemTableJpn);
-        MemTableJpn.setLayout(MemTableJpnLayout);
-        MemTableJpnLayout.setHorizontalGroup(
-            MemTableJpnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 305, Short.MAX_VALUE)
-        );
-        MemTableJpnLayout.setVerticalGroup(
-            MemTableJpnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 305, Short.MAX_VALUE)
-        );
-
-        addBtn.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        addBtn.setText(">>");
-
-        removeBtn.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        removeBtn.setText("<<");
-
-        saveBtn.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        saveBtn.setText("Lưu thay đổi");
-        saveBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveBtnActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)
-                    .addComponent(PeopleTableJpn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(saveBtn)
-                            .addComponent(MemTableJpn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(addBtn)
-                            .addComponent(removeBtn))
-                        .addGap(333, 333, 333))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PeopleTableJpn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(MemTableJpn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(addBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(removeBtn)
-                        .addGap(0, 244, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-
+   
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addComponent(Jpanel1, GroupLayout.DEFAULT_SIZE, 988, Short.MAX_VALUE)
+        			.addContainerGap())
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addComponent(Jpanel1, GroupLayout.PREFERRED_SIZE, 582, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap(63, Short.MAX_VALUE))
         );
+        Jpanel1.setLayout(null);
+        searchJtf = new javax.swing.JTextField();
+        searchJtf.setBounds(64, 26, 432, 30);
+        searchJtf.setForeground(new Color(255, 255, 255));
+		searchJtf.addFocusListener(new FocusListener() {
+		    @Override
+		    public void focusGained(FocusEvent e) {
+		        if (searchJtf.getText().equals("Search")) {
+		        	searchJtf.setText("");
+		        	searchJtf.setForeground(Color.BLACK);
+		        }
+		    }
+		    @Override
+		    public void focusLost(FocusEvent e) {
+		        if (searchJtf.getText().isEmpty()) {
+		        	searchJtf.setForeground(Color.GRAY);
+		        	searchJtf.setText("Search");
+		        }
+		    }
+		    });
+		searchJtf.setSelectionColor(new Color(255, 255, 255));
+		searchJtf.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		searchJtf.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(153, 102, 255), null, null, null), new EmptyBorder(0, 10, 0, 0)));
+		//searchJtf.setBounds(247, 12, 200, 50);
+		//jPanel1.add(searchJtf);
+		searchJtf.setColumns(10);
+        Jpanel1.add(searchJtf);
+        
+        searchJtf.setFont(new java.awt.Font("Tohama", 1, 15));
+                PeopleTableJpn = new javax.swing.JPanel();
+                PeopleTableJpn.setBounds(24, 93, 424, 400);
+                Jpanel1.add(PeopleTableJpn);
+                PeopleTableJpn.setBackground(new Color(255, 255, 255));
+                
+                addBtn = new javax.swing.JButton();
+                addBtn.setBounds(474, 93, 51, 25);
+                Jpanel1.add(addBtn);
+                addBtn.setText(">>");
+                addBtn.setForeground(Color.WHITE);
+                addBtn.setBorderPainted(false);
+                addBtn.setBorder(new LineBorder(new Color(186, 85, 211), 1, true));
+                addBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
+                addBtn.setForeground(new Color(255, 255, 255));
+                addBtn.setBackground(new Color(147, 112, 219));
+                addBtn.addActionListener(new ActionListener() {
+                	public void actionPerformed(ActionEvent e) {
+                	}
+                });
+                
+                        addBtn.setFont(new java.awt.Font("Tohama", 1, 15)); // NOI18N
+                        addBtn.setText(">>");
+                        
+                        
+                        removeBtn = new javax.swing.JButton();
+                        removeBtn.setBounds(474, 154, 51, 25);
+                        Jpanel1.add(removeBtn);
+                        removeBtn.setText("<<");
+                        removeBtn.setForeground(Color.WHITE);
+                        removeBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
+                        removeBtn.setBorderPainted(false);
+                        removeBtn.setBorder(new LineBorder(new Color(186, 85, 211), 1, true));
+                        removeBtn.setBackground(new Color(147, 112, 219));
+                        removeBtn.addActionListener(new ActionListener() {
+                        	public void actionPerformed(ActionEvent e) {
+                        	}
+                        });
+                        
+                                removeBtn.setFont(new java.awt.Font("Tohama", 1, 15)); // NOI18N
+                                removeBtn.setText("<<");
+                                saveBtn = new javax.swing.JButton();
+                                saveBtn.setBounds(812, 26, 113, 30);
+                                Jpanel1.add(saveBtn);
+                                saveBtn.setForeground(Color.WHITE);
+                                saveBtn.setBorderPainted(false);
+                                saveBtn.setBorder(new LineBorder(new Color(186, 85, 211), 1, true));
+                                saveBtn.setBackground(new Color(147, 112, 219));
+                                saveBtn.setFont(new Font("Tahoma", Font.BOLD, 15)); // NOI18N
+                                saveBtn.setText("Lưu thay đổi");
+                                MemTableJpn = new javax.swing.JPanel();
+                                MemTableJpn.setBounds(563, 93, 402, 400);
+                                Jpanel1.add(MemTableJpn);
+                                MemTableJpn.setBackground(new Color(255, 255, 255));
+                                saveBtn.addActionListener(new java.awt.event.ActionListener() {
+                                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                        saveBtnActionPerformed(evt);
+                                    }
+                                });
+        getContentPane().setLayout(layout);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -181,9 +210,7 @@ public class ChangeListPeopleJframe extends javax.swing.JFrame {
     private javax.swing.JPanel MemTableJpn;
     private javax.swing.JPanel PeopleTableJpn;
     private javax.swing.JButton addBtn;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField searchJtf;
     private javax.swing.JButton removeBtn;
     private javax.swing.JButton saveBtn;
-    // End of variables declaration//GEN-END:variables
 }

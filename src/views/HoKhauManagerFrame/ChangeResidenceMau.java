@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 
 import bean.HoKhauBean;
 
-public class ChuyenDiNoiKhac extends javax.swing.JFrame {
+public class ChangeResidenceMau extends javax.swing.JFrame {
 
     private ChuyenDiNoiKhacController controller;
     private HoKhauBean hoKhauBean;
@@ -17,7 +17,7 @@ public class ChuyenDiNoiKhac extends javax.swing.JFrame {
     /**
      * Creates new form ChuyenDiNoiKhac
      */
-    public ChuyenDiNoiKhac(JFrame parentJFrame) {
+    public ChangeResidenceMau(JFrame parentJFrame) {
         initComponents();
         this.hoKhauBean = new HoKhauBean();
         this.parentJFrame = parentJFrame;
