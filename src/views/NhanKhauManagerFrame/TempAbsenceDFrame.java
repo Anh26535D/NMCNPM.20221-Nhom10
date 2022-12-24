@@ -1,102 +1,70 @@
 package views.NhanKhauManagerFrame;
 
-import java.awt.Color;
-import java.awt.EventQueue;
-import java.awt.event.ActionEvent;
+import java.util.List;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+import com.toedter.calendar.JDateChooser;
+
+import controllers.NhanKhauManagerController.DangKyTamVangController;
+import models.TamVangModel;
+import utility.SuggestionUtility;
+
+import javax.swing.JTextField;
+import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import java.awt.event.ActionEvent;
 import javax.swing.UIManager;
-import javax.swing.border.EmptyBorder;
-
-import com.toedter.calendar.JDateChooser;
-
-import components.InputSuggestion;
-import controllers.NhanKhauManagerController.DangKyTamTruController;
-import models.TamTruModel;
-
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+import java.awt.Color;
+import javax.swing.JScrollPane;
 
 public class TempAbsenceDFrame extends JFrame {
-	
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JFrame parentFrame;
-    private DangKyTamTruController controller;
-    private TamTruModel tamTruModel;
-    
+	private DangKyTamVangController controller = null;
+	private TamVangModel tamVangModel = new TamVangModel();
 	private JPanel contentPane;
-	private JTextField maGiayTamTruJtf;
-	private InputSuggestion soDienThoaiJtf;
+	private JTextField maGiayTamVangJtf;
+	private SuggestionUtility noiTamTruJtf;
 	private JLabel availableIcon;
-    private JDateChooser denNgayDc;
-    private JTextArea lyDoTar;
-    private InputSuggestion soCmtJtf;
-    private JDateChooser tuNgayDc;
+    private JDateChooser denNgayJdc;
+    private JTextArea lyDoJta;
+    private SuggestionUtility soCMTjtf;
+    private JDateChooser tuNgayJdc;
     private JButton CancelBtn;
     private JButton acceptBtn;
     private JButton checkBtn;
 
-	/**
-	 * Launch the application.
-	 */
-    public static void main(String[] args) {
-		try {
-			TempAbsenceDFrame test= new TempAbsenceDFrame();
-			test.setVisible(true);
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-	}
-    
-	public TempAbsenceDFrame() {
-		initComponents();
-		this.controller = new DangKyTamTruController();
-        this.tamTruModel = new TamTruModel();
+	public TempAbsenceDFrame(JFrame parentJFrame) {
+		controller = new DangKyTamVangController();
+		init();
+        this.parentFrame = parentJFrame;
+        parentJFrame.setEnabled(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setTitle("Đăng ký tạm trú");
-	}
-	
-	public TempAbsenceDFrame(JFrame parentFrame) {
-        this.parentFrame = parentFrame;
-        initComponents();
-        this.controller = new DangKyTamTruController();
-        this.tamTruModel = new TamTruModel();
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        setTitle("Đăng ký tạm trú");
-        parentFrame.setEnabled(false);
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                close();
+                  close();
             }
-            
         });
-    }
+	}
 	
-	void close() {
-        if (JOptionPane.OK_OPTION == JOptionPane.showConfirmDialog(null, "Are you sure to close?", "Warning!!", JOptionPane.YES_NO_OPTION)) {
-            this.parentFrame.setEnabled(true);
-            dispose();
-        }
-    }
-	
-	/**
-	 * Create the frame.
-	 */
-	public void initComponents() {
+	private void init() {
+		setTitle("Khai báo tạm vắng");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 672, 488);
+		setBounds(100, 100, 647, 489);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -107,11 +75,11 @@ public class TempAbsenceDFrame extends JFrame {
 		lblNewLabel.setBounds(55, 11, 96, 30);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblMGiyTm = new JLabel("Mã giấy tạm trú");
+		JLabel lblMGiyTm = new JLabel("Mã giấy tạm vắng");
 		lblMGiyTm.setBounds(81, 62, 96, 30);
 		contentPane.add(lblMGiyTm);
 		
-		JLabel lblNiTmTr = new JLabel("Số điện thoại");
+		JLabel lblNiTmTr = new JLabel("Nơi tạm trú");
 		lblNiTmTr.setBounds(81, 103, 96, 30);
 		contentPane.add(lblNiTmTr);
 		
@@ -127,20 +95,20 @@ public class TempAbsenceDFrame extends JFrame {
 		lblLDo.setBounds(81, 234, 96, 30);
 		contentPane.add(lblLDo);
 		
-		denNgayDc = new JDateChooser();
-		denNgayDc.setBounds(200, 185, 284, 30);
-		contentPane.add(denNgayDc);
+		denNgayJdc = new JDateChooser();
+		denNgayJdc.setBounds(200, 185, 284, 30);
+		contentPane.add(denNgayJdc);
 		
-		tuNgayDc = new JDateChooser();
-		tuNgayDc.setBounds(200, 144, 284, 30);
-		contentPane.add(tuNgayDc);
+		tuNgayJdc = new JDateChooser();
+		tuNgayJdc.setBounds(200, 144, 284, 30);
+		contentPane.add(tuNgayJdc);
 		
-		maGiayTamTruJtf = new JTextField();
-		maGiayTamTruJtf.setBounds(200, 62, 284, 30);
-		contentPane.add(maGiayTamTruJtf);
-		maGiayTamTruJtf.setColumns(10);
+		maGiayTamVangJtf = new JTextField();
+		maGiayTamVangJtf.setBounds(200, 62, 284, 30);
+		contentPane.add(maGiayTamVangJtf);
+		maGiayTamVangJtf.setColumns(10);
 		
-		soDienThoaiJtf = new InputSuggestion(false) {
+		noiTamTruJtf = new SuggestionUtility(false) {
 			
 			@Override
 			public List<String> getSuggestions(String textContent) {
@@ -148,30 +116,16 @@ public class TempAbsenceDFrame extends JFrame {
 				return null;
 			}
 		};
-		soDienThoaiJtf.setBounds(200, 103, 284, 30);
-		contentPane.add(soDienThoaiJtf);
+		noiTamTruJtf.setBounds(200, 103, 284, 30);
+		contentPane.add(noiTamTruJtf);
 		
-		soCmtJtf = new InputSuggestion(false) {
-			
-			@Override
-			public List<String> getSuggestions(String textContent) {
-				ArrayList<String> test1= new ArrayList<String>();
-				test1.add("test1");
-				ArrayList<String> test2= new ArrayList<String>();
-				test2.add("test2");
-				ArrayList<String> test3= new ArrayList<String>();
-				test3.add("test3");
-				if(textContent.equals("1")) {
-					return test1;
-				}
-				if(textContent.equals("2")) {
-					return test2;
-				}
-				return test3;
+		soCMTjtf = new SuggestionUtility(false) {
+			public List getSuggestions(String textContent) {
+				return (List) null;
 			}
 		};
-		soCmtJtf.setBounds(200, 11, 284, 30);
-		contentPane.add(soCmtJtf);
+		soCMTjtf.setBounds(200, 11, 284, 30);
+		contentPane.add(soCMTjtf);
 		
 		checkBtn = new JButton("Check");
 		checkBtn.addActionListener(new ActionListener() {
@@ -224,8 +178,8 @@ public class TempAbsenceDFrame extends JFrame {
         scrollPane.setBounds(200, 234, 284, 143);
         contentPane.add(scrollPane);
         
-        lyDoTar = new JTextArea();
-        scrollPane.setViewportView(lyDoTar);
+        lyDoJta = new JTextArea();
+        scrollPane.setViewportView(lyDoJta);
         acceptBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 acceptBtnActionPerformed(evt);
@@ -233,7 +187,7 @@ public class TempAbsenceDFrame extends JFrame {
         });
         CancelBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-            	cancelBtnActionPerformed(evt);
+                CancelBtnActionPerformed(evt);
             }
         });
         checkBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -241,79 +195,86 @@ public class TempAbsenceDFrame extends JFrame {
                 checkBtnActionPerformed(evt);
             }
         });
-        this.soCmtJtf.addKeyListener(new KeyAdapter() {
+        this.soCMTjtf.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
                 // neu keycode == 10 ~ enter
                 if (e.getKeyCode() == 10) {
-                    checkCMT(soCmtJtf.getText());
+                    checkCMT();
                 }
             }
         });
 	}
-	private boolean checkCMT(String cmt) {
-        if (cmt.trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập số CMT", "Warning", JOptionPane.WARNING_MESSAGE);
-            return false;
-        } else {
-            try {
-                long temp = Long.parseLong(cmt);
-                if (cmt.trim().length() != 9 && cmt.trim().length() != 12) {
-                    throw new Exception("Sai dinh dang");
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Vui lòng nhập đúng định dạng số CMT!", "Warning", JOptionPane.WARNING_MESSAGE);
-            }
+	
+	void close() {
+        if (JOptionPane.OK_OPTION == JOptionPane.showConfirmDialog(null, "Are you sure to close?", "Warning!!", JOptionPane.YES_NO_OPTION)) {
+            this.parentFrame.setEnabled(true);
+            dispose();
         }
-        return true;
     }
 	
-	 private void checkBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBtnActionPerformed
-	        if (checkCMT(soCmtJtf.getText())) {
-	            int idNhanKhau = this.controller.checkCMT(soCmtJtf.getText());
-	            if (idNhanKhau > 0) {
-	                this.tamTruModel.setIdNhanKhau(idNhanKhau);
-	                soCmtJtf.setEnabled(false);
-	                checkBtn.setEnabled(false);
-	                availableIcon.setEnabled(true);
-	                maGiayTamTruJtf.setEnabled(true);
-	                soDienThoaiJtf.setEnabled(true);
-	                tuNgayDc.setEnabled(true);
-	                denNgayDc.setEnabled(true);
-	                lyDoTar.setEnabled(true);
-	            } else {
-	                if (JOptionPane.showConfirmDialog(null, "Không tìm thấy người có số CMT: " + soCmtJtf.getText() + ". Thêm mới?", "Confirm", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
-	                    AddNewPeopleJFrame addNewPeopleJFrame = new AddNewPeopleJFrame(this);
-	                    addNewPeopleJFrame.setLocationRelativeTo(null);
-	                    addNewPeopleJFrame.setResizable(false);
-	                    addNewPeopleJFrame.setVisible(true);
-	                }
-	            }
-	        }
-	    }//GEN-LAST:event_checkBtnActionPerformed
 	private boolean validateForm() {
-        return !(maGiayTamTruJtf.getText().trim().isEmpty() 
-                || soDienThoaiJtf.getText().trim().isEmpty()
-                || lyDoTar.getText().trim().isEmpty());
+        return !(maGiayTamVangJtf.getText().trim().isEmpty()
+                || noiTamTruJtf.getText().trim().isEmpty()
+                || lyDoJta.getText().trim().isEmpty());
     }
-	private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
-        close();
-    }//GEN-LAST:event_cancelBtnActionPerformed
-
-    private void acceptBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceptBtnActionPerformed
-        if (validateForm()) {
-            this.tamTruModel.setMaGiayTamTru(maGiayTamTruJtf.getText().trim());
-            this.tamTruModel.setSoDienThoaiNguoiDangKy(soDienThoaiJtf.getText().trim());
-            this.tamTruModel.setTuNgay(tuNgayDc.getDate());
-            this.tamTruModel.setDenNgay(denNgayDc.getDate());
-            this.tamTruModel.setLyDo(lyDoTar.getText().trim());
-            if (this.controller.addNew(this.tamTruModel)) {
-                this.parentFrame.setEnabled(true);
-                dispose();
-            }
+    
+    private void checkCMT() {
+        String tempCMT = this.soCMTjtf.getText().trim() ;
+        if (tempCMT.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vui lòng nhập So CMT", "Warning!!", JOptionPane.WARNING_MESSAGE);
+            return;
         } else {
-            JOptionPane.showMessageDialog(null, "Vui lòng nhập hết các trường bắt buộc!", "Warning!", JOptionPane.WARNING_MESSAGE);
+            try {
+                long cmt = Long.parseLong(tempCMT);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Vui lòng nhập So CMT đúng định dạng!", "Warning!!", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+        }
+        int tempID = controller.checkCMT(this.soCMTjtf.getText());
+        if( tempID != -1){
+            this.soCMTjtf.setEditable(false);
+            this.availableIcon.setEnabled(true);
+            this.maGiayTamVangJtf.setEnabled(true);
+            this.noiTamTruJtf.setEnabled(true);
+            this.tuNgayJdc.setEnabled(true);
+            this.denNgayJdc.setEnabled(true);
+            this.lyDoJta.setEnabled(true);
+            
+            this.tamVangModel.setIdNhanKhau(tempID);
+            this.availableIcon.setEnabled(true);
+            JOptionPane.showMessageDialog(this, "OK!!");
+        } else {
+            if (JOptionPane.showConfirmDialog(null, "Không tìm thấy nhân khẩu trong hệ thống!! Thử lại?", "Warning!!", JOptionPane.OK_CANCEL_OPTION) != 0) {
+                close();
+            }
+        }
+    }
+    private void acceptBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceptBtnActionPerformed
+        if (!validateForm()) {
+            JOptionPane.showMessageDialog(null, "Vui lòng nhập hết các trường bắt buộc!", "Warning!!", JOptionPane.WARNING_MESSAGE);
+        } else {
+            this.tamVangModel.setMaGiayTamVang(this.maGiayTamVangJtf.getText().trim());
+            this.tamVangModel.setNoiTamTru(this.noiTamTruJtf.getText().trim());
+            this.tamVangModel.setTuNgay(this.tuNgayJdc.getDate());
+            this.tamVangModel.setDenNgay(this.denNgayJdc.getDate());
+            this.tamVangModel.setLyDo(this.lyDoJta.getText().trim());
+            if (this.controller.addNew(this.tamVangModel)) {
+                JOptionPane.showMessageDialog(null, "Thêm thành công.");
+            }
+            close();
         }
     }//GEN-LAST:event_acceptBtnActionPerformed
 
+    private void CancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelBtnActionPerformed
+        if (JOptionPane.showConfirmDialog(null, "Are you sure to close?", "Warning", JOptionPane.OK_CANCEL_OPTION) == 0) {
+            close();
+        }
+    }//GEN-LAST:event_CancelBtnActionPerformed
+
+    // kiem tra su ton tai cua nhan khau trong he thong
+    private void checkBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBtnActionPerformed
+        this.checkCMT();
+    }//GEN-LAST:event_checkBtnActionPerformed
 }

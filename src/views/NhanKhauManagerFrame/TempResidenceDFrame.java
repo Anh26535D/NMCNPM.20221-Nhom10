@@ -1,84 +1,105 @@
 package views.NhanKhauManagerFrame;
 
-import java.awt.EventQueue;
-import java.util.List;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
-import com.toedter.calendar.JDateChooser;
-
-import components.InputSuggestion;
-import controllers.NhanKhauManagerController.DangKyTamVangController;
-import models.TamVangModel;
-
-import javax.swing.JTextField;
-import javax.swing.JButton;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.ActionEvent;
-import javax.swing.UIManager;
-import java.awt.Color;
+import java.util.List;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
+
+import com.toedter.calendar.JDateChooser;
+
+import utility.SuggestionUtility;
+import controllers.NhanKhauManagerController.DangKyTamTruController;
+import models.TamTruModel;
+import services.NhanKhauService;
+
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public class TempResidenceDFrame extends JFrame {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-	private  JFrame parentJFrame = null;
-	private DangKyTamVangController controller = null;
-	private TamVangModel tamVangModel = new TamVangModel();
+	private NhanKhauService peopleService = new NhanKhauService();
+	
+	private JFrame parentFrame;
+    private DangKyTamTruController controller;
+    private TamTruModel tamTruModel;
+    
 	private JPanel contentPane;
-	private JTextField maGiayTamVangJtf;
-	private InputSuggestion noiTamTruJtf;
+	private JTextField maGiayTamTruJtf;
+	private SuggestionUtility soDienThoaiJtf;
 	private JLabel availableIcon;
-    private JDateChooser denNgayJdc;
-    private JTextArea lyDoJta;
-    private InputSuggestion soCMTjtf;
-    private JDateChooser tuNgayJdc;
+    private JDateChooser denNgayDc;
+    private JTextArea lyDoTar;
+    private SuggestionUtility soCmtJtf;
+    private JDateChooser tuNgayDc;
     private JButton CancelBtn;
     private JButton acceptBtn;
     private JButton checkBtn;
 
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TempResidenceDFrame frame = new TempResidenceDFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
+    
 	public TempResidenceDFrame() {
-		controller = new DangKyTamVangController();
-        this.parentJFrame = parentJFrame;
-        parentJFrame.setEnabled(false);
+		initComponents();
+		this.peopleService = new NhanKhauService();
+		this.controller = new DangKyTamTruController();
+        this.tamTruModel = new TamTruModel();
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("Đăng ký tạm trú");
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {     
+                    close();
+            }
+            
+        });
+	}
+	
+	public TempResidenceDFrame(JFrame parentFrame) {
+        this.parentFrame = parentFrame;
+        initComponents();
+        this.controller = new DangKyTamTruController();
+        this.tamTruModel = new TamTruModel();
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        setTitle("Đăng ký tạm trú");
+        parentFrame.setEnabled(false);
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                if (JOptionPane.showConfirmDialog(null, "Are you sure to close??", "Warning!!", JOptionPane.YES_NO_OPTION) == 0) {
-                    close();
-                }
+                close();
             }
+            
         });
-		setTitle("Khai báo tạm vắng");
+    }
+	
+	void close() {
+        if (JOptionPane.OK_OPTION == JOptionPane.showConfirmDialog(null, "Are you sure to close?", "Warning!!", JOptionPane.YES_NO_OPTION)) {
+            this.parentFrame.setEnabled(true);
+            dispose();
+        }
+    }
+	
+	/**
+	 * Create the frame.
+	 */
+	public void initComponents() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 647, 489);
+		setBounds(100, 100, 791, 565);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -89,11 +110,11 @@ public class TempResidenceDFrame extends JFrame {
 		lblNewLabel.setBounds(55, 11, 96, 30);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblMGiyTm = new JLabel("Mã giấy tạm vắng");
+		JLabel lblMGiyTm = new JLabel("Mã giấy tạm trú");
 		lblMGiyTm.setBounds(81, 62, 96, 30);
 		contentPane.add(lblMGiyTm);
 		
-		JLabel lblNiTmTr = new JLabel("Nơi tạm trú");
+		JLabel lblNiTmTr = new JLabel("Số điện thoại");
 		lblNiTmTr.setBounds(81, 103, 96, 30);
 		contentPane.add(lblNiTmTr);
 		
@@ -109,37 +130,49 @@ public class TempResidenceDFrame extends JFrame {
 		lblLDo.setBounds(81, 234, 96, 30);
 		contentPane.add(lblLDo);
 		
-		denNgayJdc = new JDateChooser();
-		denNgayJdc.setBounds(200, 185, 284, 30);
-		contentPane.add(denNgayJdc);
+		denNgayDc = new JDateChooser();
+		denNgayDc.setBounds(200, 185, 284, 30);
+		contentPane.add(denNgayDc);
 		
-		tuNgayJdc = new JDateChooser();
-		tuNgayJdc.setBounds(200, 144, 284, 30);
-		contentPane.add(tuNgayJdc);
+		tuNgayDc = new JDateChooser();
+		tuNgayDc.setBounds(200, 144, 284, 30);
+		contentPane.add(tuNgayDc);
 		
-		maGiayTamVangJtf = new JTextField();
-		maGiayTamVangJtf.setBounds(200, 62, 284, 30);
-		contentPane.add(maGiayTamVangJtf);
-		maGiayTamVangJtf.setColumns(10);
+		maGiayTamTruJtf = new JTextField();
+		maGiayTamTruJtf.setBounds(200, 62, 284, 30);
+		contentPane.add(maGiayTamTruJtf);
+		maGiayTamTruJtf.setColumns(10);
 		
-		noiTamTruJtf = new InputSuggestion(false) {
+		soDienThoaiJtf = new SuggestionUtility(false) {
 			
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public List<String> getSuggestions(String textContent) {
-				// TODO Auto-generated method stub
 				return null;
 			}
 		};
-		noiTamTruJtf.setBounds(200, 103, 284, 30);
-		contentPane.add(noiTamTruJtf);
+		soDienThoaiJtf.setBounds(200, 103, 284, 30);
+		contentPane.add(soDienThoaiJtf);
 		
-		soCMTjtf = new InputSuggestion(false) {
-			public List getSuggestions(String textContent) {
-				return (List) null;
+		soCmtJtf = new SuggestionUtility(false) {
+			
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public List<String> getSuggestions(String textContent) {
+				List<String> list = peopleService.searchByCid(textContent);
+				return list;
 			}
 		};
-		soCMTjtf.setBounds(200, 11, 284, 30);
-		contentPane.add(soCMTjtf);
+		soCmtJtf.setBounds(200, 11, 284, 30);
+		contentPane.add(soCmtJtf);
 		
 		checkBtn = new JButton("Check");
 		checkBtn.addActionListener(new ActionListener() {
@@ -192,8 +225,8 @@ public class TempResidenceDFrame extends JFrame {
         scrollPane.setBounds(200, 234, 284, 143);
         contentPane.add(scrollPane);
         
-        lyDoJta = new JTextArea();
-        scrollPane.setViewportView(lyDoJta);
+        lyDoTar = new JTextArea();
+        scrollPane.setViewportView(lyDoTar);
         acceptBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 acceptBtnActionPerformed(evt);
@@ -201,7 +234,7 @@ public class TempResidenceDFrame extends JFrame {
         });
         CancelBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CancelBtnActionPerformed(evt);
+            	cancelBtnActionPerformed(evt);
             }
         });
         checkBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -209,85 +242,79 @@ public class TempResidenceDFrame extends JFrame {
                 checkBtnActionPerformed(evt);
             }
         });
-        this.soCMTjtf.addKeyListener(new KeyAdapter() {
+        this.soCmtJtf.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
                 // neu keycode == 10 ~ enter
                 if (e.getKeyCode() == 10) {
-                    checkCMT();
+                    checkCMT(soCmtJtf.getText());
                 }
             }
         });
 	}
-	
-	void close() {
-        this.parentJFrame.setEnabled(true);
-            dispose();
-    }
-	
-	private boolean validateForm() {
-        return !(maGiayTamVangJtf.getText().trim().isEmpty()
-                || noiTamTruJtf.getText().trim().isEmpty()
-                || lyDoJta.getText().trim().isEmpty());
-    }
-    
-    private void checkCMT() {
-        String tempCMT = this.soCMTjtf.getText().trim() ;
-        if (tempCMT.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Vui lòng nhập So CMT", "Warning!!", JOptionPane.WARNING_MESSAGE);
-            return;
+	private boolean checkCMT(String cmt) {
+        if (cmt.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập số CMT", "Warning", JOptionPane.WARNING_MESSAGE);
+            return false;
         } else {
             try {
-                long cmt = Long.parseLong(tempCMT);
+                long temp = Long.parseLong(cmt);
+                if (cmt.trim().length() != 9 && cmt.trim().length() != 12) {
+                    throw new Exception("Sai dinh dang");
+                }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Vui lòng nhập So CMT đúng định dạng!", "Warning!!", JOptionPane.WARNING_MESSAGE);
-                return;
+                JOptionPane.showMessageDialog(this, "Vui lòng nhập đúng định dạng số CMT!", "Warning", JOptionPane.WARNING_MESSAGE);
             }
         }
-        int tempID = controller.checkCMT(this.soCMTjtf.getText());
-        if( tempID != -1){
-            // khong cho phep sua lai gia tri
-            this.soCMTjtf.setEditable(false);
-            this.availableIcon.setEnabled(true);
-            this.maGiayTamVangJtf.setEnabled(true);
-            this.noiTamTruJtf.setEnabled(true);
-            this.tuNgayJdc.setEnabled(true);
-            this.denNgayJdc.setEnabled(true);
-            this.lyDoJta.setEnabled(true);
-            
-            this.tamVangModel.setIdNhanKhau(tempID);
-            this.availableIcon.setEnabled(true);
-            JOptionPane.showMessageDialog(this, "OK!!");
-        } else {
-            if (JOptionPane.showConfirmDialog(null, "Không tìm thấy nhân khẩu trong hệ thống!! Thử lại?", "Warning!!", JOptionPane.OK_CANCEL_OPTION) != 0) {
-                close();
-            }
-        }
+        return true;
     }
+	
+	 private void checkBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBtnActionPerformed
+	        if (checkCMT(soCmtJtf.getText())) {
+	            int idNhanKhau = this.controller.checkCMT(soCmtJtf.getText());
+	            if (idNhanKhau > 0) {
+	                this.tamTruModel.setIdNhanKhau(idNhanKhau);
+	                soCmtJtf.setEnabled(false);
+	                checkBtn.setEnabled(false);
+	                availableIcon.setEnabled(true);
+	                maGiayTamTruJtf.setEnabled(true);
+	                soDienThoaiJtf.setEnabled(true);
+	                tuNgayDc.setEnabled(true);
+	                denNgayDc.setEnabled(true);
+	                lyDoTar.setEnabled(true);
+	            } else {
+	                if (JOptionPane.showConfirmDialog(null, "Không tìm thấy người có số CMT: " + soCmtJtf.getText() + ". Thêm mới?", "Confirm", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
+	                    AddNewPeopleJFrame addNewPeopleJFrame = new AddNewPeopleJFrame(this);
+	                    addNewPeopleJFrame.setLocationRelativeTo(null);
+	                    addNewPeopleJFrame.setResizable(false);
+	                    addNewPeopleJFrame.setVisible(true);
+	                }
+	            }
+	        }
+	    }//GEN-LAST:event_checkBtnActionPerformed
+	private boolean validateForm() {
+        return !(maGiayTamTruJtf.getText().trim().isEmpty() 
+                || soDienThoaiJtf.getText().trim().isEmpty()
+                || lyDoTar.getText().trim().isEmpty());
+    }
+	private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
+        close();
+    }//GEN-LAST:event_cancelBtnActionPerformed
+
     private void acceptBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceptBtnActionPerformed
-        if (!validateForm()) {
-            JOptionPane.showMessageDialog(null, "Vui lòng nhập hết các trường bắt buộc!", "Warning!!", JOptionPane.WARNING_MESSAGE);
-        } else {
-            this.tamVangModel.setMaGiayTamVang(this.maGiayTamVangJtf.getText().trim());
-            this.tamVangModel.setNoiTamTru(this.noiTamTruJtf.getText().trim());
-            this.tamVangModel.setTuNgay(this.tuNgayJdc.getDate());
-            this.tamVangModel.setDenNgay(this.denNgayJdc.getDate());
-            this.tamVangModel.setLyDo(this.lyDoJta.getText().trim());
-            if (this.controller.addNew(this.tamVangModel)) {
-                JOptionPane.showMessageDialog(null, "Thêm thành công.");
+        if (validateForm()) {
+            this.tamTruModel.setMaGiayTamTru(maGiayTamTruJtf.getText().trim());
+            this.tamTruModel.setSoDienThoaiNguoiDangKy(soDienThoaiJtf.getText().trim());
+            this.tamTruModel.setTuNgay(tuNgayDc.getDate());
+            this.tamTruModel.setDenNgay(denNgayDc.getDate());
+            this.tamTruModel.setLyDo(lyDoTar.getText().trim());
+            if (this.controller.addNew(this.tamTruModel)) {
+                this.parentFrame.setEnabled(true);
+                dispose();
             }
-            close();
+        } else {
+            JOptionPane.showMessageDialog(null, "Vui lòng nhập hết các trường bắt buộc!", "Warning!", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_acceptBtnActionPerformed
 
-    private void CancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelBtnActionPerformed
-        if (JOptionPane.showConfirmDialog(null, "Are you sure to close?", "Warning", JOptionPane.OK_CANCEL_OPTION) == 0) {
-            close();
-        }
-    }//GEN-LAST:event_CancelBtnActionPerformed
-
-    // kiem tra su ton tai cua nhan khau trong he thong
-    private void checkBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBtnActionPerformed
-        this.checkCMT();
-    }//GEN-LAST:event_checkBtnActionPerformed
 }

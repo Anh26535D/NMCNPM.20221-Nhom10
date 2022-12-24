@@ -1,16 +1,13 @@
 package views.NhanKhauManagerFrame;
 
 import java.awt.EventQueue;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import com.toedter.calendar.JCalendar;
-import com.toedter.calendar.JCalendarBeanInfo;
 
-import components.InputSuggestion;
+import utility.SuggestionUtility;
 import controllers.LoginController;
 import controllers.PeoplePanelController;
 import controllers.NhanKhauManagerController.AddNewController;
@@ -58,33 +55,14 @@ public class NewPeopleFrame extends JFrame {
 	private JTextField noiLamViecTxb;
 	private com.toedter.calendar.JDateChooser namSinhDateC;
 	private javax.swing.JButton jButton1;
-	private InputSuggestion quocTichTxb;
-	private InputSuggestion diaChiHienNayTxb;
+	private SuggestionUtility quocTichTxb;
+	private SuggestionUtility diaChiHienNayTxb;
 	private JButton CancelBtn ;
 	private JButton CreateBtn;
-	private InputSuggestion nguyenQuanTxb;
-	private InputSuggestion noiThuongTruTxb;
+	private SuggestionUtility nguyenQuanTxb;
+	private SuggestionUtility noiThuongTruTxb;
 	private javax.swing.JComboBox<String> gioiTinhCbb;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-//					NewPeopleFrame frame = new NewPeopleFrame();
-//					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public NewPeopleFrame(PeoplePanelController parentController, JFrame parentJFrame) {
 		this.parentController = parentController;
         this.parentFrame = parentJFrame;
@@ -111,7 +89,7 @@ public class NewPeopleFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		nguyenQuanTxb = new InputSuggestion(false) {
+		nguyenQuanTxb = new SuggestionUtility(false) {
 			
 			@Override
 			public List<String> getSuggestions(String textContent) {
@@ -235,7 +213,7 @@ public class NewPeopleFrame extends JFrame {
 		trinhDoHocVanTxb.setBounds(140, 257+MARGIN_TOP, 214, 30);
 		contentPane.add(trinhDoHocVanTxb);
 		
-		noiThuongTruTxb = new InputSuggestion(false) {
+		noiThuongTruTxb = new SuggestionUtility(false) {
 			public List getSuggestions(String textContent) {
 				return (List) null;
 			}
@@ -311,7 +289,7 @@ public class NewPeopleFrame extends JFrame {
 		tonGiaoTxb.setBounds(596, 93+MARGIN_TOP, 214, 30);
 		contentPane.add(tonGiaoTxb);
 		
-		quocTichTxb = new InputSuggestion(false) {
+		quocTichTxb = new SuggestionUtility(false) {
 			public List getSuggestions(String textContent) {
 				return (List) null;
 			}
@@ -324,7 +302,7 @@ public class NewPeopleFrame extends JFrame {
 		soHoChieuTxb.setBounds(596, 176+MARGIN_TOP, 214, 30);
 		contentPane.add(soHoChieuTxb);
 		
-		diaChiHienNayTxb = new InputSuggestion(false) {
+		diaChiHienNayTxb = new SuggestionUtility(false) {
 			public List getSuggestions(String textContent) {
 				return (List) null;
 			}
