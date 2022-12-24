@@ -1,6 +1,8 @@
 package views;
 
 import controllers.PeoplePanelController;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import views.NhanKhauManagerFrame.AddNewPeopleJFrame;
 import views.NhanKhauManagerFrame.DangKyTamTruJFrame;
@@ -20,8 +22,10 @@ import java.awt.event.FocusListener;
 public class PeoplePanel extends javax.swing.JPanel {
 
     private static final long serialVersionUID = 1L;
+    
     private PeoplePanelController controller;
     private JFrame parentJFrame;
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addNewBtn;
     private javax.swing.JButton khaiTuBtn;
@@ -59,12 +63,12 @@ public class PeoplePanel extends javax.swing.JPanel {
 	    panel.setLayout(null);
 	    
 	    
-        addNewBtn = new javax.swing.JButton("Thêm mới");
+        addNewBtn = new JButton("Thêm mới");
 		addNewBtn.setBorder(new LineBorder(new Color(153, 102, 255), 4, true));
 		addNewBtn.setForeground(new Color(255, 255, 255));
 		addNewBtn.setBackground(new Color(102, 102, 255));
 		addNewBtn.setBorderPainted(false);
-        addNewBtn.setFont(new java.awt.Font("Arial", 1, 14));
+        addNewBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
         addNewBtn.setBounds(10, 20, 130, 40);
         addNewBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,13 +77,13 @@ public class PeoplePanel extends javax.swing.JPanel {
         });
         panel.add(addNewBtn);
 	            
-        tamVangBtn = new javax.swing.JButton("ĐK tạm vắng");
+        tamVangBtn = new JButton("ĐK tạm vắng");
         tamVangBtn.setBorder(new LineBorder(new Color(153, 102, 255), 4, true));
         tamVangBtn.setForeground(new Color(255, 255, 255));
         tamVangBtn.setBackground(new Color(102, 102, 255));
         tamVangBtn.setBorderPainted(false);
         tamVangBtn.setBounds(366, 20, 130, 40);
-        tamVangBtn.setFont(new java.awt.Font("Arial", 1, 14));
+        tamVangBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
         tamVangBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tamVangBtnActionPerformed(evt);
@@ -87,13 +91,13 @@ public class PeoplePanel extends javax.swing.JPanel {
         });
         panel.add(tamVangBtn);
         
-        tamTruBtn = new javax.swing.JButton("ĐK tạm trú");
+        tamTruBtn = new JButton("ĐK tạm trú");
         tamTruBtn.setBorder(new LineBorder(new Color(153, 102, 255), 4, true));
         tamTruBtn.setForeground(new Color(255, 255, 255));
         tamTruBtn.setBackground(new Color(102, 102, 255));
         tamTruBtn.setBorderPainted(false);
         tamTruBtn.setBounds(506, 20, 130, 40);                                                
-        tamTruBtn.setFont(new java.awt.Font("Arial", 1, 14));
+        tamTruBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
 	    tamTruBtn.addActionListener(new java.awt.event.ActionListener() {
 	        public void actionPerformed(java.awt.event.ActionEvent evt) {
 	            tamTruBtnActionPerformed(evt);
@@ -101,13 +105,13 @@ public class PeoplePanel extends javax.swing.JPanel {
 	    });
         panel.add(tamTruBtn);
         
-        khaiTuBtn = new javax.swing.JButton("Khai Tử");
+        khaiTuBtn = new JButton("Khai Tử");
         khaiTuBtn.setBorder(new LineBorder(new Color(153, 102, 255), 4, true));
         khaiTuBtn.setForeground(new Color(255, 255, 255));
         khaiTuBtn.setBackground(new Color(102, 102, 255));
         khaiTuBtn.setBorderPainted(false);
         khaiTuBtn.setBounds(646, 20, 130, 40);                                      
-        khaiTuBtn.setFont(new java.awt.Font("Arial", 1, 14));
+        khaiTuBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
         khaiTuBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 khaiTuBtnActionPerformed(evt);

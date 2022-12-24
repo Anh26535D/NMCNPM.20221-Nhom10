@@ -1,9 +1,12 @@
 package controllers;
 
-import java.awt.CardLayout;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.util.ArrayList;
+import java.util.EventObject;
 import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -11,7 +14,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableCellRenderer;
 
 import bean.NhanKhauBean;
 import models.NhanKhauModel;
@@ -20,9 +26,9 @@ import services.StringService;
 import utility.ClassTableModel;
 
 
-public class ThongKePanelController {
-    private JComboBox GenderJcb;
-    private JComboBox StatusJcb;
+public class StatisticPanelController {
+    private JComboBox<String> GenderJcb;
+    private JComboBox<String> StatusJcb;
     private JTextField tuTuoiJtf;
     private JTextField denTuoiJtf;
     private JTextField tuNamJtf;
@@ -33,7 +39,7 @@ public class ThongKePanelController {
     private ClassTableModel classTableModel;
     private final String[] COLUMNS = {"ID", "Họ tên", "Ngày sinh", "Giới tính", "Địa chỉ hiện nay"};
 
-    public ThongKePanelController(JComboBox genderJcb, JComboBox statusJcb, JTextField tuTuoiJtf, JTextField denTuoiJtf, JTextField tuNamJtf, JTextField denNamJtf, JPanel jpnView) {
+    public StatisticPanelController(JComboBox<String> genderJcb, JComboBox<String> statusJcb, JTextField tuTuoiJtf, JTextField denTuoiJtf, JTextField tuNamJtf, JTextField denNamJtf, JPanel jpnView) {
         this.GenderJcb = genderJcb;
         this.StatusJcb = statusJcb;
         this.tuTuoiJtf = tuTuoiJtf;
@@ -92,43 +98,72 @@ public class ThongKePanelController {
             listItem.add(nhankhau.getNhanKhauModel());
         });
         DefaultTableModel model = classTableModel.setTableNhanKhau(listItem, COLUMNS);
-        JTable table = new JTable(model);
+        JTable table = new JTable(model) {
+            private static final long serialVersionUID = 1L;
+
+			@Override
+            public boolean editCellAt(int row, int column, EventObject e) {
+                return false;
+            }
+			
+            @Override
+	        public Component prepareRenderer(TableCellRenderer renderer,int row,int column){
+	            Component comp=super.prepareRenderer(renderer,row, column);
+	           int modelRow=convertRowIndexToModel(row);
+	           if(!isRowSelected(modelRow))
+	               comp.setBackground(Color.WHITE);
+	           else
+	               comp.setBackground(new Color(102, 102, 255));
+	           return comp;
+	        }
+        };
         
-        // thiet ke bang
+      //Set style for table header
+        JTableHeader header = table.getTableHeader();
+        header.setReorderingAllowed(false);
+        header.setResizingAllowed(false);
+        header.setFont(new Font("Tahoma", Font.BOLD, 15));
         
-        table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
-        table.getTableHeader().setPreferredSize(new Dimension(100, 50));
-        table.setRowHeight(50);
+        header.setOpaque(false);
+        header.setBackground(new Color(230, 230, 255));
+        header.setForeground(Color.black);
+        
+        header.setPreferredSize(new Dimension(100, 50));
+            
+
+        //Set style for table content
+        table.setRowHeight(30);
         table.validate();
         table.repaint();
-        table.setFont(new Font("Arial", Font.PLAIN, 14));
+        table.setFont(new Font("Tahoma", Font.PLAIN, 14));
         table.getColumnModel().getColumn(0).setMaxWidth(80);
         table.getColumnModel().getColumn(0).setMinWidth(80);
         table.getColumnModel().getColumn(0).setPreferredWidth(80);
+        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         
         JScrollPane scroll = new JScrollPane();
+        scroll.getViewport().setBackground(Color.white);
         scroll.getViewport().add(table);
-        scroll.setPreferredSize(new Dimension(1350, 400));
         jpnView.removeAll();
-        jpnView.setLayout(new CardLayout());
+        jpnView.setLayout(new BorderLayout());
         jpnView.add(scroll);
         jpnView.validate();
         jpnView.repaint();
     }
 
-    public JComboBox getGenderJcb() {
+    public JComboBox<String> getGenderJcb() {
         return GenderJcb;
     }
 
-    public void setGenderJcb(JComboBox GenderJcb) {
+    public void setGenderJcb(JComboBox<String> GenderJcb) {
         this.GenderJcb = GenderJcb;
     }
 
-    public JComboBox getStatusJcb() {
+    public JComboBox<String> getStatusJcb() {
         return StatusJcb;
     }
 
-    public void setStatusJcb(JComboBox StatusJcb) {
+    public void setStatusJcb(JComboBox<String> StatusJcb) {
         this.StatusJcb = StatusJcb;
     }
 

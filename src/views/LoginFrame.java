@@ -24,19 +24,14 @@ import javax.swing.border.CompoundBorder;
 
 public class LoginFrame extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	
 	private JPanel loginPane;
 	private JTextField txbUserName;
 	private JPasswordField txbPasswd;
 	
 	private LoginController cont = new  LoginController();
 
-	/**
-	 * Create the frame.
-	 */
 	public LoginFrame() {
 		init();
         this.keyListenner(txbUserName);

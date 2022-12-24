@@ -95,12 +95,11 @@ public class NhanKhauService {
         return nhanKhauBean;
     }
     
-     // lay danh sach 10 nhan khau moi duoc them vao
     public List<NhanKhauBean> getListNhanKhau() {
         List<NhanKhauBean> list = new ArrayList<>();
         try {
             Connection connection = SQLConnection.getDbConnection();
-            String query = "SELECT TOP 10 * FROM nhan_khau JOIN chung_minh_thu ON nhan_khau.ID = chung_minh_thu.idNhanKhau ORDER BY ngayTao DESC";
+            String query = "SELECT TOP 100 * FROM nhan_khau JOIN chung_minh_thu ON nhan_khau.ID = chung_minh_thu.idNhanKhau ORDER BY nhan_khau.ID";
             PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()){
@@ -133,9 +132,9 @@ public class NhanKhauService {
                     + " JOIN chung_minh_thu ON nhan_khau.ID = chung_minh_thu.idNhanKhau"
                     + " LEFT JOIN tam_tru ON nhan_khau.ID = tam_tru.idNhanKhau "
                     + " LEFT JOIN tam_vang ON nhan_khau.ID = tam_vang.idNhanKhau "
-                    + " WHERE ROUND(DATEDIFF(dayofyear,GETDATE(),namSinh)/365 , 0) >= "
+                    + " WHERE ROUND(DATEDIFF(dayofyear, namSinh, GETDATE())/365 , 0) >= "
                     + TuTuoi
-                    + " AND ROUND(DATEDIFF(dayofyear, GETDATE(),namSinh)/365 , 0) <= "
+                    + " AND ROUND(DATEDIFF(dayofyear, namSinh, GETDATE())/365 , 0) <= "
                     + denTuoi;
         if (!gender.equalsIgnoreCase("Toan Bo")) {
             query += " AND nhan_khau.gioiTinh = '" + gender + "'";

@@ -12,8 +12,7 @@ import bean.DanhMucBean;
 import views.HouseholdPanel;
 import views.HomePagePanel;
 import views.PeoplePanel;
-import views.ThongKePanel;
-import views.TimKiemPanel;
+import views.StatisticPanel;
 
 public class DashboardController {
     private JFrame jfrMain;
@@ -51,11 +50,8 @@ public class DashboardController {
                 case "HoKhau":
                     view = new HouseholdPanel(this.jfrMain);
                     break;
-                case "TimKiem":
-                    view = new TimKiemPanel(this.jfrMain);
-                    break;
                 case "ThongKe":
-                    view = new ThongKePanel(this.jfrMain);
+                    view = new StatisticPanel(this.jfrMain);
                     break;
                 //any more
                 default:
@@ -68,7 +64,6 @@ public class DashboardController {
         root.repaint();
     } 
     
-    //set animation for menu panel
     public void setEvent(List<DanhMucBean> listDanhMuc) {
         this.listDanhMuc = listDanhMuc;
         this.listDanhMuc.forEach((item) -> {
@@ -119,11 +114,8 @@ public class DashboardController {
                  case "HoKhau":
                     view = new HouseholdPanel(this.jfrMain);
                     break;
-                case "TimKiem":
-                    view = new TimKiemPanel(this.jfrMain);
-                    break;
                 case "ThongKe":
-                    view = new ThongKePanel(this.jfrMain);
+                    view = new StatisticPanel(this.jfrMain);
                     break;
                 default:
                     break;

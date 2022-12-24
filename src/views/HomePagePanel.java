@@ -13,21 +13,15 @@ import java.awt.Font;
 import javax.swing.border.BevelBorder;
 
 public class HomePagePanel extends JPanel {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	
 	private HomeController cotroller;
 	
-    private javax.swing.JLabel nhanKhauTamTruLb;
-    private javax.swing.JLabel nhanKhauTamVangLb;
-    private javax.swing.JLabel tongHoKhauLb;
-    private javax.swing.JLabel tongNhanKhauLb;
+    private JLabel nhanKhauTamTruLb;
+    private JLabel nhanKhauTamVangLb;
+    private JLabel tongHoKhauLb;
+    private JLabel tongNhanKhauLb;
 	
-	/**
-	 * Create the panel.
-	 */
 	public HomePagePanel() {
         init();
         this.cotroller = new HomeController(tongNhanKhauLb, tongHoKhauLb, nhanKhauTamTruLb, nhanKhauTamVangLb);
@@ -62,7 +56,7 @@ public class HomePagePanel extends JPanel {
 		jPanel1.add(panel_1);
 		panel_1.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel(new ImageIcon(HomePagePanel.class.getResource("/Icons/network.png")));
+		JLabel lblNewLabel = new JLabel(new ImageIcon(HomePagePanel.class.getResource("/icons/network.png")));
 		lblNewLabel.setBounds(0, 0, 70, 80);
 		panel_1.add(lblNewLabel);
 		

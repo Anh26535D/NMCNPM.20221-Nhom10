@@ -17,10 +17,6 @@ import models.HoKhauModel;
 import models.NhanKhauModel;
 import models.ThanhVienCuaHoModel;
 
-/**
- *
- * @author Hai
- */
 public class HoKhauService {
     // them moi ho khau
     public boolean addNew(HoKhauBean hoKhauBean) throws ClassNotFoundException, SQLException{
@@ -76,13 +72,12 @@ public class HoKhauService {
         return true;
     }
      
-    // lay ra 10 ho khau
     public List<HoKhauBean> getListHoKhau() {
         List<HoKhauBean> list = new ArrayList<>();
         
         try {
             Connection connection = SQLConnection.getDbConnection();
-            String query = "SELECT TOP 10 * FROM ho_khau JOIN nhan_khau ON ho_khau.idChuHo = nhan_khau.ID ORDER BY ngayTao DESC";
+            String query = "SELECT TOP 100 * FROM ho_khau JOIN nhan_khau ON ho_khau.idChuHo = nhan_khau.ID ORDER BY ho_khau.ID";
             PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()){

@@ -101,7 +101,6 @@ public class HouseholdPanelController {
 	               comp.setBackground(new Color(102, 102, 255));
 	           return comp;
 	        }
-			
         };
         
         //Set style for table header

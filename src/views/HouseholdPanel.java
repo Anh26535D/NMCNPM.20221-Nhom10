@@ -21,11 +21,8 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 
 public class HouseholdPanel extends JPanel {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	
 	private JFrame parentFrame;
     private HouseholdPanelController controller;
     
@@ -37,9 +34,6 @@ public class HouseholdPanel extends JPanel {
     private JButton themMoiBtn;
     // End of variables declaration//GEN-END:variables
 
-	/**
-	 * Create the panel.
-	 */
 	public HouseholdPanel(JFrame parentFrame) {
 		this.parentFrame = parentFrame;
         init();
@@ -154,7 +148,6 @@ public class HouseholdPanel extends JPanel {
 	}
 	
     private void jtfSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfSearchActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jtfSearchActionPerformed
 
     private void chuyenDiBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chuyenDiBtnActionPerformed
