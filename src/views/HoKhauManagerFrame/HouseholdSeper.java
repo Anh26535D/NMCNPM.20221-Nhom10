@@ -6,12 +6,25 @@
 package views.HoKhauManagerFrame;
 
 import controllers.HoKhauManagerController.TachHoKhauController;
+
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
-public class TachHoKhau extends javax.swing.JFrame {
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.GroupLayout;
+import javax.swing.LayoutStyle.ComponentPlacement;
+
+public class HouseholdSeper extends javax.swing.JFrame {
 
     private TachHoKhauController controller;
     private JFrame parentJFrame;
@@ -19,7 +32,7 @@ public class TachHoKhau extends javax.swing.JFrame {
      * Creates new form TachHoKhau
      * @param parentJFrame
      */
-    public TachHoKhau(JFrame parentJFrame) {
+    public HouseholdSeper(JFrame parentJFrame) {
         initComponents();
         this.parentJFrame = parentJFrame;
         controller = new TachHoKhauController(this);
@@ -70,6 +83,7 @@ public class TachHoKhau extends javax.swing.JFrame {
         chuHoHienTaiJtf = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         chuHoMoiJtf = new javax.swing.JTextField();
+        chuHoMoiJtf.setBackground(new Color(255, 255, 255));
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -95,9 +109,10 @@ public class TachHoKhau extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(230, 230, 250));
 
-        tableTopJpn.setBackground(new java.awt.Color(204, 204, 204));
+
+        tableTopJpn.setBackground(new Color(255, 255, 255));
 
         javax.swing.GroupLayout tableTopJpnLayout = new javax.swing.GroupLayout(tableTopJpn);
         tableTopJpn.setLayout(tableTopJpnLayout);
@@ -110,52 +125,52 @@ public class TachHoKhau extends javax.swing.JFrame {
             .addGap(0, 212, Short.MAX_VALUE)
         );
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(240, 248, 255));
 
-        jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel4.setFont(new Font("Tahoma", Font.PLAIN, 15)); // NOI18N
         jLabel4.setText("Chủ hộ hiện tại");
 
-        chuHoHienTaiJtf.setBackground(new java.awt.Color(240, 240, 240));
-        chuHoHienTaiJtf.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        chuHoHienTaiJtf.setBackground(new Color(255, 255, 255));
+        chuHoHienTaiJtf.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15)); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15)); // NOI18N
         jLabel5.setText("Chủ hộ mới");
 
-        chuHoMoiJtf.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        chuHoMoiJtf.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15)); // NOI18N
         chuHoMoiJtf.setEnabled(false);
 
-        jLabel6.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 0, 0));
         jLabel6.setText("(*)");
 
-        jLabel7.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 0, 0));
         jLabel7.setText("(*)");
 
-        jLabel12.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 0, 0));
         jLabel12.setText("(*)");
 
-        jLabel13.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15)); // NOI18N
         jLabel13.setText("Mã khu vực");
 
-        maKhuVucJtf.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        maKhuVucJtf.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15)); // NOI18N
 
-        jLabel14.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15)); // NOI18N
         jLabel14.setText("Địa chỉ");
 
-        diaChiJtf.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        diaChiJtf.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15)); // NOI18N
 
-        jLabel15.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 0, 0));
         jLabel15.setText("(*)");
 
-        jLabel16.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15)); // NOI18N
         jLabel16.setText("Mã hộ khẩu mới");
 
-        maHoKhauMoiJtf.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        maHoKhauMoiJtf.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15)); // NOI18N
 
-        jLabel17.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 0, 0));
         jLabel17.setText("(*)");
 
@@ -218,15 +233,39 @@ public class TachHoKhau extends javax.swing.JFrame {
                 .addGap(17, 17, 17))
         );
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", Font.BOLD, 18)); // NOI18N
         jLabel1.setText("Chọn hộ cần tách");
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", Font.BOLD, 18)); // NOI18N
         jLabel2.setText("Nhập mã hộ khẩu");
 
-        searchJtf.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+       
+        searchJtf.setForeground(Color.GRAY);
+		searchJtf.addFocusListener(new FocusListener() {
+		    @Override
+		    public void focusGained(FocusEvent e) {
+		        if (searchJtf.getText().equals("Search")) {
+		        	searchJtf.setText("");
+		        	searchJtf.setForeground(Color.BLACK);
+		        }
+		    }
+		    @Override
+		    public void focusLost(FocusEvent e) {
+		        if (searchJtf.getText().isEmpty()) {
+		        	searchJtf.setForeground(Color.GRAY);
+		        	searchJtf.setText("Search");
+		        }
+		    }
+		    });
+		searchJtf.setSelectionColor(new Color(204, 153, 255));
+		searchJtf.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		searchJtf.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(153, 102, 255), null, null, null), new EmptyBorder(0, 10, 0, 0)));
+		searchJtf.setBounds(247, 12, 200, 50);
+		jPanel2.add(searchJtf);
+		searchJtf.setColumns(10);
 
-        tableBotJpn.setBackground(new java.awt.Color(204, 204, 204));
+
+        tableBotJpn.setBackground(new Color(255, 255, 255));
 
         javax.swing.GroupLayout tableBotJpnLayout = new javax.swing.GroupLayout(tableBotJpn);
         tableBotJpn.setLayout(tableBotJpnLayout);
@@ -239,10 +278,10 @@ public class TachHoKhau extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", Font.BOLD, 18)); // NOI18N
         jLabel3.setText("Chọn người sang hộ mới");
 
-        tableRigthJtf.setBackground(new java.awt.Color(204, 204, 204));
+        tableRigthJtf.setBackground(new Color(255, 255, 255));
 
         javax.swing.GroupLayout tableRigthJtfLayout = new javax.swing.GroupLayout(tableRigthJtf);
         tableRigthJtf.setLayout(tableRigthJtfLayout);
@@ -255,14 +294,31 @@ public class TachHoKhau extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jLabel18.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Tahoma", Font.BOLD, 18)); // NOI18N
         jLabel18.setText("Những người ở hộ mới");
 
         addBtn.setText(">>");
+        addBtn.setBorderPainted(false);
+       // addBtn.setBounds(531, 438, 60, 21);
+        addBtn.setBorder(new LineBorder(new Color(186, 85, 211), 1, true));
+        addBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
+        addBtn.setForeground(new Color(255, 255, 255));
+        addBtn.setBackground(new Color(147, 112, 219));
 
         removeBtn.setText("<<");
+        removeBtn.setForeground(Color.WHITE);
+        removeBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
+        removeBtn.setBorderPainted(false);
+        removeBtn.setBorder(new LineBorder(new Color(186, 85, 211), 1, true));
+        removeBtn.setBackground(new Color(147, 112, 219));
 
         acceptBtn.setText("Xác nhận");
+        acceptBtn.setBorderPainted(false);
+        acceptBtn.setBounds(983, 708, 100, 25);
+        acceptBtn.setBorder(new LineBorder(new Color(186, 85, 211), 1, true));
+        acceptBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
+        acceptBtn.setForeground(new Color(255, 255, 255));
+        acceptBtn.setBackground(new Color(147, 112, 219));
         acceptBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 acceptBtnActionPerformed(evt);
@@ -270,6 +326,14 @@ public class TachHoKhau extends javax.swing.JFrame {
         });
 
         cancelBtn.setText("Hủy");
+        cancelBtn.setBorderPainted(false);
+        cancelBtn.setBounds(850, 708, 100, 25);
+        cancelBtn.setBorder(new LineBorder(new Color(186, 85, 211), 1, true));
+        cancelBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
+        cancelBtn.setForeground(new Color(255, 255, 255));
+        cancelBtn.setBackground(new Color(147, 112, 219));
+        
+
         cancelBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelBtnActionPerformed(evt);
@@ -277,82 +341,84 @@ public class TachHoKhau extends javax.swing.JFrame {
         });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3)
-                            .addComponent(tableTopJpn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(tableBotJpn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(6, 6, 6)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 310, Short.MAX_VALUE)
-                                .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(acceptBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(addBtn)
-                                            .addComponent(removeBtn))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(tableRigthJtf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addComponent(jLabel18)
-                                                .addGap(0, 332, Short.MAX_VALUE))))
-                                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addContainerGap())))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(searchJtf, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+        	jPanel2Layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(jPanel2Layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addGroup(jPanel2Layout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(jPanel2Layout.createSequentialGroup()
+        					.addGroup(jPanel2Layout.createParallelGroup(Alignment.LEADING)
+        						.addComponent(jLabel1)
+        						.addComponent(tableTopJpn, GroupLayout.PREFERRED_SIZE, 297, GroupLayout.PREFERRED_SIZE)
+        						.addComponent(tableBotJpn, GroupLayout.PREFERRED_SIZE, 300, GroupLayout.PREFERRED_SIZE)
+        						.addComponent(jLabel3))
+        					.addPreferredGap(ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+        					.addGroup(jPanel2Layout.createParallelGroup(Alignment.LEADING)
+        						.addGroup(jPanel2Layout.createSequentialGroup()
+        							.addGap(357)
+        							.addComponent(cancelBtn, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+        							.addGap(18)
+        							.addComponent(acceptBtn, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
+        						.addGroup(jPanel2Layout.createSequentialGroup()
+        							.addGap(15)
+        							.addGroup(jPanel2Layout.createParallelGroup(Alignment.TRAILING, false)
+        								.addComponent(removeBtn, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        								.addComponent(addBtn, GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE))
+        							.addGap(18)
+        							.addGroup(jPanel2Layout.createParallelGroup(Alignment.LEADING)
+        								.addGroup(jPanel2Layout.createSequentialGroup()
+        									.addComponent(jLabel18)
+        									.addGap(0, 350, Short.MAX_VALUE))
+        								.addGroup(jPanel2Layout.createSequentialGroup()
+        									.addGap(10)
+        									.addComponent(tableRigthJtf, GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE))))
+        						.addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)))
+        				.addGroup(jPanel2Layout.createSequentialGroup()
+        					.addGap(18)
+        					.addComponent(jLabel2)
+        					.addGap(33)
+        					.addComponent(searchJtf, GroupLayout.PREFERRED_SIZE, 274, GroupLayout.PREFERRED_SIZE)))
+        			.addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchJtf, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21)
-                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(addBtn)
-                                .addGap(18, 18, 18)
-                                .addComponent(removeBtn)
-                                .addGap(0, 126, Short.MAX_VALUE))
-                            .addComponent(tableRigthJtf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(acceptBtn))
-                        .addGap(19, 19, 19))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(tableTopJpn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tableBotJpn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(16, 16, 16))))
+        	jPanel2Layout.createParallelGroup(Alignment.TRAILING)
+        		.addGroup(jPanel2Layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addGroup(jPanel2Layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(searchJtf, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(jLabel2, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+        			.addGap(2)
+        			.addGroup(jPanel2Layout.createParallelGroup(Alignment.LEADING)
+        				.addComponent(tableTopJpn, 0, 0, Short.MAX_VALUE)
+        				.addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addGroup(jPanel2Layout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(jPanel2Layout.createSequentialGroup()
+        					.addGap(21)
+        					.addComponent(jLabel18, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+        					.addGroup(jPanel2Layout.createParallelGroup(Alignment.LEADING)
+        						.addGroup(jPanel2Layout.createSequentialGroup()
+        							.addGap(18)
+        							.addComponent(addBtn)
+        							.addGap(18)
+        							.addComponent(removeBtn))
+        						.addGroup(jPanel2Layout.createSequentialGroup()
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addComponent(tableRigthJtf, GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)))
+        					.addPreferredGap(ComponentPlacement.UNRELATED)
+        					.addGroup(jPanel2Layout.createParallelGroup(Alignment.BASELINE)
+        						.addComponent(acceptBtn, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
+        						.addComponent(cancelBtn, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE))
+        					.addGap(19))
+        				.addGroup(jPanel2Layout.createSequentialGroup()
+        					.addGap(13)
+        					.addComponent(jLabel3, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+        					.addGap(18)
+        					.addComponent(tableBotJpn, GroupLayout.PREFERRED_SIZE, 212, GroupLayout.PREFERRED_SIZE)
+        					.addContainerGap())))
         );
+        jPanel2.setLayout(jPanel2Layout);
 
         tableTopJpn.getAccessibleContext().setAccessibleName("");
 
