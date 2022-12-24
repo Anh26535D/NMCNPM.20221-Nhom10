@@ -1,11 +1,12 @@
 package views;
 
 import controllers.PeoplePanelController;
+import views.PeopleManagerFrame.AddNewPeopleJFrame;
+import views.PeopleManagerFrame.KhaiTuJFrame;
+import views.PeopleManagerFrame.TempAbsenceDFrame;
+import views.PeopleManagerFrame.TempResidenceDFrame;
+
 import javax.swing.JFrame;
-import views.NhanKhauManagerFrame.AddNewPeopleJFrame;
-import views.NhanKhauManagerFrame.TempAbsenceDFrame;
-import views.NhanKhauManagerFrame.TempResidenceDFrame;
-import views.NhanKhauManagerFrame.KhaiTuJFrame;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import javax.swing.JPanel;

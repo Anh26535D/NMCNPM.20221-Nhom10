@@ -1,4 +1,4 @@
-package views.HoKhauManagerFrame;
+package views.HouseholdManagerFrame;
 
 import controllers.HoKhauManagerController.ChoosePeopleController;
 import java.awt.event.WindowAdapter;

@@ -1,4 +1,4 @@
-package views.HoKhauManagerFrame;
+package views.HouseholdManagerFrame;
 
 import controllers.HoKhauManagerController.ChuyenDiNoiKhacController;
 import java.awt.event.WindowAdapter;

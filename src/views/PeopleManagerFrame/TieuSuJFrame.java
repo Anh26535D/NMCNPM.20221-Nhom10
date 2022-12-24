@@ -1,4 +1,4 @@
-package views.NhanKhauManagerFrame;
+package views.PeopleManagerFrame;
 
 import controllers.NhanKhauManagerController.TieuSuController;
 import java.awt.event.WindowAdapter;

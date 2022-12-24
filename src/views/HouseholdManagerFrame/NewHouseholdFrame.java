@@ -1,4 +1,4 @@
-package views.HoKhauManagerFrame;
+package views.HouseholdManagerFrame;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;

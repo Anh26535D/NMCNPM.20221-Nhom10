@@ -1,4 +1,4 @@
-package views.NhanKhauManagerFrame;
+package views.PeopleManagerFrame;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;

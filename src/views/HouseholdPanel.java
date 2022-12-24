@@ -6,9 +6,9 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import controllers.HouseholdPanelController;
-import views.HoKhauManagerFrame.ChuyenDiNoiKhac;
-import views.HoKhauManagerFrame.NewHouseholdFrame;
-import views.HoKhauManagerFrame.TachHoKhau;
+import views.HouseholdManagerFrame.ChuyenDiNoiKhac;
+import views.HouseholdManagerFrame.NewHouseholdFrame;
+import views.HouseholdManagerFrame.TachHoKhau;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;

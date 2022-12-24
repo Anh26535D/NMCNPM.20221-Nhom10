@@ -26,7 +26,7 @@ import bean.NhanKhauBean;
 import models.ThanhVienCuaHoModel;
 import services.HoKhauService;
 import utility.TableModelHoKhau;
-import views.HoKhauManagerFrame.TachHoKhau;
+import views.HouseholdManagerFrame.TachHoKhau;
 import views.infoViews.InfoJframe;
 
 /**

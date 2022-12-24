@@ -1,4 +1,4 @@
-package views.NhanKhauManagerFrame;
+package views.PeopleManagerFrame;
 
 import java.util.List;
 
@@ -48,11 +48,11 @@ public class TempAbsenceDFrame extends JFrame {
     private JButton checkBtn;
 
 	public TempAbsenceDFrame(JFrame parentJFrame) {
-		controller = new DangKyTamVangController();
 		init();
-        this.parentFrame = parentJFrame;
-        parentJFrame.setEnabled(false);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		this.parentFrame = parentJFrame;
+		parentJFrame.setEnabled(false);
+		controller = new DangKyTamVangController();
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -110,9 +110,13 @@ public class TempAbsenceDFrame extends JFrame {
 		
 		noiTamTruJtf = new SuggestionUtility(false) {
 			
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public List<String> getSuggestions(String textContent) {
-				// TODO Auto-generated method stub
 				return null;
 			}
 		};
@@ -120,8 +124,13 @@ public class TempAbsenceDFrame extends JFrame {
 		contentPane.add(noiTamTruJtf);
 		
 		soCMTjtf = new SuggestionUtility(false) {
-			public List getSuggestions(String textContent) {
-				return (List) null;
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			public List<String> getSuggestions(String textContent) {
+				return null;
 			}
 		};
 		soCMTjtf.setBounds(200, 11, 284, 30);
