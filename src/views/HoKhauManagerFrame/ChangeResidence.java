@@ -22,13 +22,13 @@ import java.awt.Font;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-/**
- *
- * @author User
- */
 public class ChangeResidence extends javax.swing.JFrame {
 
-    private ChuyenDiNoiKhacController controller;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private ChuyenDiNoiKhacController controller;
     private HoKhauBean hoKhauBean;
     private JFrame parentJFrame;
     

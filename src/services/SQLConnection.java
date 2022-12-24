@@ -3,7 +3,7 @@ package services;
 import java.sql.*;
 
 public class SQLConnection {
-	public static String serverName = "DESKTOP-2M64U04\\\\SQLEXPRESS";
+	public static String serverName = "DESKTOP-04NMIDF\\\\SQLEXPRESS";
 	public static String databaseName = "quan_ly_nhan_khau";
 	public static String userName = "sa";
 	public static String password = "123456";

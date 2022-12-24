@@ -12,13 +12,10 @@ import bean.NhanKhauBean;
 import models.ChungMinhThuModel;
 import models.NhanKhauModel;
 
-/**
- *
- * @author Hai
- */
 public class AddNewPeopleJFrame extends javax.swing.JFrame {
 
-    /**
+    private static final long serialVersionUID = 1L;
+	/**
      * Creates new form AddNewPeopleJFrame
      */
     private PeoplePanelController parentController;
@@ -26,13 +23,6 @@ public class AddNewPeopleJFrame extends javax.swing.JFrame {
     private NhanKhauBean nhanKhauBean;
     private AddNewController controller;
 
-
-//    public AddNewPeopleJFrame() {
-//        initComponents();
-//        setTitle("Thêm mới nhân khẩu");
-//        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-//        controller = new AddNewController();
-//    }
 
     public AddNewPeopleJFrame(PeoplePanelController parentController, JFrame parentJFrame) {
         this.parentController = parentController;
