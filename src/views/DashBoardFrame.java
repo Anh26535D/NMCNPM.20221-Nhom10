@@ -1,10 +1,15 @@
 package views;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -36,6 +41,8 @@ public class DashBoardFrame extends JFrame {
     private JPanel jpnBean;
     private JPanel jpnContainer;
     private JPanel jpnMenu;
+    
+    private JButton LogoutBtn;
     
     private DashboardController controller;
 
@@ -152,6 +159,42 @@ public class DashBoardFrame extends JFrame {
 		jlbThongKe.setToolTipText("Thống kê");
 		ThongKeBtn.add(jlbThongKe);
 		
+        LogoutBtn = new JButton("Thoát");
+        LogoutBtn.setFocusPainted(false);
+        LogoutBtn.setBorderPainted(false);
+        LogoutBtn.addActionListener(new ActionListener() {	
+			@Override
+			public void actionPerformed(ActionEvent e) {
+                if (JOptionPane.showConfirmDialog(null, "Are you sure to log out?", "Confirm", JOptionPane.YES_NO_OPTION) == 0) {
+                    dispose();
+                    LoginFrame loginFrame = new LoginFrame();
+                    loginFrame.setVisible(true);
+                }
+			}
+		});
+        LogoutBtn.addFocusListener(new FocusListener() {
+			
+			@Override
+			public void focusLost(FocusEvent e) {
+				// TODO Auto-generated method stub
+				LogoutBtn.setBackground(new Color(23, 69, 255));
+			}
+			
+			@Override
+			public void focusGained(FocusEvent e) {
+				// TODO Auto-generated method stub
+				LogoutBtn.setBackground(new Color(102, 153, 255));
+				
+			}
+		});
+        
+        LogoutBtn.setForeground(Color.WHITE);
+        LogoutBtn.setFont(new Font("Tahoma", Font.BOLD, 13));
+        LogoutBtn.setBorder(new LineBorder(new Color(255, 204, 255), 1, true));
+        LogoutBtn.setBackground(new Color(102, 153, 255));
+        LogoutBtn.setBounds(10, 529, 110, 54);
+        jpnMenu.add(LogoutBtn);
+
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(204, 153, 255));
 		panel.setBorder(new LineBorder(new Color(255, 153, 255), 2, true));
