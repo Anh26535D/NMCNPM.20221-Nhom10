@@ -12,6 +12,7 @@ import com.toedter.calendar.JDateChooser;
 
 import controllers.NhanKhauManagerController.DangKyTamVangController;
 import models.TamVangModel;
+import services.NhanKhauService;
 import utility.SuggestionUtility;
 
 import javax.swing.JTextField;
@@ -25,6 +26,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.UIManager;
 import java.awt.Color;
 import javax.swing.JScrollPane;
+import java.awt.Font;
 
 public class TempAbsenceDFrame extends JFrame {
 
@@ -39,80 +41,126 @@ public class TempAbsenceDFrame extends JFrame {
 	private JTextField maGiayTamVangJtf;
 	private SuggestionUtility noiTamTruJtf;
 	private JLabel availableIcon;
-    private JDateChooser denNgayJdc;
-    private JTextArea lyDoJta;
-    private SuggestionUtility soCMTjtf;
-    private JDateChooser tuNgayJdc;
-    private JButton CancelBtn;
-    private JButton acceptBtn;
-    private JButton checkBtn;
+	private JDateChooser denNgayJdc;
+	private JTextArea lyDoJta;
+	private SuggestionUtility soCMTjtf;
+	private JDateChooser tuNgayJdc;
+	private JButton CancelBtn;
+	private JButton acceptBtn;
+	private JButton checkBtn;
+	
+	private NhanKhauService peopleService;
 
 	public TempAbsenceDFrame(JFrame parentJFrame) {
+		peopleService = new NhanKhauService();
 		init();
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.parentFrame = parentJFrame;
 		parentJFrame.setEnabled(false);
 		controller = new DangKyTamVangController();
-        this.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                  close();
-            }
-        });
+		this.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				close();
+			}
+		});
 	}
-	
+
 	private void init() {
 		setTitle("Khai báo tạm vắng");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 647, 489);
+		setBounds(100, 100, 651, 509);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(230, 230, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(240, 248, 255));
+		panel.setBounds(10, 10, 617, 40);
+		contentPane.add(panel);
+		panel.setLayout(null);
+
+		JLabel lblNewLabel = new JLabel("Số CMT/CCCD");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNewLabel.setBounds(10, 10, 130, 20);
+		panel.add(lblNewLabel);
+
+		soCMTjtf = new SuggestionUtility(false) {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public List<String> getSuggestions(String textContent) {
+				List<String> list = peopleService.searchByCid(textContent);
+				return list;
+			}
+		};
+		soCMTjtf.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == 10) {
+					checkCMT();
+				}
+			}
+		});
+		soCMTjtf.setBounds(150, 10, 284, 20);
+		panel.add(soCMTjtf);
+
+		JLabel lblNewLabel_1 = new JLabel("(*)");
+		lblNewLabel_1.setBounds(440, 10, 20, 30);
+		lblNewLabel_1.setForeground(UIManager.getColor("ToolBar.dockingForeground"));
+		panel.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel = new JLabel("Số CMT / CCCD");
-		lblNewLabel.setBounds(55, 11, 96, 30);
-		contentPane.add(lblNewLabel);
-		
+		checkBtn = new JButton("Check");
+		checkBtn.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				checkBtnActionPerformed(evt);
+			}
+		});
+		checkBtn.setBounds(470, 10, 87, 20);
+		panel.add(checkBtn);
+
+		availableIcon = new javax.swing.JLabel();
+		availableIcon.setBounds(567, 5, 32, 30);
+		availableIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/checked.png"))); // NOI18N
+		availableIcon.setEnabled(false);
+		panel.add(availableIcon);
+
+		JPanel panel_1 = new JPanel();
+		panel_1.setLayout(null);
+		panel_1.setBackground(new Color(240, 248, 255));
+		panel_1.setBounds(10, 60, 617, 40);
+		contentPane.add(panel_1);
+
 		JLabel lblMGiyTm = new JLabel("Mã giấy tạm vắng");
-		lblMGiyTm.setBounds(81, 62, 96, 30);
-		contentPane.add(lblMGiyTm);
-		
-		JLabel lblNiTmTr = new JLabel("Nơi tạm trú");
-		lblNiTmTr.setBounds(81, 103, 96, 30);
-		contentPane.add(lblNiTmTr);
-		
-		JLabel lblTNgy = new JLabel("Từ ngày");
-		lblTNgy.setBounds(81, 144, 96, 30);
-		contentPane.add(lblTNgy);
-		
-		JLabel lblnNgy = new JLabel("Đến ngày");
-		lblnNgy.setBounds(81, 185, 96, 30);
-		contentPane.add(lblnNgy);
-		
-		JLabel lblLDo = new JLabel("Lí do");
-		lblLDo.setBounds(81, 234, 96, 30);
-		contentPane.add(lblLDo);
-		
-		denNgayJdc = new JDateChooser();
-		denNgayJdc.setBounds(200, 185, 284, 30);
-		contentPane.add(denNgayJdc);
-		
-		tuNgayJdc = new JDateChooser();
-		tuNgayJdc.setBounds(200, 144, 284, 30);
-		contentPane.add(tuNgayJdc);
-		
+		lblMGiyTm.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblMGiyTm.setBounds(10, 10, 130, 20);
+		panel_1.add(lblMGiyTm);
+
 		maGiayTamVangJtf = new JTextField();
-		maGiayTamVangJtf.setBounds(200, 62, 284, 30);
-		contentPane.add(maGiayTamVangJtf);
+		maGiayTamVangJtf.setBounds(150, 10, 284, 20);
 		maGiayTamVangJtf.setColumns(10);
-		
+		panel_1.add(maGiayTamVangJtf);
+
+		JLabel lblNewLabel_1_1 = new JLabel("(*)");
+		lblNewLabel_1_1.setBounds(440, 10, 20, 20);
+		lblNewLabel_1_1.setForeground(Color.RED);
+		panel_1.add(lblNewLabel_1_1);
+
+		JPanel panel_1_1 = new JPanel();
+		panel_1_1.setLayout(null);
+		panel_1_1.setBackground(new Color(240, 248, 255));
+		panel_1_1.setBounds(10, 110, 617, 40);
+		contentPane.add(panel_1_1);
+
+		JLabel lblNiTmTr = new JLabel("Nơi tạm trú");
+		lblNiTmTr.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNiTmTr.setBounds(10, 10, 130, 20);
+		panel_1_1.add(lblNiTmTr);
+
 		noiTamTruJtf = new SuggestionUtility(false) {
-			
-			/**
-			 * 
-			 */
 			private static final long serialVersionUID = 1L;
 
 			@Override
@@ -120,101 +168,95 @@ public class TempAbsenceDFrame extends JFrame {
 				return null;
 			}
 		};
-		noiTamTruJtf.setBounds(200, 103, 284, 30);
-		contentPane.add(noiTamTruJtf);
-		
-		soCMTjtf = new SuggestionUtility(false) {
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
+		noiTamTruJtf.setBounds(150, 10, 284, 20);
+		panel_1_1.add(noiTamTruJtf);
 
-			public List<String> getSuggestions(String textContent) {
-				return null;
-			}
-		};
-		soCMTjtf.setBounds(200, 11, 284, 30);
-		contentPane.add(soCMTjtf);
-		
-		checkBtn = new JButton("Check");
+		JLabel lblNewLabel_1_2 = new JLabel("(*)");
+		lblNewLabel_1_2.setBounds(440, 10, 20, 20);
+		panel_1_1.add(lblNewLabel_1_2);
+		lblNewLabel_1_2.setForeground(Color.RED);
+
+		JPanel panel_1_1_1 = new JPanel();
+		panel_1_1_1.setLayout(null);
+		panel_1_1_1.setBackground(new Color(240, 248, 255));
+		panel_1_1_1.setBounds(10, 160, 617, 40);
+		contentPane.add(panel_1_1_1);
+
+		JLabel lblTNgy = new JLabel("Từ ngày");
+		lblTNgy.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblTNgy.setBounds(10, 10, 130, 20);
+		panel_1_1_1.add(lblTNgy);
+
+		tuNgayJdc = new JDateChooser();
+		tuNgayJdc.setBounds(150, 10, 284, 20);
+		panel_1_1_1.add(tuNgayJdc);
+
+		JLabel lblNewLabel_1_3 = new JLabel("(*)");
+		lblNewLabel_1_3.setBounds(440, 10, 20, 20);
+		panel_1_1_1.add(lblNewLabel_1_3);
+		lblNewLabel_1_3.setForeground(Color.RED);
+
+		JPanel panel_1_1_1_1 = new JPanel();
+		panel_1_1_1_1.setLayout(null);
+		panel_1_1_1_1.setBackground(new Color(240, 248, 255));
+		panel_1_1_1_1.setBounds(10, 210, 617, 40);
+		contentPane.add(panel_1_1_1_1);
+
+		JLabel lblnNgy = new JLabel("Đến ngày");
+		lblnNgy.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblnNgy.setBounds(10, 10, 130, 20);
+		panel_1_1_1_1.add(lblnNgy);
+
+		denNgayJdc = new JDateChooser();
+		denNgayJdc.setBounds(150, 10, 284, 20);
+		panel_1_1_1_1.add(denNgayJdc);
+
+		JLabel lblNewLabel_1_4 = new JLabel("(*)");
+		lblNewLabel_1_4.setBounds(440, 10, 20, 20);
+		panel_1_1_1_1.add(lblNewLabel_1_4);
+		lblNewLabel_1_4.setForeground(Color.RED);
+
+		JPanel panel_1_1_1_1_1 = new JPanel();
+		panel_1_1_1_1_1.setLayout(null);
+		panel_1_1_1_1_1.setBackground(new Color(240, 248, 255));
+		panel_1_1_1_1_1.setBounds(10, 260, 617, 160);
+		contentPane.add(panel_1_1_1_1_1);
+
+		JLabel lblLDo = new JLabel("Lí do");
+		lblLDo.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblLDo.setBounds(10, 10, 130, 20);
+		panel_1_1_1_1_1.add(lblLDo);
+
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(150, 10, 459, 140);
+		panel_1_1_1_1_1.add(scrollPane);
+
+		lyDoJta = new JTextArea();
+		scrollPane.setViewportView(lyDoJta);
 		checkBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		checkBtn.setBounds(520, 11, 65, 30);
-		contentPane.add(checkBtn);
-		
+
 		CancelBtn = new JButton("Hủy");
-		CancelBtn.setBounds(367, 394, 89, 30);
+		CancelBtn.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				CancelBtnActionPerformed(evt);
+			}
+		});
+		CancelBtn.setBounds(439, 432, 89, 30);
 		contentPane.add(CancelBtn);
-		
+
 		acceptBtn = new JButton("Xác nhận");
-		acceptBtn.setBounds(481, 394, 89, 30);
+		acceptBtn.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				acceptBtnActionPerformed(evt);
+			}
+		});
+		acceptBtn.setBounds(538, 432, 89, 30);
 		contentPane.add(acceptBtn);
-		
-		JLabel lblNewLabel_1 = new JLabel("(*)");
-		lblNewLabel_1.setForeground(UIManager.getColor("ToolBar.dockingForeground"));
-		lblNewLabel_1.setBounds(490, 19, 20, 14);
-		contentPane.add(lblNewLabel_1);
-		
-		JLabel lblNewLabel_1_1 = new JLabel("(*)");
-		lblNewLabel_1_1.setForeground(Color.RED);
-		lblNewLabel_1_1.setBounds(494, 70, 20, 14);
-		contentPane.add(lblNewLabel_1_1);
-		
-		JLabel lblNewLabel_1_2 = new JLabel("(*)");
-		lblNewLabel_1_2.setForeground(Color.RED);
-		lblNewLabel_1_2.setBounds(494, 111, 20, 14);
-		contentPane.add(lblNewLabel_1_2);
-		
-		JLabel lblNewLabel_1_3 = new JLabel("(*)");
-		lblNewLabel_1_3.setForeground(Color.RED);
-		lblNewLabel_1_3.setBounds(494, 152, 20, 14);
-		contentPane.add(lblNewLabel_1_3);
-		
-		JLabel lblNewLabel_1_4 = new JLabel("(*)");
-		lblNewLabel_1_4.setForeground(Color.RED);
-		lblNewLabel_1_4.setBounds(494, 193, 20, 14);
-		contentPane.add(lblNewLabel_1_4);
-		availableIcon = new javax.swing.JLabel();
-		availableIcon.setSize(40, 30);
-		availableIcon.setLocation(591, 11);
-		availableIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/checked.png"))); // NOI18N
-        availableIcon.setEnabled(false);
-        contentPane.add(availableIcon);
-        
-        JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(200, 234, 284, 143);
-        contentPane.add(scrollPane);
-        
-        lyDoJta = new JTextArea();
-        scrollPane.setViewportView(lyDoJta);
-        acceptBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                acceptBtnActionPerformed(evt);
-            }
-        });
-        CancelBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CancelBtnActionPerformed(evt);
-            }
-        });
-        checkBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkBtnActionPerformed(evt);
-            }
-        });
-        this.soCMTjtf.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyPressed(KeyEvent e) {
-                // neu keycode == 10 ~ enter
-                if (e.getKeyCode() == 10) {
-                    checkCMT();
-                }
-            }
-        });
 	}
-	
+
 	void close() {
         if (JOptionPane.OK_OPTION == JOptionPane.showConfirmDialog(null, "Are you sure to close?", "Warning!!", JOptionPane.YES_NO_OPTION)) {
             this.parentFrame.setEnabled(true);

@@ -54,30 +54,13 @@ public class TempResidenceDFrame extends JFrame {
     private JButton checkBtn;
 
     
-	public TempResidenceDFrame() {
-		initComponents();
-		this.peopleService = new NhanKhauService();
-		this.controller = new DangKyTamTruController();
-        this.tamTruModel = new TamTruModel();
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setTitle("Đăng ký tạm trú");
-        this.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {     
-                    close();
-            }
-            
-        });
-	}
-	
 	public TempResidenceDFrame(JFrame parentFrame) {
+		parentFrame.setEnabled(false);
+		initComponents();
         this.parentFrame = parentFrame;
-        initComponents();
         this.controller = new DangKyTamTruController();
         this.tamTruModel = new TamTruModel();
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        setTitle("Đăng ký tạm trú");
-        parentFrame.setEnabled(false);
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -87,17 +70,8 @@ public class TempResidenceDFrame extends JFrame {
         });
     }
 	
-	void close() {
-        if (JOptionPane.OK_OPTION == JOptionPane.showConfirmDialog(null, "Are you sure to close?", "Warning!!", JOptionPane.YES_NO_OPTION)) {
-            this.parentFrame.setEnabled(true);
-            dispose();
-        }
-    }
-	
-	/**
-	 * Create the frame.
-	 */
 	public void initComponents() {
+		setTitle("Đăng ký tạm trú");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 791, 565);
 		contentPane = new JPanel();
@@ -316,5 +290,12 @@ public class TempResidenceDFrame extends JFrame {
             JOptionPane.showMessageDialog(null, "Vui lòng nhập hết các trường bắt buộc!", "Warning!", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_acceptBtnActionPerformed
+    
+	void close() {
+        if (JOptionPane.OK_OPTION == JOptionPane.showConfirmDialog(null, "Are you sure to close?", "Warning!!", JOptionPane.YES_NO_OPTION)) {
+            this.parentFrame.setEnabled(true);
+            dispose();
+        }
+    }
 
 }
