@@ -161,6 +161,7 @@ public abstract class InputSuggestion extends JTextField {
 
 
     private void showPopup(List<String> suggestions) {
+    	System.out.println(suggestions.size());
         listModel.clear();
         suggestions.forEach(listModel::addElement);
         Point p = new Point(0, this.getPreferredSize().height);

@@ -8,6 +8,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -49,9 +50,21 @@ public class TempAbsenceDFrame extends JFrame {
 	/**
 	 * Launch the application.
 	 */
+    public static void main(String[] args) {
+		try {
+			TempAbsenceDFrame test= new TempAbsenceDFrame();
+			test.setVisible(true);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
     
 	public TempAbsenceDFrame() {
 		initComponents();
+		this.controller = new DangKyTamTruController();
+        this.tamTruModel = new TamTruModel();
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("Đăng ký tạm trú");
 	}
 	
 	public TempAbsenceDFrame(JFrame parentFrame) {
@@ -139,8 +152,22 @@ public class TempAbsenceDFrame extends JFrame {
 		contentPane.add(soDienThoaiJtf);
 		
 		soCmtJtf = new InputSuggestion(false) {
-			public List getSuggestions(String textContent) {
-				return (List) null;
+			
+			@Override
+			public List<String> getSuggestions(String textContent) {
+				ArrayList<String> test1= new ArrayList<String>();
+				test1.add("test1");
+				ArrayList<String> test2= new ArrayList<String>();
+				test2.add("test2");
+				ArrayList<String> test3= new ArrayList<String>();
+				test3.add("test3");
+				if(textContent.equals("1")) {
+					return test1;
+				}
+				if(textContent.equals("2")) {
+					return test2;
+				}
+				return test3;
 			}
 		};
 		soCmtJtf.setBounds(200, 11, 284, 30);
