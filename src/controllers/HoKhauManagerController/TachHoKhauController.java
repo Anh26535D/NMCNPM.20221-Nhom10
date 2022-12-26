@@ -26,6 +26,7 @@ import bean.NhanKhauBean;
 import models.ThanhVienCuaHoModel;
 import services.HoKhauService;
 import utility.TableModelHoKhau;
+
 import views.HoKhauManagerFrame.HouseholdSeper;
 import views.infoViews.InfoJframe;
 

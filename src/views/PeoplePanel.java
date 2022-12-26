@@ -1,13 +1,14 @@
 package views;
 
 import controllers.PeoplePanelController;
+import views.PeopleManagerFrame.AddNewPeopleJFrame;
+import views.PeopleManagerFrame.KhaiTuJFrame;
+import views.PeopleManagerFrame.TempAbsenceDFrame;
+import views.PeopleManagerFrame.TempResidenceDFrame;
+
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import views.NhanKhauManagerFrame.AddNewPeopleJFrame;
-import views.NhanKhauManagerFrame.DangKyTamTruJFrame;
-import views.NhanKhauManagerFrame.DangKyTamVangJFrame;
-import views.NhanKhauManagerFrame.KhaiTuJFrame;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import javax.swing.JPanel;
@@ -174,17 +175,17 @@ public class PeoplePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_addNewBtnActionPerformed
 
     private void tamVangBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tamVangBtnActionPerformed
-        DangKyTamVangJFrame dangKyTamVangJFrame = new DangKyTamVangJFrame(this.parentJFrame);
-        dangKyTamVangJFrame.setLocationRelativeTo(null);
-        dangKyTamVangJFrame.setResizable(false);
-        dangKyTamVangJFrame.setVisible(true);
+        TempAbsenceDFrame tempAbsenceDFrame = new TempAbsenceDFrame(this.parentJFrame);
+        tempAbsenceDFrame.setLocationRelativeTo(null);
+        tempAbsenceDFrame.setResizable(false);
+        tempAbsenceDFrame.setVisible(true);
     }//GEN-LAST:event_tamVangBtnActionPerformed
 
     private void tamTruBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tamTruBtnActionPerformed
-        DangKyTamTruJFrame dangKyTamTruJFrame = new DangKyTamTruJFrame(this.parentJFrame);
-        dangKyTamTruJFrame.setLocationRelativeTo(null);
-        dangKyTamTruJFrame.setResizable(false);
-        dangKyTamTruJFrame.setVisible(true);
+        TempResidenceDFrame tempResidenceDFrame = new TempResidenceDFrame(this.parentJFrame);
+        tempResidenceDFrame.setLocationRelativeTo(null);
+        tempResidenceDFrame.setResizable(false);
+        tempResidenceDFrame.setVisible(true);
     }//GEN-LAST:event_tamTruBtnActionPerformed
 
     private void khaiTuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_khaiTuBtnActionPerformed
@@ -195,6 +196,5 @@ public class PeoplePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_khaiTuBtnActionPerformed
     
     private void jtfSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfSearchActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jtfSearchActionPerformed
 }

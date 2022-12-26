@@ -1,4 +1,4 @@
-package views.HoKhauManagerFrame;
+package views.HouseholdManagerFrame;
 
 import bean.NhanKhauBean;
 import controllers.HoKhauManagerController.ChoosePeopleController;

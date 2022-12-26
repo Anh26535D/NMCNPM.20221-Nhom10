@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import controllers.HouseholdPanelController;
+
 import views.HoKhauManagerFrame.ChangeResidence;
 import views.HoKhauManagerFrame.NewHouseholdFrame;
 import views.HoKhauManagerFrame.HouseholdSeper;

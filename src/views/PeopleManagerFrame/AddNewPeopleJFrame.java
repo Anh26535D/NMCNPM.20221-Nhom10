@@ -1,4 +1,4 @@
-package views.NhanKhauManagerFrame;
+package views.PeopleManagerFrame;
 
 import controllers.LoginController;
 import controllers.NhanKhauManagerController.AddNewController;
