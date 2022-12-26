@@ -6,9 +6,10 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import controllers.HouseholdPanelController;
-import views.HouseholdManagerFrame.ChuyenDiNoiKhac;
-import views.HouseholdManagerFrame.NewHouseholdFrame;
-import views.HouseholdManagerFrame.TachHoKhau;
+
+import views.HoKhauManagerFrame.ChangeResidence;
+import views.HoKhauManagerFrame.NewHouseholdFrame;
+import views.HoKhauManagerFrame.HouseholdSeper;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -21,11 +22,8 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 
 public class HouseholdPanel extends JPanel {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	
 	private JFrame parentFrame;
     private HouseholdPanelController controller;
     
@@ -37,9 +35,6 @@ public class HouseholdPanel extends JPanel {
     private JButton themMoiBtn;
     // End of variables declaration//GEN-END:variables
 
-	/**
-	 * Create the panel.
-	 */
 	public HouseholdPanel(JFrame parentFrame) {
 		this.parentFrame = parentFrame;
         init();
@@ -154,11 +149,10 @@ public class HouseholdPanel extends JPanel {
 	}
 	
     private void jtfSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfSearchActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jtfSearchActionPerformed
 
     private void chuyenDiBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chuyenDiBtnActionPerformed
-        ChuyenDiNoiKhac chuyenDiNoiKhac = new ChuyenDiNoiKhac(this.parentFrame);
+        ChangeResidence chuyenDiNoiKhac = new ChangeResidence(this.parentFrame);
         chuyenDiNoiKhac.setLocationRelativeTo(null);
         chuyenDiNoiKhac.setResizable(false);
         chuyenDiNoiKhac.setVisible(true);
@@ -172,7 +166,7 @@ public class HouseholdPanel extends JPanel {
     }//GEN-LAST:event_themMoiBtnActionPerformed
 
     private void tachHoKhauBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tachHoKhauBtnActionPerformed
-        TachHoKhau tachHoKhau = new TachHoKhau(this.parentFrame);
+        HouseholdSeper tachHoKhau = new HouseholdSeper(this.parentFrame);
         tachHoKhau.setLocationRelativeTo(null);
         tachHoKhau.setResizable(false);
         tachHoKhau.setVisible(true);

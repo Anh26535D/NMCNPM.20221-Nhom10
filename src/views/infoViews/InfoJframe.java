@@ -7,7 +7,8 @@ import javax.swing.JPanel;
 
 public class InfoJframe extends javax.swing.JFrame {
 
-    private String content;
+    private static final long serialVersionUID = 1L;
+	private String content;
     private JFrame parentJFrame;
 
     public InfoJframe(String content, JFrame parentJFrame) {

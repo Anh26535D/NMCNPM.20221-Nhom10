@@ -26,7 +26,8 @@ import bean.NhanKhauBean;
 import models.ThanhVienCuaHoModel;
 import services.HoKhauService;
 import utility.TableModelHoKhau;
-import views.HouseholdManagerFrame.TachHoKhau;
+
+import views.HoKhauManagerFrame.HouseholdSeper;
 import views.infoViews.InfoJframe;
 
 /**
@@ -169,7 +170,7 @@ public class TachHoKhauController {
                     hoKhauMoi.getHoKhauModel().setMaHoKhau( maHoKhauMoiJtf.getText().trim());
                     hoKhauMoi.getHoKhauModel().setMaKhuVuc(maKhuVucJtf.getText().trim());
                     hoKhauService.tachHoKhau(hoKhauMoi);
-                    TachHoKhau tachHoKhau = (TachHoKhau)tachHoKhauJFrame;
+                    HouseholdSeper tachHoKhau = (HouseholdSeper)tachHoKhauJFrame;
                     tachHoKhau.getParentJFrame().setEnabled(true);
                     tachHoKhau.dispose();
                 }
