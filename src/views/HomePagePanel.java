@@ -103,7 +103,7 @@ public class HomePagePanel extends JPanel {
 		panel_1_1.setLayout(null);
 		
 		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setIcon(new ImageIcon(HomePagePanel.class.getResource("/Icons/house.png")));
+		lblNewLabel_1.setIcon(new ImageIcon(HomePagePanel.class.getResource("/icons/house.png")));
 		lblNewLabel_1.setBounds(0, 0, 70, 80);
 		panel_1_1.add(lblNewLabel_1);
 		
@@ -150,7 +150,7 @@ public class HomePagePanel extends JPanel {
 		panel_1_2.setLayout(null);
 		
 		JLabel lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setIcon(new ImageIcon(HomePagePanel.class.getResource("/Icons/check-in.png")));
+		lblNewLabel_2.setIcon(new ImageIcon(HomePagePanel.class.getResource("/icons/check-in.png")));
 		lblNewLabel_2.setBounds(0, 0, 70, 80);
 		panel_1_2.add(lblNewLabel_2);
 		
@@ -197,7 +197,7 @@ public class HomePagePanel extends JPanel {
 		panel_1_3.setLayout(null);
 		
 		JLabel lblNewLabel_3 = new JLabel("New label");
-		lblNewLabel_3.setIcon(new ImageIcon(HomePagePanel.class.getResource("/Icons/hotel.png")));
+		lblNewLabel_3.setIcon(new ImageIcon(HomePagePanel.class.getResource("/icons/hotel.png")));
 		lblNewLabel_3.setBounds(0, 0, 70, 80);
 		panel_1_3.add(lblNewLabel_3);
 		
