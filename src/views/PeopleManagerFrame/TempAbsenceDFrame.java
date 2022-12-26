@@ -124,7 +124,7 @@ public class TempAbsenceDFrame extends JFrame {
 
 		availableIcon = new javax.swing.JLabel();
 		availableIcon.setBounds(567, 5, 32, 30);
-		availableIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/checked.png"))); // NOI18N
+		availableIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/checked.png"))); // NOI18N
 		availableIcon.setEnabled(false);
 		panel.add(availableIcon);
 
