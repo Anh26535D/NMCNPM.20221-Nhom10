@@ -1,4 +1,9 @@
-package views.HoKhauManagerFrame;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package views.HouseholdManagerFrame;
 
 import controllers.HoKhauManagerController.TachHoKhauController;
 
@@ -21,11 +26,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class HouseholdSeper extends javax.swing.JFrame {
 
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private TachHoKhauController controller;
+    private TachHoKhauController controller;
     private JFrame parentJFrame;
     /**
      * Creates new form TachHoKhau
@@ -373,9 +374,10 @@ public class HouseholdSeper extends javax.swing.JFrame {
         									.addComponent(tableRigthJtf, GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE))))
         						.addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)))
         				.addGroup(jPanel2Layout.createSequentialGroup()
+        					.addGap(18)
         					.addComponent(jLabel2)
-        					.addGap(51)
-        					.addComponent(searchJtf, GroupLayout.DEFAULT_SIZE, 730, Short.MAX_VALUE)))
+        					.addGap(33)
+        					.addComponent(searchJtf, GroupLayout.PREFERRED_SIZE, 274, GroupLayout.PREFERRED_SIZE)))
         			.addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
