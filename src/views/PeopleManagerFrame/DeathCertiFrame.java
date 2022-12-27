@@ -9,14 +9,14 @@ import javax.swing.JOptionPane;
  *
  * @author Hai
  */
-public class KhaiTuJFrame extends javax.swing.JFrame {
+public class DeathCertiFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form KhaiTuJFrame
      */
     private JFrame parentJFrame = null;
     
-    public KhaiTuJFrame(JFrame parentJFrame) {
+    public DeathCertiFrame(JFrame parentJFrame) {
         initComponents();
         this.parentJFrame = parentJFrame;
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);

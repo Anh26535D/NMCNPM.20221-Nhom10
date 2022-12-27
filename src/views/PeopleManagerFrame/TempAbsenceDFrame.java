@@ -319,9 +319,7 @@ public class TempAbsenceDFrame extends JFrame {
     }//GEN-LAST:event_acceptBtnActionPerformed
 
     private void CancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelBtnActionPerformed
-        if (JOptionPane.showConfirmDialog(null, "Are you sure to close?", "Warning", JOptionPane.OK_CANCEL_OPTION) == 0) {
-            close();
-        }
+        close();
     }//GEN-LAST:event_CancelBtnActionPerformed
 
     // kiem tra su ton tai cua nhan khau trong he thong

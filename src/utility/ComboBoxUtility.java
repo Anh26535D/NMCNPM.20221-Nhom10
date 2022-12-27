@@ -8,19 +8,24 @@ import javax.swing.plaf.basic.ComboPopup;
 import java.awt.*;
 import java.util.Vector;
 
-public class ComboBoxUtility extends JComboBox {
+public class ComboBoxUtility extends JComboBox<Object> {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public ComboBoxUtility(ComboBoxModel aModel) {
+	public ComboBoxUtility(ComboBoxModel<Object> aModel) {
 		super(aModel);
 		setUI(new BasicComboBoxUI() {
 			@Override
 			protected ComboPopup createPopup() {
 				return new BasicComboPopup(comboBox) {
+
+					/**
+					 * 
+					 */
+					private static final long serialVersionUID = 1L;
 
 					@Override
 					protected JScrollPane createScroller() {
@@ -44,6 +49,11 @@ public class ComboBoxUtility extends JComboBox {
 
 							private JButton createZeroButton() {
 								return new JButton() {
+									/**
+									 * 
+									 */
+									private static final long serialVersionUID = 1L;
+
 									@Override
 									public Dimension getMinimumSize() {
 										return new Dimension(new Dimension(0, 0));
@@ -75,6 +85,11 @@ public class ComboBoxUtility extends JComboBox {
 			@Override
 			protected ComboPopup createPopup() {
 				return new BasicComboPopup(comboBox) {
+					/**
+					 * 
+					 */
+					private static final long serialVersionUID = 1L;
+
 					@Override
 					protected JScrollPane createScroller() {
 						JScrollPane scroller = new JScrollPane(list, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
@@ -97,6 +112,11 @@ public class ComboBoxUtility extends JComboBox {
 
 							private JButton createZeroButton() {
 								return new JButton() {
+									/**
+									 * 
+									 */
+									private static final long serialVersionUID = 1L;
+
 									@Override
 									public Dimension getMinimumSize() {
 										return new Dimension(new Dimension(0, 0));
@@ -122,12 +142,17 @@ public class ComboBoxUtility extends JComboBox {
 		setPrototypeDisplayValue("This is Text");
 	}
 
-	public ComboBoxUtility(Vector items) {
+	public ComboBoxUtility(Vector<Object> items) {
 		super(items);
 		setUI(new BasicComboBoxUI() {
 			@Override
 			protected ComboPopup createPopup() {
 				return new BasicComboPopup(comboBox) {
+					/**
+					 * 
+					 */
+					private static final long serialVersionUID = 1L;
+
 					@Override
 					protected JScrollPane createScroller() {
 						JScrollPane scroller = new JScrollPane(list, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
@@ -150,6 +175,11 @@ public class ComboBoxUtility extends JComboBox {
 
 							private JButton createZeroButton() {
 								return new JButton() {
+									/**
+									 * 
+									 */
+									private static final long serialVersionUID = 1L;
+
 									@Override
 									public Dimension getMinimumSize() {
 										return new Dimension(new Dimension(0, 0));

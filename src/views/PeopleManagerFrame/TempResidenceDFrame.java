@@ -219,7 +219,6 @@ public class TempResidenceDFrame extends JFrame {
         this.soCmtJtf.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                // neu keycode == 10 ~ enter
                 if (e.getKeyCode() == 10) {
                     checkCMT(soCmtJtf.getText());
                 }
@@ -258,10 +257,10 @@ public class TempResidenceDFrame extends JFrame {
 	                lyDoTar.setEnabled(true);
 	            } else {
 	                if (JOptionPane.showConfirmDialog(null, "Không tìm thấy người có số CMT: " + soCmtJtf.getText() + ". Thêm mới?", "Confirm", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
-	                    AddNewPeopleJFrame addNewPeopleJFrame = new AddNewPeopleJFrame(this);
-	                    addNewPeopleJFrame.setLocationRelativeTo(null);
-	                    addNewPeopleJFrame.setResizable(false);
-	                    addNewPeopleJFrame.setVisible(true);
+	                    AddNewPeopleFrame addNewPeopleFrame = new AddNewPeopleFrame(this);
+	                    addNewPeopleFrame.setLocationRelativeTo(null);
+	                    addNewPeopleFrame.setResizable(false);
+	                    addNewPeopleFrame.setVisible(true);
 	                }
 	            }
 	        }

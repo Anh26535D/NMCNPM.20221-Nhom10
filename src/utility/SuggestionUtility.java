@@ -13,9 +13,7 @@ import java.util.List;
 import static java.awt.event.KeyEvent.*;
 
 public abstract class SuggestionUtility extends JTextField {
-    /**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private JPopupMenu popupMenu;
     private JList<String> listComp;
@@ -149,7 +147,6 @@ public abstract class SuggestionUtility extends JTextField {
                 popupMenu.setVisible(false);
                 String selectedValue = listComp.getSelectedValue();
                 disableTextEvent = true;
-                System.out.println(selectedValue);
                 this.setText(selectedValue);
                 disableTextEvent = false;
                 e.consume();

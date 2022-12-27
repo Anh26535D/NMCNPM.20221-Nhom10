@@ -1,6 +1,5 @@
 package views.PeopleManagerFrame;
 
-import java.awt.EventQueue;
 import java.util.List;
 
 import javax.swing.JFrame;
@@ -30,8 +29,13 @@ import javax.swing.UIManager;
 import javax.swing.JTextField;
 import java.awt.Color;
 
-public class NewPeopleFrame extends JFrame {
+public class AddNewPeopleFrame extends JFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private int MARGIN_TOP = 20;
 	
 	private PeoplePanelController parentController;
@@ -62,26 +66,52 @@ public class NewPeopleFrame extends JFrame {
 	private SuggestionUtility nguyenQuanTxb;
 	private SuggestionUtility noiThuongTruTxb;
 	private javax.swing.JComboBox<String> gioiTinhCbb;
+	
+    public AddNewPeopleFrame(JFrame parentJFrame) {
+    	init();
+        this.parentController = new PeoplePanelController(){
+            @Override
+            public void refreshData() {
+            }
 
-	public NewPeopleFrame(PeoplePanelController parentController, JFrame parentJFrame) {
+            @Override
+            public void initAction() {
+            }
+        };
+        
+        this.parentFrame = parentJFrame;
+        this.parentFrame.setEnabled(false);
+        this.nhanKhauBean = new NhanKhauBean();
+        controller = new AddNewController();
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                    close();
+            }
+            
+        });
+    }
+
+	public AddNewPeopleFrame(PeoplePanelController parentController, JFrame parentJFrame) {
+        init();
 		this.parentController = parentController;
         this.parentFrame = parentJFrame;
         this.parentFrame.setEnabled(false);
         this.nhanKhauBean = new NhanKhauBean();
         controller = new AddNewController();
         
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                if (JOptionPane.showConfirmDialog(null, "Are you sure to close??", "Warning!!", JOptionPane.YES_NO_OPTION) == 0) {
                     close();
-                }
             }
-            
         });
-		
+	}
+	
+	private void init() {
 		setTitle("Thêm nhân khẩu");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 909, 531);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -90,10 +120,10 @@ public class NewPeopleFrame extends JFrame {
 		contentPane.setLayout(null);
 		
 		nguyenQuanTxb = new SuggestionUtility(false) {
-			
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public List<String> getSuggestions(String textContent) {
-				// TODO Auto-generated method stub
 				return null;
 			}
 		};
@@ -214,8 +244,10 @@ public class NewPeopleFrame extends JFrame {
 		contentPane.add(trinhDoHocVanTxb);
 		
 		noiThuongTruTxb = new SuggestionUtility(false) {
-			public List getSuggestions(String textContent) {
-				return (List) null;
+			private static final long serialVersionUID = 1L;
+
+			public List<String> getSuggestions(String textContent) {
+				return null;
 			}
 		};
 		noiThuongTruTxb.setBounds(140, 216+MARGIN_TOP, 214, 30);
@@ -290,8 +322,13 @@ public class NewPeopleFrame extends JFrame {
 		contentPane.add(tonGiaoTxb);
 		
 		quocTichTxb = new SuggestionUtility(false) {
-			public List getSuggestions(String textContent) {
-				return (List) null;
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			public List<String> getSuggestions(String textContent) {
+				return null;
 			}
 		};
 		quocTichTxb.setBounds(596, 134+MARGIN_TOP, 214, 30);
@@ -303,8 +340,13 @@ public class NewPeopleFrame extends JFrame {
 		contentPane.add(soHoChieuTxb);
 		
 		diaChiHienNayTxb = new SuggestionUtility(false) {
-			public List getSuggestions(String textContent) {
-				return (List) null;
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			public List<String> getSuggestions(String textContent) {
+				return null;
 			}
 		};
 		diaChiHienNayTxb.setBounds(596, 217+MARGIN_TOP, 214, 30);
@@ -358,15 +400,14 @@ public class NewPeopleFrame extends JFrame {
 	}
 	
 	void close() {
-        this.parentFrame.setEnabled(true);
-        dispose();
+		if (JOptionPane.showConfirmDialog(null, "Are you sure to close??", "Warning!!", JOptionPane.YES_NO_OPTION) == 0) {
+	        this.parentFrame.setEnabled(true);
+	        dispose();		
+		}
     }
 	
-    // su kien nhan nut cancel
     private void CancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelBtnActionPerformed
-        if (JOptionPane.showConfirmDialog(null, "Are you sure to close this??","Confirm",JOptionPane.YES_NO_OPTION) == 0) {
-            close();
-        }
+       close();
     }//GEN-LAST:event_CancelBtnActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

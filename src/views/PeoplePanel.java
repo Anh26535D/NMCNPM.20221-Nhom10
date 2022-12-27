@@ -1,8 +1,8 @@
 package views;
 
 import controllers.PeoplePanelController;
-import views.PeopleManagerFrame.AddNewPeopleJFrame;
-import views.PeopleManagerFrame.KhaiTuJFrame;
+import views.PeopleManagerFrame.AddNewPeopleFrame;
+import views.PeopleManagerFrame.DeathCertiFrame;
 import views.PeopleManagerFrame.TempAbsenceDFrame;
 import views.PeopleManagerFrame.TempResidenceDFrame;
 
@@ -168,10 +168,10 @@ public class PeoplePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addNewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewBtnActionPerformed
-        AddNewPeopleJFrame addNewPeopleJFrame = new AddNewPeopleJFrame(this.controller, this.parentJFrame);
-        addNewPeopleJFrame.setLocationRelativeTo(null);
-        addNewPeopleJFrame.setResizable(false);
-        addNewPeopleJFrame.setVisible(true);
+        AddNewPeopleFrame addNewPeopleFrame = new AddNewPeopleFrame(this.controller, this.parentJFrame);
+        addNewPeopleFrame.setLocationRelativeTo(null);
+        addNewPeopleFrame.setResizable(false);
+        addNewPeopleFrame.setVisible(true);
     }//GEN-LAST:event_addNewBtnActionPerformed
 
     private void tamVangBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tamVangBtnActionPerformed
@@ -189,10 +189,10 @@ public class PeoplePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_tamTruBtnActionPerformed
 
     private void khaiTuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_khaiTuBtnActionPerformed
-        KhaiTuJFrame khaiTuJFrame = new KhaiTuJFrame(this.parentJFrame);
-        khaiTuJFrame.setLocationRelativeTo(null);
-        khaiTuJFrame.setResizable(false);
-        khaiTuJFrame.setVisible(true);
+        DeathCertiFrame deathCertiFrame = new DeathCertiFrame(this.parentJFrame);
+        deathCertiFrame.setLocationRelativeTo(null);
+        deathCertiFrame.setResizable(false);
+        deathCertiFrame.setVisible(true);
     }//GEN-LAST:event_khaiTuBtnActionPerformed
     
     private void jtfSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfSearchActionPerformed
