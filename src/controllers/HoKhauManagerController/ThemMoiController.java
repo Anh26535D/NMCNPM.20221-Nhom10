@@ -17,10 +17,6 @@ import bean.NhanKhauBean;
 import services.HoKhauService;
 import utility.TableModelHoKhau;
 
-/**
- *
- * @author Hai
- */
 public class ThemMoiController {
     private NhanKhauBean chuHo;
     private List<MemOfFamily> listThanhVien;
@@ -30,11 +26,6 @@ public class ThemMoiController {
     private final String[] COLUMNS= {"Họ tên", "Ngày sinh", "Quan hệ với chủ hộ"};
     
     
-    /**
-     * 
-     * @param listMember
-     * @param tablePanel 
-     */
     public void setData(List<MemOfFamily> listMember, JPanel tablePanel) {
         DefaultTableModel model_mem = this.tableModelHoKhau.setTableMember(listMember, COLUMNS);
         JTable table_mem = new JTable(model_mem){

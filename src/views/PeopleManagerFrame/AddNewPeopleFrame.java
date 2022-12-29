@@ -7,9 +7,11 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import utility.SuggestionUtility;
+import views.AddressSuggestion;
 import controllers.LoginController;
 import controllers.PeoplePanelController;
 import controllers.NhanKhauManagerController.AddNewController;
+import models.AddressModel;
 import models.ChungMinhThuModel;
 import models.NhanKhauModel;
 
@@ -28,6 +30,8 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.JTextField;
 import java.awt.Color;
+import javax.swing.SwingConstants;
+import java.awt.Font;
 
 public class AddNewPeopleFrame extends JFrame {
 	
@@ -42,7 +46,8 @@ public class AddNewPeopleFrame extends JFrame {
     private JFrame parentFrame;
     private NhanKhauBean nhanKhauBean;
     private AddNewController controller;
-
+    private AddressSuggestion addrSuggestion;
+    private AddressModel addrModel = new AddressModel();
 
 	private JPanel contentPane;
 	private JTextField hoTenTxb;
@@ -67,6 +72,9 @@ public class AddNewPeopleFrame extends JFrame {
 	private SuggestionUtility noiThuongTruTxb;
 	private javax.swing.JComboBox<String> gioiTinhCbb;
 	
+    /**
+     * @wbp.parser.constructor
+     */
     public AddNewPeopleFrame(JFrame parentJFrame) {
     	init();
         this.parentController = new PeoplePanelController(){
@@ -105,7 +113,7 @@ public class AddNewPeopleFrame extends JFrame {
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                    close();
+                close();
             }
         });
 	}
@@ -127,7 +135,8 @@ public class AddNewPeopleFrame extends JFrame {
 				return null;
 			}
 		};
-		nguyenQuanTxb.setBounds(140, 93+MARGIN_TOP, 214, 30);
+		nguyenQuanTxb.setEditable(false);
+		nguyenQuanTxb.setBounds(140, 113, 230, 30);
 		contentPane.add(nguyenQuanTxb);
 		
 		namSinhDateC = new JDateChooser();
@@ -135,30 +144,35 @@ public class AddNewPeopleFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		namSinhDateC.setBounds(140, 52+MARGIN_TOP, 214, 30);
+		namSinhDateC.setBounds(140, 72, 250, 30);
 		contentPane.add(namSinhDateC);
 		
-		JButton btnNewButton = new JButton("New button");
+		JButton btnNewButton = new JButton("+");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				getAddressAction();
 			}
 		});
-		btnNewButton.setBounds(364, 93+MARGIN_TOP, 36, 30);
+		btnNewButton.setBounds(370, 113, 20, 30);
 		contentPane.add(btnNewButton);
 		
 		JLabel lblNewLabel = new JLabel("Họ và tên:");
-		lblNewLabel.setBounds(24, 11+MARGIN_TOP, 65, 30);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel.setBounds(24, 31, 100, 30);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNgyThngNm = new JLabel("Ngày tháng năm sinh:");
+		JLabel lblNgyThngNm = new JLabel("Ngày sinh");
+		lblNgyThngNm.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblNgyThngNm.setBounds(24, 52+MARGIN_TOP, 113, 30);
 		contentPane.add(lblNgyThngNm);
 		
 		JLabel lblNguynQun = new JLabel("Nguyên Quán:");
+		lblNguynQun.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblNguynQun.setBounds(24, 93+MARGIN_TOP, 99, 30);
 		contentPane.add(lblNguynQun);
 		
 		JLabel lblNghNghip = new JLabel("Nghề nghiệp:");
+		lblNghNghip.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblNghNghip.setBounds(24, 339+MARGIN_TOP, 65, 30);
 		contentPane.add(lblNghNghip);
 		
@@ -179,6 +193,7 @@ public class AddNewPeopleFrame extends JFrame {
 		contentPane.add(lblQucTch);
 		
 		JLabel lblNiThngCh = new JLabel("Nơi thường trú:");
+		lblNiThngCh.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblNiThngCh.setBounds(24, 215+MARGIN_TOP, 113, 30);
 		contentPane.add(lblNiThngCh);
 		
@@ -187,10 +202,12 @@ public class AddNewPeopleFrame extends JFrame {
 		contentPane.add(lblTnGio);
 		
 		JLabel lblSCmtcccd = new JLabel("Số CMT/CCCD:");
+		lblSCmtcccd.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblSCmtcccd.setBounds(24, 175+MARGIN_TOP, 113, 30);
 		contentPane.add(lblSCmtcccd);
 		
 		JLabel lblDnTc = new JLabel("Dân tộc:");
+		lblDnTc.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblDnTc.setBounds(24, 134+MARGIN_TOP, 65, 30);
 		contentPane.add(lblDnTc);
 		
@@ -203,6 +220,7 @@ public class AddNewPeopleFrame extends JFrame {
 		contentPane.add(lblaChHin);
 		
 		JLabel lblTrnhHc = new JLabel("Trình độ học vấn:");
+		lblTrnhHc.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblTrnhHc.setBounds(24, 257+MARGIN_TOP, 113, 30);
 		contentPane.add(lblTrnhHc);
 		
@@ -215,27 +233,29 @@ public class AddNewPeopleFrame extends JFrame {
 		contentPane.add(lblNewLabel_5_2);
 		
 		JLabel lblTrnhNgoi = new JLabel("Trình độ ngoại ngữ:");
+		lblTrnhNgoi.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblTrnhNgoi.setBounds(24, 298+MARGIN_TOP, 113, 30);
 		contentPane.add(lblTrnhNgoi);
 		
 		JLabel lblNewLabel_1 = new JLabel("(*)");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setForeground(UIManager.getColor("ToolBar.dockingForeground"));
-		lblNewLabel_1.setBounds(364, 19+MARGIN_TOP, 14, 14);
+		lblNewLabel_1.setBounds(400, 31, 30, 30);
 		contentPane.add(lblNewLabel_1);
 		
 		hoTenTxb = new JTextField();
-		hoTenTxb.setBounds(140, 11+MARGIN_TOP, 214, 30);
+		hoTenTxb.setBounds(140, 30, 250, 30);
 		contentPane.add(hoTenTxb);
 		hoTenTxb.setColumns(10);
 		
 		danTocTxb = new JTextField();
 		danTocTxb.setColumns(10);
-		danTocTxb.setBounds(140, 134+MARGIN_TOP, 214, 30);
+		danTocTxb.setBounds(140, 134+MARGIN_TOP, 250, 30);
 		contentPane.add(danTocTxb);
 		
 		soCMTTxb = new JTextField();
 		soCMTTxb.setColumns(10);
-		soCMTTxb.setBounds(140, 175+MARGIN_TOP, 214, 30);
+		soCMTTxb.setBounds(140, 195, 250, 30);
 		contentPane.add(soCMTTxb);
 		
 		trinhDoHocVanTxb = new JTextField();
@@ -250,11 +270,19 @@ public class AddNewPeopleFrame extends JFrame {
 				return null;
 			}
 		};
-		noiThuongTruTxb.setBounds(140, 216+MARGIN_TOP, 214, 30);
+		noiThuongTruTxb.setEditable(false);
+		noiThuongTruTxb.setBounds(140, 236, 230, 30);
 		contentPane.add(noiThuongTruTxb);
 		
 		JButton btnNewButton_1 = new JButton("New button");
-		btnNewButton_1.setBounds(364, 217+MARGIN_TOP, 36, 30);
+		btnNewButton_1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				getAddressAction();
+			}
+		});
+		btnNewButton_1.setBounds(370, 236, 20, 30);
 		contentPane.add(btnNewButton_1);
 		
 		trinhDoNgoaiNguTxb = new JTextField();
@@ -268,23 +296,27 @@ public class AddNewPeopleFrame extends JFrame {
 		contentPane.add(ngheNghiepTxb);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("(*)");
+		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1.setForeground(Color.RED);
-		lblNewLabel_1_1.setBounds(364, 52+MARGIN_TOP, 14, 14);
+		lblNewLabel_1_1.setBounds(400, 72, 30, 30);
 		contentPane.add(lblNewLabel_1_1);
 		
 		JLabel lblNewLabel_1_1_1 = new JLabel("(*)");
+		lblNewLabel_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1_1.setForeground(Color.RED);
-		lblNewLabel_1_1_1.setBounds(402, 101+MARGIN_TOP, 14, 14);
+		lblNewLabel_1_1_1.setBounds(400, 112, 30, 30);
 		contentPane.add(lblNewLabel_1_1_1);
 		
 		JLabel lblNewLabel_1_1_2 = new JLabel("(*)");
+		lblNewLabel_1_1_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1_2.setForeground(Color.RED);
-		lblNewLabel_1_1_2.setBounds(374, 134+MARGIN_TOP, 14, 14);
+		lblNewLabel_1_1_2.setBounds(400, 154, 30, 30);
 		contentPane.add(lblNewLabel_1_1_2);
 		
 		JLabel lblNewLabel_1_1_3 = new JLabel("(*)");
+		lblNewLabel_1_1_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1_3.setForeground(Color.RED);
-		lblNewLabel_1_1_3.setBounds(364, 184+MARGIN_TOP, 14, 14);
+		lblNewLabel_1_1_3.setBounds(400, 194, 30, 30);
 		contentPane.add(lblNewLabel_1_1_3);
 		
 		JLabel lblNewLabel_1_1_4 = new JLabel("(*)");
@@ -309,6 +341,8 @@ public class AddNewPeopleFrame extends JFrame {
 		
 		gioiTinhCbb = new JComboBox<String>();
 		gioiTinhCbb.setBounds(594, 52+MARGIN_TOP, 99, 30);
+		gioiTinhCbb.addItem("Nam");
+		gioiTinhCbb.addItem("Nữ");
 		contentPane.add(gioiTinhCbb);
 		
 		bietDanhTxb = new JTextField();
@@ -451,7 +485,7 @@ public class AddNewPeopleFrame extends JFrame {
     }
     private void CreateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateBtnActionPerformed
         if (validateValueInForm()) {
-            // tao moi 1 doi tuong nhan khau
+        	
             NhanKhauModel temp = this.nhanKhauBean.getNhanKhauModel();
             ChungMinhThuModel cmt = this.nhanKhauBean.getChungMinhThuModel();
             temp.setBietDanh(bietDanhTxb.getText());
@@ -485,4 +519,14 @@ public class AddNewPeopleFrame extends JFrame {
             }
         }
     }//GEN-LAST:event_CreateBtnActionPerformed
+    
+    private void getAddressAction() {
+		addrSuggestion = new AddressSuggestion(this, addrModel);
+		addrSuggestion.setVisible(true);
+    }
+    
+    public void setNguyenQuanTxb(String address) {
+		nguyenQuanTxb.setText(address);
+	}
+    
 }

@@ -13,7 +13,7 @@ public class SQLConnection {
         return DriverManager.getConnection(url, SQLConnection.userName, SQLConnection.password);
     }
 
-    public static Connection getDbConnection(String serverName, String dbName, String userName, String password) throws SQLException, ClassNotFoundException {
+    public static Connection getDbConnection(String dbName) throws SQLException, ClassNotFoundException {
         String url = "jdbc:sqlserver://" + serverName + ":1433;DatabaseName=" + dbName + ";encrypt=true;trustServerCertificate=true;";
         Connection conn = DriverManager.getConnection(url, userName, password);
         return conn;
