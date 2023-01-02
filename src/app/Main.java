@@ -15,6 +15,6 @@ public class Main {
         }
         LoginFrame loginFrame = new LoginFrame();
         loginFrame.setVisible(true);
-      }  
+      }
 }
 

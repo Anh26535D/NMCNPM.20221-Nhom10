@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package views.HouseholdManagerFrame;
 
 import controllers.HoKhauManagerController.TachHoKhauController;
@@ -28,10 +23,7 @@ public class HouseholdSeper extends javax.swing.JFrame {
 
     private TachHoKhauController controller;
     private JFrame parentJFrame;
-    /**
-     * Creates new form TachHoKhau
-     * @param parentJFrame
-     */
+
     public HouseholdSeper(JFrame parentJFrame) {
         initComponents();
         this.parentJFrame = parentJFrame;

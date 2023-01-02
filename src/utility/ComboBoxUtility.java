@@ -10,9 +10,6 @@ import java.util.Vector;
 
 public class ComboBoxUtility extends JComboBox<Object> {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	public ComboBoxUtility(ComboBoxModel<Object> aModel) {
@@ -21,10 +18,6 @@ public class ComboBoxUtility extends JComboBox<Object> {
 			@Override
 			protected ComboPopup createPopup() {
 				return new BasicComboPopup(comboBox) {
-
-					/**
-					 * 
-					 */
 					private static final long serialVersionUID = 1L;
 
 					@Override
@@ -49,9 +42,6 @@ public class ComboBoxUtility extends JComboBox<Object> {
 
 							private JButton createZeroButton() {
 								return new JButton() {
-									/**
-									 * 
-									 */
 									private static final long serialVersionUID = 1L;
 
 									@Override
@@ -85,9 +75,6 @@ public class ComboBoxUtility extends JComboBox<Object> {
 			@Override
 			protected ComboPopup createPopup() {
 				return new BasicComboPopup(comboBox) {
-					/**
-					 * 
-					 */
 					private static final long serialVersionUID = 1L;
 
 					@Override
