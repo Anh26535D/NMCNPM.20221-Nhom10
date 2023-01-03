@@ -71,10 +71,11 @@ public class NewHouseholdFrame extends JFrame {
 		this.setResizable(false);
 		this.setTitle("Hộ khẩu mới");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setBounds(350, 200, 700, 800);
+		this.setBounds(350, 200, 699, 786);
 		this.setLocationRelativeTo(null);
 
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -82,7 +83,7 @@ public class NewHouseholdFrame extends JFrame {
 		
 		JPanel jPanel2 = new JPanel();
 		jPanel2.setBackground(new Color(230, 230, 250));
-		jPanel2.setBounds(0, 0, 676, 753);
+		jPanel2.setBounds(0, 0, 684, 762);
 		contentPane.add(jPanel2);
 		jPanel2.setLayout(null);
 		

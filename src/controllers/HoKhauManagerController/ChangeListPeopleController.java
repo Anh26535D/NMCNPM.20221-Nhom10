@@ -1,6 +1,7 @@
 package controllers.HoKhauManagerController;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
@@ -16,6 +17,7 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 import bean.MemOfFamily;
 import bean.NhanKhauBean;
@@ -39,17 +41,7 @@ public class ChangeListPeopleController {
     private final String[] COLUMNS_2= {"Họ tên", "Ngày sinh", "Quan hệ với chủ hộ"};
     private NhanKhauBean peopleSelected;
     private MemOfFamily memSelected;
-    
-    /**
-     * Create Controller of ChangeListPeopleJframe
-     * 
-     * @param listMember
-     * @param addBtn
-     * @param removeBtn
-     * @param searchJtf
-     * @param peopleJpn
-     * @param memJpn
-     */
+
     public ChangeListPeopleController(List<MemOfFamily> listMember, JButton addBtn, JButton removeBtn, JTextField searchJtf, JPanel peopleJpn, JPanel memJpn) {
         this.listMember = listMember;
         this.listPeople = nhanKhauService.getListNhanKhau();
@@ -137,7 +129,7 @@ public class ChangeListPeopleController {
     
     public void setData() {
         DefaultTableModel model_people = this.tableModelHoKhau.setTableNhanKhau(listPeople, COLUMNS_1);
-        JTable table_people = new JTable(model_people){
+        JTable table = new JTable(model_people){
             @Override
             public boolean editCellAt(int row, int column, EventObject e) {
                 return false;   //To change body of generated methods, choose Tools | Templates.
@@ -152,47 +144,56 @@ public class ChangeListPeopleController {
             }
         };
         // thiet ke bang
+        //Set style for table header
+        JTableHeader header  = table.getTableHeader();
+        header.setReorderingAllowed(false);
+        header.setResizingAllowed(false);
+        header.setFont(new Font("Tahoma", Font.BOLD, 15));
+        header.setOpaque(false);
+        header.setBackground(new Color(230, 230, 255));
+        header.setForeground(Color.black);
+        header.setPreferredSize(new Dimension(100, 30));
         
-        table_people.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
-        table_people.getTableHeader().setPreferredSize(new Dimension(100, 30));
-        table_people.setRowHeight(30);
-        table_people.validate();
-        table_people.repaint();
-        table_people.setFont(new Font("Arial", Font.PLAIN, 14));
-        table_people.addMouseListener(new MouseAdapter() {
+        //Set style for table content
+        table.setRowHeight(30);
+        table.validate();
+        table.repaint();
+        table.setFont(new Font("Tahoma", Font.BOLD, 15));
+        
+        
+        table.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
 //                JOptionPane.showConfirmDialog(null, table.getSelectedRow());
-                peopleSelected = listPeople.get(table_people.getSelectedRow());
+                peopleSelected = listPeople.get(table.getSelectedRow());
             }
             
         });
         
-        table_mem.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
-        table_mem.getTableHeader().setPreferredSize(new Dimension(100, 30));
-        table_mem.setRowHeight(30);
-        table_mem.validate();
-        table_mem.repaint();
-        table_mem.setFont(new Font("Arial", Font.PLAIN, 14));
-        table_mem.addMouseListener(new MouseAdapter() {
+      
+        table.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
 //                JOptionPane.showConfirmDialog(null, table.getSelectedRow());
-                memSelected = listMember.get(table_mem.getSelectedRow());
+                memSelected = listMember.get(table.getSelectedRow());
             }
             
         });
         
         JScrollPane scroll_1 = new JScrollPane();
-        scroll_1.getViewport().add(table_people);
+        scroll_1.getViewport().add(table);
+        scroll_1.getViewport().setBackground(Color.white);
         peopleJpn.removeAll();
         peopleJpn.setLayout(new BorderLayout());
         peopleJpn.add(scroll_1);
         peopleJpn.validate();
         peopleJpn.repaint();
+
+
         
         JScrollPane scroll_2 = new JScrollPane();
-        scroll_2.getViewport().add(table_mem);
+        scroll_2.getViewport().add(table);
+        scroll_2.getViewport().setBackground(Color.white);
         memJpn.removeAll();
         memJpn.setLayout(new BorderLayout());
         memJpn.add(scroll_2);

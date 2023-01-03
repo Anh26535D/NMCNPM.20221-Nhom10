@@ -1,6 +1,7 @@
 package controllers.HoKhauManagerController;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
@@ -15,6 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 import bean.NhanKhauBean;
 import services.HoKhauService;
@@ -87,12 +89,6 @@ public class ChoosePeopleController {
             }
         };
         
-        table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
-        table.getTableHeader().setPreferredSize(new Dimension(100, 30));
-        table.setRowHeight(30);
-        table.validate();
-        table.repaint();
-        table.setFont(new Font("Arial", Font.PLAIN, 14));
         table.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -112,9 +108,26 @@ public class ChoosePeopleController {
                 }
             }
         });
+        //Set style for table header
+        JTableHeader header = table.getTableHeader();
+        header.setReorderingAllowed(false);
+        header.setResizingAllowed(false);
+        header.setFont(new Font("Tahoma", Font.BOLD, 15));
+        header.setOpaque(false);
+        header.setBackground(new Color(230, 230, 255));
+        header.setForeground(Color.black);
+        header.setPreferredSize(new Dimension(100, 30));
+        
+        //Set style for table content
+        table.setRowHeight(30);
+        table.validate();
+        table.repaint();
+        table.setFont(new Font("Tahoma", Font.BOLD, 15));
+        
         
         JScrollPane scroll = new JScrollPane();
         scroll.getViewport().add(table);
+        scroll.getViewport().setBackground(Color.white);
         tableJPanel.removeAll();
         tableJPanel.setLayout(new BorderLayout());
         tableJPanel.add(scroll);

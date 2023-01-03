@@ -2,10 +2,10 @@ package views;
 
 import controllers.PeoplePanelController;
 import javax.swing.JFrame;
-import views.NhanKhauManagerFrame.AddNewPeopleJFrame;
-import views.NhanKhauManagerFrame.DangKyTamTruJFrame;
-import views.NhanKhauManagerFrame.DangKyTamVangJFrame;
-import views.NhanKhauManagerFrame.KhaiTuJFrame;
+import views.NhanKhauManagerFrame.NewPeopleJFrame;
+import views.NhanKhauManagerFrame.TempResidenceDFrame;
+import views.NhanKhauManagerFrame.TempAbsenceDFrame;
+import views.NhanKhauManagerFrame.DeathCertiFrame;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import javax.swing.JPanel;
@@ -163,28 +163,28 @@ public class PeoplePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addNewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewBtnActionPerformed
-        AddNewPeopleJFrame addNewPeopleJFrame = new AddNewPeopleJFrame(this.controller, this.parentJFrame);
+        NewPeopleJFrame addNewPeopleJFrame = new NewPeopleJFrame(this.controller, this.parentJFrame);
         addNewPeopleJFrame.setLocationRelativeTo(null);
         addNewPeopleJFrame.setResizable(false);
         addNewPeopleJFrame.setVisible(true);
     }//GEN-LAST:event_addNewBtnActionPerformed
 
     private void tamVangBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tamVangBtnActionPerformed
-        DangKyTamVangJFrame dangKyTamVangJFrame = new DangKyTamVangJFrame(this.parentJFrame);
+    	TempResidenceDFrame dangKyTamVangJFrame = new TempResidenceDFrame(this.parentJFrame);
         dangKyTamVangJFrame.setLocationRelativeTo(null);
         dangKyTamVangJFrame.setResizable(false);
         dangKyTamVangJFrame.setVisible(true);
     }//GEN-LAST:event_tamVangBtnActionPerformed
 
     private void tamTruBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tamTruBtnActionPerformed
-        DangKyTamTruJFrame dangKyTamTruJFrame = new DangKyTamTruJFrame(this.parentJFrame);
+    	TempAbsenceDFrame dangKyTamTruJFrame = new TempAbsenceDFrame(this.parentJFrame);
         dangKyTamTruJFrame.setLocationRelativeTo(null);
         dangKyTamTruJFrame.setResizable(false);
         dangKyTamTruJFrame.setVisible(true);
     }//GEN-LAST:event_tamTruBtnActionPerformed
 
     private void khaiTuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_khaiTuBtnActionPerformed
-        KhaiTuJFrame khaiTuJFrame = new KhaiTuJFrame(this.parentJFrame);
+    	DeathCertiFrame khaiTuJFrame = new DeathCertiFrame(this.parentJFrame);
         khaiTuJFrame.setLocationRelativeTo(null);
         khaiTuJFrame.setResizable(false);
         khaiTuJFrame.setVisible(true);

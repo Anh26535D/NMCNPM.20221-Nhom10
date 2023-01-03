@@ -1,6 +1,8 @@
 package controllers.HoKhauManagerController;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
@@ -14,15 +16,14 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableCellRenderer;
 
 import bean.HoKhauBean;
 import services.HoKhauService;
 import utility.TableModelHoKhau;
 
-/**
- *
- * @author Hai
- */
+
 public class ChuyenDiNoiKhacController {
     private HoKhauBean hoKhauBean;
     private final HoKhauService hoKhauService = new HoKhauService();
@@ -92,20 +93,27 @@ public class ChuyenDiNoiKhacController {
     
     public void setData() {
         DefaultTableModel model = tableModelHoKhau.setTableHoKhau(list, COLUNMS);
-        
         JTable table = new JTable(model) {
-            @Override
+            
+			private static final long serialVersionUID = 1L;
+
+			@Override
             public boolean editCellAt(int row, int column, EventObject e) {
                 return false;
             }
+			
+            @Override
+	        public Component prepareRenderer(TableCellRenderer renderer,int row,int column){
+	            Component comp=super.prepareRenderer(renderer,row, column);
+	           int modelRow=convertRowIndexToModel(row);
+	           if(!isRowSelected(modelRow))
+	               comp.setBackground(Color.WHITE);
+	           else
+	               comp.setBackground(new Color(102, 102, 255));
+	           return comp;
+	        }
             
         };
-        table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
-        table.getTableHeader().setPreferredSize(new Dimension(100, 30));
-        table.setRowHeight(30);
-        table.validate();
-        table.repaint();
-        table.setFont(new Font("Arial", Font.PLAIN, 14));
         
         table.addMouseListener(new MouseAdapter() {
             @Override
@@ -120,13 +128,32 @@ public class ChuyenDiNoiKhacController {
                 tenChuHoJtf.setText(hoKhauBean.getChuHo().getHoTen());
                 maKhuVucJtf.setText(hoKhauBean.getHoKhauModel().getMaKhuVuc());
                 diaChiJtf.setText(hoKhauBean.getHoKhauModel().getDiaChi());
-                System.out.println(hoKhauBean.getHoKhauModel().getMaKhuVuc());
             }
             
         });
         
+      //Set style for table header
+        JTableHeader header = table.getTableHeader();
+        header.setReorderingAllowed(false);
+        header.setResizingAllowed(false);
+        header.setFont(new Font("Tahoma", Font.BOLD, 15));
+        header.setOpaque(false);
+        header.setBackground(new Color(230, 230, 255));
+        header.setForeground(Color.black);
+        header.setPreferredSize(new Dimension(100, 30));
+        
+        //Set style for table content
+        table.setRowHeight(30);
+        table.validate();
+        table.repaint();
+        table.setFont(new Font("Tahoma", Font.BOLD, 15));
+        
+
+        
         JScrollPane scroll = new JScrollPane();
         scroll.getViewport().add(table);
+        scroll.getViewport().setBackground(Color.white);
+     
         tableJpn.removeAll();
         tableJpn.setLayout(new BorderLayout());
         tableJpn.add(scroll);
