@@ -18,7 +18,7 @@ import models.NhanKhauModel;
 import models.ThanhVienCuaHoModel;
 
 public class HoKhauService {
-    // them moi ho khau
+
     public boolean addNew(HoKhauBean hoKhauBean) throws ClassNotFoundException, SQLException{
         Connection connection = SQLConnection.getDbConnection();
         String query = "INSERT INTO ho_khau(maHoKhau, idChuHo, maKhuVuc, diaChi, ngayLap)" 

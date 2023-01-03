@@ -1,4 +1,4 @@
-package views.HoKhauManagerFrame;
+package views.HouseholdManagerFrame;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -49,9 +49,6 @@ public class NewHouseholdFrame extends JFrame {
     private final HoKhauBean hoKhauBean = new HoKhauBean();
 
 
-	/**
-	 * Create the frame.
-	 */
 	public NewHouseholdFrame(JFrame parentJFrame) {
 		init();
 		this.parentJFrame = parentJFrame;

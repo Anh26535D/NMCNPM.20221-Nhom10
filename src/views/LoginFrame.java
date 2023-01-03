@@ -135,7 +135,6 @@ public class LoginFrame extends JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Sai thong tin dang nhap", "Warning", JOptionPane.WARNING_MESSAGE);
             }
         } catch (SQLException | ClassNotFoundException e) {
-        	e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Có lỗi xảy ra!! Vui lòng kiểm tra lại!", "Warning!!", JOptionPane.ERROR_MESSAGE);
         }
 	}

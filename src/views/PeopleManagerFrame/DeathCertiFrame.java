@@ -1,4 +1,4 @@
-package views.NhanKhauManagerFrame;
+package views.PeopleManagerFrame;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -9,14 +9,14 @@ import javax.swing.JOptionPane;
  *
  * @author Hai
  */
-public class KhaiTuJFrame extends javax.swing.JFrame {
+public class DeathCertiFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form KhaiTuJFrame
      */
     private JFrame parentJFrame = null;
     
-    public KhaiTuJFrame(JFrame parentJFrame) {
+    public DeathCertiFrame(JFrame parentJFrame) {
         initComponents();
         this.parentJFrame = parentJFrame;
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -122,7 +122,7 @@ public class KhaiTuJFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/checked.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/checked.png"))); // NOI18N
         jLabel3.setEnabled(false);
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -138,7 +138,7 @@ public class KhaiTuJFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/checked.png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/checked.png"))); // NOI18N
         jLabel8.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

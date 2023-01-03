@@ -22,17 +22,13 @@ import javax.swing.table.TableModel;
 
 import bean.HoKhauBean;
 import bean.MemOfFamily;
-import bean.NhanKhauBean;
 import models.ThanhVienCuaHoModel;
 import services.HoKhauService;
 import utility.TableModelHoKhau;
-import views.HoKhauManagerFrame.HouseholdSeper;
+
+import views.HouseholdManagerFrame.HouseholdSeper;
 import views.infoViews.InfoJframe;
 
-/**
- *
- * @author Hai
- */
 public class TachHoKhauController {
     private JTextField searchJtf;
     private JPanel tableTopJpn;

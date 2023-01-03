@@ -1,4 +1,4 @@
-package views.NhanKhauManagerFrame;
+package views.PeopleManagerFrame;
 
 import controllers.NhanKhauManagerController.TieuSuController;
 import java.awt.event.WindowAdapter;
@@ -12,7 +12,7 @@ import bean.NhanKhauBean;
  *
  * @author Hai
  */
-public class TieuSuJFrame extends javax.swing.JFrame {
+public class ProfileJFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form TieuSuJFrame
@@ -21,7 +21,7 @@ public class TieuSuJFrame extends javax.swing.JFrame {
     private NhanKhauBean nhanKhauBean;
     private TieuSuController controller;
     
-    public TieuSuJFrame(JFrame parentFrame, NhanKhauBean nhanKhauBean) {
+    public ProfileJFrame(JFrame parentFrame, NhanKhauBean nhanKhauBean) {
         initComponents();
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.parentFrame = parentFrame;
