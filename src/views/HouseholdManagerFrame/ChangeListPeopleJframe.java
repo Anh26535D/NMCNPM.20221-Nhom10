@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package views.HouseholdManagerFrame;
 
 import controllers.HoKhauManagerController.ChangeListPeopleController;
@@ -30,25 +25,13 @@ import java.awt.event.FocusListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 
-/**
- *
- * @author Hai
- */
 public class ChangeListPeopleJframe extends javax.swing.JFrame {
 
-    /**
-     *     public ChangeListPeopleController(List<MemOfFamily> listMember, JButton addBtn, JButton removeBtn, JTextField searchJtf, JPanel peopleJpn, JPanel memJpn) {
-     */
     private List<MemOfFamily> listMember;
     private List<MemOfFamily> listMemberTemp;
     private ChangeListPeopleController controller;
     private JFrame parentJframe;
     
-    /**
-     * Creates new form ChangeListPeopleJframe
-     * @param listMember
-     * @param parentJFrame
-     */
     public ChangeListPeopleJframe(List<MemOfFamily> listMember, JFrame parentJFrame) {
         initComponents();
         this.listMember = listMember;

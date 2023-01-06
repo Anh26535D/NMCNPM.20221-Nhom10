@@ -6,6 +6,7 @@ import javax.swing.border.EmptyBorder;
 
 import controllers.AddressController;
 import models.AddressModel;
+import utility.ComboBoxSuggestion;
 import utility.SuggestionUtility;
 import views.PeopleManagerFrame.AddNewPeopleFrame;
 
@@ -16,7 +17,9 @@ import javax.swing.JOptionPane;
 
 import java.awt.Font;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -32,7 +35,8 @@ public class AddressSuggestion extends JFrame {
 	private JFrame parentFrame;
 	private JPanel contentPane;
 	private JTextField houseJtf;
-	private JTextField wardJtf;
+//	private JTextField wardJtf;
+	private JComboBox wardJtf;
 	private JTextField districtJtf;
 	private JTextField provinceJtf;
 
@@ -95,18 +99,22 @@ public class AddressSuggestion extends JFrame {
 		panel_1_1.setBounds(10, 100, 666, 60);
 		panel.add(panel_1_1);
 
-		wardJtf = new SuggestionUtility(false) {
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public List<String> getSuggestions(String textContent) {
-				List<String> list = addrController.searchByWard(textContent);
-				return list;
-			}
-		};
-
+//		wardJtf = new SuggestionUtility(false) {
+//			private static final long serialVersionUID = 1L;
+//
+//			@Override
+//			public List<String> getSuggestions(String textContent) {
+//				List<String> list = addrController.searchByWard(textContent);
+//				return list;
+//			}
+//		};
+//
+//		wardJtf.setFont(new Font("Tahoma", Font.PLAIN, 15));
+//		wardJtf.setBounds(157, 10, 499, 41);
+		wardJtf = new ComboBoxSuggestion<String>();
 		wardJtf.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		wardJtf.setBounds(157, 10, 499, 41);
+		wardJtf.setModel(new DefaultComboBoxModel<String>(addrController.getWards().toArray(new String[0])));
 		panel_1_1.add(wardJtf);
 
 		JLabel lblX = new JLabel("Xã, phường");
@@ -221,17 +229,17 @@ public class AddressSuggestion extends JFrame {
 	private void cancelAction() {
 		houseJtf.setText("");
 		houseJtf.requestFocus();
-		wardJtf.setText("");
+		((JTextField)wardJtf.getEditor()).setText("");
 		districtJtf.setText("");
 		provinceJtf.setText("");
 	}
 
 	private void acceptAction() {
-		if (wardJtf.getText().isEmpty() || districtJtf.getText().isEmpty() || provinceJtf.getText().isEmpty()) {
+		if (((JTextField)wardJtf.getEditor()).getText().isEmpty() || districtJtf.getText().isEmpty() || provinceJtf.getText().isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Bạn cần nhập đầy đủ địa chỉ");
 		} else {
 			addrModel.setHouse_no(houseJtf.getText());
-			addrModel.setWard(wardJtf.getText());
+			addrModel.setWard(((JTextField)wardJtf.getEditor()).getText());
 			addrModel.setDistrict(districtJtf.getText());
 			addrModel.setProvince(provinceJtf.getText());
 			AddNewPeopleFrame parent = (AddNewPeopleFrame) parentFrame;

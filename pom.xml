@@ -38,6 +38,12 @@
 			<artifactId>mssql-jdbc</artifactId>
 			<version>11.2.0.jre11</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.swinglabs</groupId>
+			<artifactId>swingx</artifactId>
+			<version>1.6.1</version>
+		</dependency>
 	</dependencies>
 
 

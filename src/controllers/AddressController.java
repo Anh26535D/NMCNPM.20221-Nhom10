@@ -12,6 +12,10 @@ public class AddressController {
        return addrService.searchByWard(key);
 	}
 	
+	public List<String> getWards(){
+		return addrService.getWards();
+	}
+	
 	public List<String> searchByDistrict(String key){
 	    return addrService.searchByDistrict(key);
 	}
