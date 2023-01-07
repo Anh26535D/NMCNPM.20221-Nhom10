@@ -10,9 +10,7 @@ public class Main {
     
     public static void main(String[] args){
         try {
-            //Cac Anh/Chi
-           // UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            // Hieu
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 
         } catch (Exception e) {
         }

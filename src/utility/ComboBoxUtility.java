@@ -262,6 +262,9 @@ public class ComboBoxUtility extends JComboBox<Object> {
 	}
 
 	public String getSelection() {
+		if (this.getSelectedIndex() == -1) {
+			return "";
+		}
 		return this.getItemAt(this.getSelectedIndex()).toString();
 	}
 }

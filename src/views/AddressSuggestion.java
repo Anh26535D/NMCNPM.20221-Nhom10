@@ -237,9 +237,10 @@ public class AddressSuggestion extends JFrame {
 			addrModel.setWard(wardJtf.getSelection());
 			addrModel.setDistrict(districtJtf.getSelection());
 			addrModel.setProvince(provinceJtf.getSelection());
-			NewPeopleFrame parent = (NewPeopleFrame) parentFrame;
-			parent.setNguyenQuanTxb(addrModel.getAddress());
+//			NewPeopleFrame parent = (NewPeopleFrame) parentFrame;
+			
 			close();
+			
 		}
 	}
 }
