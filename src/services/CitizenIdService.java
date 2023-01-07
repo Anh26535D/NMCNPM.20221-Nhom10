@@ -14,7 +14,7 @@ public class CitizenIdService {
 	        List<String> list = new ArrayList<>();
 	        try {
 	            Connection connection = SQLConnection.getDbConnection();
-	            String query = "SELECT soCMT FROM chung_minh_thu";
+	            String query = "SELECT TOP 10 soCMT FROM chung_minh_thu";
 	            PreparedStatement preparedStatement = connection.prepareStatement(query);
 	            ResultSet rs = preparedStatement.executeQuery();
 	            while (rs.next()){
@@ -37,7 +37,7 @@ public class CitizenIdService {
         
         try {
             Connection connection = SQLConnection.getDbConnection();
-            String query = "SELECT soCMT FROM chung_minh_thu "
+            String query = "SELECT TOP 10 soCMT FROM chung_minh_thu "
             	      + "WHERE soCMT LIKE('" + keyword + "%')";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();

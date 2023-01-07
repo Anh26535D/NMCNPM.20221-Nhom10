@@ -66,6 +66,8 @@ public abstract class SuggestionUtility extends JTextField {
         popupMenu = new JPopupMenu();
         listModel = new DefaultListModel<>();
         listComp = new JList<>(listModel);
+        listComp.setFont(new Font("Tohama", 0, 12));
+        listComp.setBounds(0, 0, 500, 500);
         listComp.setBorder(BorderFactory.createEmptyBorder(0, 2, 5, 2));
         listComp.setFocusable(false);
         popupMenu.setFocusable(false);

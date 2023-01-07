@@ -30,7 +30,7 @@ import java.util.List;
 import javax.swing.JComboBox;
 import utility.ComboBoxUtility;
 
-public class AddressSuggestion extends JFrame {
+public abstract class AddressSuggestion extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JFrame parentFrame;
@@ -42,6 +42,8 @@ public class AddressSuggestion extends JFrame {
 
 	private AddressModel addrModel;
 	private AddressController addrController;
+
+	private String Address;
 
 	public AddressSuggestion(JFrame parentFrame, AddressModel addrModel) {
 		this.addrController = new AddressController();
@@ -223,6 +225,7 @@ public class AddressSuggestion extends JFrame {
 	private void cancelAction() {
 		houseJtf.setText("");
 		houseJtf.requestFocus();
+		provinceJtf.setSelectedItem(null);
 		wardJtf.removeAllItems();
 		districtJtf.removeAllItems();
 		wardJtf.setEnabled(false);
@@ -234,13 +237,21 @@ public class AddressSuggestion extends JFrame {
 			JOptionPane.showMessageDialog(null, "Bạn cần nhập đầy đủ địa chỉ");
 		} else {
 			addrModel.setHouse_no(houseJtf.getText());
+
 			addrModel.setWard(wardJtf.getSelection());
 			addrModel.setDistrict(districtJtf.getSelection());
 			addrModel.setProvince(provinceJtf.getSelection());
-//			NewPeopleFrame parent = (NewPeopleFrame) parentFrame;
-			
+
+			this.Address=addrModel.getAddress();
+			this.emmitToParent();
 			close();
 			
 		}
+	}
+
+	public abstract void emmitToParent();
+
+	public String getAddress() {
+		return Address;
 	}
 }

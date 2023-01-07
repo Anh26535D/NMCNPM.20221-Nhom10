@@ -72,7 +72,13 @@ public class NewPeopleFrame extends JFrame {
 	private SuggestionUtility noiThuongTruTxb;
 	private javax.swing.JComboBox<String> gioiTinhCbb;
 	private JButton thuongTruBtn;
+
+
+	private JTextField JtxReceiveAddress;
 	
+    /**
+     * @wbp.parser.constructor
+     */
     public NewPeopleFrame(JFrame parentJFrame) {
     	init();
         this.parentController = new PeoplePanelController(){
@@ -108,6 +114,7 @@ public class NewPeopleFrame extends JFrame {
         controller = new AddNewController();
         
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -120,10 +127,18 @@ public class NewPeopleFrame extends JFrame {
 		setTitle("Thêm nhân khẩu");
 		setBounds(100, 100, 909, 531);
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
+		contentPane.setBackground(new Color(255, 255, 255));
+		contentPane.setBounds(5,5,1100,1100);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		JPanel  jPanel1 = new JPanel();
+		jPanel1.setBackground(new Color(240, 248, 255));
+		jPanel1.setBounds(10,10,875,474);
+		jPanel1.setLayout(null);
+		contentPane.add(jPanel1);
+		
 		
 		nguyenQuanTxb = new SuggestionUtility(false) {
 			private static final long serialVersionUID = 1L;
@@ -134,132 +149,149 @@ public class NewPeopleFrame extends JFrame {
 			}
 		};
 		nguyenQuanTxb.setEditable(false);
-		nguyenQuanTxb.setBounds(140, 113, 230, 30);
-		contentPane.add(nguyenQuanTxb);
+		nguyenQuanTxb.setBounds(150, 113, 220, 30);
+		jPanel1.add(nguyenQuanTxb);
 		
 		namSinhDateC = new JDateChooser();
 		namSinhDateC.getCalendarButton().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		namSinhDateC.setBounds(140, 72, 250, 30);
-		contentPane.add(namSinhDateC);
-		
-		JButton nguyenQuanBtn = new JButton("Nguyen Quan");
+		namSinhDateC.setBounds(150, 72, 240, 30);
+		jPanel1.add(namSinhDateC);
+
+		JButton nguyenQuanBtn = new JButton("+");
+
 		nguyenQuanBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				nguyenQuanTxb.setText(getAddressAction());
+				JtxReceiveAddress=nguyenQuanTxb;
+				getAddressAction();
+
 			}
 		});
 		nguyenQuanBtn.setBounds(370, 113, 20, 30);
-		contentPane.add(nguyenQuanBtn);
+    
+		jPanel1.add(nguyenQuanBtn);
 		
 		JLabel lblNewLabel = new JLabel("Họ và tên:");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNewLabel.setBounds(24, 31, 100, 30);
-		contentPane.add(lblNewLabel);
+		jPanel1.add(lblNewLabel);
 		
 		JLabel lblNgyThngNm = new JLabel("Ngày sinh");
-		lblNgyThngNm.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNgyThngNm.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNgyThngNm.setBounds(24, 52+MARGIN_TOP, 113, 30);
-		contentPane.add(lblNgyThngNm);
+		jPanel1.add(lblNgyThngNm);
 		
 		JLabel lblNguynQun = new JLabel("Nguyên Quán:");
-		lblNguynQun.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNguynQun.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNguynQun.setBounds(24, 93+MARGIN_TOP, 99, 30);
-		contentPane.add(lblNguynQun);
+		jPanel1.add(lblNguynQun);
 		
 		JLabel lblNghNghip = new JLabel("Nghề nghiệp:");
-		lblNghNghip.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNghNghip.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNghNghip.setBounds(24, 359, 100, 30);
-		contentPane.add(lblNghNghip);
+		jPanel1.add(lblNghNghip);
 		
 		JLabel lblChiuS = new JLabel("Hộ chiếu số");
-		lblChiuS.setBounds(466, 175+MARGIN_TOP, 65, 30);
-		contentPane.add(lblChiuS);
+		lblChiuS.setBounds(466, 195, 85, 30);
+		lblChiuS.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		jPanel1.add(lblChiuS);
 		
 		JLabel lblNiLmVic = new JLabel("Nơi làm việc:");
-		lblNiLmVic.setBounds(466, 339+MARGIN_TOP, 65, 30);
-		contentPane.add(lblNiLmVic);
+		lblNiLmVic.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNiLmVic.setBounds(466, 359, 127, 30);
+		jPanel1.add(lblNiLmVic);
 		
 		JLabel lblGiiTnh = new JLabel("Giới tính:");
-		lblGiiTnh.setBounds(466, 52+MARGIN_TOP, 65, 30);
-		contentPane.add(lblGiiTnh);
+		lblGiiTnh.setBounds(466, 72, 65, 30);
+		lblGiiTnh.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		jPanel1.add(lblGiiTnh);
 		
 		JLabel lblQucTch = new JLabel("Quốc tịch:");
-		lblQucTch.setBounds(466, 134+MARGIN_TOP, 65, 30);
-		contentPane.add(lblQucTch);
+		lblQucTch.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblQucTch.setBounds(466, 154, 65, 30);
+		jPanel1.add(lblQucTch);
 		
 		JLabel lblNiThngCh = new JLabel("Nơi thường trú:");
-		lblNiThngCh.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNiThngCh.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNiThngCh.setBounds(24, 215+MARGIN_TOP, 113, 30);
-		contentPane.add(lblNiThngCh);
+		jPanel1.add(lblNiThngCh);
 		
 		JLabel lblTnGio = new JLabel("Tôn giáo:");
-		lblTnGio.setBounds(466, 93+MARGIN_TOP, 65, 30);
-		contentPane.add(lblTnGio);
+		lblTnGio.setBounds(466, 113, 65, 30);
+		lblTnGio.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		jPanel1.add(lblTnGio);
 		
 		JLabel lblSCmtcccd = new JLabel("Số CMT/CCCD:");
-		lblSCmtcccd.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblSCmtcccd.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblSCmtcccd.setBounds(24, 175+MARGIN_TOP, 113, 30);
-		contentPane.add(lblSCmtcccd);
+		jPanel1.add(lblSCmtcccd);
 		
 		JLabel lblDnTc = new JLabel("Dân tộc:");
-		lblDnTc.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblDnTc.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblDnTc.setBounds(24, 134+MARGIN_TOP, 65, 30);
-		contentPane.add(lblDnTc);
+		jPanel1.add(lblDnTc);
 		
 		JLabel lblBitDanh = new JLabel("Biệt danh:");
-		lblBitDanh.setBounds(466, 11+MARGIN_TOP, 65, 30);
-		contentPane.add(lblBitDanh);
+		lblBitDanh.setBounds(466, 31, 83, 30);
+		lblBitDanh.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		jPanel1.add(lblBitDanh);
 		
 		JLabel lblaChHin = new JLabel("Địa chỉ hiện tại:");
-		lblaChHin.setBounds(466, 216+MARGIN_TOP, 93, 30);
-		contentPane.add(lblaChHin);
+		lblaChHin.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblaChHin.setBounds(466, 235, 113, 30);
+		jPanel1.add(lblaChHin);
 		
 		JLabel lblTrnhHc = new JLabel("Trình độ học vấn:");
-		lblTrnhHc.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblTrnhHc.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblTrnhHc.setBounds(24, 257+MARGIN_TOP, 113, 30);
-		contentPane.add(lblTrnhHc);
+		jPanel1.add(lblTrnhHc);
 		
 		JLabel lblNewLabel_5_1 = new JLabel("Trình độ chuyên môn:");
-		lblNewLabel_5_1.setBounds(466, 257+MARGIN_TOP, 134, 30);
-		contentPane.add(lblNewLabel_5_1);
+		lblNewLabel_5_1.setBounds(466, 277, 141, 30);
+		lblNewLabel_5_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		jPanel1.add(lblNewLabel_5_1);
 		
 		JLabel lblNewLabel_5_2 = new JLabel("Biết tiếng dân tộc:");
-		lblNewLabel_5_2.setBounds(466, 298+MARGIN_TOP, 113, 30);
-		contentPane.add(lblNewLabel_5_2);
+		lblNewLabel_5_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_5_2.setBounds(466, 318, 127, 30);
+		jPanel1.add(lblNewLabel_5_2);
 		
 		JLabel lblTrnhNgoi = new JLabel("Trình độ ngoại ngữ:");
-		lblTrnhNgoi.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblTrnhNgoi.setBounds(24, 298+MARGIN_TOP, 113, 30);
-		contentPane.add(lblTrnhNgoi);
-		
+		lblTrnhNgoi.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblTrnhNgoi.setBounds(24, 318, 127, 30);
+		jPanel1.add(lblTrnhNgoi);
+
 		JLabel lblNewLabel_1 = new JLabel("(*)");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setForeground(UIManager.getColor("ToolBar.dockingForeground"));
-		lblNewLabel_1.setBounds(400, 31, 30, 30);
-		contentPane.add(lblNewLabel_1);
+
+		lblNewLabel_1.setBounds(400, 32, 30, 30);
+		jPanel1.add(lblNewLabel_1);
 		
 		hoTenTxb = new JTextField();
-		hoTenTxb.setBounds(140, 30, 250, 30);
-		contentPane.add(hoTenTxb);
+		hoTenTxb.setBounds(150, 30, 240, 30);
+		jPanel1.add(hoTenTxb);
+
 		hoTenTxb.setColumns(10);
 		
 		danTocTxb = new JTextField();
 		danTocTxb.setColumns(10);
-		danTocTxb.setBounds(140, 134+MARGIN_TOP, 250, 30);
-		contentPane.add(danTocTxb);
+
+		danTocTxb.setBounds(150, 154, 240, 30);
+		jPanel1.add(danTocTxb);
 		
 		soCMTTxb = new JTextField();
 		soCMTTxb.setColumns(10);
-		soCMTTxb.setBounds(140, 195, 250, 30);
-		contentPane.add(soCMTTxb);
+		soCMTTxb.setBounds(150, 195, 240, 30);
+		jPanel1.add(soCMTTxb);
 		
 		trinhDoHocVanTxb = new JTextField();
 		trinhDoHocVanTxb.setColumns(10);
-		trinhDoHocVanTxb.setBounds(140, 277, 250, 30);
-		contentPane.add(trinhDoHocVanTxb);
+		trinhDoHocVanTxb.setBounds(150, 277, 240, 30);
+		jPanel1.add(trinhDoHocVanTxb);
+
 		
 		noiThuongTruTxb = new SuggestionUtility(false) {
 			private static final long serialVersionUID = 1L;
@@ -269,89 +301,105 @@ public class NewPeopleFrame extends JFrame {
 			}
 		};
 		noiThuongTruTxb.setEditable(false);
-		noiThuongTruTxb.setBounds(140, 236, 230, 30);
-		contentPane.add(noiThuongTruTxb);
+    
+		noiThuongTruTxb.setBounds(150, 236, 220, 30);
+		jPanel1.add(noiThuongTruTxb);
+
 		
 		thuongTruBtn = new JButton("Thuong Tru");
 		thuongTruBtn.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				noiThuongTruTxb.setText(getAddressAction());
+				JtxReceiveAddress=noiThuongTruTxb;
+				getAddressAction();
 			}
 		});
 		thuongTruBtn.setBounds(370, 236, 20, 30);
-		contentPane.add(thuongTruBtn);
+
+		jPanel1.add(thuongTruBtn);
 		
 		trinhDoNgoaiNguTxb = new JTextField();
 		trinhDoNgoaiNguTxb.setColumns(10);
-		trinhDoNgoaiNguTxb.setBounds(140, 318, 250, 30);
-		contentPane.add(trinhDoNgoaiNguTxb);
+		trinhDoNgoaiNguTxb.setBounds(150, 318, 240, 30);
+		jPanel1.add(trinhDoNgoaiNguTxb);
 		
 		ngheNghiepTxb = new JTextField();
 		ngheNghiepTxb.setColumns(10);
-		ngheNghiepTxb.setBounds(140, 359, 250, 30);
-		contentPane.add(ngheNghiepTxb);
+		ngheNghiepTxb.setBounds(150, 359, 240, 30);
+		jPanel1.add(ngheNghiepTxb);
+
 		
 		JLabel lblNewLabel_1_1 = new JLabel("(*)");
 		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1.setForeground(Color.RED);
 		lblNewLabel_1_1.setBounds(400, 72, 30, 30);
-		contentPane.add(lblNewLabel_1_1);
+
+		jPanel1.add(lblNewLabel_1_1);
+
 		
 		JLabel lblNewLabel_1_1_1 = new JLabel("(*)");
 		lblNewLabel_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1_1.setForeground(Color.RED);
 		lblNewLabel_1_1_1.setBounds(400, 112, 30, 30);
-		contentPane.add(lblNewLabel_1_1_1);
+
+		jPanel1.add(lblNewLabel_1_1_1);
+
 		
 		JLabel lblNewLabel_1_1_2 = new JLabel("(*)");
 		lblNewLabel_1_1_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1_2.setForeground(Color.RED);
 		lblNewLabel_1_1_2.setBounds(400, 154, 30, 30);
-		contentPane.add(lblNewLabel_1_1_2);
-		
+    
+		jPanel1.add(lblNewLabel_1_1_2);
+
 		JLabel lblNewLabel_1_1_3 = new JLabel("(*)");
 		lblNewLabel_1_1_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1_3.setForeground(Color.RED);
-		lblNewLabel_1_1_3.setBounds(400, 194, 30, 30);
-		contentPane.add(lblNewLabel_1_1_3);
+
+		lblNewLabel_1_1_3.setBounds(400, 195, 30, 30);
+		jPanel1.add(lblNewLabel_1_1_3);
 		
-		JLabel lblNewLabel_1_1_4 = new JLabel("(*)");
+		JLabel lblNewLabel_1_1_4 = new JLabel(" (*)");
+		lblNewLabel_1_1_4.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1_4.setForeground(Color.RED);
-		lblNewLabel_1_1_4.setBounds(410, 225+MARGIN_TOP, 14, 14);
-		contentPane.add(lblNewLabel_1_1_4);
+		lblNewLabel_1_1_4.setBounds(400, 236, 30, 30);
+		jPanel1.add(lblNewLabel_1_1_4);
 		
 		JLabel lblNewLabel_1_1_5 = new JLabel("(*)");
+		lblNewLabel_1_1_5.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1_5.setForeground(Color.RED);
-		lblNewLabel_1_1_5.setBounds(416, 286, 14, 14);
-		contentPane.add(lblNewLabel_1_1_5);
+		lblNewLabel_1_1_5.setBounds(400, 278, 30, 30);
+		jPanel1.add(lblNewLabel_1_1_5);
 		
 		JLabel lblNewLabel_1_1_6 = new JLabel("(*)");
+		lblNewLabel_1_1_6.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1_6.setForeground(Color.RED);
-		lblNewLabel_1_1_6.setBounds(416, 326, 14, 14);
-		contentPane.add(lblNewLabel_1_1_6);
+		lblNewLabel_1_1_6.setBounds(400, 318, 30, 30);
+		jPanel1.add(lblNewLabel_1_1_6);
 		
 		JLabel lblNewLabel_1_1_6_1 = new JLabel("(*)");
+		lblNewLabel_1_1_6_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1_6_1.setForeground(Color.RED);
-		lblNewLabel_1_1_6_1.setBounds(416, 368, 14, 14);
-		contentPane.add(lblNewLabel_1_1_6_1);
+		lblNewLabel_1_1_6_1.setBounds(400, 360, 30, 30);
+		jPanel1.add(lblNewLabel_1_1_6_1);
 		
 		gioiTinhCbb = new JComboBox<String>();
-		gioiTinhCbb.setBounds(594, 52+MARGIN_TOP, 99, 30);
-		gioiTinhCbb.addItem("Nam");
+		gioiTinhCbb.setBounds(616, 72, 113, 30);
+		gioiTinhCbb.addItem("Nam");		
 		gioiTinhCbb.addItem("Nữ");
-		contentPane.add(gioiTinhCbb);
+		gioiTinhCbb.setFont(new Font("Tohama",0,14));
+		jPanel1.add(gioiTinhCbb);
 		
 		bietDanhTxb = new JTextField();
 		bietDanhTxb.setColumns(10);
-		bietDanhTxb.setBounds(594, 11+MARGIN_TOP, 214, 30);
-		contentPane.add(bietDanhTxb);
+		bietDanhTxb.setBounds(616, 30, 240, 30);
+		jPanel1.add(bietDanhTxb);
 		
 		tonGiaoTxb = new JTextField();
 		tonGiaoTxb.setColumns(10);
-		tonGiaoTxb.setBounds(596, 93+MARGIN_TOP, 214, 30);
-		contentPane.add(tonGiaoTxb);
+		tonGiaoTxb.setBounds(616, 113, 240, 30);
+		jPanel1.add(tonGiaoTxb);
 		
 		quocTichTxb = new SuggestionUtility(false) {
 			/**
@@ -363,72 +411,98 @@ public class NewPeopleFrame extends JFrame {
 				return null;
 			}
 		};
-		quocTichTxb.setBounds(596, 134+MARGIN_TOP, 214, 30);
-		contentPane.add(quocTichTxb);
+
+		quocTichTxb.setBounds(616, 154, 240, 30);
+		jPanel1.add(quocTichTxb);
 		
 		soHoChieuTxb = new JTextField();
 		soHoChieuTxb.setColumns(10);
-		soHoChieuTxb.setBounds(596, 176+MARGIN_TOP, 214, 30);
-		contentPane.add(soHoChieuTxb);
+		soHoChieuTxb.setBounds(616, 198, 240, 30);
+		jPanel1.add(soHoChieuTxb);
+
 		
 		diaChiHienNayTxb = new SuggestionUtility(false) {
-			/**
-			 * 
-			 */
 			private static final long serialVersionUID = 1L;
 
 			public List<String> getSuggestions(String textContent) {
 				return null;
 			}
 		};
-		diaChiHienNayTxb.setBounds(596, 217+MARGIN_TOP, 214, 30);
-		contentPane.add(diaChiHienNayTxb);
+		diaChiHienNayTxb.setEnabled(false);
+
+		diaChiHienNayTxb.setBounds(616, 236, 220, 30);
+		jPanel1.add(diaChiHienNayTxb);
 		
 		JButton diaChiBtn = new JButton("New button");
-		diaChiBtn.setBounds(829, 217+MARGIN_TOP, 36, 30);
-		contentPane.add(diaChiBtn);
+		diaChiBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JtxReceiveAddress = diaChiHienNayTxb;
+				getAddressAction();	
+			}
+		});
+		diaChiBtn.setBounds(836, 237, 20, 30);
+		jPanel1.add(diaChiBtn);
 		
 		trinhDoChuyenMonTxb = new JTextField();
 		trinhDoChuyenMonTxb.setColumns(10);
-		trinhDoChuyenMonTxb.setBounds(596, 257+MARGIN_TOP, 214, 30);
-		contentPane.add(trinhDoChuyenMonTxb);
+		trinhDoChuyenMonTxb.setBounds(616, 277, 240, 30);
+		jPanel1.add(trinhDoChuyenMonTxb);
 		
 		bietTiengDanTocTxb = new JTextField();
 		bietTiengDanTocTxb.setColumns(10);
-		bietTiengDanTocTxb.setBounds(596, 298+MARGIN_TOP, 214, 30);
-		contentPane.add(bietTiengDanTocTxb);
+		bietTiengDanTocTxb.setBounds(616, 318, 240, 30);
+		jPanel1.add(bietTiengDanTocTxb);
 		
 		noiLamViecTxb = new JTextField();
 		noiLamViecTxb.setColumns(10);
-		noiLamViecTxb.setBounds(596, 339+MARGIN_TOP, 214, 30);
-		contentPane.add(noiLamViecTxb);
+		noiLamViecTxb.setBounds(616, 359, 240, 30);
+		jPanel1.add(noiLamViecTxb);
 		
 		khacBtn = new JButton("Khác...");
-		khacBtn.setBounds(140, 421+MARGIN_TOP, 160, 30);
+		khacBtn.setBounds(150, 415, 127, 30);
+
 		khacBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-		contentPane.add(khacBtn);
+
+        khacBtn.setBackground(new Color(147, 112, 219));
+        khacBtn.setFont(new Font("Tahoma", Font.BOLD, 14));
+        khacBtn.setForeground(new Color(255, 255, 255));
+        khacBtn.setBorderPainted(false);
+		jPanel1.add(khacBtn);
 		
 		CancelBtn = new JButton("Cancel");
-		CancelBtn.setBounds(642, 420+MARGIN_TOP, 89, 30);
+		CancelBtn.setBounds(626, 415, 89, 30);
+
 		CancelBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CancelBtnActionPerformed(evt);
             }
         });
-		contentPane.add(CancelBtn);
+
+		CancelBtn.setBackground(new Color(147, 112, 219));
+		CancelBtn.setFont(new Font("Tahoma", Font.BOLD, 14));
+		CancelBtn.setForeground(new Color(255, 255, 255));
+		CancelBtn.setBorderPainted(false);
+		jPanel1.add(CancelBtn);
 		
 		CreateBtn = new JButton("Create");
-		CreateBtn.setBounds(763, 420+MARGIN_TOP, 89, 30);
+		CreateBtn.setBounds(736, 415, 89, 30);
+
 		CreateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CreateBtnActionPerformed(evt);
             }
         });
-		contentPane.add(CreateBtn);
+
+		CreateBtn.setBackground(new Color(147, 112, 219));
+		CreateBtn.setFont(new Font("Tahoma", Font.BOLD, 14));
+		CreateBtn.setForeground(new Color(255, 255, 255));
+		CreateBtn.setBorderPainted(false);
+		jPanel1.add(CreateBtn);
+
 	}
 	
 	void close() {
@@ -518,10 +592,17 @@ public class NewPeopleFrame extends JFrame {
         }
     }//GEN-LAST:event_CreateBtnActionPerformed
     
-    private String getAddressAction() {
-		addrSuggestion = new AddressSuggestion(this, addrModel);
+    private void getAddressAction() {
+		addrSuggestion = new AddressSuggestion(this,addrModel) {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void emmitToParent() {
+				String address= this.getAddress();
+				JtxReceiveAddress.setText(address);
+			}
+		};
 		addrSuggestion.setVisible(true);
-		return addrModel.getAddress();
     }
     
 }
