@@ -71,6 +71,8 @@ public class NewPeopleFrame extends JFrame {
 	private SuggestionUtility nguyenQuanTxb;
 	private SuggestionUtility noiThuongTruTxb;
 	private javax.swing.JComboBox<String> gioiTinhCbb;
+
+	private JTextField JtxReceiveAddress;
 	
     /**
      * @wbp.parser.constructor
@@ -150,6 +152,7 @@ public class NewPeopleFrame extends JFrame {
 		JButton nguyenQuanBtn = new JButton("+");
 		nguyenQuanBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				JtxReceiveAddress=nguyenQuanTxb;
 				getAddressAction();
 			}
 		});
@@ -279,6 +282,7 @@ public class NewPeopleFrame extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				JtxReceiveAddress=noiThuongTruTxb;
 				getAddressAction();
 			}
 		});
@@ -521,12 +525,14 @@ public class NewPeopleFrame extends JFrame {
     }//GEN-LAST:event_CreateBtnActionPerformed
     
     private void getAddressAction() {
-		addrSuggestion = new AddressSuggestion(this, addrModel);
+		addrSuggestion = new AddressSuggestion(this,addrModel) {
+			@Override
+			public void emmitToParent() {
+				String address= this.getAddress();
+				JtxReceiveAddress.setText(address);
+			}
+		};
 		addrSuggestion.setVisible(true);
     }
-    
-    public void setNguyenQuanTxb(String address) {
-		nguyenQuanTxb.setText(address);
-	}
     
 }
