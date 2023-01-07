@@ -7,7 +7,7 @@ import views.LoginFrame;
 
 public class Main {
     public static Calendar calendar = Calendar.getInstance();
-    
+  
     public static void main(String[] args){
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -16,6 +16,8 @@ public class Main {
         }
         LoginFrame loginFrame = new LoginFrame();
         loginFrame.setVisible(true);
+        System.out.println("hello");
       }
+
 }
 
