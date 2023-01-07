@@ -63,7 +63,7 @@ public class NewPeopleFrame extends JFrame {
 	private JTextField bietTiengDanTocTxb;
 	private JTextField noiLamViecTxb;
 	private com.toedter.calendar.JDateChooser namSinhDateC;
-	private javax.swing.JButton jButton1;
+	private javax.swing.JButton khacBtn;
 	private SuggestionUtility quocTichTxb;
 	private SuggestionUtility diaChiHienNayTxb;
 	private JButton CancelBtn ;
@@ -147,14 +147,14 @@ public class NewPeopleFrame extends JFrame {
 		namSinhDateC.setBounds(140, 72, 250, 30);
 		contentPane.add(namSinhDateC);
 		
-		JButton btnNewButton = new JButton("+");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton nguyenQuanBtn = new JButton("+");
+		nguyenQuanBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				getAddressAction();
 			}
 		});
-		btnNewButton.setBounds(370, 113, 20, 30);
-		contentPane.add(btnNewButton);
+		nguyenQuanBtn.setBounds(370, 113, 20, 30);
+		contentPane.add(nguyenQuanBtn);
 		
 		JLabel lblNewLabel = new JLabel("Họ và tên:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -274,16 +274,16 @@ public class NewPeopleFrame extends JFrame {
 		noiThuongTruTxb.setBounds(140, 236, 230, 30);
 		contentPane.add(noiThuongTruTxb);
 		
-		JButton btnNewButton_1 = new JButton("New button");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton thuongTruBtn = new JButton("New button");
+		thuongTruBtn.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				getAddressAction();
 			}
 		});
-		btnNewButton_1.setBounds(370, 236, 20, 30);
-		contentPane.add(btnNewButton_1);
+		thuongTruBtn.setBounds(370, 236, 20, 30);
+		contentPane.add(thuongTruBtn);
 		
 		trinhDoNgoaiNguTxb = new JTextField();
 		trinhDoNgoaiNguTxb.setColumns(10);
@@ -386,9 +386,9 @@ public class NewPeopleFrame extends JFrame {
 		diaChiHienNayTxb.setBounds(596, 217+MARGIN_TOP, 214, 30);
 		contentPane.add(diaChiHienNayTxb);
 		
-		JButton btnNewButton_2 = new JButton("New button");
-		btnNewButton_2.setBounds(829, 217+MARGIN_TOP, 36, 30);
-		contentPane.add(btnNewButton_2);
+		JButton diaChiBtn = new JButton("New button");
+		diaChiBtn.setBounds(829, 217+MARGIN_TOP, 36, 30);
+		contentPane.add(diaChiBtn);
 		
 		trinhDoChuyenMonTxb = new JTextField();
 		trinhDoChuyenMonTxb.setColumns(10);
@@ -405,14 +405,14 @@ public class NewPeopleFrame extends JFrame {
 		noiLamViecTxb.setBounds(596, 339+MARGIN_TOP, 214, 30);
 		contentPane.add(noiLamViecTxb);
 		
-		jButton1 = new JButton("Khác...");
-		jButton1.setBounds(140, 421+MARGIN_TOP, 160, 30);
-		jButton1.addActionListener(new java.awt.event.ActionListener() {
+		khacBtn = new JButton("Khác...");
+		khacBtn.setBounds(140, 421+MARGIN_TOP, 160, 30);
+		khacBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-		contentPane.add(jButton1);
+		contentPane.add(khacBtn);
 		
 		CancelBtn = new JButton("Cancel");
 		CancelBtn.setBounds(642, 420+MARGIN_TOP, 89, 30);
