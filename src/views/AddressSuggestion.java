@@ -234,6 +234,7 @@ public class AddressSuggestion extends JFrame {
 			JOptionPane.showMessageDialog(null, "Bạn cần nhập đầy đủ địa chỉ");
 		} else {
 			addrModel.setHouse_no(houseJtf.getText());
+
 			addrModel.setWard(wardJtf.getSelection());
 			addrModel.setDistrict(districtJtf.getSelection());
 			addrModel.setProvince(provinceJtf.getSelection());
