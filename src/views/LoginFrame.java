@@ -24,19 +24,14 @@ import javax.swing.border.CompoundBorder;
 
 public class LoginFrame extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	
 	private JPanel loginPane;
 	private JTextField txbUserName;
 	private JPasswordField txbPasswd;
 	
 	private LoginController cont = new  LoginController();
 
-	/**
-	 * Create the frame.
-	 */
 	public LoginFrame() {
 		init();
         this.keyListenner(txbUserName);
@@ -140,7 +135,6 @@ public class LoginFrame extends JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Sai thong tin dang nhap", "Warning", JOptionPane.WARNING_MESSAGE);
             }
         } catch (SQLException | ClassNotFoundException e) {
-        	e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Có lỗi xảy ra!! Vui lòng kiểm tra lại!", "Warning!!", JOptionPane.ERROR_MESSAGE);
         }
 	}

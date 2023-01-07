@@ -23,7 +23,7 @@ public class NhanKhauService {
         // truy cap db
         try {
             Connection connection = SQLConnection.getDbConnection();
-            String query = "SELECT * FROM nhan_khau JOIN chung_minh_thu ON nhan_khau.ID = chung_minh_thu.idNhanKhau WHERE soCMT = " + cmt;
+            String query = "SELECT * FROM nhan_khau JOIN chung_minh_thu ON nhan_khau.ID = chung_minh_thu.idNhanKhau WHERE soCMT = '" + cmt + "'";
             PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
             int idNhanKhau = -1;
@@ -95,12 +95,11 @@ public class NhanKhauService {
         return nhanKhauBean;
     }
     
-     // lay danh sach 10 nhan khau moi duoc them vao
     public List<NhanKhauBean> getListNhanKhau() {
         List<NhanKhauBean> list = new ArrayList<>();
         try {
             Connection connection = SQLConnection.getDbConnection();
-            String query = "SELECT TOP 10 * FROM nhan_khau JOIN chung_minh_thu ON nhan_khau.ID = chung_minh_thu.idNhanKhau ORDER BY ngayTao DESC";
+            String query = "SELECT TOP 100 * FROM nhan_khau JOIN chung_minh_thu ON nhan_khau.ID = chung_minh_thu.idNhanKhau ORDER BY nhan_khau.ID";
             PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()){
@@ -133,16 +132,16 @@ public class NhanKhauService {
                     + " JOIN chung_minh_thu ON nhan_khau.ID = chung_minh_thu.idNhanKhau"
                     + " LEFT JOIN tam_tru ON nhan_khau.ID = tam_tru.idNhanKhau "
                     + " LEFT JOIN tam_vang ON nhan_khau.ID = tam_vang.idNhanKhau "
-                    + " WHERE ROUND(DATEDIFF(CURDATE(),namSinh)/365 , 0) >= "
+                    + " WHERE ROUND(DATEDIFF(dayofyear, namSinh, GETDATE())/365 , 0) >= "
                     + TuTuoi
-                    + " AND ROUND(DATEDIFF(CURDATE(),namSinh)/365 , 0) <= "
+                    + " AND ROUND(DATEDIFF(dayofyear, namSinh, GETDATE())/365 , 0) <= "
                     + denTuoi;
         if (!gender.equalsIgnoreCase("Toan Bo")) {
             query += " AND nhan_khau.gioiTinh = '" + gender + "'";
         }
         if (Status.equalsIgnoreCase("Toan bo")) {
-            query += " AND (tam_tru.denNgay >= CURDATE() OR tam_tru.denNgay IS NULL)"
-                    + " AND (tam_vang.denNgay <= CURDATE() OR tam_vang.denNgay IS NULL)";
+            query += " AND (tam_tru.denNgay >= GETDATE() OR tam_tru.denNgay IS NULL)"
+                    + " AND (tam_vang.denNgay <= GETDATE() OR tam_vang.denNgay IS NULL)";
         } else if (Status.equalsIgnoreCase("Thuong tru")) {
             query += " AND tam_tru.denNgay IS NULL";
             
@@ -280,9 +279,51 @@ public class NhanKhauService {
         return list;
     }
     
-    /*
-     * Ham xử lý ngoại lệ : thông báo ra lỗi nhận được
-     */
+	   public List<String> getCids() {
+	        List<String> list = new ArrayList<>();
+	        try {
+	            Connection connection = SQLConnection.getDbConnection();
+	            String query = "SELECT TOP 10 soCMT FROM chung_minh_thu";
+	            PreparedStatement preparedStatement = connection.prepareStatement(query);
+	            ResultSet rs = preparedStatement.executeQuery();
+	            while (rs.next()){
+	                String cmt = rs.getString("soCMT");
+	                list.add(cmt);
+	            }
+	            preparedStatement.close();
+	            connection.close();
+	        } catch (Exception e) {
+	            System.out.println(e.getMessage());
+	        }
+	        return list;
+	    }
+
+   public List<String> searchByCid(String keyword) {
+       List<String> list = new  ArrayList<>();
+       if (keyword.trim().isEmpty()) {
+           return this.getCids();
+       }
+       
+       try {
+           Connection connection = SQLConnection.getDbConnection();
+           String query = "SELECT TOP 10 soCMT FROM chung_minh_thu "
+           	      + "WHERE soCMT LIKE('" + keyword + "%')";
+           PreparedStatement preparedStatement = connection.prepareStatement(query);
+           ResultSet rs = preparedStatement.executeQuery();
+           while (rs.next()){
+               String cmt = rs.getString("soCMT");
+               list.add(cmt);
+           }
+           preparedStatement.close();
+           connection.close();
+       } catch (Exception mysqlException) {
+           this.exceptionHandle(mysqlException.getMessage());
+       }
+       return list;
+   }
+    
+    
+    
     private void exceptionHandle(String message) {
         JOptionPane.showMessageDialog(null, message, "Warning", JOptionPane.ERROR_MESSAGE);
     }

@@ -9,12 +9,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import bean.DanhMucBean;
-import views.HoKhauManagePanel;
+import views.HouseholdPanel;
 import views.HomePagePanel;
-import views.HomePagePanel;
-import views.NhanKhauManagePanel;
-import views.ThongKePanel;
-import views.TimKiemPanel;
+import views.PeoplePanel;
+import views.StatisticPanel;
 
 public class DashboardController {
     private JFrame jfrMain;
@@ -47,16 +45,13 @@ public class DashboardController {
                     view = new HomePagePanel();
                     break;
                 case "NhanKhau":
-                    view = new NhanKhauManagePanel(this.jfrMain);
+                    view = new PeoplePanel(this.jfrMain);
                     break;
                 case "HoKhau":
-                    view = new HoKhauManagePanel(this.jfrMain);
-                    break;
-                case "TimKiem":
-                    view = new TimKiemPanel(this.jfrMain);
+                    view = new HouseholdPanel(this.jfrMain);
                     break;
                 case "ThongKe":
-                    view = new ThongKePanel(this.jfrMain);
+                    view = new StatisticPanel(this.jfrMain);
                     break;
                 //any more
                 default:
@@ -69,7 +64,6 @@ public class DashboardController {
         root.repaint();
     } 
     
-    //set animation for menu panel
     public void setEvent(List<DanhMucBean> listDanhMuc) {
         this.listDanhMuc = listDanhMuc;
         this.listDanhMuc.forEach((item) -> {
@@ -115,16 +109,13 @@ public class DashboardController {
                     view = new HomePagePanel();
                     break;
                 case "NhanKhau":
-                    view = new NhanKhauManagePanel(this.jfrMain);
+                    view = new PeoplePanel(this.jfrMain);
                     break;
                  case "HoKhau":
-                    view = new HoKhauManagePanel(this.jfrMain);
-                    break;
-                case "TimKiem":
-                    view = new TimKiemPanel(this.jfrMain);
+                    view = new HouseholdPanel(this.jfrMain);
                     break;
                 case "ThongKe":
-                    view = new ThongKePanel(this.jfrMain);
+                    view = new StatisticPanel(this.jfrMain);
                     break;
                 default:
                     break;

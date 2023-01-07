@@ -5,11 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import models.UserMoldel;
+import models.UserModel;
 
 public class LoginService {
 
-    public static UserMoldel currentUser = new UserMoldel();
+    public static UserModel currentUser = new UserModel();
     
     public boolean login(String userName, String passwod) throws SQLException, ClassNotFoundException{
         Connection connection = SQLConnection.getDbConnection();

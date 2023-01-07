@@ -22,11 +22,11 @@ import javax.swing.table.TableModel;
 
 import bean.HoKhauBean;
 import bean.MemOfFamily;
-import bean.NhanKhauBean;
 import models.ThanhVienCuaHoModel;
 import services.HoKhauService;
 import utility.TableModelHoKhau;
-import views.HoKhauManagerFrame.TachHoKhau;
+
+import views.HouseholdManagerFrame.HouseholdSeper;
 import views.infoViews.InfoJframe;
 
 /**
@@ -169,7 +169,7 @@ public class TachHoKhauController {
                     hoKhauMoi.getHoKhauModel().setMaHoKhau( maHoKhauMoiJtf.getText().trim());
                     hoKhauMoi.getHoKhauModel().setMaKhuVuc(maKhuVucJtf.getText().trim());
                     hoKhauService.tachHoKhau(hoKhauMoi);
-                    TachHoKhau tachHoKhau = (TachHoKhau)tachHoKhauJFrame;
+                    HouseholdSeper tachHoKhau = (HouseholdSeper)tachHoKhauJFrame;
                     tachHoKhau.getParentJFrame().setEnabled(true);
                     tachHoKhau.dispose();
                 }

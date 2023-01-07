@@ -13,21 +13,15 @@ import java.awt.Font;
 import javax.swing.border.BevelBorder;
 
 public class HomePagePanel extends JPanel {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	
 	private HomeController cotroller;
 	
-    private javax.swing.JLabel nhanKhauTamTruLb;
-    private javax.swing.JLabel nhanKhauTamVangLb;
-    private javax.swing.JLabel tongHoKhauLb;
-    private javax.swing.JLabel tongNhanKhauLb;
+    private JLabel nhanKhauTamTruLb;
+    private JLabel nhanKhauTamVangLb;
+    private JLabel tongHoKhauLb;
+    private JLabel tongNhanKhauLb;
 	
-	/**
-	 * Create the panel.
-	 */
 	public HomePagePanel() {
         init();
         this.cotroller = new HomeController(tongNhanKhauLb, tongHoKhauLb, nhanKhauTamTruLb, nhanKhauTamVangLb);
@@ -44,7 +38,7 @@ public class HomePagePanel extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(204, 204, 255), 2, true));
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(10, 43, 767, 550);
+		panel.setBounds(10, 43, 767, 540);
 		add(panel);
 		panel.setLayout(null);
 		
@@ -62,7 +56,7 @@ public class HomePagePanel extends JPanel {
 		jPanel1.add(panel_1);
 		panel_1.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel(new ImageIcon(HomePagePanel.class.getResource("/Icons/network.png")));
+		JLabel lblNewLabel = new JLabel(new ImageIcon(HomePagePanel.class.getResource("/icons/network.png")));
 		lblNewLabel.setBounds(0, 0, 70, 80);
 		panel_1.add(lblNewLabel);
 		
@@ -109,7 +103,7 @@ public class HomePagePanel extends JPanel {
 		panel_1_1.setLayout(null);
 		
 		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setIcon(new ImageIcon(HomePagePanel.class.getResource("/Icons/house.png")));
+		lblNewLabel_1.setIcon(new ImageIcon(HomePagePanel.class.getResource("/icons/house.png")));
 		lblNewLabel_1.setBounds(0, 0, 70, 80);
 		panel_1_1.add(lblNewLabel_1);
 		
@@ -156,7 +150,7 @@ public class HomePagePanel extends JPanel {
 		panel_1_2.setLayout(null);
 		
 		JLabel lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setIcon(new ImageIcon(HomePagePanel.class.getResource("/Icons/check-in.png")));
+		lblNewLabel_2.setIcon(new ImageIcon(HomePagePanel.class.getResource("/icons/check-in.png")));
 		lblNewLabel_2.setBounds(0, 0, 70, 80);
 		panel_1_2.add(lblNewLabel_2);
 		
@@ -203,7 +197,7 @@ public class HomePagePanel extends JPanel {
 		panel_1_3.setLayout(null);
 		
 		JLabel lblNewLabel_3 = new JLabel("New label");
-		lblNewLabel_3.setIcon(new ImageIcon(HomePagePanel.class.getResource("/Icons/hotel.png")));
+		lblNewLabel_3.setIcon(new ImageIcon(HomePagePanel.class.getResource("/icons/hotel.png")));
 		lblNewLabel_3.setBounds(0, 0, 70, 80);
 		panel_1_3.add(lblNewLabel_3);
 		

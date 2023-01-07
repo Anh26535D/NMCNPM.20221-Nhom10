@@ -1,4 +1,4 @@
-package views.HoKhauManagerFrame;
+package views.HouseholdManagerFrame;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -27,9 +27,7 @@ import java.util.List;
 
 public class NewHouseholdFrame extends JFrame {
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
     private JTextField maHoKhauJtf;
@@ -51,17 +49,14 @@ public class NewHouseholdFrame extends JFrame {
     private final HoKhauBean hoKhauBean = new HoKhauBean();
 
 
-	/**
-	 * Create the frame.
-	 */
 	public NewHouseholdFrame(JFrame parentJFrame) {
 		init();
 		this.parentJFrame = parentJFrame;
-		parentJFrame.setEnabled(false);
+		parentJFrame.setEnabled(true);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.addWindowListener(new WindowAdapter() {
 		        @Override
 		        public void windowClosing(WindowEvent e) {
-		            parentJFrame.setEnabled(true);
 		            close();
 		        }
 		        

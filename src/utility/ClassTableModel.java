@@ -8,19 +8,15 @@ import models.GiaDinhModel;
 import models.NhanKhauModel;
 import models.TieuSuModel;
 
-/**
- *
- * @author Hai
- * class dinh nghia cac dang table co trong phan mem
- */
 public class ClassTableModel {
-    // bang cho main frame
+
     public DefaultTableModel setTableNhanKhau(List<NhanKhauModel> listItem, String[] listColumn) {
         final int columns = listColumn.length;
         DefaultTableModel dtm = new DefaultTableModel()  {
-            @Override
+            private static final long serialVersionUID = 1L;
+			@Override
             public boolean isCellEditable(int row, int column) {
-                return super.isCellEditable(row, column); //To change body of generated methods, choose Tools | Templates.
+                return super.isCellEditable(row, column);
             }
             @Override
             public Class<?> getColumnClass(int columnIndex) {
@@ -40,14 +36,15 @@ public class ClassTableModel {
         });
         return dtm;
     }
-    // table cho tieusu
+
     public DefaultTableModel setTableTieuSu(List<TieuSuModel> tieuSu, String[] listColumn) {
         final int column = listColumn.length;
         
         DefaultTableModel dtm = new DefaultTableModel()  {
-            @Override
+            private static final long serialVersionUID = 1L;
+			@Override
             public boolean isCellEditable(int row, int column) {
-                return super.isCellEditable(row, column); //To change body of generated methods, choose Tools | Templates.
+                return super.isCellEditable(row, column);
             }
             @Override
             public Class<?> getColumnClass(int columnIndex) {
@@ -69,26 +66,16 @@ public class ClassTableModel {
         });
         
         dtm.addRow(new Object[] {"", "", "", "", ""});
-        
-//        dtm.addTableModelListener(new TableModelListener() {
-//            @Override
-//            public void tableChanged(TableModelEvent e) {
-//                int a = dtm.getRowCount();
-//                if ((e.getLastRow() + 1) == dtm.getRowCount()) {
-//                    System.out.println(); 
-//                }
-//                
-//            }
-//        });
         return dtm;
     }
     public DefaultTableModel setTableGiaDinh(List<GiaDinhModel> giaDinh, String[] listColumn) {
         final int column = listColumn.length;
         
         DefaultTableModel dtm = new DefaultTableModel()  {
-            @Override
+            private static final long serialVersionUID = 1L;
+			@Override
             public boolean isCellEditable(int row, int column) {
-                return super.isCellEditable(row, column); //To change body of generated methods, choose Tools | Templates.
+                return super.isCellEditable(row, column);
             }
             @Override
             public Class<?> getColumnClass(int columnIndex) {
@@ -117,7 +104,8 @@ public class ClassTableModel {
     public DefaultTableModel setTableHoKhau(List<HoKhauBean> listItem, String[] listColumn) {
         final int columns = listColumn.length;
         DefaultTableModel dtm = new DefaultTableModel()  {
-            @Override
+            private static final long serialVersionUID = 1L;
+			@Override
             public boolean isCellEditable(int row, int column) {
                 return super.isCellEditable(row, column); //To change body of generated methods, choose Tools | Templates.
             }
