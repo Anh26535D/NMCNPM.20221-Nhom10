@@ -1,4 +1,3 @@
-
 package views.HouseholdManagerFrame;
 
 import controllers.HoKhauManagerController.ChangeListPeopleController;
@@ -26,16 +25,16 @@ import java.awt.event.FocusListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 
-
 public class ChangeListPeopleJframe extends javax.swing.JFrame {
 
-
-    private List<MemOfFamily> listMember;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private List<MemOfFamily> listMember;
     private List<MemOfFamily> listMemberTemp;
     private ChangeListPeopleController controller;
     private JFrame parentJframe;
-    
-    
 
     public ChangeListPeopleJframe(List<MemOfFamily> listMember, JFrame parentJFrame) {
     	getContentPane().setBackground(new Color(255, 255, 255));

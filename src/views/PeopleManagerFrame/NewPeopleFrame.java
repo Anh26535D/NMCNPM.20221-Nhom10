@@ -110,7 +110,7 @@ public class NewPeopleFrame extends JFrame {
         controller = new AddNewController();
         
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        
+
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -123,6 +123,7 @@ public class NewPeopleFrame extends JFrame {
 		setTitle("Thêm nhân khẩu");
 		setBounds(100, 100, 909, 531);
 		contentPane = new JPanel();
+
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBounds(5,5,1100,1100);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -154,6 +155,7 @@ public class NewPeopleFrame extends JFrame {
 		});
 		namSinhDateC.setBounds(150, 72, 240, 30);
 		jPanel1.add(namSinhDateC);
+
 		JButton nguyenQuanBtn = new JButton("+");
 		nguyenQuanBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -161,6 +163,7 @@ public class NewPeopleFrame extends JFrame {
 			}
 		});
 		nguyenQuanBtn.setBounds(370, 113, 20, 30);
+    
 		jPanel1.add(nguyenQuanBtn);
 		
 		JLabel lblNewLabel = new JLabel("Họ và tên:");
@@ -252,20 +255,23 @@ public class NewPeopleFrame extends JFrame {
 		lblTrnhNgoi.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblTrnhNgoi.setBounds(24, 318, 127, 30);
 		jPanel1.add(lblTrnhNgoi);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("(*)");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setForeground(UIManager.getColor("ToolBar.dockingForeground"));
+
 		lblNewLabel_1.setBounds(400, 32, 30, 30);
 		jPanel1.add(lblNewLabel_1);
 		
 		hoTenTxb = new JTextField();
 		hoTenTxb.setBounds(150, 30, 240, 30);
 		jPanel1.add(hoTenTxb);
+
 		hoTenTxb.setColumns(10);
 		
 		danTocTxb = new JTextField();
 		danTocTxb.setColumns(10);
+
 		danTocTxb.setBounds(150, 154, 240, 30);
 		jPanel1.add(danTocTxb);
 		
@@ -278,6 +284,7 @@ public class NewPeopleFrame extends JFrame {
 		trinhDoHocVanTxb.setColumns(10);
 		trinhDoHocVanTxb.setBounds(150, 277, 240, 30);
 		jPanel1.add(trinhDoHocVanTxb);
+
 		
 		noiThuongTruTxb = new SuggestionUtility(false) {
 			private static final long serialVersionUID = 1L;
@@ -287,8 +294,10 @@ public class NewPeopleFrame extends JFrame {
 			}
 		};
 		noiThuongTruTxb.setEditable(false);
+    
 		noiThuongTruTxb.setBounds(150, 236, 220, 30);
 		jPanel1.add(noiThuongTruTxb);
+
 		
 		JButton thuongTruBtn = new JButton("New button");
 		thuongTruBtn.addActionListener(new ActionListener() {
@@ -299,6 +308,7 @@ public class NewPeopleFrame extends JFrame {
 			}
 		});
 		thuongTruBtn.setBounds(370, 236, 20, 30);
+
 		jPanel1.add(thuongTruBtn);
 		
 		trinhDoNgoaiNguTxb = new JTextField();
@@ -310,28 +320,35 @@ public class NewPeopleFrame extends JFrame {
 		ngheNghiepTxb.setColumns(10);
 		ngheNghiepTxb.setBounds(150, 359, 240, 30);
 		jPanel1.add(ngheNghiepTxb);
+
 		
 		JLabel lblNewLabel_1_1 = new JLabel("(*)");
 		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1.setForeground(Color.RED);
 		lblNewLabel_1_1.setBounds(400, 72, 30, 30);
+
 		jPanel1.add(lblNewLabel_1_1);
+
 		
 		JLabel lblNewLabel_1_1_1 = new JLabel("(*)");
 		lblNewLabel_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1_1.setForeground(Color.RED);
 		lblNewLabel_1_1_1.setBounds(400, 112, 30, 30);
+
 		jPanel1.add(lblNewLabel_1_1_1);
+
 		
 		JLabel lblNewLabel_1_1_2 = new JLabel("(*)");
 		lblNewLabel_1_1_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1_2.setForeground(Color.RED);
 		lblNewLabel_1_1_2.setBounds(400, 154, 30, 30);
+    
 		jPanel1.add(lblNewLabel_1_1_2);
-		
+
 		JLabel lblNewLabel_1_1_3 = new JLabel("(*)");
 		lblNewLabel_1_1_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1_3.setForeground(Color.RED);
+
 		lblNewLabel_1_1_3.setBounds(400, 195, 30, 30);
 		jPanel1.add(lblNewLabel_1_1_3);
 		
@@ -386,6 +403,7 @@ public class NewPeopleFrame extends JFrame {
 				return null;
 			}
 		};
+
 		quocTichTxb.setBounds(616, 154, 240, 30);
 		jPanel1.add(quocTichTxb);
 		
@@ -393,6 +411,7 @@ public class NewPeopleFrame extends JFrame {
 		soHoChieuTxb.setColumns(10);
 		soHoChieuTxb.setBounds(616, 198, 240, 30);
 		jPanel1.add(soHoChieuTxb);
+
 		
 		diaChiHienNayTxb = new SuggestionUtility(false) {
 			/**
@@ -404,6 +423,7 @@ public class NewPeopleFrame extends JFrame {
 				return null;
 			}
 		};
+
 		diaChiHienNayTxb.setBounds(616, 236, 220, 30);
 		jPanel1.add(diaChiHienNayTxb);
 		
@@ -432,11 +452,13 @@ public class NewPeopleFrame extends JFrame {
 		
 		khacBtn = new JButton("Khác...");
 		khacBtn.setBounds(150, 415, 127, 30);
+
 		khacBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+
         khacBtn.setBackground(new Color(147, 112, 219));
         khacBtn.setFont(new Font("Tahoma", Font.BOLD, 14));
         khacBtn.setForeground(new Color(255, 255, 255));
@@ -445,11 +467,13 @@ public class NewPeopleFrame extends JFrame {
 		
 		CancelBtn = new JButton("Cancel");
 		CancelBtn.setBounds(626, 415, 89, 30);
+
 		CancelBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CancelBtnActionPerformed(evt);
             }
         });
+
 		CancelBtn.setBackground(new Color(147, 112, 219));
 		CancelBtn.setFont(new Font("Tahoma", Font.BOLD, 14));
 		CancelBtn.setForeground(new Color(255, 255, 255));
@@ -458,16 +482,19 @@ public class NewPeopleFrame extends JFrame {
 		
 		CreateBtn = new JButton("Create");
 		CreateBtn.setBounds(736, 415, 89, 30);
+
 		CreateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CreateBtnActionPerformed(evt);
             }
         });
+
 		CreateBtn.setBackground(new Color(147, 112, 219));
 		CreateBtn.setFont(new Font("Tahoma", Font.BOLD, 14));
 		CreateBtn.setForeground(new Color(255, 255, 255));
 		CreateBtn.setBorderPainted(false);
 		jPanel1.add(CreateBtn);
+
 	}
 	
 	void close() {

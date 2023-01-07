@@ -198,7 +198,6 @@ public class HoKhauService {
                         listThanhVienCuaHo.add(thanhVienCuaHoModel);
                     }
                 } catch (Exception e) {
-                    System.out.println("services.HoKhauService.search()");
                     System.out.println(e.getMessage());
                 }
                 list.add(temp);
