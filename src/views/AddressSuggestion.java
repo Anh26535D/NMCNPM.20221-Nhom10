@@ -109,14 +109,6 @@ public class AddressSuggestion extends JFrame {
 		wardJtf = new ComboBoxUtility();
 		wardJtf.setBounds(157, 10, 499, 41);
 		wardJtf.setEnabled(false);
-		//Todo: Set location
-		wardJtf.addItemListener(new ItemListener() {
-		    public void itemStateChanged(ItemEvent arg0) {
-		        if(arg0.getStateChange()==1) {
-		        	System.out.println(arg0.getItem());
-		        }
-		    }
-		});
 		panel_1_1.add(wardJtf);
 
 		JPanel panel_1_2 = new JPanel();
@@ -137,8 +129,12 @@ public class AddressSuggestion extends JFrame {
 		districtJtf.addItemListener(new ItemListener() {
 		    public void itemStateChanged(ItemEvent arg0) {
 		        if(arg0.getStateChange()==1) {
+					if(districtJtf.getSelectedItem()==null){
+						wardJtf.removeAllItems();
+					}
 		        	wardJtf.setEnabled(true);
-		        	wardJtf.setSelection(addrController.getAllWardOfDistricts(arg0.getItem().toString(),provinceJtf.getSelection()));
+					List<String> listDistrict =addrController.getAllWardOfDistricts(arg0.getItem().toString(),provinceJtf.getSelection());
+					wardJtf.setSelection(listDistrict);
 		        }
 		    }
 		});
@@ -160,10 +156,12 @@ public class AddressSuggestion extends JFrame {
 		panel_1_3.add(provinceJtf);
 		//Todo: Set location
 		provinceJtf.addItemListener(new ItemListener() {
+
 		    public void itemStateChanged(ItemEvent arg0) {
 		        if(arg0.getStateChange()==1) {
 		        	districtJtf.setEnabled(true);
-		        	districtJtf.setSelection(addrController.getAllDistrictOfProvince(arg0.getItem().toString()));
+					List<String> listDistrict = addrController.getAllDistrictOfProvince(arg0.getItem().toString());
+		        	districtJtf.setSelection(listDistrict);
 		        }
 		    }
 		});

@@ -12,7 +12,6 @@ import java.util.Vector;
 public class ComboBoxUtility extends JComboBox<Object> {
 
 	private static final long serialVersionUID = 1L;
-
 	public ComboBoxUtility() {
 		super();
 		setUI(new BasicComboBoxUI() {
@@ -68,6 +67,7 @@ public class ComboBoxUtility extends JComboBox<Object> {
 			}
 		});
 		setPrototypeDisplayValue("This is Text");
+		setFont(new Font("Tahoma", Font.PLAIN, 18));
 	}
 
 	public ComboBoxUtility(ComboBoxModel<Object> aModel) {
@@ -125,6 +125,7 @@ public class ComboBoxUtility extends JComboBox<Object> {
 			}
 		});
 		setPrototypeDisplayValue("This is Text");
+		setFont(new Font("Tahoma", Font.PLAIN, 18));
 	}
 
 	public ComboBoxUtility(Object[] items) {
@@ -185,6 +186,7 @@ public class ComboBoxUtility extends JComboBox<Object> {
 			}
 		});
 		setPrototypeDisplayValue("This is Text");
+		setFont(new Font("Tahoma", Font.PLAIN, 18));
 	}
 
 	public ComboBoxUtility(Vector<Object> items) {
@@ -248,6 +250,7 @@ public class ComboBoxUtility extends JComboBox<Object> {
 			}
 		});
 		setPrototypeDisplayValue("This is Text");
+		setFont(new Font("Tahoma", Font.PLAIN, 18));
 	}
 
 	public void setSelection(List<String> selections) {
@@ -255,9 +258,10 @@ public class ComboBoxUtility extends JComboBox<Object> {
 		for (String selection : selections) {
 			this.addItem(selection);
 		}
+		setSelectedItem(null);
 	}
 
 	public String getSelection() {
-		return this.getSelectedItem().toString();
+		return this.getItemAt(this.getSelectedIndex()).toString();
 	}
 }

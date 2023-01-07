@@ -87,7 +87,7 @@ public class AddressService {
 		List<String> list = new ArrayList<String>();
 		try {
 			Connection connection = SQLConnection.getDbConnection("vietnamese_provinces");
-			String query = "SELECT districts.name FROM provinces , districts WHERE districts.province_code=provinces.code and provinces.name='"+province+"';";
+			String query = "SELECT districts.name FROM provinces , districts WHERE districts.province_code=provinces.code and provinces.name= N'"+province+"';";
 			Statement st = connection.createStatement();
 			ResultSet res = st.executeQuery(query);
 			while (res.next()) {
@@ -106,7 +106,7 @@ public class AddressService {
 		List<String> list = new ArrayList<String>();
 		try {
 			Connection connection = SQLConnection.getDbConnection("vietnamese_provinces");
-			String query = "SELECT wards.name FROM provinces , districts ,wards WHERE wards.district_code=districts.code and districts.province_code=provinces.code and provinces.name='"+province+"' and districts.name='"+districts+"';";
+			String query = "SELECT wards.name FROM provinces , districts ,wards WHERE wards.district_code=districts.code and districts.province_code=provinces.code and provinces.name= N'"+province+"' and districts.name= N'"+districts+"';";
 			Statement st = connection.createStatement();
 			ResultSet res = st.executeQuery(query);
 			while (res.next()) {
