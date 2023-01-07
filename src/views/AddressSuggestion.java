@@ -7,7 +7,7 @@ import javax.swing.border.EmptyBorder;
 import controllers.AddressController;
 import models.AddressModel;
 import utility.SuggestionUtility;
-import views.PeopleManagerFrame.NewPeopleJFrame;
+import views.PeopleManagerFrame.NewPeopleFrame;
 
 import java.awt.Color;
 import javax.swing.JTextField;
@@ -234,7 +234,7 @@ public class AddressSuggestion extends JFrame {
 			addrModel.setWard(wardJtf.getText());
 			addrModel.setDistrict(districtJtf.getText());
 			addrModel.setProvince(provinceJtf.getText());
-			NewPeopleJFrame parent = (NewPeopleJFrame) parentFrame;
+			NewPeopleFrame parent = (NewPeopleFrame) parentFrame;
 		//	parent.setNguyenQuanTxb(addrModel.getAddress()); // loi
 			close();
 		}

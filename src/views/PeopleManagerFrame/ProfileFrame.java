@@ -13,13 +13,13 @@ import java.awt.Color;
 import java.awt.Font;
 
 
-public class ProfileJFrame extends javax.swing.JFrame {
+public class ProfileFrame extends javax.swing.JFrame {
 
     private JFrame parentFrame;
     private NhanKhauBean nhanKhauBean;
     private TieuSuController controller;
     
-    public ProfileJFrame(JFrame parentFrame, NhanKhauBean nhanKhauBean) {
+    public ProfileFrame(JFrame parentFrame, NhanKhauBean nhanKhauBean) {
     	getContentPane().setBackground(new Color(255, 255, 255));
         initComponents();
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
