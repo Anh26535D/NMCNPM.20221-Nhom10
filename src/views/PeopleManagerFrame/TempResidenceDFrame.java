@@ -1,66 +1,38 @@
+
 package views.PeopleManagerFrame;
 
+import controllers.NhanKhauManagerController.DangKyTamTruController;
+
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.Font;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.List;
-
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.UIManager;
-import javax.swing.border.EmptyBorder;
-
-import com.toedter.calendar.JDateChooser;
-
-import utility.SuggestionUtility;
-import controllers.NhanKhauManagerController.DangKyTamTruController;
-import models.TamTruModel;
-import services.NhanKhauService;
-
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import models.TamTruModel;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.GroupLayout;
 
-public class TempResidenceDFrame extends JFrame {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class TempResidenceDFrame extends javax.swing.JFrame {
 
-	private NhanKhauService peopleService = new NhanKhauService();
-	
-	private JFrame parentFrame;
+    private JFrame parentFrame;
     private DangKyTamTruController controller;
     private TamTruModel tamTruModel;
-    
-	private JPanel contentPane;
-	private JTextField maGiayTamTruJtf;
-	private SuggestionUtility soDienThoaiJtf;
-	private JLabel availableIcon;
-    private JDateChooser denNgayDc;
-    private JTextArea lyDoTar;
-    private SuggestionUtility soCmtJtf;
-    private JDateChooser tuNgayDc;
-    private JButton CancelBtn;
-    private JButton acceptBtn;
-    private JButton checkBtn;
 
-    
-	public TempResidenceDFrame(JFrame parentFrame) {
-		parentFrame.setEnabled(false);
-		initComponents();
+    public TempResidenceDFrame() {
+    	getContentPane().setIgnoreRepaint(true);
+    	getContentPane().setBackground(new Color(255, 255, 255));
+        initComponents();
+    }
+
+    public TempResidenceDFrame(JFrame parentFrame) {
         this.parentFrame = parentFrame;
+        initComponents();
         this.controller = new DangKyTamTruController();
         this.tamTruModel = new TamTruModel();
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        setTitle("Đăng ký tạm trú");
+        parentFrame.setEnabled(false);
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -69,163 +41,15 @@ public class TempResidenceDFrame extends JFrame {
             
         });
     }
-	
-	public void initComponents() {
-		setTitle("Đăng ký tạm trú");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 791, 565);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+    
+    void close() {
+        if (JOptionPane.OK_OPTION == JOptionPane.showConfirmDialog(null, "Are you sure to close?", "Warning!!", JOptionPane.YES_NO_OPTION)) {
+            this.parentFrame.setEnabled(true);
+            dispose();
+        }
+    }
 
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("Số CMT / CCCD");
-		lblNewLabel.setBounds(55, 11, 96, 30);
-		contentPane.add(lblNewLabel);
-		
-		JLabel lblMGiyTm = new JLabel("Mã giấy tạm trú");
-		lblMGiyTm.setBounds(81, 62, 96, 30);
-		contentPane.add(lblMGiyTm);
-		
-		JLabel lblNiTmTr = new JLabel("Số điện thoại");
-		lblNiTmTr.setBounds(81, 103, 96, 30);
-		contentPane.add(lblNiTmTr);
-		
-		JLabel lblTNgy = new JLabel("Từ ngày");
-		lblTNgy.setBounds(81, 144, 96, 30);
-		contentPane.add(lblTNgy);
-		
-		JLabel lblnNgy = new JLabel("Đến ngày");
-		lblnNgy.setBounds(81, 185, 96, 30);
-		contentPane.add(lblnNgy);
-		
-		JLabel lblLDo = new JLabel("Lí do");
-		lblLDo.setBounds(81, 234, 96, 30);
-		contentPane.add(lblLDo);
-		
-		denNgayDc = new JDateChooser();
-		denNgayDc.setBounds(200, 185, 284, 30);
-		contentPane.add(denNgayDc);
-		
-		tuNgayDc = new JDateChooser();
-		tuNgayDc.setBounds(200, 144, 284, 30);
-		contentPane.add(tuNgayDc);
-		
-		maGiayTamTruJtf = new JTextField();
-		maGiayTamTruJtf.setBounds(200, 62, 284, 30);
-		contentPane.add(maGiayTamTruJtf);
-		maGiayTamTruJtf.setColumns(10);
-		
-		soDienThoaiJtf = new SuggestionUtility(false) {
-			
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public List<String> getSuggestions(String textContent) {
-				return null;
-			}
-		};
-		soDienThoaiJtf.setBounds(200, 103, 284, 30);
-		contentPane.add(soDienThoaiJtf);
-		
-		soCmtJtf = new SuggestionUtility(false) {
-			
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public List<String> getSuggestions(String textContent) {
-				List<String> list = peopleService.searchByCid(textContent);
-				return list;
-			}
-		};
-		soCmtJtf.setBounds(200, 11, 284, 30);
-		contentPane.add(soCmtJtf);
-		
-		checkBtn = new JButton("Check");
-		checkBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		checkBtn.setBounds(520, 11, 65, 30);
-		contentPane.add(checkBtn);
-		
-		CancelBtn = new JButton("Hủy");
-		CancelBtn.setBounds(367, 394, 89, 30);
-		contentPane.add(CancelBtn);
-		
-		acceptBtn = new JButton("Xác nhận");
-		acceptBtn.setBounds(481, 394, 89, 30);
-		contentPane.add(acceptBtn);
-		
-		JLabel lblNewLabel_1 = new JLabel("(*)");
-		lblNewLabel_1.setForeground(UIManager.getColor("ToolBar.dockingForeground"));
-		lblNewLabel_1.setBounds(490, 19, 20, 14);
-		contentPane.add(lblNewLabel_1);
-		
-		JLabel lblNewLabel_1_1 = new JLabel("(*)");
-		lblNewLabel_1_1.setForeground(Color.RED);
-		lblNewLabel_1_1.setBounds(494, 70, 20, 14);
-		contentPane.add(lblNewLabel_1_1);
-		
-		JLabel lblNewLabel_1_2 = new JLabel("(*)");
-		lblNewLabel_1_2.setForeground(Color.RED);
-		lblNewLabel_1_2.setBounds(494, 111, 20, 14);
-		contentPane.add(lblNewLabel_1_2);
-		
-		JLabel lblNewLabel_1_3 = new JLabel("(*)");
-		lblNewLabel_1_3.setForeground(Color.RED);
-		lblNewLabel_1_3.setBounds(494, 152, 20, 14);
-		contentPane.add(lblNewLabel_1_3);
-		
-		JLabel lblNewLabel_1_4 = new JLabel("(*)");
-		lblNewLabel_1_4.setForeground(Color.RED);
-		lblNewLabel_1_4.setBounds(494, 193, 20, 14);
-		contentPane.add(lblNewLabel_1_4);
-		availableIcon = new javax.swing.JLabel();
-		availableIcon.setSize(40, 30);
-		availableIcon.setLocation(591, 11);
-		availableIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/checked.png"))); // NOI18N
-        availableIcon.setEnabled(false);
-        contentPane.add(availableIcon);
-        
-        JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(200, 234, 284, 143);
-        contentPane.add(scrollPane);
-        
-        lyDoTar = new JTextArea();
-        scrollPane.setViewportView(lyDoTar);
-        acceptBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                acceptBtnActionPerformed(evt);
-            }
-        });
-        CancelBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-            	cancelBtnActionPerformed(evt);
-            }
-        });
-        checkBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkBtnActionPerformed(evt);
-            }
-        });
-        this.soCmtJtf.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == 10) {
-                    checkCMT(soCmtJtf.getText());
-                }
-            }
-        });
-	}
-	private boolean checkCMT(String cmt) {
+    private boolean checkCMT(String cmt) {
         if (cmt.trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập số CMT", "Warning", JOptionPane.WARNING_MESSAGE);
             return false;
@@ -241,40 +65,244 @@ public class TempResidenceDFrame extends JFrame {
         }
         return true;
     }
-	
-	 private void checkBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBtnActionPerformed
-	        if (checkCMT(soCmtJtf.getText())) {
-	            int idNhanKhau = this.controller.checkCMT(soCmtJtf.getText());
-	            if (idNhanKhau > 0) {
-	                this.tamTruModel.setIdNhanKhau(idNhanKhau);
-	                soCmtJtf.setEnabled(false);
-	                checkBtn.setEnabled(false);
-	                availableIcon.setEnabled(true);
-	                maGiayTamTruJtf.setEnabled(true);
-	                soDienThoaiJtf.setEnabled(true);
-	                tuNgayDc.setEnabled(true);
-	                denNgayDc.setEnabled(true);
-	                lyDoTar.setEnabled(true);
-	            } else {
-	                if (JOptionPane.showConfirmDialog(null, "Không tìm thấy người có số CMT: " + soCmtJtf.getText() + ". Thêm mới?", "Confirm", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
-	                    AddNewPeopleFrame addNewPeopleFrame = new AddNewPeopleFrame(this);
-	                    addNewPeopleFrame.setLocationRelativeTo(null);
-	                    addNewPeopleFrame.setResizable(false);
-	                    addNewPeopleFrame.setVisible(true);
-	                }
-	            }
-	        }
-	    }//GEN-LAST:event_checkBtnActionPerformed
-	private boolean validateForm() {
-        return !(maGiayTamTruJtf.getText().trim().isEmpty() 
-                || soDienThoaiJtf.getText().trim().isEmpty()
-                || lyDoTar.getText().trim().isEmpty());
+  
+    @SuppressWarnings("unchecked")
+ 
+    private void initComponents() {
+
+        jPanel1 = new javax.swing.JPanel();
+        jPanel1.setBackground(new Color(240, 248, 255));
+        soCmtJtf = new javax.swing.JTextField();
+        soCmtJtf.setBounds(88, 24, 251, 30);
+        jLabel1 = new javax.swing.JLabel();
+        jLabel1.setBounds(10, 23, 63, 30);
+        checkBtn = new javax.swing.JButton();
+        checkBtn.setBounds(370, 23, 85, 30);
+        jLabel2 = new javax.swing.JLabel();
+        jLabel2.setBounds(343, 23, 15, 30);
+        jLabel3 = new javax.swing.JLabel();
+        jLabel3.setBounds(20, 111, 130, 30);
+        maGiayTamTruJtf = new javax.swing.JTextField();
+        maGiayTamTruJtf.setBounds(160, 112, 300, 30);
+        jLabel4 = new javax.swing.JLabel();
+        jLabel4.setBounds(470, 111, 15, 30);
+        soDienThoaiJtf = new javax.swing.JTextField();
+        soDienThoaiJtf.setBounds(160, 161, 300, 30);
+        jLabel5 = new javax.swing.JLabel();
+        jLabel5.setBounds(470, 160, 15, 30);
+        jLabel6 = new javax.swing.JLabel();
+        jLabel6.setBounds(20, 160, 130, 30);
+        tuNgayDc = new com.toedter.calendar.JDateChooser();
+        tuNgayDc.setBounds(160, 209, 300, 30);
+        jLabel7 = new javax.swing.JLabel();
+        jLabel7.setBounds(20, 209, 130, 30);
+        jLabel8 = new javax.swing.JLabel();
+        jLabel8.setBounds(470, 209, 15, 30);
+        jLabel9 = new javax.swing.JLabel();
+        jLabel9.setBounds(470, 257, 15, 30);
+        denNgayDc = new com.toedter.calendar.JDateChooser();
+        denNgayDc.setBounds(160, 257, 300, 30);
+        jLabel10 = new javax.swing.JLabel();
+        jLabel10.setBounds(20, 265, 130, 30);
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPane1.setBounds(160, 305, 300, 96);
+        jLabel11 = new javax.swing.JLabel();
+        jLabel11.setBounds(20, 302, 130, 30);
+        acceptBtn = new javax.swing.JButton();
+        acceptBtn.setBounds(368, 416, 101, 30);
+        cancelBtn = new javax.swing.JButton();
+        cancelBtn.setBounds(257, 416, 101, 30);
+        availableIcon = new javax.swing.JLabel();
+        availableIcon.setBounds(465, 23, 32, 32);
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+
+        soCmtJtf.setFont(new java.awt.Font("Tohama", 0, 14));  
+
+        jLabel1.setFont(new Font("Tahoma", Font.BOLD, 14));  
+        jLabel1.setText("Số CMT:");
+
+        checkBtn.setFont(new java.awt.Font("Tohama", 0, 14));  
+        checkBtn.setText("Check");
+        checkBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkBtnActionPerformed(evt);
+            }
+        });
+
+        checkBtn.setBackground(new Color(147, 112, 219));
+        checkBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
+        checkBtn.setForeground(new Color(255, 255, 255));
+        checkBtn.setBorderPainted(false);
+
+      
+
+        jLabel2.setFont(new java.awt.Font("Tohama", 0, 14));  
+        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel2.setText("(*)");
+
+        jLabel3.setFont(new java.awt.Font("Tohama", 1, 14));  
+        jLabel3.setText("Mã giấy tạm trú:");
+
+        maGiayTamTruJtf.setFont(new java.awt.Font("Tohama", 0, 14));  
+        maGiayTamTruJtf.setEnabled(false);
+        maGiayTamTruJtf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                maGiayTamTruJtfActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Tohama", 0, 14));  
+        jLabel4.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel4.setText("(*)");
+
+        soDienThoaiJtf.setFont(new java.awt.Font("Tohama", 0, 14));  
+        soDienThoaiJtf.setEnabled(false);
+        soDienThoaiJtf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                soDienThoaiJtfActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Tohama", 0, 14));  
+        jLabel5.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel5.setText("(*)");
+
+        jLabel6.setFont(new java.awt.Font("Tohama", 1, 14));  
+        jLabel6.setText("Số điện thoại:");
+
+        tuNgayDc.setEnabled(false);
+
+        jLabel7.setFont(new java.awt.Font("Tohama", 1, 14));  
+        jLabel7.setText("Từ ngày:");
+
+        jLabel8.setFont(new java.awt.Font("Tohama", 0, 14));  
+        jLabel8.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel8.setText("(*)");
+
+        jLabel9.setFont(new java.awt.Font("Tohama", 0, 14));  
+        jLabel9.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel9.setText("(*)");
+
+        denNgayDc.setEnabled(false);
+
+        jLabel10.setFont(new java.awt.Font("Tohama", 1, 14));  
+        jLabel10.setText("Đến ngày:");
+
+        jLabel11.setFont(new java.awt.Font("Tohama", 1, 14));  
+        jLabel11.setText("Lý do:");
+
+        acceptBtn.setText("Xác nhận");
+        acceptBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	acceptBtnActionPerformed(evt);
+            }
+        });
+        acceptBtn.setBackground(new Color(147, 112, 219));
+        acceptBtn.setFont(new Font("Tahoma", Font.BOLD, 14));
+        acceptBtn.setForeground(new Color(255, 255, 255));
+        acceptBtn.setBorderPainted(false);
+
+        
+        cancelBtn.setText("Hủy");
+        cancelBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	cancelBtnActionPerformed(evt);
+            }
+        });
+        cancelBtn.setBackground(new Color(147, 112, 219));
+        cancelBtn.setFont(new Font("Tahoma", Font.BOLD, 14));
+		cancelBtn.setForeground(new Color(255, 255, 255));
+		cancelBtn.setBorderPainted(false);
+
+        availableIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/checked.png")));  
+        availableIcon.setEnabled(false);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        layout.setHorizontalGroup(
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, 507, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, 454, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        getContentPane().setLayout(layout);
+        jPanel1.setLayout(null);
+        jPanel1.add(jLabel1);
+        jPanel1.add(soCmtJtf);
+        jPanel1.add(jLabel2);
+        jPanel1.add(checkBtn);
+        jPanel1.add(availableIcon);
+        jPanel1.add(jLabel3);
+        jPanel1.add(jLabel6);
+        jPanel1.add(jLabel7);
+        jPanel1.add(jLabel10);
+        jPanel1.add(jLabel11);
+        jPanel1.add(jScrollPane1);
+        lyDoTar = new javax.swing.JTextArea();
+        jScrollPane1.setViewportView(lyDoTar);
+        
+                lyDoTar.setColumns(20);
+                lyDoTar.setRows(5);
+                lyDoTar.setEnabled(false);
+        jPanel1.add(tuNgayDc);
+        jPanel1.add(denNgayDc);
+        jPanel1.add(soDienThoaiJtf);
+        jPanel1.add(maGiayTamTruJtf);
+        jPanel1.add(jLabel4);
+        jPanel1.add(jLabel5);
+        jPanel1.add(jLabel8);
+        jPanel1.add(jLabel9);
+        jPanel1.add(cancelBtn);
+        jPanel1.add(acceptBtn);
+
+        pack();
     }
-	private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
+
+    private void checkBtnActionPerformed(java.awt.event.ActionEvent evt) {
+        if (checkCMT(soCmtJtf.getText())) {
+            int idNhanKhau = this.controller.checkCMT(soCmtJtf.getText());
+            if (idNhanKhau > 0) {
+                this.tamTruModel.setIdNhanKhau(idNhanKhau);
+                soCmtJtf.setEnabled(false);
+                checkBtn.setEnabled(false);
+                availableIcon.setEnabled(true);
+                maGiayTamTruJtf.setEnabled(true);
+                soDienThoaiJtf.setEnabled(true);
+                tuNgayDc.setEnabled(true);
+                denNgayDc.setEnabled(true);
+                lyDoTar.setEnabled(true);
+            } else {
+                if (JOptionPane.showConfirmDialog(null, "Không tìm thấy người có số CMT: " + soCmtJtf.getText() + ". Thêm mới?", "Confirm", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
+                    NewPeopleFrame addNewPeopleJFrame = new NewPeopleFrame(this);
+                    addNewPeopleJFrame.setLocationRelativeTo(null);
+                    addNewPeopleJFrame.setResizable(false);
+                    addNewPeopleJFrame.setVisible(true);
+                }
+            }
+        }
+    }
+
+    private void maGiayTamTruJtfActionPerformed(java.awt.event.ActionEvent evt) {
+    }//GEN-LAST:event_maGiayTamTruJtfActionPerformed
+
+    private void soDienThoaiJtfActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }//GEN-LAST:event_soDienThoaiJtfActionPerformed
+
+    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {
         close();
     }//GEN-LAST:event_cancelBtnActionPerformed
 
-    private void acceptBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceptBtnActionPerformed
+    private void acceptBtnActionPerformed(java.awt.event.ActionEvent evt) {
         if (validateForm()) {
             this.tamTruModel.setMaGiayTamTru(maGiayTamTruJtf.getText().trim());
             this.tamTruModel.setSoDienThoaiNguoiDangKy(soDienThoaiJtf.getText().trim());
@@ -288,13 +316,35 @@ public class TempResidenceDFrame extends JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Vui lòng nhập hết các trường bắt buộc!", "Warning!", JOptionPane.WARNING_MESSAGE);
         }
-    }//GEN-LAST:event_acceptBtnActionPerformed
-    
-	void close() {
-        if (JOptionPane.OK_OPTION == JOptionPane.showConfirmDialog(null, "Are you sure to close?", "Warning!!", JOptionPane.YES_NO_OPTION)) {
-            this.parentFrame.setEnabled(true);
-            dispose();
-        }
     }
+    private javax.swing.JButton acceptBtn;
+    private javax.swing.JLabel availableIcon;
+    private javax.swing.JButton cancelBtn;
+    private javax.swing.JButton checkBtn;
+    private com.toedter.calendar.JDateChooser denNgayDc;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea lyDoTar;
+    private javax.swing.JTextField maGiayTamTruJtf;
+    private javax.swing.JTextField soCmtJtf;
+    private javax.swing.JTextField soDienThoaiJtf;
+    private com.toedter.calendar.JDateChooser tuNgayDc;
+   
 
+    private boolean validateForm() {
+        return !(maGiayTamTruJtf.getText().trim().isEmpty() 
+                || soDienThoaiJtf.getText().trim().isEmpty()
+                || lyDoTar.getText().trim().isEmpty());
+    }
 }

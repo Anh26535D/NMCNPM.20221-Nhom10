@@ -1,6 +1,7 @@
 package controllers.HoKhauManagerController;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
@@ -127,6 +128,7 @@ public class ChuyenDiNoiKhacController {
         
         JScrollPane scroll = new JScrollPane();
         scroll.getViewport().add(table);
+        scroll.getViewport().setBackground(Color.white);
         tableJpn.removeAll();
         tableJpn.setLayout(new BorderLayout());
         tableJpn.add(scroll);

@@ -19,4 +19,16 @@ public class AddressController {
 	public List<String> searchByProvince(String key){
 	    return addrService.searchByProvince(key);
 	}
+	
+	public List<String> getAllProvince(){
+	    return addrService.getAllProvince();
+	}
+	
+	public List<String> getAllDistrictOfProvince(String province){
+	    return addrService.getAllDistrictOfProvince(province);
+	}
+	
+	public List<String> getAllWardOfDistricts(String district,String province){
+	    return addrService.getAllWardOfDistricts(district, province);
+	}
 }

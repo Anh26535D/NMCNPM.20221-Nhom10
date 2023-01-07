@@ -33,7 +33,7 @@ import java.awt.Color;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 
-public class AddNewPeopleFrame extends JFrame {
+public class NewPeopleFrame extends JFrame {
 	
 	/**
 	 * 
@@ -75,7 +75,7 @@ public class AddNewPeopleFrame extends JFrame {
     /**
      * @wbp.parser.constructor
      */
-    public AddNewPeopleFrame(JFrame parentJFrame) {
+    public NewPeopleFrame(JFrame parentJFrame) {
     	init();
         this.parentController = new PeoplePanelController(){
             @Override
@@ -101,7 +101,7 @@ public class AddNewPeopleFrame extends JFrame {
         });
     }
 
-	public AddNewPeopleFrame(PeoplePanelController parentController, JFrame parentJFrame) {
+	public NewPeopleFrame(PeoplePanelController parentController, JFrame parentJFrame) {
         init();
 		this.parentController = parentController;
         this.parentFrame = parentJFrame;
@@ -173,7 +173,7 @@ public class AddNewPeopleFrame extends JFrame {
 		
 		JLabel lblNghNghip = new JLabel("Nghề nghiệp:");
 		lblNghNghip.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblNghNghip.setBounds(24, 339+MARGIN_TOP, 65, 30);
+		lblNghNghip.setBounds(24, 359, 100, 30);
 		contentPane.add(lblNghNghip);
 		
 		JLabel lblChiuS = new JLabel("Hộ chiếu số");
@@ -260,7 +260,7 @@ public class AddNewPeopleFrame extends JFrame {
 		
 		trinhDoHocVanTxb = new JTextField();
 		trinhDoHocVanTxb.setColumns(10);
-		trinhDoHocVanTxb.setBounds(140, 257+MARGIN_TOP, 214, 30);
+		trinhDoHocVanTxb.setBounds(140, 277, 250, 30);
 		contentPane.add(trinhDoHocVanTxb);
 		
 		noiThuongTruTxb = new SuggestionUtility(false) {
@@ -287,12 +287,12 @@ public class AddNewPeopleFrame extends JFrame {
 		
 		trinhDoNgoaiNguTxb = new JTextField();
 		trinhDoNgoaiNguTxb.setColumns(10);
-		trinhDoNgoaiNguTxb.setBounds(140, 298+MARGIN_TOP, 214, 30);
+		trinhDoNgoaiNguTxb.setBounds(140, 318, 250, 30);
 		contentPane.add(trinhDoNgoaiNguTxb);
 		
 		ngheNghiepTxb = new JTextField();
 		ngheNghiepTxb.setColumns(10);
-		ngheNghiepTxb.setBounds(140, 339+MARGIN_TOP, 214, 30);
+		ngheNghiepTxb.setBounds(140, 359, 250, 30);
 		contentPane.add(ngheNghiepTxb);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("(*)");
@@ -326,17 +326,17 @@ public class AddNewPeopleFrame extends JFrame {
 		
 		JLabel lblNewLabel_1_1_5 = new JLabel("(*)");
 		lblNewLabel_1_1_5.setForeground(Color.RED);
-		lblNewLabel_1_1_5.setBounds(364, 266+MARGIN_TOP, 14, 14);
+		lblNewLabel_1_1_5.setBounds(416, 286, 14, 14);
 		contentPane.add(lblNewLabel_1_1_5);
 		
 		JLabel lblNewLabel_1_1_6 = new JLabel("(*)");
 		lblNewLabel_1_1_6.setForeground(Color.RED);
-		lblNewLabel_1_1_6.setBounds(364, 324+MARGIN_TOP, 14, 14);
+		lblNewLabel_1_1_6.setBounds(416, 326, 14, 14);
 		contentPane.add(lblNewLabel_1_1_6);
 		
 		JLabel lblNewLabel_1_1_6_1 = new JLabel("(*)");
 		lblNewLabel_1_1_6_1.setForeground(Color.RED);
-		lblNewLabel_1_1_6_1.setBounds(364, 365+MARGIN_TOP, 14, 14);
+		lblNewLabel_1_1_6_1.setBounds(416, 368, 14, 14);
 		contentPane.add(lblNewLabel_1_1_6_1);
 		
 		gioiTinhCbb = new JComboBox<String>();
@@ -445,7 +445,7 @@ public class AddNewPeopleFrame extends JFrame {
     }//GEN-LAST:event_CancelBtnActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        TieuSuJFrame tieuSuJFrame = new TieuSuJFrame(this, this.nhanKhauBean);
+        ProfileFrame tieuSuJFrame = new ProfileFrame(this, this.nhanKhauBean);
         tieuSuJFrame.setLocationRelativeTo(null);
         tieuSuJFrame.setResizable(false);
         tieuSuJFrame.setVisible(true);

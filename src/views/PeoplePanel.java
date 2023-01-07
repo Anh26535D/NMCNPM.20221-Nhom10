@@ -1,7 +1,7 @@
 package views;
 
 import controllers.PeoplePanelController;
-import views.PeopleManagerFrame.AddNewPeopleFrame;
+import views.PeopleManagerFrame.NewPeopleFrame;
 import views.PeopleManagerFrame.DeathCertiFrame;
 import views.PeopleManagerFrame.TempAbsenceDFrame;
 import views.PeopleManagerFrame.TempResidenceDFrame;
@@ -168,7 +168,7 @@ public class PeoplePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addNewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewBtnActionPerformed
-        AddNewPeopleFrame addNewPeopleFrame = new AddNewPeopleFrame(this.controller, this.parentJFrame);
+    	NewPeopleFrame addNewPeopleFrame = new NewPeopleFrame(this.controller, this.parentJFrame);
         addNewPeopleFrame.setLocationRelativeTo(null);
         addNewPeopleFrame.setResizable(false);
         addNewPeopleFrame.setVisible(true);
