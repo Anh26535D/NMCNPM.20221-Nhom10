@@ -1,6 +1,7 @@
 package controllers.HoKhauManagerController;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.sql.SQLException;
@@ -43,6 +44,7 @@ public class ThemMoiController {
         
         JScrollPane scroll = new JScrollPane();
         scroll.getViewport().add(table_mem);
+        scroll.getViewport().setBackground(Color.white);
         tablePanel.removeAll();
         tablePanel.setLayout(new BorderLayout());
         tablePanel.add(scroll);

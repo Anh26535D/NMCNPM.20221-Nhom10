@@ -52,26 +52,29 @@ public class NewHouseholdFrame extends JFrame {
 	public NewHouseholdFrame(JFrame parentJFrame) {
 		init();
 		this.parentJFrame = parentJFrame;
+		this.setResizable(false);
+		this.setTitle("Tách hộ khẩu");
+        this.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+		this.setBounds(350, 200, 670, 785);
+		this.setLocationRelativeTo(null);
+
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                close();
+            }
+            
+        });       
 		parentJFrame.setEnabled(true);
-		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		this.addWindowListener(new WindowAdapter() {
-		        @Override
-		        public void windowClosing(WindowEvent e) {
-		            close();
-		        }
-		        
-		});
+		this.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
 		setDataThanhVien();
 	}
 	
 	private void init() {
-		this.setResizable(false);
-		this.setTitle("Hộ khẩu mới");
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setBounds(350, 200, 700, 800);
-		this.setLocationRelativeTo(null);
 
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -79,13 +82,13 @@ public class NewHouseholdFrame extends JFrame {
 		
 		JPanel jPanel2 = new JPanel();
 		jPanel2.setBackground(new Color(230, 230, 250));
-		jPanel2.setBounds(0, 0, 676, 753);
+		jPanel2.setBounds(10, 10, 636, 728);
 		contentPane.add(jPanel2);
 		jPanel2.setLayout(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(240, 248, 255));
-		panel.setBounds(10, 23, 656, 53);
+		panel.setBounds(10, 23, 600, 53);
 		jPanel2.add(panel);
 		panel.setLayout(null);
 		
@@ -101,14 +104,14 @@ public class NewHouseholdFrame extends JFrame {
                 maHoKhauJtfActionPerformed(evt);
             }
         });
-		maHoKhauJtf.setBounds(190, 10, 454, 33);
+		maHoKhauJtf.setBounds(190, 10, 392, 33);
 		panel.add(maHoKhauJtf);
 		maHoKhauJtf.setColumns(10);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
 		panel_1.setBackground(new Color(240, 248, 255));
-		panel_1.setBounds(10, 86, 656, 53);
+		panel_1.setBounds(10, 86, 600, 53);
 		jPanel2.add(panel_1);
 		
 		JLabel jLabel3 = new JLabel("Mã khu vực");
@@ -124,13 +127,13 @@ public class NewHouseholdFrame extends JFrame {
             }
         });
 		maKhuVucJtf.setColumns(10);
-		maKhuVucJtf.setBounds(190, 10, 454, 33);
+		maKhuVucJtf.setBounds(190, 10, 392, 33);
 		panel_1.add(maKhuVucJtf);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setLayout(null);
 		panel_2.setBackground(new Color(240, 248, 255));
-		panel_2.setBounds(10, 149, 656, 53);
+		panel_2.setBounds(10, 149, 600, 53);
 		jPanel2.add(panel_2);
 		
 		JLabel jLabel5 = new JLabel("Địa chỉ");
@@ -146,13 +149,13 @@ public class NewHouseholdFrame extends JFrame {
             }
         });
 		diaChiJtf.setColumns(10);
-		diaChiJtf.setBounds(190, 10, 454, 33);
+		diaChiJtf.setBounds(190, 10, 386, 33);
 		panel_2.add(diaChiJtf);
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setLayout(null);
 		panel_3.setBackground(new Color(240, 248, 255));
-		panel_3.setBounds(10, 212, 656, 53);
+		panel_3.setBounds(10, 212, 600, 53);
 		jPanel2.add(panel_3);
 		
 		JLabel jLabel1_3 = new JLabel("Chủ hộ");
@@ -168,7 +171,7 @@ public class NewHouseholdFrame extends JFrame {
             }
         });
 		tenChuHoJtf.setColumns(10);
-		tenChuHoJtf.setBounds(190, 10, 454, 33);
+		tenChuHoJtf.setBounds(190, 10, 387, 33);
 		panel_3.add(tenChuHoJtf);
 		
 		selectBtn = new JButton("Chọn");
@@ -178,7 +181,7 @@ public class NewHouseholdFrame extends JFrame {
             }
         });
 		selectBtn.setBorderPainted(false);
-		selectBtn.setBounds(100, 10, 83, 33);
+		selectBtn.setBounds(99, 14, 83, 27);
 		selectBtn.setBorder(new LineBorder(new Color(186, 85, 211), 1, true));
 		selectBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
 		selectBtn.setForeground(new Color(255, 255, 255));
@@ -188,7 +191,7 @@ public class NewHouseholdFrame extends JFrame {
 		JPanel panel_4 = new JPanel();
 		panel_4.setLayout(null);
 		panel_4.setBackground(new Color(240, 248, 255));
-		panel_4.setBounds(10, 275, 656, 53);
+		panel_4.setBounds(10, 275, 600, 53);
 		jPanel2.add(panel_4);
 		
 		JLabel jLabel7 = new JLabel("Ngày sinh chủ hộ");
@@ -206,13 +209,13 @@ public class NewHouseholdFrame extends JFrame {
 
 		ngaySinhChuHoJtf.setHorizontalAlignment(SwingConstants.LEFT);
 		ngaySinhChuHoJtf.setColumns(10);
-		ngaySinhChuHoJtf.setBounds(190, 10, 454, 33);
+		ngaySinhChuHoJtf.setBounds(190, 10, 385, 33);
 		panel_4.add(ngaySinhChuHoJtf);
 		
 		JPanel panel_5 = new JPanel();
 		panel_5.setLayout(null);
 		panel_5.setBackground(new Color(240, 248, 255));
-		panel_5.setBounds(10, 338, 656, 53);
+		panel_5.setBounds(10, 338, 600, 53);
 		jPanel2.add(panel_5);
 		
 		JLabel jLabel1_5 = new JLabel("Số CMT chủ hộ");
@@ -228,14 +231,14 @@ public class NewHouseholdFrame extends JFrame {
             }
         });
 		soCMTChuHo.setColumns(10);
-		soCMTChuHo.setBounds(190, 10, 454, 33);
+		soCMTChuHo.setBounds(190, 10, 386, 33);
 		panel_5.add(soCMTChuHo);
 		
 		JPanel jPanel1 = new JPanel();
 		jPanel1.setBackground(new Color(240, 248, 255));
 		jPanel1.setFont(new Font("Tahoma", Font.BOLD, 20));
 		jPanel1.setBorder(new TitledBorder(null, "Th\u00E0nh vi\u00EAn c\u1EE7a h\u1ED9", TitledBorder.LEADING, TitledBorder.TOP, new java.awt.Font("Tahoma", 0, 18)));
-		jPanel1.setBounds(10, 401, 656, 295);
+		jPanel1.setBounds(10, 401, 600, 248);
 		jPanel2.add(jPanel1);
 		jPanel1.setLayout(null);
 		
@@ -249,12 +252,12 @@ public class NewHouseholdFrame extends JFrame {
 		editBtn.setBackground(new Color(147, 112, 219));
 		editBtn.setBorderPainted(false);
 		editBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
-		editBtn.setBounds(10, 36, 94, 33);
+		editBtn.setBounds(10, 36, 94, 27);
 		jPanel1.add(editBtn);
 		
 		memTableJpn = new JPanel();
 		memTableJpn.setBackground(new Color(255, 255, 255));
-		memTableJpn.setBounds(10, 79, 636, 206);
+		memTableJpn.setBounds(10, 79, 572, 146);
 		jPanel1.add(memTableJpn);
 		
 		cancelBtn = new JButton("Hủy");
@@ -262,7 +265,7 @@ public class NewHouseholdFrame extends JFrame {
 		cancelBtn.setForeground(new Color(255, 255, 255));
 		cancelBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
 		cancelBtn.setBorderPainted(false);
-		cancelBtn.setBounds(464, 706, 90, 37);
+		cancelBtn.setBounds(376, 669, 90, 30);
         cancelBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelBtnActionPerformed(evt);
@@ -280,7 +283,7 @@ public class NewHouseholdFrame extends JFrame {
 		saveBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
 		saveBtn.setForeground(new Color(255, 255, 255));
 		saveBtn.setBorderPainted(false);
-		saveBtn.setBounds(576, 706, 90, 37);
+		saveBtn.setBounds(495, 669, 90, 30);
 		jPanel2.add(saveBtn);
 	}
 	
@@ -301,43 +304,42 @@ public class NewHouseholdFrame extends JFrame {
         this.controller.setData(this.list, this.memTableJpn);
     }
     
-    private void maHoKhauJtfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maHoKhauJtfActionPerformed
-    }//GEN-LAST:event_maHoKhauJtfActionPerformed
+    private void maHoKhauJtfActionPerformed(java.awt.event.ActionEvent evt) {
+    }
+    
 
-    private void maKhuVucJtfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maKhuVucJtfActionPerformed
-    }//GEN-LAST:event_maKhuVucJtfActionPerformed
+    private void maKhuVucJtfActionPerformed(java.awt.event.ActionEvent evt) {
+    }
 
-    private void diaChiJtfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_diaChiJtfActionPerformed
-    }//GEN-LAST:event_diaChiJtfActionPerformed
-
-    private void selectBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectBtnActionPerformed
+    private void diaChiJtfActionPerformed(java.awt.event.ActionEvent evt) {
+    }
+    private void selectBtnActionPerformed(java.awt.event.ActionEvent evt) {
         ChoosePeople choosePeople = new ChoosePeople(this.chuHo, this);
         choosePeople.setLocationRelativeTo(null);
         choosePeople.setResizable(false);
         choosePeople.setVisible(true);
-    }//GEN-LAST:event_selectBtnActionPerformed
+    }
+    private void tenChuHoJtfActionPerformed(java.awt.event.ActionEvent evt) {
+    }
 
-    private void tenChuHoJtfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tenChuHoJtfActionPerformed
-    }//GEN-LAST:event_tenChuHoJtfActionPerformed
+    private void ngaySinhChuHoJtfActionPerformed(java.awt.event.ActionEvent evt) {
+    }
 
-    private void ngaySinhChuHoJtfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ngaySinhChuHoJtfActionPerformed
-    }//GEN-LAST:event_ngaySinhChuHoJtfActionPerformed
+    private void soCMTChuHoActionPerformed(java.awt.event.ActionEvent evt) {
+    }
 
-    private void soCMTChuHoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_soCMTChuHoActionPerformed
-    }//GEN-LAST:event_soCMTChuHoActionPerformed
-
-    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
+    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {
         close();
-    }//GEN-LAST:event_cancelBtnActionPerformed
+    }
 
-    private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
+    private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {
         ChangeListPeopleJframe changeListPeopleJframe = new ChangeListPeopleJframe(list, this);
         changeListPeopleJframe.setLocationRelativeTo(null);
         changeListPeopleJframe.setResizable(false);
         changeListPeopleJframe.setVisible(true);
-    }//GEN-LAST:event_editBtnActionPerformed
+    }
 
-    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
+    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {
         if (this.maHoKhauJtf.getText().trim().isEmpty() 
                 || this.maKhuVucJtf.getText().trim().isEmpty()
                 || this.diaChiJtf.getText().trim().isEmpty()
