@@ -1,673 +1,455 @@
 package views.PeopleManagerFrame;
 
-import controllers.LoginController;
-import controllers.NhanKhauManagerController.AddNewController;
-import controllers.PeoplePanelController;
+import java.util.List;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
-import bean.NhanKhauBean;
+import utility.SuggestionUtility;
+import views.AddressSuggestion;
+import controllers.LoginController;
+import controllers.PeoplePanelController;
+import controllers.NhanKhauManagerController.AddNewController;
+import models.AddressModel;
 import models.ChungMinhThuModel;
 import models.NhanKhauModel;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.GroupLayout;
+
+import javax.swing.JComboBox;
+import com.toedter.calendar.JDateChooser;
+
+import bean.NhanKhauBean;
+
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.JTextField;
+import java.awt.Color;
+import javax.swing.SwingConstants;
+import java.awt.Font;
 
-
-public class NewPeopleJFrame extends javax.swing.JFrame {
-
-    /**
+public class NewPeopleJFrame extends JFrame {
+	
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
+	private int MARGIN_TOP = 20;
+	
 	private PeoplePanelController parentController;
     private JFrame parentFrame;
     private NhanKhauBean nhanKhauBean;
     private AddNewController controller;
-    
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CancelBtn;
-    private javax.swing.JButton CreateBtn;
-    private JButton CreateBtn_1;
-    private javax.swing.JTextField bietDanhTxb;
-    private javax.swing.JTextField bietTiengDanTocTxb;
-    private javax.swing.JTextField danTocTxb;
-    private javax.swing.JTextField diaChiHienNayTxb;
-    private javax.swing.JComboBox<String> gioiTinhCbb;
-    private javax.swing.JTextField hoTenTxb;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private com.toedter.calendar.JDateChooser namSinhDateC;
-    private javax.swing.JTextField ngheNghiepTxb;
-    private javax.swing.JTextField nguyenQuanTxb;
-    private javax.swing.JTextField noiLamViecTxb;
-    private javax.swing.JTextField noiThuongTruTxb;
-    private javax.swing.JTextField quocTichTxb;
-    private javax.swing.JTextField soCMTTxb;
-    private javax.swing.JTextField soHoChieuTxb;
-    private javax.swing.JTextField tonGiaoTxb;
-    private javax.swing.JTextField trinhDoChuyenMonTxb;
-    private javax.swing.JTextField trinhDoHocVanTxb;
-    private javax.swing.JTextField trinhDoNgoaiNguTxb;
-    // End of variables declaration//GEN-END:variables
+    private AddressSuggestion addrSuggestion;
+    private AddressModel addrModel = new AddressModel();
 
-
-    public NewPeopleJFrame() {
-    	getContentPane().setEnabled(false);
-    	getContentPane().setBackground(new Color(255, 255, 255));
-        initComponents();
-        setTitle("Thêm mới nhân khẩu");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        controller = new AddNewController();
-    }
-
-    public NewPeopleJFrame(PeoplePanelController parentController, JFrame parentJFrame) {
-        this.parentController = parentController;
-        this.parentFrame = parentJFrame;
-        this.parentFrame.setEnabled(false);
-        this.nhanKhauBean = new NhanKhauBean();
-        initComponents();
-        setTitle("Thêm mới nhân khẩu");
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        controller = new AddNewController();
-        
-        this.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                if (JOptionPane.showConfirmDialog(null, "Are you sure to close??", "Warning!!", JOptionPane.YES_NO_OPTION) == 0) {
-                    close();
-                }
-            }
-            
-        });
-    }
-    
+	private JPanel contentPane;
+	private JTextField hoTenTxb;
+	private JTextField danTocTxb;
+	private JTextField soCMTTxb;
+	private JTextField trinhDoHocVanTxb;
+	private JTextField trinhDoNgoaiNguTxb;
+	private JTextField ngheNghiepTxb;
+	private JTextField bietDanhTxb;
+	private JTextField tonGiaoTxb;
+	private JTextField soHoChieuTxb;
+	private JTextField trinhDoChuyenMonTxb;
+	private JTextField bietTiengDanTocTxb;
+	private JTextField noiLamViecTxb;
+	private com.toedter.calendar.JDateChooser namSinhDateC;
+	private javax.swing.JButton jButton1;
+	private SuggestionUtility quocTichTxb;
+	private SuggestionUtility diaChiHienNayTxb;
+	private JButton CancelBtn ;
+	private JButton CreateBtn;
+	private SuggestionUtility nguyenQuanTxb;
+	private SuggestionUtility noiThuongTruTxb;
+	private javax.swing.JComboBox<String> gioiTinhCbb;
+	
+    /**
+     * @wbp.parser.constructor
+     */
     public NewPeopleJFrame(JFrame parentJFrame) {
+    	init();
         this.parentController = new PeoplePanelController(){
             @Override
             public void refreshData() {
-                // do nothing
             }
 
             @Override
             public void initAction() {
-                // do nothing
             }
-            
-            
         };
+        
         this.parentFrame = parentJFrame;
         this.parentFrame.setEnabled(false);
         this.nhanKhauBean = new NhanKhauBean();
-        initComponents();
-        setTitle("Thêm mới nhân khẩu");
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         controller = new AddNewController();
-        
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                if (JOptionPane.showConfirmDialog(null, "Are you sure to close??", "Warning!!", JOptionPane.YES_NO_OPTION) == 0) {
                     close();
-                }
             }
             
         });
     }
-    
-    void close() {
-        this.parentFrame.setEnabled(true);
-        dispose();
-    }
 
-
-    @SuppressWarnings("unchecked")
-    private void initComponents() {
-
-        jPanel1 = new javax.swing.JPanel();
-        hoTenTxb = new javax.swing.JTextField();
-        hoTenTxb.setBounds(194, 38, 318, 30);
-        CreateBtn = new javax.swing.JButton();
-        CreateBtn_1 = new javax.swing.JButton();
-        CreateBtn_1.setSize(100, 30);
-        CreateBtn_1.setLocation(920, 490);
-        CreateBtn_1.setBackground(new Color(147, 112, 219));
-        CreateBtn_1.setFont(new Font("Tahoma", Font.BOLD, 15));
-        CreateBtn_1.setForeground(new Color(255, 255, 255));
-        CreateBtn_1.setBorderPainted(false);
-        CreateBtn_1.setText("Create");
-        CreateBtn_1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CancelBtnActionPerformed(evt);
+	public NewPeopleJFrame(PeoplePanelController parentController, JFrame parentJFrame) {
+        init();
+		this.parentController = parentController;
+        this.parentFrame = parentJFrame;
+        this.parentFrame.setEnabled(false);
+        this.nhanKhauBean = new NhanKhauBean();
+        controller = new AddNewController();
+        
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                close();
             }
         });
+	}
+	
+	private void init() {
+		setTitle("Thêm nhân khẩu");
+		setBounds(100, 100, 909, 531);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
 		
-        CancelBtn = new javax.swing.JButton();
-        CancelBtn.setBounds(783, 490, 100, 30);
-        CancelBtn.setBackground(new Color(147, 112, 219));
-        CancelBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
-        CancelBtn.setForeground(new Color(255, 255, 255));
-        CancelBtn.setBorderPainted(false);
-        CancelBtn.setText("Cancel");
-        CancelBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CancelBtnActionPerformed(evt);
-            }
-        });
+		nguyenQuanTxb = new SuggestionUtility(false) {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public List<String> getSuggestions(String textContent) {
+				return null;
+			}
+		};
+		nguyenQuanTxb.setEditable(false);
+		nguyenQuanTxb.setBounds(140, 113, 230, 30);
+		contentPane.add(nguyenQuanTxb);
 		
-        jLabel1 = new javax.swing.JLabel();
-        jLabel1.setBounds(13, 37, 119, 30);
-        jLabel2 = new javax.swing.JLabel();
-        jLabel2.setBounds(516, 37, 15, 30);
-        jLabel3 = new javax.swing.JLabel();
-        jLabel3.setBounds(572, 37, 108, 30);
-        bietDanhTxb = new javax.swing.JTextField();
-        bietDanhTxb.setBounds(747, 38, 318, 30);
-        nguyenQuanTxb = new javax.swing.JTextField();
-        nguyenQuanTxb.setBounds(194, 136, 318, 30);
-        jLabel5 = new javax.swing.JLabel();
-        jLabel5.setBounds(10, 135, 122, 30);
-        jLabel6 = new javax.swing.JLabel();
-        jLabel6.setBounds(516, 135, 15, 30);
-        jLabel7 = new javax.swing.JLabel();
-        jLabel7.setBounds(516, 86, 15, 30);
-        jLabel8 = new javax.swing.JLabel();
-        jLabel8.setBounds(10, 86, 174, 30);
-        jLabel9 = new javax.swing.JLabel();
-        jLabel9.setBounds(516, 233, 15, 30);
-        danTocTxb = new javax.swing.JTextField();
-        danTocTxb.setBounds(194, 185, 318, 30);
-        soCMTTxb = new javax.swing.JTextField();
-        soCMTTxb.setBounds(194, 234, 318, 30);
-        jLabel10 = new javax.swing.JLabel();
-        jLabel10.setBounds(10, 233, 122, 30);
-        jLabel11 = new javax.swing.JLabel();
-        jLabel11.setBounds(516, 184, 15, 30);
-        jLabel12 = new javax.swing.JLabel();
-        jLabel12.setBounds(10, 184, 110, 30);
-        namSinhDateC = new com.toedter.calendar.JDateChooser();
-        namSinhDateC.getCalendarButton().setBackground(new Color(255, 255, 255));
-        namSinhDateC.setEnabled(false);
-        namSinhDateC.setBounds(194, 86, 318, 30);
-        gioiTinhCbb = new javax.swing.JComboBox<>();
-        gioiTinhCbb.setBounds(747, 86, 85, 30);
-        jLabel4 = new javax.swing.JLabel();
-        jLabel4.setBounds(572, 86, 88, 30);
-        jLabel13 = new javax.swing.JLabel();
-        jLabel13.setBounds(572, 135, 88, 30);
-        tonGiaoTxb = new javax.swing.JTextField();
-        tonGiaoTxb.setBounds(744, 136, 318, 30);
-        jLabel14 = new javax.swing.JLabel();
-        jLabel14.setBounds(1066, 135, 15, 30);
-        quocTichTxb = new javax.swing.JTextField();
-        quocTichTxb.setBounds(744, 185, 318, 30);
-        jLabel15 = new javax.swing.JLabel();
-        jLabel15.setBounds(572, 184, 88, 30);
-        jLabel16 = new javax.swing.JLabel();
-        jLabel16.setBounds(1066, 184, 15, 30);
-        soHoChieuTxb = new javax.swing.JTextField();
-        soHoChieuTxb.setBounds(744, 234, 318, 30);
-        jLabel17 = new javax.swing.JLabel();
-        jLabel17.setBounds(572, 233, 128, 30);
-        jLabel19 = new javax.swing.JLabel();
-        jLabel19.setBounds(572, 282, 128, 30);
-        jLabel20 = new javax.swing.JLabel();
-        jLabel20.setBounds(10, 282, 138, 30);
-        noiThuongTruTxb = new javax.swing.JTextField();
-        noiThuongTruTxb.setBounds(194, 283, 318, 30);
-        jLabel21 = new javax.swing.JLabel();
-        jLabel21.setBounds(516, 282, 15, 30);
-        diaChiHienNayTxb = new javax.swing.JTextField();
-        diaChiHienNayTxb.setBounds(744, 283, 318, 30);
-        jLabel22 = new javax.swing.JLabel();
-        jLabel22.setBounds(1066, 282, 15, 30);
-        trinhDoHocVanTxb = new javax.swing.JTextField();
-        trinhDoHocVanTxb.setBounds(194, 332, 318, 30);
-        jLabel23 = new javax.swing.JLabel();
-        jLabel23.setBounds(516, 331, 15, 30);
-        jLabel24 = new javax.swing.JLabel();
-        jLabel24.setBounds(572, 331, 174, 30);
-        trinhDoChuyenMonTxb = new javax.swing.JTextField();
-        trinhDoChuyenMonTxb.setBounds(744, 332, 318, 30);
-        jLabel25 = new javax.swing.JLabel();
-        jLabel25.setBounds(1066, 331, 15, 30);
-        jLabel26 = new javax.swing.JLabel();
-        jLabel26.setBounds(10, 331, 138, 30);
-        jLabel27 = new javax.swing.JLabel();
-        jLabel27.setBounds(10, 381, 159, 30);
-        trinhDoNgoaiNguTxb = new javax.swing.JTextField();
-        trinhDoNgoaiNguTxb.setBounds(194, 381, 318, 30);
-        jLabel28 = new javax.swing.JLabel();
-        jLabel28.setBounds(516, 380, 15, 30);
-        jLabel29 = new javax.swing.JLabel();
-        jLabel29.setBounds(572, 380, 162, 30);
-        bietTiengDanTocTxb = new javax.swing.JTextField();
-        bietTiengDanTocTxb.setBounds(744, 381, 318, 30);
-        jLabel30 = new javax.swing.JLabel();
-        jLabel30.setBounds(1066, 380, 15, 30);
-        jLabel31 = new javax.swing.JLabel();
-        jLabel31.setBounds(10, 429, 138, 30);
-        ngheNghiepTxb = new javax.swing.JTextField();
-        ngheNghiepTxb.setBounds(194, 430, 318, 30);
-        jLabel32 = new javax.swing.JLabel();
-        jLabel32.setBounds(516, 429, 15, 30);
-        jLabel33 = new javax.swing.JLabel();
-        jLabel33.setBounds(572, 429, 128, 30);
-        noiLamViecTxb = new javax.swing.JTextField();
-        noiLamViecTxb.setBounds(744, 430, 318, 30);
-        jLabel34 = new javax.swing.JLabel();
-        jLabel34.setBounds(1066, 429, 15, 30);
-        jButton1 = new javax.swing.JButton();
-        jButton1.setBounds(194, 478, 153, 30);
-        jButton1.setBackground(new Color(147, 112, 219));
-        jButton1.setFont(new Font("Tahoma", Font.BOLD, 15));
-        jButton1.setForeground(new Color(255, 255, 255));
-        jButton1.setBorderPainted(false);
+		namSinhDateC = new JDateChooser();
+		namSinhDateC.getCalendarButton().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		namSinhDateC.setBounds(140, 72, 250, 30);
+		contentPane.add(namSinhDateC);
+		
+		JButton btnNewButton = new JButton("+");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				getAddressAction();
+			}
+		});
+		btnNewButton.setBounds(370, 113, 20, 30);
+		contentPane.add(btnNewButton);
+		
+		JLabel lblNewLabel = new JLabel("Họ và tên:");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel.setBounds(24, 31, 100, 30);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNgyThngNm = new JLabel("Ngày sinh");
+		lblNgyThngNm.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNgyThngNm.setBounds(24, 52+MARGIN_TOP, 113, 30);
+		contentPane.add(lblNgyThngNm);
+		
+		JLabel lblNguynQun = new JLabel("Nguyên Quán:");
+		lblNguynQun.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNguynQun.setBounds(24, 93+MARGIN_TOP, 99, 30);
+		contentPane.add(lblNguynQun);
+		
+		JLabel lblNghNghip = new JLabel("Nghề nghiệp:");
+		lblNghNghip.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNghNghip.setBounds(24, 339+MARGIN_TOP, 65, 30);
+		contentPane.add(lblNghNghip);
+		
+		JLabel lblChiuS = new JLabel("Hộ chiếu số");
+		lblChiuS.setBounds(466, 175+MARGIN_TOP, 65, 30);
+		contentPane.add(lblChiuS);
+		
+		JLabel lblNiLmVic = new JLabel("Nơi làm việc:");
+		lblNiLmVic.setBounds(466, 339+MARGIN_TOP, 65, 30);
+		contentPane.add(lblNiLmVic);
+		
+		JLabel lblGiiTnh = new JLabel("Giới tính:");
+		lblGiiTnh.setBounds(466, 52+MARGIN_TOP, 65, 30);
+		contentPane.add(lblGiiTnh);
+		
+		JLabel lblQucTch = new JLabel("Quốc tịch:");
+		lblQucTch.setBounds(466, 134+MARGIN_TOP, 65, 30);
+		contentPane.add(lblQucTch);
+		
+		JLabel lblNiThngCh = new JLabel("Nơi thường trú:");
+		lblNiThngCh.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNiThngCh.setBounds(24, 215+MARGIN_TOP, 113, 30);
+		contentPane.add(lblNiThngCh);
+		
+		JLabel lblTnGio = new JLabel("Tôn giáo:");
+		lblTnGio.setBounds(466, 93+MARGIN_TOP, 65, 30);
+		contentPane.add(lblTnGio);
+		
+		JLabel lblSCmtcccd = new JLabel("Số CMT/CCCD:");
+		lblSCmtcccd.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblSCmtcccd.setBounds(24, 175+MARGIN_TOP, 113, 30);
+		contentPane.add(lblSCmtcccd);
+		
+		JLabel lblDnTc = new JLabel("Dân tộc:");
+		lblDnTc.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblDnTc.setBounds(24, 134+MARGIN_TOP, 65, 30);
+		contentPane.add(lblDnTc);
+		
+		JLabel lblBitDanh = new JLabel("Biệt danh:");
+		lblBitDanh.setBounds(466, 11+MARGIN_TOP, 65, 30);
+		contentPane.add(lblBitDanh);
+		
+		JLabel lblaChHin = new JLabel("Địa chỉ hiện tại:");
+		lblaChHin.setBounds(466, 216+MARGIN_TOP, 93, 30);
+		contentPane.add(lblaChHin);
+		
+		JLabel lblTrnhHc = new JLabel("Trình độ học vấn:");
+		lblTrnhHc.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblTrnhHc.setBounds(24, 257+MARGIN_TOP, 113, 30);
+		contentPane.add(lblTrnhHc);
+		
+		JLabel lblNewLabel_5_1 = new JLabel("Trình độ chuyên môn:");
+		lblNewLabel_5_1.setBounds(466, 257+MARGIN_TOP, 134, 30);
+		contentPane.add(lblNewLabel_5_1);
+		
+		JLabel lblNewLabel_5_2 = new JLabel("Biết tiếng dân tộc:");
+		lblNewLabel_5_2.setBounds(466, 298+MARGIN_TOP, 113, 30);
+		contentPane.add(lblNewLabel_5_2);
+		
+		JLabel lblTrnhNgoi = new JLabel("Trình độ ngoại ngữ:");
+		lblTrnhNgoi.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblTrnhNgoi.setBounds(24, 298+MARGIN_TOP, 113, 30);
+		contentPane.add(lblTrnhNgoi);
+		
+		JLabel lblNewLabel_1 = new JLabel("(*)");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setForeground(UIManager.getColor("ToolBar.dockingForeground"));
+		lblNewLabel_1.setBounds(400, 31, 30, 30);
+		contentPane.add(lblNewLabel_1);
+		
+		hoTenTxb = new JTextField();
+		hoTenTxb.setBounds(140, 30, 250, 30);
+		contentPane.add(hoTenTxb);
+		hoTenTxb.setColumns(10);
+		
+		danTocTxb = new JTextField();
+		danTocTxb.setColumns(10);
+		danTocTxb.setBounds(140, 134+MARGIN_TOP, 250, 30);
+		contentPane.add(danTocTxb);
+		
+		soCMTTxb = new JTextField();
+		soCMTTxb.setColumns(10);
+		soCMTTxb.setBounds(140, 195, 250, 30);
+		contentPane.add(soCMTTxb);
+		
+		trinhDoHocVanTxb = new JTextField();
+		trinhDoHocVanTxb.setColumns(10);
+		trinhDoHocVanTxb.setBounds(140, 257+MARGIN_TOP, 214, 30);
+		contentPane.add(trinhDoHocVanTxb);
+		
+		noiThuongTruTxb = new SuggestionUtility(false) {
+			private static final long serialVersionUID = 1L;
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+			public List<String> getSuggestions(String textContent) {
+				return null;
+			}
+		};
+		noiThuongTruTxb.setEditable(false);
+		noiThuongTruTxb.setBounds(140, 236, 230, 30);
+		contentPane.add(noiThuongTruTxb);
+		
+		JButton btnNewButton_1 = new JButton("New button");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				getAddressAction();
+			}
+		});
+		btnNewButton_1.setBounds(370, 236, 20, 30);
+		contentPane.add(btnNewButton_1);
+		
+		trinhDoNgoaiNguTxb = new JTextField();
+		trinhDoNgoaiNguTxb.setColumns(10);
+		trinhDoNgoaiNguTxb.setBounds(140, 298+MARGIN_TOP, 214, 30);
+		contentPane.add(trinhDoNgoaiNguTxb);
+		
+		ngheNghiepTxb = new JTextField();
+		ngheNghiepTxb.setColumns(10);
+		ngheNghiepTxb.setBounds(140, 339+MARGIN_TOP, 214, 30);
+		contentPane.add(ngheNghiepTxb);
+		
+		JLabel lblNewLabel_1_1 = new JLabel("(*)");
+		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1_1.setForeground(Color.RED);
+		lblNewLabel_1_1.setBounds(400, 72, 30, 30);
+		contentPane.add(lblNewLabel_1_1);
+		
+		JLabel lblNewLabel_1_1_1 = new JLabel("(*)");
+		lblNewLabel_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1_1_1.setForeground(Color.RED);
+		lblNewLabel_1_1_1.setBounds(400, 112, 30, 30);
+		contentPane.add(lblNewLabel_1_1_1);
+		
+		JLabel lblNewLabel_1_1_2 = new JLabel("(*)");
+		lblNewLabel_1_1_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1_1_2.setForeground(Color.RED);
+		lblNewLabel_1_1_2.setBounds(400, 154, 30, 30);
+		contentPane.add(lblNewLabel_1_1_2);
+		
+		JLabel lblNewLabel_1_1_3 = new JLabel("(*)");
+		lblNewLabel_1_1_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1_1_3.setForeground(Color.RED);
+		lblNewLabel_1_1_3.setBounds(400, 194, 30, 30);
+		contentPane.add(lblNewLabel_1_1_3);
+		
+		JLabel lblNewLabel_1_1_4 = new JLabel("(*)");
+		lblNewLabel_1_1_4.setForeground(Color.RED);
+		lblNewLabel_1_1_4.setBounds(410, 225+MARGIN_TOP, 14, 14);
+		contentPane.add(lblNewLabel_1_1_4);
+		
+		JLabel lblNewLabel_1_1_5 = new JLabel("(*)");
+		lblNewLabel_1_1_5.setForeground(Color.RED);
+		lblNewLabel_1_1_5.setBounds(364, 266+MARGIN_TOP, 14, 14);
+		contentPane.add(lblNewLabel_1_1_5);
+		
+		JLabel lblNewLabel_1_1_6 = new JLabel("(*)");
+		lblNewLabel_1_1_6.setForeground(Color.RED);
+		lblNewLabel_1_1_6.setBounds(364, 324+MARGIN_TOP, 14, 14);
+		contentPane.add(lblNewLabel_1_1_6);
+		
+		JLabel lblNewLabel_1_1_6_1 = new JLabel("(*)");
+		lblNewLabel_1_1_6_1.setForeground(Color.RED);
+		lblNewLabel_1_1_6_1.setBounds(364, 365+MARGIN_TOP, 14, 14);
+		contentPane.add(lblNewLabel_1_1_6_1);
+		
+		gioiTinhCbb = new JComboBox<String>();
+		gioiTinhCbb.setBounds(594, 52+MARGIN_TOP, 99, 30);
+		gioiTinhCbb.addItem("Nam");
+		gioiTinhCbb.addItem("Nữ");
+		contentPane.add(gioiTinhCbb);
+		
+		bietDanhTxb = new JTextField();
+		bietDanhTxb.setColumns(10);
+		bietDanhTxb.setBounds(594, 11+MARGIN_TOP, 214, 30);
+		contentPane.add(bietDanhTxb);
+		
+		tonGiaoTxb = new JTextField();
+		tonGiaoTxb.setColumns(10);
+		tonGiaoTxb.setBounds(596, 93+MARGIN_TOP, 214, 30);
+		contentPane.add(tonGiaoTxb);
+		
+		quocTichTxb = new SuggestionUtility(false) {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
 
-        jPanel1.setBackground(new Color(240, 248, 255));
+			public List<String> getSuggestions(String textContent) {
+				return null;
+			}
+		};
+		quocTichTxb.setBounds(596, 134+MARGIN_TOP, 214, 30);
+		contentPane.add(quocTichTxb);
+		
+		soHoChieuTxb = new JTextField();
+		soHoChieuTxb.setColumns(10);
+		soHoChieuTxb.setBounds(596, 176+MARGIN_TOP, 214, 30);
+		contentPane.add(soHoChieuTxb);
+		
+		diaChiHienNayTxb = new SuggestionUtility(false) {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
 
-        hoTenTxb.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        hoTenTxb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hoTenTxbActionPerformed(evt);
-            }
-        });
-
-
-
-
-
-        jLabel1.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        jLabel1.setText("Họ và tên:");
-
-        jLabel2.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel2.setText("(*)");
-
-        jLabel3.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        jLabel3.setText("Biệt danh:");
-
-        bietDanhTxb.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        bietDanhTxb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bietDanhTxbActionPerformed(evt);
-            }
-        });
-
-        nguyenQuanTxb.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        nguyenQuanTxb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nguyenQuanTxbActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        jLabel5.setText("Nguyên quán:");
-
-        jLabel6.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        jLabel6.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel6.setText("(*)");
-
-        jLabel7.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        jLabel7.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel7.setText("(*)");
-
-        jLabel8.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        jLabel8.setText("Ngày tháng năm sinh:");
-
-        jLabel9.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        jLabel9.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel9.setText("(*)");
-
-        danTocTxb.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        danTocTxb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                danTocTxbActionPerformed(evt);
-            }
-        });
-
-        soCMTTxb.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        soCMTTxb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                soCMTTxbActionPerformed(evt);
-            }
-        });
-
-        jLabel10.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        jLabel10.setText("Số CMT/CCCD");
-
-        jLabel11.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        jLabel11.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel11.setText("(*)");
-
-        jLabel12.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        jLabel12.setText("Dân tộc:");
-
-        gioiTinhCbb.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        gioiTinhCbb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ" }));
-        gioiTinhCbb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                gioiTinhCbbActionPerformed(evt);
-            }
-        });
-
-        jLabel4.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        jLabel4.setText("Giới tính:");
-
-        jLabel13.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        jLabel13.setText("Tôn giáo:");
-
-        tonGiaoTxb.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        tonGiaoTxb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tonGiaoTxbActionPerformed(evt);
-            }
-        });
-
-        jLabel14.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        jLabel14.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel14.setText("(*)");
-
-        quocTichTxb.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        quocTichTxb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                quocTichTxbActionPerformed(evt);
-            }
-        });
-
-        jLabel15.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        jLabel15.setText("Quốc tịch:");
-
-        jLabel16.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        jLabel16.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel16.setText("(*)");
-
-        soHoChieuTxb.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        soHoChieuTxb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                soHoChieuTxbActionPerformed(evt);
-            }
-        });
-
-        jLabel17.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        jLabel17.setText("Hộ chiếu số:");
-
-        jLabel19.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        jLabel19.setText("Địa chỉ hiện tại:");
-
-        jLabel20.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        jLabel20.setText("Nơi thường trú:");
-
-        noiThuongTruTxb.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        noiThuongTruTxb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                noiThuongTruTxbActionPerformed(evt);
-            }
-        });
-
-        jLabel21.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        jLabel21.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel21.setText("(*)");
-
-        diaChiHienNayTxb.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        diaChiHienNayTxb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                diaChiHienNayTxbActionPerformed(evt);
-            }
-        });
-
-        jLabel22.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        jLabel22.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel22.setText("(*)");
-
-        trinhDoHocVanTxb.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        trinhDoHocVanTxb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                trinhDoHocVanTxbActionPerformed(evt);
-            }
-        });
-
-        jLabel23.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        jLabel23.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel23.setText("(*)");
-
-        jLabel24.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        jLabel24.setText("Trình độ chuyên môn:");
-
-        trinhDoChuyenMonTxb.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        trinhDoChuyenMonTxb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                trinhDoChuyenMonTxbActionPerformed(evt);
-            }
-        });
-
-        jLabel25.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        jLabel25.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel25.setText("(*)");
-
-        jLabel26.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        jLabel26.setText("Trình độ học vấn:");
-
-        jLabel27.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        jLabel27.setText("Trình độ ngoại ngữ:");
-
-        trinhDoNgoaiNguTxb.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        trinhDoNgoaiNguTxb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                trinhDoNgoaiNguTxbActionPerformed(evt);
-            }
-        });
-
-        jLabel28.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        jLabel28.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel28.setText("(*)");
-
-        jLabel29.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        jLabel29.setText("Biết tiếng dân tộc:");
-
-        bietTiengDanTocTxb.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        bietTiengDanTocTxb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bietTiengDanTocTxbActionPerformed(evt);
-            }
-        });
-
-        jLabel30.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        jLabel30.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel30.setText("(*)");
-
-        jLabel31.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        jLabel31.setText("Nghề nghiệp:");
-
-        ngheNghiepTxb.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        ngheNghiepTxb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ngheNghiepTxbActionPerformed(evt);
-            }
-        });
-
-        jLabel32.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        jLabel32.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel32.setText("(*)");
-
-        jLabel33.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        jLabel33.setText("Nơi làm việc:");
-
-        noiLamViecTxb.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        noiLamViecTxb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                noiLamViecTxbActionPerformed(evt);
-            }
-        });
-
-        jLabel34.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        jLabel34.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel34.setText("(*)");
-
-        jButton1.setFont(new java.awt.Font("Tohoma", 1, 15));  
-        jButton1.setText("Khác...");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+			public List<String> getSuggestions(String textContent) {
+				return null;
+			}
+		};
+		diaChiHienNayTxb.setBounds(596, 217+MARGIN_TOP, 214, 30);
+		contentPane.add(diaChiHienNayTxb);
+		
+		JButton btnNewButton_2 = new JButton("New button");
+		btnNewButton_2.setBounds(829, 217+MARGIN_TOP, 36, 30);
+		contentPane.add(btnNewButton_2);
+		
+		trinhDoChuyenMonTxb = new JTextField();
+		trinhDoChuyenMonTxb.setColumns(10);
+		trinhDoChuyenMonTxb.setBounds(596, 257+MARGIN_TOP, 214, 30);
+		contentPane.add(trinhDoChuyenMonTxb);
+		
+		bietTiengDanTocTxb = new JTextField();
+		bietTiengDanTocTxb.setColumns(10);
+		bietTiengDanTocTxb.setBounds(596, 298+MARGIN_TOP, 214, 30);
+		contentPane.add(bietTiengDanTocTxb);
+		
+		noiLamViecTxb = new JTextField();
+		noiLamViecTxb.setColumns(10);
+		noiLamViecTxb.setBounds(596, 339+MARGIN_TOP, 214, 30);
+		contentPane.add(noiLamViecTxb);
+		
+		jButton1 = new JButton("Khác...");
+		jButton1.setBounds(140, 421+MARGIN_TOP, 160, 30);
+		jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        layout.setHorizontalGroup(
-        	layout.createParallelGroup(Alignment.TRAILING)
-        		.addGroup(layout.createSequentialGroup()
-        			.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        			.addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, 1091, GroupLayout.PREFERRED_SIZE)
-        			.addContainerGap())
-        );
-        layout.setVerticalGroup(
-        	layout.createParallelGroup(Alignment.LEADING)
-        		.addGroup(layout.createSequentialGroup()
-        			.addContainerGap()
-        			.addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, 549, Short.MAX_VALUE)
-        			.addContainerGap())
-        );
-        getContentPane().setLayout(layout);
-        jPanel1.setLayout(null);
-        jPanel1.add(CancelBtn);
-        jPanel1.add(CreateBtn_1);
-        jPanel1.add(jLabel1);
-        jPanel1.add(hoTenTxb);
-        jPanel1.add(jLabel2);
-        jPanel1.add(jLabel10);
-        jPanel1.add(soCMTTxb);
-        jPanel1.add(jLabel9);
-        jPanel1.add(jLabel12);
-        jPanel1.add(danTocTxb);
-        jPanel1.add(jLabel11);
-        jPanel1.add(jLabel8);
-        jPanel1.add(jLabel5);
-        jPanel1.add(nguyenQuanTxb);
-        jPanel1.add(jLabel6);
-        jPanel1.add(namSinhDateC);
-        jPanel1.add(jLabel7);
-        jPanel1.add(jLabel20);
-        jPanel1.add(noiThuongTruTxb);
-        jPanel1.add(jLabel21);
-        jPanel1.add(jLabel26);
-        jPanel1.add(trinhDoHocVanTxb);
-        jPanel1.add(jLabel23);
-        jPanel1.add(jLabel27);
-        jPanel1.add(trinhDoNgoaiNguTxb);
-        jPanel1.add(jLabel28);
-        jPanel1.add(jLabel31);
-        jPanel1.add(jButton1);
-        jPanel1.add(ngheNghiepTxb);
-        jPanel1.add(jLabel32);
-        jPanel1.add(jLabel19);
-        jPanel1.add(jLabel17);
-        jPanel1.add(jLabel15);
-        jPanel1.add(trinhDoChuyenMonTxb);
-        jPanel1.add(jLabel25);
-        jPanel1.add(soHoChieuTxb);
-        jPanel1.add(diaChiHienNayTxb);
-        jPanel1.add(jLabel22);
-        jPanel1.add(tonGiaoTxb);
-        jPanel1.add(jLabel14);
-        jPanel1.add(quocTichTxb);
-        jPanel1.add(jLabel16);
-        jPanel1.add(bietTiengDanTocTxb);
-        jPanel1.add(jLabel30);
-        jPanel1.add(noiLamViecTxb);
-        jPanel1.add(jLabel34);
-        jPanel1.add(jLabel13);
-        jPanel1.add(jLabel4);
-        jPanel1.add(jLabel3);
-        jPanel1.add(jLabel24);
-        jPanel1.add(jLabel29);
-        jPanel1.add(jLabel33);
-        jPanel1.add(bietDanhTxb);
-        jPanel1.add(gioiTinhCbb);
-
-        pack();
-    }
-
-    
-    // su ly su kien nhan nut create
-    private void CreateBtnActionPerformed(java.awt.event.ActionEvent evt) {
-        if (validateValueInForm()) {
-            // tao moi 1 doi tuong nhan khau
-            NhanKhauModel temp = this.nhanKhauBean.getNhanKhauModel();
-            ChungMinhThuModel cmt = this.nhanKhauBean.getChungMinhThuModel();
-            temp.setBietDanh(bietDanhTxb.getText());
-            temp.setHoTen(hoTenTxb.getText());
-            temp.setNamSinh(namSinhDateC.getDate());
-            temp.setGioiTinh(gioiTinhCbb.getSelectedItem().toString());
-            temp.setNguyenQuan(nguyenQuanTxb.getText());
-            temp.setTonGiao(tonGiaoTxb.getText());
-            temp.setDanToc(danTocTxb.getText());
-            temp.setQuocTich(quocTichTxb.getText());
-            cmt.setSoCMT(soCMTTxb.getText());
-            temp.setSoHoChieu(soHoChieuTxb.getText());
-            temp.setNoiThuongTru(noiThuongTruTxb.getText());
-            temp.setDiaChiHienNay(diaChiHienNayTxb.getText());
-            temp.setTrinhDoHocVan(trinhDoHocVanTxb.getText());
-            temp.setTrinhDoChuyenMon(trinhDoChuyenMonTxb.getText());
-            temp.setTrinhDoNgoaiNgu(trinhDoNgoaiNguTxb.getText());
-            temp.setBietTiengDanToc(bietTiengDanTocTxb.getText());
-            temp.setNgheNghiep(ngheNghiepTxb.getText());
-            temp.setNoiLamViec(noiLamViecTxb.getText());
-            temp.setIdNguoiTao(LoginController.currentUser.getID());
-            try {
-                if (this.controller.addNewPeople(this.nhanKhauBean)) {
-                    JOptionPane.showMessageDialog(null, "Thêm thành công!!");
-                    close();
-                    parentController.refreshData();
-                }
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-                JOptionPane.showMessageDialog(rootPane, "Có lỗi xảy ra. Vui long kiểm tra lại!!", "Warning", JOptionPane.WARNING_MESSAGE);
+		contentPane.add(jButton1);
+		
+		CancelBtn = new JButton("Cancel");
+		CancelBtn.setBounds(642, 420+MARGIN_TOP, 89, 30);
+		CancelBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelBtnActionPerformed(evt);
             }
-        }
+        });
+		contentPane.add(CancelBtn);
+		
+		CreateBtn = new JButton("Create");
+		CreateBtn.setBounds(763, 420+MARGIN_TOP, 89, 30);
+		CreateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CreateBtnActionPerformed(evt);
+            }
+        });
+		contentPane.add(CreateBtn);
+	}
+	
+	void close() {
+		if (JOptionPane.showConfirmDialog(null, "Are you sure to close??", "Warning!!", JOptionPane.YES_NO_OPTION) == 0) {
+	        this.parentFrame.setEnabled(true);
+	        dispose();		
+		}
     }
-    
-    
-    // check cac gia tri duoc nhap vao form
+	
+    private void CancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelBtnActionPerformed
+       close();
+    }//GEN-LAST:event_CancelBtnActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ProfileJFrame tieuSuJFrame = new ProfileJFrame(this, this.nhanKhauBean);
+        tieuSuJFrame.setLocationRelativeTo(null);
+        tieuSuJFrame.setResizable(false);
+        tieuSuJFrame.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
     private boolean validateValueInForm() {
         // check null
         if (hoTenTxb.getText().trim().isEmpty() 
@@ -701,89 +483,50 @@ public class NewPeopleJFrame extends javax.swing.JFrame {
         }
         return true;
     }
-    
-    private void hoTenTxbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hoTenTxbActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_hoTenTxbActionPerformed
-
-    private void bietDanhTxbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bietDanhTxbActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bietDanhTxbActionPerformed
-
-    private void nguyenQuanTxbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nguyenQuanTxbActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nguyenQuanTxbActionPerformed
-
-    private void danTocTxbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_danTocTxbActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_danTocTxbActionPerformed
-
-    private void soCMTTxbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_soCMTTxbActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_soCMTTxbActionPerformed
-    
-    // su kien nhan nut cancel
-    private void CancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelBtnActionPerformed
-        if (JOptionPane.showConfirmDialog(null, "Are you sure to close this??","Confirm",JOptionPane.YES_NO_OPTION) == 0) {
-            close();
+    private void CreateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateBtnActionPerformed
+        if (validateValueInForm()) {
+        	
+            NhanKhauModel temp = this.nhanKhauBean.getNhanKhauModel();
+            ChungMinhThuModel cmt = this.nhanKhauBean.getChungMinhThuModel();
+            temp.setBietDanh(bietDanhTxb.getText());
+            temp.setHoTen(hoTenTxb.getText());
+            temp.setNamSinh(namSinhDateC.getDate());
+            temp.setGioiTinh(gioiTinhCbb.getSelectedItem().toString());
+            temp.setNguyenQuan(nguyenQuanTxb.getText());
+            temp.setTonGiao(tonGiaoTxb.getText());
+            temp.setDanToc(danTocTxb.getText());
+            temp.setQuocTich(quocTichTxb.getText());
+            cmt.setSoCMT(soCMTTxb.getText());
+            temp.setSoHoChieu(soHoChieuTxb.getText());
+            temp.setNoiThuongTru(noiThuongTruTxb.getText());
+            temp.setDiaChiHienNay(diaChiHienNayTxb.getText());
+            temp.setTrinhDoHocVan(trinhDoHocVanTxb.getText());
+            temp.setTrinhDoChuyenMon(trinhDoChuyenMonTxb.getText());
+            temp.setTrinhDoNgoaiNgu(trinhDoNgoaiNguTxb.getText());
+            temp.setBietTiengDanToc(bietTiengDanTocTxb.getText());
+            temp.setNgheNghiep(ngheNghiepTxb.getText());
+            temp.setNoiLamViec(noiLamViecTxb.getText());
+            temp.setIdNguoiTao(LoginController.currentUser.getID());
+            try {
+                if (this.controller.addNewPeople(this.nhanKhauBean)) {
+                    JOptionPane.showMessageDialog(null, "Thêm thành công!!");
+                    close();
+                    parentController.refreshData();
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                JOptionPane.showMessageDialog(rootPane, "Có lỗi xảy ra. Vui long kiểm tra lại!!", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
         }
-    }//GEN-LAST:event_CancelBtnActionPerformed
-
-    private void gioiTinhCbbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gioiTinhCbbActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_gioiTinhCbbActionPerformed
-
-    private void tonGiaoTxbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tonGiaoTxbActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tonGiaoTxbActionPerformed
-
-    private void quocTichTxbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quocTichTxbActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_quocTichTxbActionPerformed
-
-    private void soHoChieuTxbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_soHoChieuTxbActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_soHoChieuTxbActionPerformed
-
-    private void noiThuongTruTxbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noiThuongTruTxbActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_noiThuongTruTxbActionPerformed
-
-    private void diaChiHienNayTxbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_diaChiHienNayTxbActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_diaChiHienNayTxbActionPerformed
-
-    private void trinhDoHocVanTxbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trinhDoHocVanTxbActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_trinhDoHocVanTxbActionPerformed
-
-    private void trinhDoChuyenMonTxbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trinhDoChuyenMonTxbActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_trinhDoChuyenMonTxbActionPerformed
-
-    private void trinhDoNgoaiNguTxbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trinhDoNgoaiNguTxbActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_trinhDoNgoaiNguTxbActionPerformed
-
-    private void bietTiengDanTocTxbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bietTiengDanTocTxbActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bietTiengDanTocTxbActionPerformed
-
-    private void ngheNghiepTxbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ngheNghiepTxbActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ngheNghiepTxbActionPerformed
-
-    private void noiLamViecTxbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noiLamViecTxbActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_noiLamViecTxbActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    	ProfileJFrame tieuSuJFrame = new ProfileJFrame(this, this.nhanKhauBean);
-        tieuSuJFrame.setLocationRelativeTo(null);
-        tieuSuJFrame.setResizable(false);
-        tieuSuJFrame.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-
-
+    }//GEN-LAST:event_CreateBtnActionPerformed
+    
+    private void getAddressAction() {
+		addrSuggestion = new AddressSuggestion(this, addrModel);
+		addrSuggestion.setVisible(true);
+    }
+    
+    public void setNguyenQuanTxb(String address) {
+		nguyenQuanTxb.setText(address);
+	}
+    
 }

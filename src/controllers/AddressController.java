@@ -12,15 +12,23 @@ public class AddressController {
        return addrService.searchByWard(key);
 	}
 	
-	public List<String> getWards(){
-		return addrService.getWards();
-	}
-	
 	public List<String> searchByDistrict(String key){
 	    return addrService.searchByDistrict(key);
 	}
 	
 	public List<String> searchByProvince(String key){
 	    return addrService.searchByProvince(key);
+	}
+	
+	public List<String> getAllProvince(){
+	    return addrService.getAllProvince();
+	}
+	
+	public List<String> getAllDistrictOfProvince(String province){
+	    return addrService.getAllDistrictOfProvince(province);
+	}
+	
+	public List<String> getAllWardOfDistricts(String district,String province){
+	    return addrService.getAllWardOfDistricts(district, province);
 	}
 }
