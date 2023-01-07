@@ -24,7 +24,7 @@ import javax.swing.table.TableCellRenderer;
 import bean.HoKhauBean;
 import services.HoKhauService;
 import utility.TableModelHoKhau;
-import views.infoViews.InfoJframe;
+import views.infoViews.InforJframe;
 
 public class HouseholdPanelController {
     private List<HoKhauBean> list;
@@ -130,7 +130,7 @@ public class HouseholdPanelController {
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() > 1) {
                     HoKhauBean temp = list.get(table.getSelectedRow());
-                    InfoJframe infoJframe = new InfoJframe(temp.toString(), parentJFrame);
+                    InforJframe infoJframe = new InforJframe(temp.toString(), parentJFrame);
                     infoJframe.setLocationRelativeTo(null);
                     infoJframe.setVisible(true);
                 }

@@ -2,6 +2,7 @@ package controllers.NhanKhauManagerController;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.util.ArrayList;
@@ -20,12 +21,7 @@ import utility.ClassTableModel;
 import java.sql.Date;
 import java.util.Vector;
 
-/**
- *
- * @author Hai
- * 
- * class dieu khien hoat dong cua TieuSuJFrame
- */
+
 public class TieuSuController {
     private NhanKhauBean nhanKhauBean;
     private JPanel tieuSuJpn;
@@ -94,10 +90,12 @@ public class TieuSuController {
         
         JScrollPane scroll_tieu_su= new JScrollPane();
         scroll_tieu_su.getViewport().add(tableTieuSu);
+        scroll_tieu_su.setBackground(Color.white);
         scroll_tieu_su.setPreferredSize(new Dimension(675, 220));
         
         JScrollPane scroll_gia_dinh = new JScrollPane();
         scroll_gia_dinh.getViewport().add(tableGiaDinh);
+        scroll_gia_dinh.setBackground(Color.white);
         scroll_gia_dinh.setPreferredSize(new Dimension(675, 220));
         
         

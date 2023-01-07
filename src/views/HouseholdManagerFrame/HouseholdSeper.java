@@ -21,14 +21,11 @@ import java.awt.event.ActionEvent;
 
 public class HouseholdSeper extends javax.swing.JFrame {
 
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private TachHoKhauController controller;
     private JFrame parentJFrame;
     private JPanel contentPane;
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+ 
     private javax.swing.JButton acceptBtn;
     private javax.swing.JButton addBtn;
     private javax.swing.JButton cancelBtn;
@@ -58,7 +55,7 @@ public class HouseholdSeper extends javax.swing.JFrame {
     private javax.swing.JPanel tableBotJpn;
     private javax.swing.JPanel tableRigthJtf;
     private javax.swing.JPanel tableTopJpn;
-    // End of variables declaration//GEN-END:variables
+ 
 
     public JFrame getParentJFrame() {
         return parentJFrame;
@@ -251,17 +248,16 @@ public class HouseholdSeper extends javax.swing.JFrame {
 
         tableBotJpn.setBackground(new Color(255, 255, 255));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", Font.BOLD, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", Font.BOLD, 18)); 
         jLabel3.setText("Chọn người sang hộ mới");
 
         tableRigthJtf.setBackground(new Color(255, 255, 255));
 
-        jLabel18.setFont(new java.awt.Font("Tahoma", Font.BOLD, 18)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Tahoma", Font.BOLD, 18)); 
         jLabel18.setText("Những người ở hộ mới");
 
         addBtn.setText(">>");
         addBtn.setBorderPainted(false);
-       // addBtn.setBounds(531, 438, 60, 21);
         addBtn.setBorder(new LineBorder(new Color(186, 85, 211), 1, true));
         addBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
         addBtn.setForeground(new Color(255, 255, 255));
@@ -276,7 +272,7 @@ public class HouseholdSeper extends javax.swing.JFrame {
 
         acceptBtn.setText("Xác nhận");
         acceptBtn.setBorderPainted(false);
-        acceptBtn.setBounds(845, 572, 100, 30);
+        acceptBtn.setBounds(825, 560, 100, 36);
         acceptBtn.setBorder(new LineBorder(new Color(186, 85, 211), 1, true));
         acceptBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
         acceptBtn.setForeground(new Color(255, 255, 255));
@@ -289,7 +285,7 @@ public class HouseholdSeper extends javax.swing.JFrame {
 
         cancelBtn.setText("Hủy");
         cancelBtn.setBorderPainted(false);
-        cancelBtn.setBounds(694, 572, 100, 30);
+        cancelBtn.setBounds(700, 560, 100, 36);
         cancelBtn.setBorder(new LineBorder(new Color(186, 85, 211), 1, true));
         cancelBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
         cancelBtn.setForeground(new Color(255, 255, 255));
@@ -351,14 +347,12 @@ public class HouseholdSeper extends javax.swing.JFrame {
     }
 
 
-    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
+    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {
         close();
-    }//GEN-LAST:event_cancelBtnActionPerformed
-
-    private void acceptBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceptBtnActionPerformed
+    }
+    private void acceptBtnActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }//GEN-LAST:event_acceptBtnActionPerformed
-
+    }
 
 
 

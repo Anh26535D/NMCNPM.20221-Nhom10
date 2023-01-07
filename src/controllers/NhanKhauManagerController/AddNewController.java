@@ -12,10 +12,7 @@ import models.ChungMinhThuModel;
 import models.NhanKhauModel;
 import services.SQLConnection;
 
-/**
- *
- * @author Hai
- */
+
 
 // lop thuc hien cac chuc nang trong giao dien them moi nhan khau
 

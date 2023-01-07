@@ -26,7 +26,7 @@ import bean.NhanKhauBean;
 import models.NhanKhauModel;
 import services.NhanKhauService;
 import utility.ClassTableModel;
-import views.infoViews.InfoJframe;
+import views.infoViews.InforJframe;
 
 public class PeoplePanelController {
     
@@ -130,7 +130,7 @@ public class PeoplePanelController {
                 if (e.getClickCount() > 1) {
                     NhanKhauBean temp = listNhanKhauBeans.get(table.getSelectedRow());
                     NhanKhauBean info = nhanKhauService.getNhanKhau(temp.getChungMinhThuModel().getSoCMT());
-                    InfoJframe infoJframe = new InfoJframe(info.toString(), parentJFrame);
+                    InforJframe infoJframe = new InforJframe(info.toString(), parentJFrame);
                     infoJframe.setLocationRelativeTo(null);
                     infoJframe.setVisible(true);
                 }

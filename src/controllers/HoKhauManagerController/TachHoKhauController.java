@@ -1,6 +1,7 @@
 package controllers.HoKhauManagerController;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
@@ -27,8 +28,7 @@ import services.HoKhauService;
 import utility.TableModelHoKhau;
 
 import views.HouseholdManagerFrame.HouseholdSeper;
-import views.infoViews.InfoJframe;
-
+import views.infoViews.InforJframe;
 public class TachHoKhauController {
     private JTextField searchJtf;
     private JPanel tableTopJpn;
@@ -194,7 +194,7 @@ public class TachHoKhauController {
             public void mouseClicked(MouseEvent e) {
                 HoKhauBean temp = listHoKhau.get(table.getSelectedRow());
                 if (e.getClickCount() > 1) {
-                    InfoJframe infoJframe = new InfoJframe(temp.toString(), tachHoKhauJFrame);
+                	InforJframe infoJframe = new InforJframe(temp.toString(), tachHoKhauJFrame);
                     infoJframe.setLocationRelativeTo(null);
                     infoJframe.setVisible(true);
                 } else {
@@ -209,6 +209,7 @@ public class TachHoKhauController {
         
         JScrollPane scroll = new JScrollPane();
         scroll.getViewport().add(table);
+        scroll.getViewport().setBackground(Color.white);
         scroll.setPreferredSize(tableTopJpn.getSize());
         tableTopJpn.removeAll();
         tableTopJpn.setLayout(new BorderLayout());
@@ -251,6 +252,7 @@ public class TachHoKhauController {
         
         JScrollPane scroll = new JScrollPane();
         scroll.getViewport().add(table);
+        scroll.getViewport().setBackground(Color.white);
         scroll.setPreferredSize(tableTopJpn.getSize());
         tableBotJpn.removeAll();
         tableBotJpn.setLayout(new BorderLayout());
@@ -294,6 +296,7 @@ public class TachHoKhauController {
         
         JScrollPane scroll = new JScrollPane();
         scroll.getViewport().add(table);
+        scroll.getViewport().setBackground(Color.white);
         scroll.setPreferredSize(tableRightJpn.getSize());
         tableRightJpn.removeAll();
         tableRightJpn.setLayout(new BorderLayout());
