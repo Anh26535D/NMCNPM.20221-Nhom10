@@ -1,6 +1,7 @@
 package controllers.HoKhauManagerController;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
@@ -185,6 +186,7 @@ public class ChangeListPeopleController {
         
         JScrollPane scroll_1 = new JScrollPane();
         scroll_1.getViewport().add(table_people);
+        scroll_1.getViewport().setBackground(Color.white);
         peopleJpn.removeAll();
         peopleJpn.setLayout(new BorderLayout());
         peopleJpn.add(scroll_1);
@@ -193,6 +195,7 @@ public class ChangeListPeopleController {
         
         JScrollPane scroll_2 = new JScrollPane();
         scroll_2.getViewport().add(table_mem);
+        scroll_2.getViewport().setBackground(Color.white);
         memJpn.removeAll();
         memJpn.setLayout(new BorderLayout());
         memJpn.add(scroll_2);

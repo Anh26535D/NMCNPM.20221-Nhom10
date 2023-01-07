@@ -24,17 +24,11 @@ import javax.swing.JTextArea;
 
 public class ChangeResidence extends javax.swing.JFrame {
 
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private ChuyenDiNoiKhacController controller;
     private HoKhauBean hoKhauBean;
     private JFrame parentJFrame;
-    
-    /**
-     * Creates new form ChuyenDiNoiKhac
-     */
+ 
     public ChangeResidence(JFrame parentJFrame) {
         initComponents();
         this.hoKhauBean = new HoKhauBean();
@@ -77,11 +71,11 @@ public class ChangeResidence extends javax.swing.JFrame {
         jPanel2.add(lyDoJta);
         
                 lyDoJta.setColumns(20);
-                lyDoJta.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15)); // NOI18N
+                lyDoJta.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15)); 
                 lyDoJta.setRows(5);
         jPanel1.add(searchJtf);
         
-                //
+               
                 JPanel panel3 = new JPanel();
                 panel3.setBounds(26, 13, 161, 30);
                 jPanel1.add(panel3);
@@ -121,7 +115,7 @@ public class ChangeResidence extends javax.swing.JFrame {
         searchJtf = new javax.swing.JTextField("Search");
         searchJtf.setBounds(253, 13, 236, 31);
         jPanel2 = new javax.swing.JPanel();
-        jPanel2.setBounds(10, 54, 1257, 535);
+        jPanel2.setBounds(10, 54, 1261, 544);
         jLabel1 = new javax.swing.JLabel();
         jLabel1.setBounds(236, 0, 134, 30);
         tableJpn = new javax.swing.JPanel();
@@ -191,72 +185,70 @@ public class ChangeResidence extends javax.swing.JFrame {
 		searchJtf.setSelectionColor(new Color(204, 153, 255));
 		searchJtf.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		searchJtf.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(153, 102, 255), null, null, null), new EmptyBorder(0, 10, 0, 0)));
-		//searchJtf.setBounds(247, 12, 200, 50);
-		//jPanel1.add(searchJtf);
 		searchJtf.setColumns(10);
 
 
         jPanel2.setBackground(new Color(240, 248, 255));
 
-        jLabel1.setFont(new Font("Tahoma", Font.BOLD, 16)); // NOI18N
+        jLabel1.setFont(new Font("Tahoma", Font.BOLD, 16));  
         jLabel1.setText("Chọn hộ khẩu");
 
         tableJpn.setBackground(new Color(255, 255, 255));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", Font.BOLD, 15)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", Font.BOLD, 15));  
         jLabel4.setText("Mã hộ khẩu");
 
         maHoKhauJtf.setBackground(new Color(255, 255, 255));
-        maHoKhauJtf.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15)); // NOI18N
+        maHoKhauJtf.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15));  
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15));  
         jLabel6.setForeground(new java.awt.Color(255, 0, 0));
         jLabel6.setText("(*)");
 
-        jLabel9.setFont(new Font("Tahoma", Font.BOLD, 15)); // NOI18N
+        jLabel9.setFont(new Font("Tahoma", Font.BOLD, 15));  
         jLabel9.setText("Tên chủ hộ");
 
         tenChuHoJtf.setBackground(new Color(255, 255, 255));
-        tenChuHoJtf.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15)); // NOI18N
+        tenChuHoJtf.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15));  
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15));  
         jLabel10.setForeground(new java.awt.Color(255, 0, 0));
         jLabel10.setText("(*)");
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", Font.BOLD, 15)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Tahoma", Font.BOLD, 15));  
         jLabel11.setText("Mã khu vực");
 
         maKhuVucJtf.setBackground(new Color(255, 255, 255));
-        maKhuVucJtf.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15)); // NOI18N
+        maKhuVucJtf.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15));  
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15));  
         jLabel12.setForeground(new java.awt.Color(255, 0, 0));
         jLabel12.setText("(*)");
 
         diaChiHienTaiJtf.setBackground(new Color(255, 255, 255));
-        diaChiHienTaiJtf.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15)); // NOI18N
+        diaChiHienTaiJtf.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15));  
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", Font.BOLD, 15)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Tahoma", Font.BOLD, 15));  
         jLabel13.setText("Địa chỉ hiên tại");
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15));  
         jLabel14.setForeground(new java.awt.Color(255, 0, 0));
         jLabel14.setText("(*)");
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15));  
         jLabel15.setForeground(new java.awt.Color(255, 0, 0));
         jLabel15.setText("(*)");
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", Font.BOLD, 15)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Tahoma", Font.BOLD, 15));  
         jLabel16.setText("Địa chỉ chuyển đến");
 
-        diaChiChuyenDenJtf.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15)); // NOI18N
+        diaChiChuyenDenJtf.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15));  
 
-        jLabel17.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 15));  
         jLabel17.setForeground(new java.awt.Color(255, 0, 0));
         jLabel17.setText("(*)");
 
-        jLabel18.setFont(new java.awt.Font("Tahoma", Font.BOLD, 15)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Tahoma", Font.BOLD, 15));  
         jLabel18.setText("Lý do chuyển đi");
 
         cancelBtn.setText("Hủy");
@@ -290,20 +282,18 @@ public class ChangeResidence extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
         	layout.createParallelGroup(Alignment.LEADING)
-        		.addGroup(layout.createSequentialGroup()
-        			.addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, 598, Short.MAX_VALUE)
-        			.addContainerGap())
+        		.addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE)
         );
         getContentPane().setLayout(layout);
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
-    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
+    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {
         close();
-    }//GEN-LAST:event_cancelBtnActionPerformed
+    }
 
-    private void confirmBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmBtnActionPerformed
+    private void confirmBtnActionPerformed(java.awt.event.ActionEvent evt) {
         if (this.diaChiChuyenDenJtf.getText().trim().isEmpty() || this.lyDoJta.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vui lòng nhập hết các trường bắt buộc!!", "Warning!", JOptionPane.NO_OPTION);
         } else {
@@ -311,10 +301,7 @@ public class ChangeResidence extends javax.swing.JFrame {
             this.parentJFrame.setEnabled(true);
             dispose();
         }
-    }//GEN-LAST:event_confirmBtnActionPerformed
-
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    }
     private javax.swing.JButton cancelBtn;
     private javax.swing.JButton confirmBtn;
     private javax.swing.JTextField diaChiChuyenDenJtf;

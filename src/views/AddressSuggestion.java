@@ -8,7 +8,7 @@ import controllers.AddressController;
 import models.AddressModel;
 import utility.ComboBoxSuggestion;
 import utility.SuggestionUtility;
-import views.PeopleManagerFrame.AddNewPeopleFrame;
+import views.PeopleManagerFrame.NewPeopleJFrame;
 
 import java.awt.Color;
 import javax.swing.JTextField;
@@ -242,8 +242,8 @@ public class AddressSuggestion extends JFrame {
 			addrModel.setWard(((JTextField)wardJtf.getEditor()).getText());
 			addrModel.setDistrict(districtJtf.getText());
 			addrModel.setProvince(provinceJtf.getText());
-			AddNewPeopleFrame parent = (AddNewPeopleFrame) parentFrame;
-			parent.setNguyenQuanTxb(addrModel.getAddress());
+			NewPeopleJFrame parent = (NewPeopleJFrame) parentFrame;
+		//	parent.setNguyenQuanTxb(addrModel.getAddress()); // loi
 			close();
 		}
 	}
