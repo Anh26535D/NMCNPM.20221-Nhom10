@@ -282,7 +282,7 @@ public class TempResidenceDFrame extends javax.swing.JFrame {
                 lyDoTar.setEnabled(true);
             } else {
                 if (JOptionPane.showConfirmDialog(null, "Không tìm thấy người có số CMT: " + soCmtJtf.getText() + ". Thêm mới?", "Confirm", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
-                    NewPeopleJFrame addNewPeopleJFrame = new NewPeopleJFrame(this);
+                    NewPeopleFrame addNewPeopleJFrame = new NewPeopleFrame(this);
                     addNewPeopleJFrame.setLocationRelativeTo(null);
                     addNewPeopleJFrame.setResizable(false);
                     addNewPeopleJFrame.setVisible(true);

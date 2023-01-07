@@ -33,7 +33,7 @@ import java.awt.Color;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 
-public class NewPeopleJFrame extends JFrame {
+public class NewPeopleFrame extends JFrame {
 	
 	/**
 	 * 
@@ -75,7 +75,7 @@ public class NewPeopleJFrame extends JFrame {
     /**
      * @wbp.parser.constructor
      */
-    public NewPeopleJFrame(JFrame parentJFrame) {
+    public NewPeopleFrame(JFrame parentJFrame) {
     	init();
         this.parentController = new PeoplePanelController(){
             @Override
@@ -101,7 +101,7 @@ public class NewPeopleJFrame extends JFrame {
         });
     }
 
-	public NewPeopleJFrame(PeoplePanelController parentController, JFrame parentJFrame) {
+	public NewPeopleFrame(PeoplePanelController parentController, JFrame parentJFrame) {
         init();
 		this.parentController = parentController;
         this.parentFrame = parentJFrame;
@@ -445,7 +445,7 @@ public class NewPeopleJFrame extends JFrame {
     }//GEN-LAST:event_CancelBtnActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ProfileJFrame tieuSuJFrame = new ProfileJFrame(this, this.nhanKhauBean);
+        ProfileFrame tieuSuJFrame = new ProfileFrame(this, this.nhanKhauBean);
         tieuSuJFrame.setLocationRelativeTo(null);
         tieuSuJFrame.setResizable(false);
         tieuSuJFrame.setVisible(true);
