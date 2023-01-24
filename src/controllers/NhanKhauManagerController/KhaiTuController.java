@@ -8,10 +8,6 @@ import javax.swing.JOptionPane;
 import models.KhaiTuModel;
 import services.SQLConnection;
 
-/**
- *
- * @author Hai
- */
 public class KhaiTuController {
     public int checkCMT(String cmt) {
         try {

@@ -10,6 +10,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.EventObject;
 import java.util.List;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -22,32 +23,37 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 
-import bean.NhanKhauBean;
-import models.NhanKhauModel;
-import services.PeopleService;
-import utility.ClassTableModel;
-import views.infoViews.InfoJframe;
 
-public class PeoplePanelController {
-    
+import bean.PhiBatBuocBean;
+import models.FeesModel;
+import services.FeesService;
+import utility.ClassTableModel;
+import views.FeesManagerFrame.StatisticFeesFrame;
+
+public class FeesController {
+
     private JPanel jpnView;
     private JTextField jtfSearch;
-    private PeopleService peopleService;
-    private List<NhanKhauBean> listNhanKhauBeans;
+    private FeesService feesService;
+    private List<PhiBatBuocBean> listPhiBatBuocBeans;
     private ClassTableModel classTableModel = null;
-    private final String[] COLUMNS = {"ID", "Họ tên", "Ngày sinh", "Giới tính", "Địa chỉ hiện nay"};
-    private JFrame parentJFrame;
+    private final String[] COLUMNS = {"ID", "Tên khoản thu", "Số tiền", "Đợt thu"};
+    private JFrame parentFrame;
 
-    public PeoplePanelController(JPanel jpnView, JTextField jtfSearch) {
+    public FeesController(JPanel jpnView, JTextField jtfSearch) {
         this.jpnView = jpnView;
         this.jtfSearch = jtfSearch;
         classTableModel = new ClassTableModel();
-        this.peopleService = new PeopleService();
-        this.listNhanKhauBeans = this.peopleService.getListNhanKhau();
+        this.feesService = new FeesService();
+        this.listPhiBatBuocBeans = this.feesService.allFees();
         initAction();
     }
 
-    public PeoplePanelController() {
+    public FeesController() {
+    }
+    
+    public void setParentFrame(JFrame parentFrame) {
+        this.parentFrame = parentFrame;
     }
     
     public void initAction(){
@@ -55,33 +61,33 @@ public class PeoplePanelController {
             @Override
             public void insertUpdate(DocumentEvent e) {
                 String key = jtfSearch.getText();
-                listNhanKhauBeans = peopleService.search(key.trim());
+                listPhiBatBuocBeans = feesService.searchFeeByID(key.trim());
                 setData();
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
                 String key = jtfSearch.getText();
-                listNhanKhauBeans = peopleService.search(key.trim());
+                listPhiBatBuocBeans = feesService.searchFeeByID(key.trim());
                 setData();
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
                 String key = jtfSearch.getText();
-                listNhanKhauBeans = peopleService.search(key.trim());
+                listPhiBatBuocBeans = feesService.searchFeeByID(key.trim());
                 setData();
             }
         });
     }
     
     public void setData() {
-        List<NhanKhauModel> listItem = new ArrayList<>();
-        this.listNhanKhauBeans.forEach(nhankhau -> {
-            listItem.add(nhankhau.getNhanKhauModel());
+        List<FeesModel> listItem = new ArrayList<>();
+        this.listPhiBatBuocBeans.forEach(nhankhau -> {
+            listItem.add(nhankhau.getFeesModel());
         });
         
-        DefaultTableModel model = classTableModel.setTableNhanKhau(listItem, COLUMNS);
+        DefaultTableModel model = classTableModel.setTableFees(listItem, COLUMNS);
         JTable table = new JTable(model) {
             private static final long serialVersionUID = 1L;
 
@@ -128,11 +134,10 @@ public class PeoplePanelController {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() > 1) {
-                    NhanKhauBean temp = listNhanKhauBeans.get(table.getSelectedRow());
-                    NhanKhauBean info = peopleService.getNhanKhau(temp.getChungMinhThuModel().getSoCMT());
-                    InfoJframe infoJframe = new InfoJframe(info.toString(), parentJFrame);
-                    infoJframe.setLocationRelativeTo(null);
-                    infoJframe.setVisible(true);
+                	PhiBatBuocBean selectedFee = listPhiBatBuocBeans.get(table.getSelectedRow());
+                    StatisticFeesFrame detail = new StatisticFeesFrame(parentFrame, selectedFee);
+                    detail.setLocationRelativeTo(null);
+                    detail.setVisible(true);
                 }
             }
             
@@ -147,29 +152,9 @@ public class PeoplePanelController {
         jpnView.validate();
         jpnView.repaint();
     }
-
-    public void setParentJFrame(JFrame parentJFrame) {
-        this.parentJFrame = parentJFrame;
-    }
     
     public void refreshData() {
-        this.listNhanKhauBeans = this.peopleService.getListNhanKhau();
+        this.listPhiBatBuocBeans = this.feesService.allFees();
         setData();
     }
-    public JPanel getJpnView() {
-        return jpnView;
-    }
-
-    public void setJpnView(JPanel jpnView) {
-        this.jpnView = jpnView;
-    }
-
-    public JTextField getJtfSearch() {
-        return jtfSearch;
-    }
-
-    public void setJtfSearch(JTextField jtfSearch) {
-        this.jtfSearch = jtfSearch;
-    }
-    
 }

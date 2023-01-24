@@ -4,6 +4,7 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 import bean.HoKhauBean;
+import models.FeesModel;
 import models.GiaDinhModel;
 import models.NhanKhauModel;
 import models.TieuSuModel;
@@ -123,6 +124,32 @@ public class ClassTableModel {
             obj[2] = item.getChuHo().getHoTen();
             obj[3] = item.getHoKhauModel().getDiaChi();
             obj[4] = item.getHoKhauModel().getNgayLap();
+            dtm.addRow(obj);
+        });
+        return dtm;
+    }
+    
+    public DefaultTableModel setTableFees(List<FeesModel> listItem, String[] listColumn) {
+        final int columns = listColumn.length;
+        DefaultTableModel dtm = new DefaultTableModel()  {
+            private static final long serialVersionUID = 1L;
+			@Override
+            public boolean isCellEditable(int row, int column) {
+                return super.isCellEditable(row, column);
+            }
+            @Override
+            public Class<?> getColumnClass(int columnIndex) {
+                return columnIndex == 5 ? Boolean.class : String.class;
+            }
+        };
+        dtm.setColumnIdentifiers(listColumn);
+        Object[] obj;
+        obj = new Object[columns];
+        listItem.forEach((FeesModel item) -> {
+            obj[0] = item.getID();
+            obj[1] = item.getTen_khoan_thu();
+            obj[2] = item.getSo_tien();
+            obj[3] = item.getDot_thu();
             dtm.addRow(obj);
         });
         return dtm;

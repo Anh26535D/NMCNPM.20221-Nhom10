@@ -52,7 +52,6 @@ public class StatisticPanel extends javax.swing.JPanel {
 		init();
 		this.controller = new StatisticPanelController(GenderJcb, StatusJcb, tuTuoiJtf, denTuoiJtf, tuNamJtf, denNamJtf, tableJpn);
 		this.controller.setDataTable();
-
 	}
 
 	private void init() {

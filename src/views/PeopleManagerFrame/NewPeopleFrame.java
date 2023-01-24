@@ -105,6 +105,7 @@ public class NewPeopleFrame extends JFrame {
         });
     }
 
+
 	public NewPeopleFrame(PeoplePanelController parentController, JFrame parentJFrame) {
         init();
 		this.parentController = parentController;
@@ -580,7 +581,7 @@ public class NewPeopleFrame extends JFrame {
             temp.setNoiLamViec(noiLamViecTxb.getText());
             temp.setIdNguoiTao(LoginController.currentUser.getID());
             try {
-                if (this.controller.addNewPeople(this.nhanKhauBean)) {
+                if (this.controller.newPeople(this.nhanKhauBean)) {
                     JOptionPane.showMessageDialog(null, "Thêm thành công!!");
                     close();
                     parentController.refreshData();

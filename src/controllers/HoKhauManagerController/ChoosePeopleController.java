@@ -19,13 +19,9 @@ import javax.swing.table.DefaultTableModel;
 
 import bean.NhanKhauBean;
 import services.HoKhauService;
-import services.NhanKhauService;
+import services.PeopleService;
 import utility.TableModelHoKhau;
 
-/**
- *
- * @author Hai
- */
 public class ChoosePeopleController {
     private NhanKhauBean nhanKhauBean;
     private JTextField searchJtf;
@@ -33,7 +29,7 @@ public class ChoosePeopleController {
     private JPanel tableJPanel;
     private List<NhanKhauBean> list;
     private final HoKhauService hoKhauService = new HoKhauService();
-    private final NhanKhauService nhanKhauService = new NhanKhauService();
+    private final PeopleService peopleService = new PeopleService();
     private final TableModelHoKhau tableModelHoKhau  = new TableModelHoKhau();
     private final String[] COLUMNS = {"Họ tên", "Giới tính", "Ngày sinh", "Địa chỉ hiện nay", "Số CMT"};
 
@@ -49,7 +45,7 @@ public class ChoosePeopleController {
         this.searchJtf = searchJtf;
         this.selectedJtf = selectedJtf;
         this.tableJPanel = tableJPanel;
-        this.list = this.nhanKhauService.getListNhanKhau();
+        this.list = this.peopleService.getListNhanKhau();
         setData();
         initAction();
     }
@@ -59,21 +55,21 @@ public class ChoosePeopleController {
             @Override
             public void insertUpdate(DocumentEvent e) {
                 String key = searchJtf.getText();
-                list = nhanKhauService.search(key.trim());
+                list = peopleService.search(key.trim());
                 setData();
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
                 String key = searchJtf.getText();
-                list = nhanKhauService.search(key.trim());
+                list = peopleService.search(key.trim());
                 setData();
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
                 String key = searchJtf.getText();
-                list = nhanKhauService.search(key.trim());
+                list = peopleService.search(key.trim());
                 setData();
             }
         });

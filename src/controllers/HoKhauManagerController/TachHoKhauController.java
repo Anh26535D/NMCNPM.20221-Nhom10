@@ -28,7 +28,7 @@ import services.HoKhauService;
 import utility.TableModelHoKhau;
 
 import views.HouseholdManagerFrame.HouseholdSeper;
-import views.infoViews.InforJframe;
+import views.infoViews.InfoJframe;
 public class TachHoKhauController {
     private JTextField searchJtf;
     private JPanel tableTopJpn;
@@ -194,7 +194,7 @@ public class TachHoKhauController {
             public void mouseClicked(MouseEvent e) {
                 HoKhauBean temp = listHoKhau.get(table.getSelectedRow());
                 if (e.getClickCount() > 1) {
-                	InforJframe infoJframe = new InforJframe(temp.toString(), tachHoKhauJFrame);
+                	InfoJframe infoJframe = new InfoJframe(temp.toString(), tachHoKhauJFrame);
                     infoJframe.setLocationRelativeTo(null);
                     infoJframe.setVisible(true);
                 } else {

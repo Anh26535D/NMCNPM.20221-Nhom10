@@ -34,10 +34,14 @@ public class DashBoardFrame extends JFrame {
     private JPanel Home;
     private JPanel NhanKhauBtn;
     private JPanel ThongKeBtn;
+    private JPanel ThuPhiBtn;
+    private JPanel UngHoBtn;
     private JLabel jlbTrangChu;
     private JLabel jlbHoKhau;
     private JLabel jlbNhanKhau;
     private JLabel jlbThongKe;
+    private JLabel jlbThuPhi;
+    private JLabel jlbUngHo;
     private JPanel jpnBean;
     private JPanel jpnContainer;
     private JPanel jpnMenu;
@@ -54,6 +58,8 @@ public class DashBoardFrame extends JFrame {
         listDanhMuc.add(new DanhMucBean("NhanKhau", NhanKhauBtn, jlbNhanKhau));
         listDanhMuc.add(new DanhMucBean("HoKhau", HoKhauBtn, jlbHoKhau));
         listDanhMuc.add(new DanhMucBean("ThongKe", ThongKeBtn, jlbThongKe));
+        listDanhMuc.add(new DanhMucBean("ThuPhi", ThuPhiBtn, jlbThuPhi));
+        listDanhMuc.add(new DanhMucBean("UngHo", UngHoBtn, jlbUngHo));
         
         this.controller = new DashboardController(jpnBean, this);
         controller.setView(Home, "TrangChu");
@@ -158,6 +164,38 @@ public class DashBoardFrame extends JFrame {
 		jlbThongKe.setFont(new Font("Tahoma", Font.BOLD, 13));
 		jlbThongKe.setToolTipText("Thống kê");
 		ThongKeBtn.add(jlbThongKe);
+		
+		ThuPhiBtn = new JPanel();
+		ThuPhiBtn.setBackground(new Color(102, 153, 255));
+		ThuPhiBtn.setBorder(new LineBorder(new Color(255, 204, 255), 1, true));
+		ThuPhiBtn.setBounds(10, 300, 110, 54);
+		ThuPhiBtn.setLayout(null);
+		jpnMenu.add(ThuPhiBtn);
+		
+		jlbThuPhi = new JLabel("Thu phí");
+		jlbThuPhi.setBackground(new Color(102, 102, 255));
+		jlbThuPhi.setHorizontalAlignment(SwingConstants.CENTER);
+		jlbThuPhi.setBounds(0, 0, 110, 54);
+		jlbThuPhi.setForeground(new Color(255, 255, 255));
+		jlbThuPhi.setFont(new Font("Tahoma", Font.BOLD, 13));
+		jlbThuPhi.setToolTipText("Thu phí");
+		ThuPhiBtn.add(jlbThuPhi);	
+		
+		UngHoBtn = new JPanel();
+		UngHoBtn.setBackground(new Color(102, 153, 255));
+		UngHoBtn.setBorder(new LineBorder(new Color(255, 204, 255), 1, true));
+		UngHoBtn.setBounds(10, 364, 110, 54);
+		UngHoBtn.setLayout(null);
+		jpnMenu.add(UngHoBtn);
+		
+		jlbUngHo = new JLabel("Ủng hộ");
+		jlbUngHo.setBackground(new Color(102, 102, 255));
+		jlbUngHo.setHorizontalAlignment(SwingConstants.CENTER);
+		jlbUngHo.setBounds(0, 0, 110, 54);
+		jlbUngHo.setForeground(new Color(255, 255, 255));
+		jlbUngHo.setFont(new Font("Tahoma", Font.BOLD, 13));
+		jlbUngHo.setToolTipText("Ủng hộ");
+		UngHoBtn.add(jlbUngHo);
 		
         LogoutBtn = new JButton("Thoát");
         LogoutBtn.setFocusPainted(false);

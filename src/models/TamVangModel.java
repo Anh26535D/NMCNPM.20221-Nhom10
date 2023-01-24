@@ -2,10 +2,6 @@ package models;
 
 import java.util.Date;
 
-/**
- *
- * @author Hai
- */
 public class TamVangModel {
     private int ID;
     private int idNhanKhau;
