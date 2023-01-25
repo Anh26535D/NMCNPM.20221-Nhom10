@@ -89,8 +89,6 @@ public class StatisticFeesController {
 		});
 	}
 	
-
-    
     public List<Integer> allPaids(List<HoKhauBean> householdBeans, FeesModel feesModel){
     	List<Integer> paids = new ArrayList<Integer>();
     	for(int i=0; i<householdBeans.size(); ++i) {
@@ -114,8 +112,8 @@ public class StatisticFeesController {
     	}
     	return paidStates;
     }
+
     
-   
 	public void setData() {
 		List<Integer> paids = allPaids(list, feesModel);
 		List<Integer> needs = allNeeds(list, feesModel);

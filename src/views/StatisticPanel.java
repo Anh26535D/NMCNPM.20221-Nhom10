@@ -17,7 +17,6 @@ public class StatisticPanel extends javax.swing.JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.ButtonGroup GenderChoose;
 	private javax.swing.JComboBox<String> GenderJcb;
 	private javax.swing.JComboBox<String> StatusJcb;
@@ -37,7 +36,6 @@ public class StatisticPanel extends javax.swing.JPanel {
 	private javax.swing.ButtonGroup statusChoose;
 	private javax.swing.JTextField tuNamJtf;
 	private javax.swing.JTextField tuTuoiJtf;
-	// End of variables declaration//GEN-END:variables
 
 	private JFrame parentFrame;
 	private StatisticPanelController controller;
@@ -213,6 +211,6 @@ public class StatisticPanel extends javax.swing.JPanel {
 
 	private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
 		this.controller.setData();
-	}// GEN-LAST:event_jButton1ActionPerformed
+	}
 
 }

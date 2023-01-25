@@ -2,6 +2,8 @@ package views.FeesManagerFrame;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.WindowAdapter;
@@ -20,6 +22,12 @@ import bean.PhiBatBuocBean;
 import controllers.PeoplePanelController;
 import controllers.FeesManagerController.StatisticFeesController;
 import models.FeesModel;
+import views.PeopleManagerFrame.NewPeopleFrame;
+
+import javax.swing.JRadioButton;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
 
 public class StatisticFeesFrame extends JFrame {
 
@@ -36,6 +44,8 @@ public class StatisticFeesFrame extends JFrame {
 
 	private JPanel tablePanel;
 	private JTextField jtfSearch;
+	private JButton filterBtn;
+	private JComboBox<String> selectStateJcb;
 
 	public StatisticFeesFrame(JFrame parentFrame, PhiBatBuocBean selectedFee) {
 		this.parentFrame = parentFrame;
@@ -87,7 +97,7 @@ public class StatisticFeesFrame extends JFrame {
 		jtfSearch.setBorder(
 				new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(153, 102, 255), null, null, null),
 						new EmptyBorder(0, 10, 0, 0)));
-		jtfSearch.setBounds(10, 67, 855, 43);
+		jtfSearch.setBounds(10, 67, 600, 43);
 		jtfSearch.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				jtfSearchActionPerformed(evt);
@@ -119,8 +129,29 @@ public class StatisticFeesFrame extends JFrame {
 		tablePanel.setBackground(new Color(255, 255, 255));
 		tablePanel.setLayout(null);
 		jPanel1.add(tablePanel);
+		
+		selectStateJcb = new JComboBox<String>();
+		selectStateJcb.setForeground(Color.BLACK);
+		selectStateJcb.setBackground(new Color(255, 255, 255));
+		selectStateJcb.setFont(new Font("Tahoma", Font.BOLD, 10));
+		selectStateJcb.setBounds(620, 67, 117, 43);
+		selectStateJcb.setModel(new DefaultComboBoxModel<>(
+				new String[] {"Tất cả", "Đã nộp", "Còn thiếu"}
+			)
+		);
+		jPanel1.add(selectStateJcb);
+		
+		filterBtn = new JButton("Lọc");
+		filterBtn.setBorder(new LineBorder(new Color(153, 102, 255), 4, true));
+		filterBtn.setForeground(new Color(255, 255, 255));
+		filterBtn.setBackground(new Color(102, 102, 255));
+		filterBtn.setBorderPainted(false);
+		filterBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
+		filterBtn.setBounds(747, 67, 118, 43);
+        jPanel1.add(filterBtn);
 	}
 
-    private void jtfSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfSearchActionPerformed
-    }//GEN-LAST:event_jtfSearchActionPerformed
+    private void jtfSearchActionPerformed(java.awt.event.ActionEvent evt) {
+    }
+    
 }
