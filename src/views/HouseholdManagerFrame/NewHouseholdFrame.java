@@ -53,7 +53,7 @@ public class NewHouseholdFrame extends JFrame {
 		init();
 		this.parentJFrame = parentJFrame;
 		this.setResizable(false);
-		this.setTitle("Tách hộ khẩu");
+		this.setTitle("Hộ khẩu mới");
         this.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 		this.setBounds(350, 200, 670, 785);
 		this.setLocationRelativeTo(null);

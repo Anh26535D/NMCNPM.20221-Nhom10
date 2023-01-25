@@ -75,10 +75,7 @@ public class NewPeopleFrame extends JFrame {
 
 
 	private JTextField JtxReceiveAddress;
-	
-    /**
-     * @wbp.parser.constructor
-     */
+
     public NewPeopleFrame(JFrame parentJFrame) {
     	init();
         this.parentController = new PeoplePanelController(){
