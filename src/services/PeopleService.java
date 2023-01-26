@@ -218,7 +218,7 @@ public class PeopleService {
                     + " AND ROUND(DATEDIFF(dayofyear, namSinh, GETDATE())/365 , 0) <= "
                     + denTuoi;
         if (!gender.equalsIgnoreCase("Toan Bo")) {
-            query += " AND nhan_khau.gioiTinh = '" + gender + "'";
+            query += " AND nhan_khau.gioiTinh = N'" + gender + "'";
         }
         if (Status.equalsIgnoreCase("Toan bo")) {
             query += " AND (tam_tru.denNgay >= GETDATE() OR tam_tru.denNgay IS NULL)"

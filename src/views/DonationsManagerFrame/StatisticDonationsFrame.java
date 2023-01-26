@@ -1,4 +1,4 @@
-package views.FeesManagerFrame;
+package views.DonationsManagerFrame;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -18,15 +18,15 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
-import bean.PhiBatBuocBean;
-import controllers.FeesManagerController.StatisticFeesController;
-import models.FeesModel;
+import bean.PhiUngHoBean;
+import controllers.DonationsManagerController.StatisticDonationsController;
+import models.DonationModel;
 
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 
-public class StatisticFeesFrame extends JFrame {
+public class StatisticDonationsFrame extends JFrame {
 
 	/**
 	 * 
@@ -34,20 +34,20 @@ public class StatisticFeesFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
-	private StatisticFeesController controller;
+	private StatisticDonationsController controller;
 	private JFrame parentFrame;
-	private PhiBatBuocBean selectedFee;
-	private FeesModel feesModel;
+	private PhiUngHoBean selectedDonation;
+	private DonationModel donationsModel;
 
 	private JPanel tablePanel;
 	private JTextField jtfSearch;
 	private JButton filterBtn;
 	private JComboBox<String> selectStateJcb;
 
-	public StatisticFeesFrame(JFrame parentFrame, PhiBatBuocBean selectedFee) {
+	public StatisticDonationsFrame(JFrame parentFrame, PhiUngHoBean selectedDonation) {
 		this.parentFrame = parentFrame;
-		this.selectedFee = selectedFee;
-		this.feesModel = selectedFee.getFeesModel();
+		this.selectedDonation = selectedDonation;
+		this.donationsModel = selectedDonation.getDonationModel();
 
 		init();
 
@@ -65,13 +65,13 @@ public class StatisticFeesFrame extends JFrame {
 			}
 		});
 
-		controller = new StatisticFeesController(tablePanel, jtfSearch, selectStateJcb, selectedFee);
+		controller = new StatisticDonationsController(tablePanel, jtfSearch, selectStateJcb, selectedDonation);
 		controller.setParentJFrame(parentFrame);
 		controller.setData();
 	}
 
 	private void init() {
-		this.setTitle(this.feesModel.getTen_khoan_thu());
+		this.setTitle(this.donationsModel.getTen_khoan_thu());
 		setBounds(100, 100, 909, 531);
 		contentPane = new JPanel();
 

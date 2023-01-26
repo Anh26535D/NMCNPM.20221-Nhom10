@@ -1,4 +1,4 @@
-package controllers.FeesManagerController;
+package controllers.DonationsManagerController;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -25,33 +25,33 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 
 import bean.HoKhauBean;
-import bean.PhiBatBuocBean;
-import models.FeesModel;
-import services.FeesService;
+import bean.PhiUngHoBean;
+import models.DonationModel;
+import services.DonationsService;
 import services.HoKhauService;
 import services.PeopleService;
 import services.StringService;
 import utility.ClassTableModel;
 import views.infoViews.InfoJframe;
 
-public class StatisticFeesController {
+public class StatisticDonationsController {
 
 	private List<HoKhauBean> list;
 	private JTextField searchJtf;
 	private JPanel tableJpn;
-	private FeesModel feesModel;
-	private FeesService feesService;
+	private DonationModel donationsModel;
+	private DonationsService donationsService;
 	private JComboBox<String> selectStateJcb;
 	private final HoKhauService hoKhauService = new HoKhauService();
 	private final ClassTableModel tableModelHoKhau = new ClassTableModel();
 	private final String COLUMNS[] = { "Mã hộ khẩu", "Họ tên chủ hộ", "Địa chỉ", "Đã nộp", "Cần nộp", "Trạng thái" };
 	private JFrame parentJFrame;
 
-	public StatisticFeesController(JPanel tableJpn, JTextField searchJtf, JComboBox<String> selectStateJcb, PhiBatBuocBean selectedFee) {
+	public StatisticDonationsController(JPanel tableJpn, JTextField searchJtf, JComboBox<String> selectStateJcb, PhiUngHoBean selectedDonation) {
 		this.searchJtf = searchJtf;
 		this.tableJpn = tableJpn;
-		this.feesModel = selectedFee.getFeesModel();
-		this.feesService = new FeesService();
+		this.donationsModel = selectedDonation.getDonationModel();
+		this.donationsService = new DonationsService();
 		this.list = hoKhauService.getListHoKhau();
 		this.selectStateJcb = selectStateJcb;
 		initAction();
@@ -94,18 +94,18 @@ public class StatisticFeesController {
 		});
 	}
 
-	public List<Integer> allPaids(List<HoKhauBean> householdBeans, FeesModel feesModel) {
+	public List<Integer> allPaids(List<HoKhauBean> householdBeans, DonationModel donationsModel) {
 		List<Integer> paids = new ArrayList<Integer>();
 		for (int i = 0; i < householdBeans.size(); ++i) {
-			paids.add(feesService.getPaid(householdBeans.get(i), feesModel));
+			paids.add(donationsService.getPaid(householdBeans.get(i), donationsModel));
 		}
 		return paids;
 	}
 
-	public List<Integer> allNeeds(List<HoKhauBean> householdBeans, FeesModel feesModel) {
+	public List<Integer> allNeeds(List<HoKhauBean> householdBeans, DonationModel donationsModel) {
 		List<Integer> needs = new ArrayList<Integer>();
 		for (int i = 0; i < householdBeans.size(); ++i) {
-			needs.add(feesService.getNeed(householdBeans.get(i), feesModel));
+			needs.add(donationsService.getNeed(householdBeans.get(i), donationsModel));
 		}
 		return needs;
 	}
@@ -157,8 +157,8 @@ public class StatisticFeesController {
 	}
 
 	public void setData() {
-		List<Integer> paids = allPaids(list, feesModel);
-		List<Integer> needs = allNeeds(list, feesModel);
+		List<Integer> paids = allPaids(list, donationsModel);
+		List<Integer> needs = allNeeds(list, donationsModel);
 		List<Boolean> paidStates = allPaidStates(paids, needs);
 		String conditions = StringService.covertToString((String)this.selectStateJcb.getSelectedItem());
 		DefaultTableModel model = tableModelHoKhau.setHouseholdTable(list, paids, needs, paidStates, COLUMNS, conditions);

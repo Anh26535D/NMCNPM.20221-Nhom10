@@ -24,32 +24,32 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 
 
-import bean.PhiBatBuocBean;
-import models.FeesModel;
-import services.FeesService;
+import bean.PhiUngHoBean;
+import models.DonationModel;
+import services.DonationsService;
 import utility.ClassTableModel;
-import views.FeesManagerFrame.StatisticFeesFrame;
+import views.DonationsManagerFrame.StatisticDonationsFrame;
 
-public class FeesController {
+public class DonationsController {
 
     private JPanel jpnView;
     private JTextField jtfSearch;
-    private FeesService feesService;
-    private List<PhiBatBuocBean> listPhiBatBuocBeans;
+    private DonationsService donationsService;
+    private List<PhiUngHoBean> listPhiUngHoBeans;
     private ClassTableModel classTableModel = null;
-    private final String[] COLUMNS = {"ID", "Tên khoản thu", "Số tiền/1 người", "Đợt thu", "Đã thu"};
+    private final String[] COLUMNS = {"ID", "Tên khoản thu", "Số tiền", "Đã thu"};
     private JFrame parentFrame;
 
-    public FeesController(JPanel jpnView, JTextField jtfSearch) {
+    public DonationsController(JPanel jpnView, JTextField jtfSearch) {
         this.jpnView = jpnView;
         this.jtfSearch = jtfSearch;
         classTableModel = new ClassTableModel();
-        this.feesService = new FeesService();
-        this.listPhiBatBuocBeans = this.feesService.allFees();
+        this.donationsService = new DonationsService();
+        this.listPhiUngHoBeans = this.donationsService.allDonations();
         initAction();
     }
 
-    public FeesController() {
+    public DonationsController() {
     }
     
     public void setParentFrame(JFrame parentFrame) {
@@ -61,33 +61,33 @@ public class FeesController {
             @Override
             public void insertUpdate(DocumentEvent e) {
                 String key = jtfSearch.getText();
-                listPhiBatBuocBeans = feesService.searchFeeByID(key.trim());
+                listPhiUngHoBeans = donationsService.searchDonationByID(key.trim());
                 setData();
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
                 String key = jtfSearch.getText();
-                listPhiBatBuocBeans = feesService.searchFeeByID(key.trim());
+                listPhiUngHoBeans = donationsService.searchDonationByID(key.trim());
                 setData();
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
                 String key = jtfSearch.getText();
-                listPhiBatBuocBeans = feesService.searchFeeByID(key.trim());
+                listPhiUngHoBeans = donationsService.searchDonationByID(key.trim());
                 setData();
             }
         });
     }
     
     public void setData() {
-        List<FeesModel> listItem = new ArrayList<>();
-        this.listPhiBatBuocBeans.forEach(nhankhau -> {
-            listItem.add(nhankhau.getFeesModel());
+        List<DonationModel> listItem = new ArrayList<>();
+        this.listPhiUngHoBeans.forEach(nhankhau -> {
+            listItem.add(nhankhau.getDonationModel());
         });
         
-        DefaultTableModel model = classTableModel.setTableFees(listItem, COLUMNS);
+        DefaultTableModel model = classTableModel.setTableDonations(listItem, COLUMNS);
         JTable table = new JTable(model) {
             private static final long serialVersionUID = 1L;
 
@@ -134,8 +134,8 @@ public class FeesController {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() > 1) {
-                	PhiBatBuocBean selectedFee = listPhiBatBuocBeans.get(table.getSelectedRow());
-                    StatisticFeesFrame detail = new StatisticFeesFrame(parentFrame, selectedFee);
+                	PhiUngHoBean selectedDonation = listPhiUngHoBeans.get(table.getSelectedRow());
+                    StatisticDonationsFrame detail = new StatisticDonationsFrame(parentFrame, selectedDonation);
                     detail.setLocationRelativeTo(null);
                     detail.setVisible(true);
                 }
@@ -154,7 +154,7 @@ public class FeesController {
     }
     
     public void refreshData() {
-        this.listPhiBatBuocBeans = this.feesService.allFees();
+        this.listPhiUngHoBeans = this.donationsService.allDonations();
         setData();
     }
 }

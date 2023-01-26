@@ -11,27 +11,26 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import bean.HoKhauBean;
-import bean.PhiBatBuocBean;
-import models.FeesModel;
+import bean.PhiUngHoBean;
+import models.DonationModel;
 import models.HoKhauModel;
 
-public class FeesService {
+public class DonationsService {
 
-	public List<PhiBatBuocBean> allFees() {
-		List<PhiBatBuocBean> list = new ArrayList<>();
+	public List<PhiUngHoBean> allDonations() {
+		List<PhiUngHoBean> list = new ArrayList<>();
 		try {
 			Connection connection = SQLConnection.getDbConnection();
-			String query = "SELECT TOP 100 ID, ten_khoan_thu,so_tien,dot_thu FROM phi_bat_buoc ORDER BY phi_bat_buoc.ID";
+			String query = "SELECT TOP 100 ID, ten_khoan_thu,so_tien FROM khoan_thu_tu_nguyen ORDER BY khoan_thu_tu_nguyen.ID";
 			PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(query);
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
-				PhiBatBuocBean feeBean = new PhiBatBuocBean();
-				FeesModel fee = feeBean.getFeesModel();
-				fee.setID(rs.getInt("ID"));
-				fee.setTen_khoan_thu(rs.getString("ten_khoan_thu"));
-				fee.setSo_tien(rs.getInt("so_tien"));
-				fee.setDot_thu(rs.getString("dot_thu"));
-				list.add(feeBean);
+				PhiUngHoBean donationBean = new PhiUngHoBean();
+				DonationModel donation = donationBean.getDonationModel();
+				donation.setID(rs.getInt("ID"));
+				donation.setTen_khoan_thu(rs.getString("ten_khoan_thu"));
+				donation.setSo_tien(rs.getInt("so_tien"));
+				list.add(donationBean);
 			}
 			preparedStatement.close();
 			connection.close();
@@ -41,26 +40,25 @@ public class FeesService {
 		return list;
 	}
 
-	public List<PhiBatBuocBean> searchFeeByID(String keyword) {
-		List<PhiBatBuocBean> list = new ArrayList<>();
+	public List<PhiUngHoBean> searchDonationByID(String keyword) {
+		List<PhiUngHoBean> list = new ArrayList<>();
 		if (keyword.trim().isEmpty()) {
-			return this.allFees();
+			return this.allDonations();
 		}
 
 		try {
 			Connection connection = SQLConnection.getDbConnection();
-			String query = "SELECT ID, ten_khoan_thu,so_tien,dot_thu FROM phi_bat_buoc " + "WHERE ID LIKE('%" + keyword
+			String query = "SELECT ID, ten_khoan_thu,so_tien FROM khoan_thu_tu_nguyen " + "WHERE ID LIKE('%" + keyword
 					+ "%');";
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
-				PhiBatBuocBean feeBean = new PhiBatBuocBean();
-				FeesModel fee = feeBean.getFeesModel();
-				fee.setID(rs.getInt("ID"));
-				fee.setTen_khoan_thu(rs.getString("ten_khoan_thu"));
-				fee.setSo_tien(rs.getInt("so_tien"));
-				fee.setDot_thu(rs.getString("dot_thu"));
-				list.add(feeBean);
+				PhiUngHoBean donationBean = new PhiUngHoBean();
+				DonationModel donation = donationBean.getDonationModel();
+				donation.setID(rs.getInt("ID"));
+				donation.setTen_khoan_thu(rs.getString("ten_khoan_thu"));
+				donation.setSo_tien(rs.getInt("so_tien"));
+				list.add(donationBean);
 			}
 			preparedStatement.close();
 			connection.close();
@@ -70,15 +68,14 @@ public class FeesService {
 		return list;
 	}
 
-	public boolean newFee(PhiBatBuocBean phiBatBuocBean) throws SQLException, ClassNotFoundException {
-		FeesModel fee = phiBatBuocBean.getFeesModel();
+	public boolean newDonation(PhiUngHoBean phiUngHoBean) throws SQLException, ClassNotFoundException {
+		DonationModel donation = phiUngHoBean.getDonationModel();
 		Connection connection = SQLConnection.getDbConnection();
 
-		String query = "INSERT INTO phi_bat_buoc ( ten_khoan_thu, so_tien, dot_thu)" + " values (?, ?, ?)";
+		String query = "INSERT INTO khoan_thu_tu_nguyen ( ten_khoan_thu, so_tien)" + " values (?, ?)";
 		PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-		preparedStatement.setString(1, fee.getTen_khoan_thu());
-		preparedStatement.setInt(2, fee.getSo_tien());
-		preparedStatement.setString(3, fee.getDot_thu());
+		preparedStatement.setString(1, donation.getTen_khoan_thu());
+		preparedStatement.setInt(2, donation.getSo_tien());
 
 		preparedStatement.executeUpdate();
 		ResultSet rs = preparedStatement.getGeneratedKeys();
@@ -89,32 +86,32 @@ public class FeesService {
 		return false;
 	}
 	
-	public Integer getNeed(HoKhauBean householdBean, FeesModel feesModel) {
+	public Integer getNeed(HoKhauBean householdBean, DonationModel donationModel) {
 		Connection connection;
 		try {
 			connection = SQLConnection.getDbConnection();
 			HoKhauModel household = householdBean.getHoKhauModel();
 			String maHoKhau = household.getMaHoKhau();
-			int idPhiThu = feesModel.getID();
+			int idKhoanThu = donationModel.getID();
 			String query_get_num_of_people_in_household = "SELECT COUNT(*) AS so_luong_nk_trong_hk FROM nhan_khau"
 					+ " JOIN thanh_vien_cua_ho ON thanh_vien_cua_ho.idNhanKhau = nhan_khau.ID"
 					+ " JOIN ho_khau ON ho_khau.ID = thanh_vien_cua_ho.idHoKhau" + " WHERE ho_khau.maHoKhau = '"
 					+ maHoKhau + "';";
-			String query_get_basic_fee = "SELECT so_tien FROM phi_bat_buoc"
-					+ " WHERE ID = " + idPhiThu + ";";
+			String query_get_basic_donation = "SELECT so_tien FROM khoan_thu_tu_nguyen"
+					+ " WHERE ID = " + idKhoanThu + ";";
 			try {
 				Statement st = connection.createStatement();
 				ResultSet rs = st.executeQuery(query_get_num_of_people_in_household);
 				rs.next();
 				int num_of_people_in_household = rs.getInt("so_luong_nk_trong_hk");
 
-				rs = st.executeQuery(query_get_basic_fee);
+				rs = st.executeQuery(query_get_basic_donation);
 				rs.next();
-				int basic_fee = rs.getInt("so_tien");
+				int basic_donation = rs.getInt("so_tien");
 
 				connection.close();
 				
-				return basic_fee*num_of_people_in_household;
+				return basic_donation*num_of_people_in_household;
 			
 			} catch (SQLException e) {
 				exceptionHandle(e.getMessage());
@@ -127,19 +124,19 @@ public class FeesService {
 		return -1;
 	}
 	
-	public Integer getPaid(HoKhauBean householdBean, FeesModel feesModel) {
+	public Integer getPaid(HoKhauBean householdBean, DonationModel donationModel) {
 		Connection connection;
 		try {
 			connection = SQLConnection.getDbConnection();
 			HoKhauModel household = householdBean.getHoKhauModel();
 			String maHoKhau = household.getMaHoKhau();
-			int idPhiThu = feesModel.getID();
+			int idKhoanThu = donationModel.getID();
 			String paid = 
-					"SELECT SUM(so_tien) AS tong_tien FROM nop_phi"
-					+ " JOIN nhan_khau ON nhan_khau.ID = nop_phi.idNhanKhau"
+					"SELECT SUM(so_tien) AS tong_tien FROM nop_tien"
+					+ " JOIN nhan_khau ON nhan_khau.ID = nop_tien.idNhanKhau"
 					+ " JOIN thanh_vien_cua_ho ON thanh_vien_cua_ho.idNhanKhau = nhan_khau.ID"
 					+ " JOIN ho_khau ON ho_khau.ID = thanh_vien_cua_ho.idHoKhau"
-					+ " WHERE ho_khau.maHoKhau = '" + maHoKhau + "' AND nop_phi.idPhiThu = " + idPhiThu  + ";";
+					+ " WHERE ho_khau.maHoKhau = '" + maHoKhau + "' AND nop_tien.idKhoanThu = " + idKhoanThu  + ";";
 			try {
 				Statement st = connection.createStatement();
 				ResultSet rs = st.executeQuery(paid);
@@ -158,14 +155,14 @@ public class FeesService {
 		return -1;
 	}
 	
-	public Integer getPaidFee(FeesModel feesModel) {
+	public Integer getPaidDonation(DonationModel donationModel) {
 		Connection connection;
 		try {
 			connection = SQLConnection.getDbConnection();
-			int idPhiThu = feesModel.getID();
+			int idKhoanThu = donationModel.getID();
 			String paid = 
-					"SELECT SUM(so_tien) AS tong_tien FROM nop_phi"
-					+ " WHERE nop_phi.idPhiThu = " + idPhiThu  + ";";
+					"SELECT SUM(so_tien) AS tong_tien FROM nop_tien"
+					+ " WHERE nop_tien.idKhoanThu = " + idKhoanThu  + ";";
 			try {
 				Statement st = connection.createStatement();
 				ResultSet rs = st.executeQuery(paid);

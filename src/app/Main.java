@@ -6,16 +6,16 @@ import javax.swing.UIManager;
 import views.LoginFrame;
 
 public class Main {
-    public static Calendar calendar = Calendar.getInstance();
-    
-    public static void main(String[] args){
-        try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+	public static Calendar calendar = Calendar.getInstance();
 
-        } catch (Exception e) {
-        }
-        LoginFrame loginFrame = new LoginFrame();
-        loginFrame.setVisible(true);
-      }
+	public static void main(String[] args) {
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+
+		} catch (Exception e) {
+		}
+		LoginFrame loginFrame = new LoginFrame();
+		loginFrame.setVisible(true);
+	}
 
 }

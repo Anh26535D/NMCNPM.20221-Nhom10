@@ -66,7 +66,7 @@ public class StatisticPanelController {
         int denTuoi = 200;
         int tuNam = 0;
         int denNam = 2100;
-        String gender = StringService.covertToString((String)this.GenderJcb.getSelectedItem());
+        String gender = (String)this.GenderJcb.getSelectedItem().toString();
         String status = StringService.covertToString((String)this.StatusJcb.getSelectedItem());
         try {
             if (!this.tuTuoiJtf.getText().trim().isEmpty()) {
