@@ -48,6 +48,7 @@ public class NewPeopleFrame extends JFrame {
     private AddNewController controller;
     private AddressSuggestion addrSuggestion;
     private AddressModel addrModel = new AddressModel();
+    private JTextField JtxReceiveAddress;
 
 	private JPanel contentPane;
 	private JTextField hoTenTxb;
@@ -73,8 +74,6 @@ public class NewPeopleFrame extends JFrame {
 	private javax.swing.JComboBox<String> gioiTinhCbb;
 	private JButton thuongTruBtn;
 
-
-	private JTextField JtxReceiveAddress;
 	
     /**
      * @wbp.parser.constructor
@@ -148,11 +147,13 @@ public class NewPeopleFrame extends JFrame {
 				return null;
 			}
 		};
+		nguyenQuanTxb.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		nguyenQuanTxb.setEditable(false);
 		nguyenQuanTxb.setBounds(150, 113, 220, 30);
 		jPanel1.add(nguyenQuanTxb);
 		
 		namSinhDateC = new JDateChooser();
+		namSinhDateC.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		namSinhDateC.getCalendarButton().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -164,7 +165,7 @@ public class NewPeopleFrame extends JFrame {
 
 		nguyenQuanBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JtxReceiveAddress=nguyenQuanTxb;
+				JtxReceiveAddress = nguyenQuanTxb;
 				getAddressAction();
 
 			}
@@ -271,23 +272,27 @@ public class NewPeopleFrame extends JFrame {
 		jPanel1.add(lblNewLabel_1);
 		
 		hoTenTxb = new JTextField();
+		hoTenTxb.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		hoTenTxb.setBounds(150, 30, 240, 30);
 		jPanel1.add(hoTenTxb);
 
 		hoTenTxb.setColumns(10);
 		
 		danTocTxb = new JTextField();
+		danTocTxb.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		danTocTxb.setColumns(10);
 
 		danTocTxb.setBounds(150, 154, 240, 30);
 		jPanel1.add(danTocTxb);
 		
 		soCMTTxb = new JTextField();
+		soCMTTxb.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		soCMTTxb.setColumns(10);
 		soCMTTxb.setBounds(150, 195, 240, 30);
 		jPanel1.add(soCMTTxb);
 		
 		trinhDoHocVanTxb = new JTextField();
+		trinhDoHocVanTxb.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		trinhDoHocVanTxb.setColumns(10);
 		trinhDoHocVanTxb.setBounds(150, 277, 240, 30);
 		jPanel1.add(trinhDoHocVanTxb);
@@ -300,6 +305,7 @@ public class NewPeopleFrame extends JFrame {
 				return null;
 			}
 		};
+		noiThuongTruTxb.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		noiThuongTruTxb.setEditable(false);
     
 		noiThuongTruTxb.setBounds(150, 236, 220, 30);
@@ -320,11 +326,13 @@ public class NewPeopleFrame extends JFrame {
 		jPanel1.add(thuongTruBtn);
 		
 		trinhDoNgoaiNguTxb = new JTextField();
+		trinhDoNgoaiNguTxb.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		trinhDoNgoaiNguTxb.setColumns(10);
 		trinhDoNgoaiNguTxb.setBounds(150, 318, 240, 30);
 		jPanel1.add(trinhDoNgoaiNguTxb);
 		
 		ngheNghiepTxb = new JTextField();
+		ngheNghiepTxb.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		ngheNghiepTxb.setColumns(10);
 		ngheNghiepTxb.setBounds(150, 359, 240, 30);
 		jPanel1.add(ngheNghiepTxb);
@@ -388,15 +396,17 @@ public class NewPeopleFrame extends JFrame {
 		gioiTinhCbb.setBounds(616, 72, 113, 30);
 		gioiTinhCbb.addItem("Nam");		
 		gioiTinhCbb.addItem("Nữ");
-		gioiTinhCbb.setFont(new Font("Tohama",0,14));
+		gioiTinhCbb.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		jPanel1.add(gioiTinhCbb);
 		
 		bietDanhTxb = new JTextField();
+		bietDanhTxb.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		bietDanhTxb.setColumns(10);
 		bietDanhTxb.setBounds(616, 30, 240, 30);
 		jPanel1.add(bietDanhTxb);
 		
 		tonGiaoTxb = new JTextField();
+		tonGiaoTxb.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		tonGiaoTxb.setColumns(10);
 		tonGiaoTxb.setBounds(616, 113, 240, 30);
 		jPanel1.add(tonGiaoTxb);
@@ -411,11 +421,13 @@ public class NewPeopleFrame extends JFrame {
 				return null;
 			}
 		};
+		quocTichTxb.setFont(new Font("Tahoma", Font.PLAIN, 14));
 
 		quocTichTxb.setBounds(616, 154, 240, 30);
 		jPanel1.add(quocTichTxb);
 		
 		soHoChieuTxb = new JTextField();
+		soHoChieuTxb.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		soHoChieuTxb.setColumns(10);
 		soHoChieuTxb.setBounds(616, 198, 240, 30);
 		jPanel1.add(soHoChieuTxb);
@@ -428,6 +440,7 @@ public class NewPeopleFrame extends JFrame {
 				return null;
 			}
 		};
+		diaChiHienNayTxb.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		diaChiHienNayTxb.setEnabled(false);
 
 		diaChiHienNayTxb.setBounds(616, 236, 220, 30);
@@ -444,16 +457,19 @@ public class NewPeopleFrame extends JFrame {
 		jPanel1.add(diaChiBtn);
 		
 		trinhDoChuyenMonTxb = new JTextField();
+		trinhDoChuyenMonTxb.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		trinhDoChuyenMonTxb.setColumns(10);
 		trinhDoChuyenMonTxb.setBounds(616, 277, 240, 30);
 		jPanel1.add(trinhDoChuyenMonTxb);
 		
 		bietTiengDanTocTxb = new JTextField();
+		bietTiengDanTocTxb.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		bietTiengDanTocTxb.setColumns(10);
 		bietTiengDanTocTxb.setBounds(616, 318, 240, 30);
 		jPanel1.add(bietTiengDanTocTxb);
 		
 		noiLamViecTxb = new JTextField();
+		noiLamViecTxb.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		noiLamViecTxb.setColumns(10);
 		noiLamViecTxb.setBounds(616, 359, 240, 30);
 		jPanel1.add(noiLamViecTxb);

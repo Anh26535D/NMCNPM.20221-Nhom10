@@ -91,14 +91,16 @@ public class ChoosePeople extends javax.swing.JFrame {
         searchJtf.setBounds(24, 10, 671, 35);
         searchJtf.setText("Search");
         tableJpn = new javax.swing.JPanel();
-        tableJpn.setBounds(24, 67, 671, 252);
+        tableJpn.setFont(new Font("Tahoma", Font.PLAIN, 16));
+        tableJpn.setBounds(24, 67, 671, 241);
         tableJpn.setBackground(new Color(255, 255, 255));
         confirmBtn = new javax.swing.JButton();
-        confirmBtn.setBounds(601, 329, 80, 35);
+        confirmBtn.setBounds(601, 329, 94, 35);
         cancelBtn = new javax.swing.JButton();
-        cancelBtn.setBounds(484, 329, 80, 36);
+        cancelBtn.setBounds(484, 329, 94, 35);
         selectedJtf = new javax.swing.JTextField();
-        selectedJtf.setBounds(20, 329, 419, 36);
+        selectedJtf.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        selectedJtf.setBounds(24, 329, 419, 36);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -123,7 +125,7 @@ public class ChoosePeople extends javax.swing.JFrame {
 		    }
 		    });
 		searchJtf.setSelectionColor(new Color(204, 153, 255));
-		searchJtf.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		searchJtf.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		searchJtf.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(153, 102, 255), null, null, null), new EmptyBorder(0, 10, 0, 0)));
 		searchJtf.setColumns(10);
 
@@ -142,7 +144,7 @@ public class ChoosePeople extends javax.swing.JFrame {
        confirmBtn.setBorderPainted(false);
    
        confirmBtn.setBorder(new LineBorder(new Color(186, 85, 211), 1, true));
-       confirmBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
+       confirmBtn.setFont(new Font("Tahoma", Font.BOLD, 16));
        confirmBtn.setForeground(new Color(255, 255, 255));
        confirmBtn.setBackground(new Color(147, 112, 219));
        confirmBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -154,7 +156,7 @@ public class ChoosePeople extends javax.swing.JFrame {
         cancelBtn.setText("Hủy");
         cancelBtn.setBorderPainted(false);
         cancelBtn.setBorder(new LineBorder(new Color(186, 85, 211), 1, true));
-        cancelBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
+        cancelBtn.setFont(new Font("Tahoma", Font.BOLD, 16));
         cancelBtn.setForeground(new Color(255, 255, 255));
         cancelBtn.setBackground(new Color(147, 112, 219));
         

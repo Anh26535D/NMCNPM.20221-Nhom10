@@ -120,7 +120,7 @@ public class DashBoardFrame extends JFrame {
 		jlbNhanKhau.setBackground(new Color(204, 204, 255));
 		jlbNhanKhau.setBorder(null);
 		jlbNhanKhau.setForeground(new Color(255, 255, 255));
-		jlbNhanKhau.setFont(new Font("Tahoma", Font.BOLD, 13));
+		jlbNhanKhau.setFont(new Font("Tahoma", Font.BOLD, 15));
 		jlbNhanKhau.setHorizontalAlignment(SwingConstants.CENTER);
 		jlbNhanKhau.setBounds(0, 0, 110, 54);
 		NhanKhauBtn.add(jlbNhanKhau);
@@ -137,7 +137,7 @@ public class DashBoardFrame extends JFrame {
 		jlbHoKhau.setBackground(new Color(102, 153, 255));
 		jlbHoKhau.setBorder(null);
 		jlbHoKhau.setForeground(new Color(255, 255, 255));
-		jlbHoKhau.setFont(new Font("Tahoma", Font.BOLD, 13));
+		jlbHoKhau.setFont(new Font("Tahoma", Font.BOLD, 15));
 		jlbHoKhau.setBounds(0, 0, 110, 54);
 		jlbHoKhau.setHorizontalAlignment(SwingConstants.CENTER);
 		jlbHoKhau.setToolTipText("Hộ khẩu");
@@ -155,7 +155,7 @@ public class DashBoardFrame extends JFrame {
 		jlbThongKe.setHorizontalAlignment(SwingConstants.CENTER);
 		jlbThongKe.setBounds(0, 0, 110, 54);
 		jlbThongKe.setForeground(new Color(255, 255, 255));
-		jlbThongKe.setFont(new Font("Tahoma", Font.BOLD, 13));
+		jlbThongKe.setFont(new Font("Tahoma", Font.BOLD, 15));
 		jlbThongKe.setToolTipText("Thống kê");
 		ThongKeBtn.add(jlbThongKe);
 		
@@ -189,7 +189,7 @@ public class DashBoardFrame extends JFrame {
 		});
         
         LogoutBtn.setForeground(Color.WHITE);
-        LogoutBtn.setFont(new Font("Tahoma", Font.BOLD, 13));
+        LogoutBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
         LogoutBtn.setBorder(new LineBorder(new Color(255, 204, 255), 1, true));
         LogoutBtn.setBackground(new Color(102, 153, 255));
         LogoutBtn.setBounds(10, 529, 110, 54);

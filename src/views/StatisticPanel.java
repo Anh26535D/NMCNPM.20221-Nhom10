@@ -17,7 +17,6 @@ public class StatisticPanel extends javax.swing.JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.ButtonGroup GenderChoose;
 	private javax.swing.JComboBox<String> GenderJcb;
 	private javax.swing.JComboBox<String> StatusJcb;
@@ -37,7 +36,7 @@ public class StatisticPanel extends javax.swing.JPanel {
 	private javax.swing.ButtonGroup statusChoose;
 	private javax.swing.JTextField tuNamJtf;
 	private javax.swing.JTextField tuTuoiJtf;
-	// End of variables declaration//GEN-END:variables
+
 
 	private JFrame parentFrame;
 	private StatisticPanelController controller;
@@ -76,14 +75,14 @@ public class StatisticPanel extends javax.swing.JPanel {
 		add(panel_1);
 		
 		jLabel7 = new javax.swing.JLabel("Giới tính");
-		jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14));
+		jLabel7.setFont(new java.awt.Font("Tahoma", 1, 15));
 		jLabel7.setHorizontalAlignment(SwingConstants.CENTER);
 		jLabel7.setBounds(10, 20, 80, 40);
 		panel_1.add(jLabel7);
 
 		GenderJcb = new javax.swing.JComboBox<>();
 		GenderJcb.setBounds(90, 20, 130, 40);
-		GenderJcb.setFont(new java.awt.Font("Tahoma", 0, 14));
+		GenderJcb.setFont(new java.awt.Font("Tahoma", 0, 15));
 		GenderJcb.setModel(new javax.swing.DefaultComboBoxModel<>(
 				new String[] { "Toàn bộ", "Nam", "Nữ" }
 			)
@@ -93,12 +92,12 @@ public class StatisticPanel extends javax.swing.JPanel {
 		jLabel1 = new javax.swing.JLabel("Tình trạng:");
 		jLabel1.setHorizontalAlignment(SwingConstants.CENTER);
 		jLabel1.setBounds(300, 20, 100, 40);
-		jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14));
+		jLabel1.setFont(new java.awt.Font("Tahoma", 1, 15));
 		panel_1.add(jLabel1);
 
 		StatusJcb = new javax.swing.JComboBox<>();
 		StatusJcb.setBounds(400, 20, 140, 40);
-		StatusJcb.setFont(new java.awt.Font("Tahoma", 0, 14));
+		StatusJcb.setFont(new java.awt.Font("Tahoma", 0, 15));
 		StatusJcb.setModel(new javax.swing.DefaultComboBoxModel<>(
 				new String[] { "Toàn bộ", "Thường trú", "Tạm trú", "Tạm vắng" }
 			)
@@ -106,7 +105,7 @@ public class StatisticPanel extends javax.swing.JPanel {
 		panel_1.add(StatusJcb);
 
 		jButton1 = new javax.swing.JButton("Show");
-		jButton1.setFont(new java.awt.Font("Tahoma", 0, 14));
+		jButton1.setFont(new java.awt.Font("Tahoma", 0, 15));
 		jButton1.setBounds(646, 20, 130, 40);
 		jButton1.setBorder(new LineBorder(new Color(153, 102, 255), 4, true));
 		jButton1.setForeground(new Color(255, 255, 255));
@@ -127,7 +126,7 @@ public class StatisticPanel extends javax.swing.JPanel {
 		panel_1.add(panel_3);
 		
 		jLabel2 = new JLabel("Độ tuổi");
-		jLabel2.setFont(new Font("Tahoma", Font.BOLD, 14));
+		jLabel2.setFont(new Font("Tahoma", Font.BOLD, 15));
 		jLabel2.setHorizontalAlignment(SwingConstants.CENTER);
 		jLabel2.setBounds(10, 10, 60, 43);
 		panel_3.add(jLabel2);
@@ -135,51 +134,51 @@ public class StatisticPanel extends javax.swing.JPanel {
 		jLabel3 = new JLabel("Từ");
 		jLabel3.setHorizontalAlignment(SwingConstants.CENTER);
 		jLabel3.setBounds(72, 10, 60, 43);
-		jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14));
+		jLabel3.setFont(new java.awt.Font("Tahoma", 1, 15));
 		panel_3.add(jLabel3);
 
 		tuTuoiJtf = new JTextField();
-		tuTuoiJtf.setFont(new java.awt.Font("Tahoma", 0, 14));
+		tuTuoiJtf.setFont(new java.awt.Font("Tahoma", 0, 15));
 		tuTuoiJtf.setBounds(132, 10, 70, 43);
 		panel_3.add(tuTuoiJtf);
 
 		jLabel4 = new javax.swing.JLabel("đến");
-		jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14));
+		jLabel4.setFont(new java.awt.Font("Tahoma", 1, 15));
 		jLabel4.setHorizontalAlignment(SwingConstants.CENTER);
 		jLabel4.setBounds(203, 10, 60, 43);
 		panel_3.add(jLabel4);
 
 		denTuoiJtf = new JTextField();
-		denTuoiJtf.setFont(new java.awt.Font("Tahoma", 0, 14));
+		denTuoiJtf.setFont(new java.awt.Font("Tahoma", 0, 15));
 		denTuoiJtf.setBounds(263, 10, 70, 43);
 		panel_3.add(denTuoiJtf);
 
 		jLabel5 = new JLabel("Tuổi:");
 		jLabel5.setHorizontalAlignment(SwingConstants.CENTER);
 		jLabel5.setBounds(333, 11, 60, 43);
-		jLabel5.setFont(new Font("Tahoma", Font.ITALIC, 14)); // NOI18N
+		jLabel5.setFont(new Font("Tahoma", Font.ITALIC, 15)); // NOI18N
 		panel_3.add(jLabel5);
 
 		jLabel9 = new JLabel("Năm:");
-		jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14));
+		jLabel9.setFont(new java.awt.Font("Tahoma", 1, 15));
 		jLabel9.setHorizontalAlignment(SwingConstants.CENTER);
 		jLabel9.setBounds(436, 10, 60, 43);
 		panel_3.add(jLabel9);
 
 		
 		jLabel10 = new JLabel("Từ");
-		jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14));
+		jLabel10.setFont(new java.awt.Font("Tahoma", 1, 15));
 		jLabel10.setHorizontalAlignment(SwingConstants.CENTER);
 		jLabel10.setBounds(496, 10, 60, 43);
 		panel_3.add(jLabel10);
 
 		tuNamJtf = new JTextField();
-		tuNamJtf.setFont(new java.awt.Font("Tahoma", 0, 14));
+		tuNamJtf.setFont(new java.awt.Font("Tahoma", 0, 15));
 		tuNamJtf.setBounds(556, 10, 70, 43);
 		panel_3.add(tuNamJtf);
 
 		jLabel11 = new JLabel("đến");
-		jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14));
+		jLabel11.setFont(new java.awt.Font("Tahoma", 1, 15));
 		jLabel11.setHorizontalAlignment(SwingConstants.CENTER);
 		jLabel11.setBounds(626, 10, 60, 43);
 		panel_3.add(jLabel11);
@@ -206,7 +205,7 @@ public class StatisticPanel extends javax.swing.JPanel {
 		GenderChoose = new javax.swing.ButtonGroup();
 		statusChoose = new javax.swing.ButtonGroup();
 		jLabel6 = new javax.swing.JLabel();
-		jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14));
+		jLabel6.setFont(new java.awt.Font("Tahoma", 1, 15));
 		jLabel6.setBounds(729, 105, 0, 30);
 		add(jLabel6);
 

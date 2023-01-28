@@ -27,14 +27,12 @@ public class PeoplePanel extends javax.swing.JPanel {
     private PeoplePanelController controller;
     private JFrame parentJFrame;
     
-    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addNewBtn;
     private javax.swing.JButton khaiTuBtn;
     private javax.swing.JPanel tablePanel;
     private javax.swing.JButton tamTruBtn;
     private javax.swing.JButton tamVangBtn;
     private JTextField jtfSearch;
-    // End of variables declaration//GEN-END:variables
     
     public PeoplePanel(JFrame parentFrame) {
     	this.parentJFrame = parentFrame;

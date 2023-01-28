@@ -18,8 +18,14 @@ import bean.HoKhauBean;
 import bean.MemOfFamily;
 import bean.NhanKhauBean;
 import controllers.HoKhauManagerController.ThemMoiController;
+import models.AddressModel;
 import models.ThanhVienCuaHoModel;
+import services.CitizenIdService;
+import utility.SuggestionUtility;
+import views.AddressSuggestion;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -29,6 +35,10 @@ public class NewHouseholdFrame extends JFrame {
 
 
 	private static final long serialVersionUID = 1L;
+	private AddressSuggestion addrSuggestion;
+    private AddressModel addrModel = new AddressModel();
+    private JTextField JtxReceiveAddress;
+    
 	private JPanel contentPane;
     private JTextField maHoKhauJtf;
     private JTextField maKhuVucJtf;
@@ -37,11 +47,11 @@ public class NewHouseholdFrame extends JFrame {
     private JButton saveBtn;
     private JButton selectBtn;
     private JTextField soCMTChuHo;
+    private JTextField soCMTChuHo_1;
     private JTextField tenChuHoJtf;
     private JButton cancelBtn;
-    private JTextField diaChiJtf;
+    private SuggestionUtility diaChiJtf;
     private JButton editBtn;
-	
 	private JFrame parentJFrame;
     private NhanKhauBean chuHo = new NhanKhauBean();
     private final List<MemOfFamily> list = new ArrayList<>();
@@ -95,10 +105,10 @@ public class NewHouseholdFrame extends JFrame {
 		JLabel jLabel1 = new JLabel("Mã hộ khẩu");
 		jLabel1.setBounds(10, 10, 174, 33);
 		panel.add(jLabel1);
-		jLabel1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		jLabel1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
 		maHoKhauJtf = new JTextField();
-		maHoKhauJtf.setFont(new Font("Tahoma", Font.BOLD, 15));
+		maHoKhauJtf.setFont(new Font("Tahoma", Font.PLAIN, 16));
         maHoKhauJtf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 maHoKhauJtfActionPerformed(evt);
@@ -115,12 +125,12 @@ public class NewHouseholdFrame extends JFrame {
 		jPanel2.add(panel_1);
 		
 		JLabel jLabel3 = new JLabel("Mã khu vực");
-		jLabel3.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		jLabel3.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		jLabel3.setBounds(10, 10, 174, 33);
 		panel_1.add(jLabel3);
 		
 		maKhuVucJtf = new JTextField();
-		maKhuVucJtf.setFont(new Font("Tahoma", Font.BOLD, 15));
+		maKhuVucJtf.setFont(new Font("Tahoma", Font.PLAIN, 16));
         maKhuVucJtf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 maKhuVucJtfActionPerformed(evt);
@@ -137,20 +147,40 @@ public class NewHouseholdFrame extends JFrame {
 		jPanel2.add(panel_2);
 		
 		JLabel jLabel5 = new JLabel("Địa chỉ");
-		jLabel5.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		jLabel5.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		jLabel5.setBounds(10, 10, 174, 33);
 		panel_2.add(jLabel5);
 		
-		diaChiJtf = new JTextField();
-		diaChiJtf.setFont(new Font("Tahoma", Font.BOLD, 15));
-        diaChiJtf.addActionListener(new java.awt.event.ActionListener() {
+		
+        diaChiJtf = new SuggestionUtility(false) {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public List<String> getSuggestions(String textContent) {
+				return null;
+			}
+		};
+        diaChiJtf.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		diaChiJtf.setEditable(false);
+		diaChiJtf.setColumns(10);
+		diaChiJtf.setBounds(190, 11, 359, 33);
+		diaChiJtf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 diaChiJtfActionPerformed(evt);
             }
         });
-		diaChiJtf.setColumns(10);
-		diaChiJtf.setBounds(190, 10, 386, 33);
 		panel_2.add(diaChiJtf);
+		JButton diaChiBtn = new JButton("+");
+
+		diaChiBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JtxReceiveAddress= diaChiJtf;
+				getAddressAction();
+
+			}
+		});
+		diaChiBtn.setBounds(553, 11, 26, 33);
+		panel_2.add(diaChiBtn);
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setLayout(null);
@@ -159,12 +189,12 @@ public class NewHouseholdFrame extends JFrame {
 		jPanel2.add(panel_3);
 		
 		JLabel jLabel1_3 = new JLabel("Chủ hộ");
-		jLabel1_3.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		jLabel1_3.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		jLabel1_3.setBounds(10, 10, 79, 33);
 		panel_3.add(jLabel1_3);
 		
 		tenChuHoJtf = new JTextField();
-		tenChuHoJtf.setFont(new Font("Tahoma", Font.BOLD, 15));
+		tenChuHoJtf.setFont(new Font("Tahoma", Font.PLAIN, 16));
         tenChuHoJtf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tenChuHoJtfActionPerformed(evt);
@@ -183,7 +213,7 @@ public class NewHouseholdFrame extends JFrame {
 		selectBtn.setBorderPainted(false);
 		selectBtn.setBounds(99, 14, 83, 27);
 		selectBtn.setBorder(new LineBorder(new Color(186, 85, 211), 1, true));
-		selectBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
+		selectBtn.setFont(new Font("Tahoma", Font.BOLD, 16));
 		selectBtn.setForeground(new Color(255, 255, 255));
 		selectBtn.setBackground(new Color(147, 112, 219));
 		panel_3.add(selectBtn);
@@ -195,12 +225,12 @@ public class NewHouseholdFrame extends JFrame {
 		jPanel2.add(panel_4);
 		
 		JLabel jLabel7 = new JLabel("Ngày sinh chủ hộ");
-		jLabel7.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		jLabel7.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		jLabel7.setBounds(10, 10, 174, 33);
 		panel_4.add(jLabel7);
 		
 		ngaySinhChuHoJtf = new JTextField();
-		ngaySinhChuHoJtf.setFont(new Font("Tahoma", Font.BOLD, 15));
+		ngaySinhChuHoJtf.setFont(new Font("Tahoma", Font.PLAIN, 16));
         ngaySinhChuHoJtf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ngaySinhChuHoJtfActionPerformed(evt);
@@ -219,7 +249,7 @@ public class NewHouseholdFrame extends JFrame {
 		jPanel2.add(panel_5);
 		
 		JLabel jLabel1_5 = new JLabel("Số CMT chủ hộ");
-		jLabel1_5.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		jLabel1_5.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		jLabel1_5.setBounds(10, 10, 174, 33);
 		panel_5.add(jLabel1_5);
 		
@@ -231,12 +261,21 @@ public class NewHouseholdFrame extends JFrame {
             }
         });
 		soCMTChuHo.setColumns(10);
-		soCMTChuHo.setBounds(190, 10, 386, 33);
-		panel_5.add(soCMTChuHo);
+		soCMTChuHo_1 = new SuggestionUtility(false) {
+			
+			@Override
+			public List<String> getSuggestions(String textContent) {
+				CitizenIdService cidService = new CitizenIdService();
+				return cidService.search(textContent);
+			}
+		};
+		soCMTChuHo_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		soCMTChuHo_1.setBounds(190, 10, 386, 33);
+		panel_5.add(soCMTChuHo_1);
 		
 		JPanel jPanel1 = new JPanel();
 		jPanel1.setBackground(new Color(240, 248, 255));
-		jPanel1.setFont(new Font("Tahoma", Font.BOLD, 20));
+		jPanel1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		jPanel1.setBorder(new TitledBorder(null, "Th\u00E0nh vi\u00EAn c\u1EE7a h\u1ED9", TitledBorder.LEADING, TitledBorder.TOP, new java.awt.Font("Tahoma", 0, 18)));
 		jPanel1.setBounds(10, 401, 600, 248);
 		jPanel2.add(jPanel1);
@@ -251,19 +290,20 @@ public class NewHouseholdFrame extends JFrame {
 		editBtn.setForeground(new Color(255, 255, 255));
 		editBtn.setBackground(new Color(147, 112, 219));
 		editBtn.setBorderPainted(false);
-		editBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
+		editBtn.setFont(new Font("Tahoma", Font.BOLD, 16));
 		editBtn.setBounds(10, 36, 94, 27);
 		jPanel1.add(editBtn);
 		
 		memTableJpn = new JPanel();
+		memTableJpn.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		memTableJpn.setBackground(new Color(255, 255, 255));
-		memTableJpn.setBounds(10, 79, 572, 146);
+		memTableJpn.setBounds(10, 73, 572, 146);
 		jPanel1.add(memTableJpn);
 		
 		cancelBtn = new JButton("Hủy");
 		cancelBtn.setBackground(new Color(147, 112, 219));
 		cancelBtn.setForeground(new Color(255, 255, 255));
-		cancelBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
+		cancelBtn.setFont(new Font("Tahoma", Font.BOLD, 16));
 		cancelBtn.setBorderPainted(false);
 		cancelBtn.setBounds(376, 669, 90, 30);
         cancelBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -280,7 +320,7 @@ public class NewHouseholdFrame extends JFrame {
             }
         });
 		saveBtn.setBackground(new Color(147, 112, 219));
-		saveBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
+		saveBtn.setFont(new Font("Tahoma", Font.BOLD, 16));
 		saveBtn.setForeground(new Color(255, 255, 255));
 		saveBtn.setBorderPainted(false);
 		saveBtn.setBounds(495, 669, 90, 30);
@@ -297,7 +337,7 @@ public class NewHouseholdFrame extends JFrame {
     public void setDataChuHo() {
         this.tenChuHoJtf.setText(this.chuHo.getNhanKhauModel().getHoTen());
         this.ngaySinhChuHoJtf.setText(this.chuHo.getNhanKhauModel().getNamSinh().toString());
-        this.soCMTChuHo.setText(this.chuHo.getChungMinhThuModel().getSoCMT());
+        this.soCMTChuHo_1.setText(this.chuHo.getChungMinhThuModel().getSoCMT());
     }
 
     public void setDataThanhVien() {
@@ -365,5 +405,18 @@ public class NewHouseholdFrame extends JFrame {
                 System.out.println(e.getMessage());
             }
         }
+    }
+    
+    private void getAddressAction() {
+		addrSuggestion = new AddressSuggestion(this,addrModel) {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void emmitToParent() {
+				String address= this.getAddress();
+				JtxReceiveAddress.setText(address);
+			}
+		};
+		addrSuggestion.setVisible(true);
     }
 }

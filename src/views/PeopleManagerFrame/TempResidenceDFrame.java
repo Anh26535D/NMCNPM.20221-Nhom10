@@ -7,9 +7,14 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.List;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import models.TamTruModel;
+import services.CitizenIdService;
+import utility.SuggestionUtility;
+
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.GroupLayout;
 
@@ -72,8 +77,18 @@ public class TempResidenceDFrame extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel1.setBackground(new Color(240, 248, 255));
-        soCmtJtf = new javax.swing.JTextField();
-        soCmtJtf.setBounds(88, 24, 251, 30);
+
+
+		soCMTJtf = new SuggestionUtility(false) {
+			
+			@Override
+			public List<String> getSuggestions(String textContent) {
+				CitizenIdService cidService = new CitizenIdService();
+				return cidService.search(textContent);
+			}
+		};
+		soCMTJtf.setBounds(83, 24, 250, 30);
+		
         jLabel1 = new javax.swing.JLabel();
         jLabel1.setBounds(10, 23, 63, 30);
         checkBtn = new javax.swing.JButton();
@@ -81,49 +96,51 @@ public class TempResidenceDFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel2.setBounds(343, 23, 15, 30);
         jLabel3 = new javax.swing.JLabel();
-        jLabel3.setBounds(20, 111, 130, 30);
+        jLabel3.setBounds(20, 91, 130, 30);
         maGiayTamTruJtf = new javax.swing.JTextField();
-        maGiayTamTruJtf.setBounds(160, 112, 300, 30);
+        maGiayTamTruJtf.setBounds(160, 90, 300, 30);
         jLabel4 = new javax.swing.JLabel();
-        jLabel4.setBounds(470, 111, 15, 30);
+        jLabel4.setBounds(470, 91, 15, 30);
         soDienThoaiJtf = new javax.swing.JTextField();
-        soDienThoaiJtf.setBounds(160, 161, 300, 30);
+        soDienThoaiJtf.setBounds(160, 140, 300, 30);
         jLabel5 = new javax.swing.JLabel();
-        jLabel5.setBounds(470, 160, 15, 30);
+        jLabel5.setBounds(470, 141, 15, 30);
         jLabel6 = new javax.swing.JLabel();
-        jLabel6.setBounds(20, 160, 130, 30);
+        jLabel6.setBounds(20, 141, 130, 30);
         tuNgayDc = new com.toedter.calendar.JDateChooser();
-        tuNgayDc.setBounds(160, 209, 300, 30);
+        tuNgayDc.setFont(new Font("Tahoma", Font.PLAIN, 16));
+        tuNgayDc.setBounds(160, 184, 300, 30);
         jLabel7 = new javax.swing.JLabel();
-        jLabel7.setBounds(20, 209, 130, 30);
+        jLabel7.setBounds(20, 181, 130, 30);
         jLabel8 = new javax.swing.JLabel();
-        jLabel8.setBounds(470, 209, 15, 30);
+        jLabel8.setBounds(470, 184, 15, 30);
         jLabel9 = new javax.swing.JLabel();
-        jLabel9.setBounds(470, 257, 15, 30);
+        jLabel9.setBounds(470, 230, 15, 30);
         denNgayDc = new com.toedter.calendar.JDateChooser();
-        denNgayDc.setBounds(160, 257, 300, 30);
+        denNgayDc.setFont(new Font("Tahoma", Font.PLAIN, 16));
+        denNgayDc.setBounds(160, 230, 300, 30);
         jLabel10 = new javax.swing.JLabel();
-        jLabel10.setBounds(20, 265, 130, 30);
+        jLabel10.setBounds(20, 231, 130, 30);
         jScrollPane1 = new javax.swing.JScrollPane();
-        jScrollPane1.setBounds(160, 305, 300, 96);
+        jScrollPane1.setBounds(160, 280, 300, 105);
         jLabel11 = new javax.swing.JLabel();
-        jLabel11.setBounds(20, 302, 130, 30);
+        jLabel11.setBounds(20, 281, 130, 30);
         acceptBtn = new javax.swing.JButton();
-        acceptBtn.setBounds(368, 416, 101, 30);
+        acceptBtn.setBounds(370, 401, 112, 30);
         cancelBtn = new javax.swing.JButton();
-        cancelBtn.setBounds(257, 416, 101, 30);
+        cancelBtn.setBounds(234, 401, 112, 30);
         availableIcon = new javax.swing.JLabel();
         availableIcon.setBounds(465, 23, 32, 32);
-
+     
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
 
-        soCmtJtf.setFont(new java.awt.Font("Tohama", 0, 14));  
+        soCMTJtf.setFont(new Font("Tahoma", Font.PLAIN, 16));  
 
-        jLabel1.setFont(new Font("Tahoma", Font.BOLD, 14));  
+        jLabel1.setFont(new Font("Tahoma", Font.PLAIN, 16));  
         jLabel1.setText("Số CMT:");
 
-        checkBtn.setFont(new java.awt.Font("Tohama", 0, 14));  
+        checkBtn.setFont(new Font("Tahoma", Font.BOLD, 16));  
         checkBtn.setText("Check");
         checkBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,10 +159,10 @@ public class TempResidenceDFrame extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 0, 0));
         jLabel2.setText("(*)");
 
-        jLabel3.setFont(new java.awt.Font("Tohama", 1, 14));  
+        jLabel3.setFont(new Font("Tahoma", Font.PLAIN, 16));  
         jLabel3.setText("Mã giấy tạm trú:");
 
-        maGiayTamTruJtf.setFont(new java.awt.Font("Tohama", 0, 14));  
+        maGiayTamTruJtf.setFont(new Font("Tahoma", Font.PLAIN, 16));  
         maGiayTamTruJtf.setEnabled(false);
         maGiayTamTruJtf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,7 +174,7 @@ public class TempResidenceDFrame extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 0, 0));
         jLabel4.setText("(*)");
 
-        soDienThoaiJtf.setFont(new java.awt.Font("Tohama", 0, 14));  
+        soDienThoaiJtf.setFont(new Font("Tahoma", Font.PLAIN, 16));  
         soDienThoaiJtf.setEnabled(false);
         soDienThoaiJtf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,12 +186,12 @@ public class TempResidenceDFrame extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 0, 0));
         jLabel5.setText("(*)");
 
-        jLabel6.setFont(new java.awt.Font("Tohama", 1, 14));  
+        jLabel6.setFont(new Font("Tahoma", Font.PLAIN, 16));  
         jLabel6.setText("Số điện thoại:");
 
         tuNgayDc.setEnabled(false);
 
-        jLabel7.setFont(new java.awt.Font("Tohama", 1, 14));  
+        jLabel7.setFont(new Font("Tahoma", Font.PLAIN, 16));  
         jLabel7.setText("Từ ngày:");
 
         jLabel8.setFont(new java.awt.Font("Tohama", 0, 14));  
@@ -187,10 +204,10 @@ public class TempResidenceDFrame extends javax.swing.JFrame {
 
         denNgayDc.setEnabled(false);
 
-        jLabel10.setFont(new java.awt.Font("Tohama", 1, 14));  
+        jLabel10.setFont(new Font("Tahoma", Font.PLAIN, 16));  
         jLabel10.setText("Đến ngày:");
 
-        jLabel11.setFont(new java.awt.Font("Tohama", 1, 14));  
+        jLabel11.setFont(new Font("Tahoma", Font.PLAIN, 16));  
         jLabel11.setText("Lý do:");
 
         acceptBtn.setText("Xác nhận");
@@ -200,7 +217,7 @@ public class TempResidenceDFrame extends javax.swing.JFrame {
             }
         });
         acceptBtn.setBackground(new Color(147, 112, 219));
-        acceptBtn.setFont(new Font("Tahoma", Font.BOLD, 14));
+        acceptBtn.setFont(new Font("Tahoma", Font.BOLD, 16));
         acceptBtn.setForeground(new Color(255, 255, 255));
         acceptBtn.setBorderPainted(false);
 
@@ -212,7 +229,7 @@ public class TempResidenceDFrame extends javax.swing.JFrame {
             }
         });
         cancelBtn.setBackground(new Color(147, 112, 219));
-        cancelBtn.setFont(new Font("Tahoma", Font.BOLD, 14));
+        cancelBtn.setFont(new Font("Tahoma", Font.BOLD, 16));
 		cancelBtn.setForeground(new Color(255, 255, 255));
 		cancelBtn.setBorderPainted(false);
 
@@ -237,7 +254,7 @@ public class TempResidenceDFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         jPanel1.setLayout(null);
         jPanel1.add(jLabel1);
-        jPanel1.add(soCmtJtf);
+        jPanel1.add(soCMTJtf);
         jPanel1.add(jLabel2);
         jPanel1.add(checkBtn);
         jPanel1.add(availableIcon);
@@ -248,7 +265,9 @@ public class TempResidenceDFrame extends javax.swing.JFrame {
         jPanel1.add(jLabel11);
         jPanel1.add(jScrollPane1);
         lyDoTar = new javax.swing.JTextArea();
+        lyDoTar.setLineWrap(true);
         jScrollPane1.setViewportView(lyDoTar);
+        lyDoTar.setFont(new Font("Tahoma", Font.PLAIN, 16));
         
                 lyDoTar.setColumns(20);
                 lyDoTar.setRows(5);
@@ -268,11 +287,11 @@ public class TempResidenceDFrame extends javax.swing.JFrame {
     }
 
     private void checkBtnActionPerformed(java.awt.event.ActionEvent evt) {
-        if (checkCMT(soCmtJtf.getText())) {
-            int idNhanKhau = this.controller.checkCMT(soCmtJtf.getText());
+        if (checkCMT(soCMTJtf.getText())) {
+            int idNhanKhau = this.controller.checkCMT(soCMTJtf.getText());
             if (idNhanKhau > 0) {
                 this.tamTruModel.setIdNhanKhau(idNhanKhau);
-                soCmtJtf.setEnabled(false);
+                soCMTJtf.setEnabled(false);
                 checkBtn.setEnabled(false);
                 availableIcon.setEnabled(true);
                 maGiayTamTruJtf.setEnabled(true);
@@ -281,7 +300,7 @@ public class TempResidenceDFrame extends javax.swing.JFrame {
                 denNgayDc.setEnabled(true);
                 lyDoTar.setEnabled(true);
             } else {
-                if (JOptionPane.showConfirmDialog(null, "Không tìm thấy người có số CMT: " + soCmtJtf.getText() + ". Thêm mới?", "Confirm", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
+                if (JOptionPane.showConfirmDialog(null, "Không tìm thấy người có số CMT: " + soCMTJtf.getText() + ". Thêm mới?", "Confirm", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
                     NewPeopleFrame addNewPeopleJFrame = new NewPeopleFrame(this);
                     addNewPeopleJFrame.setLocationRelativeTo(null);
                     addNewPeopleJFrame.setResizable(false);
@@ -337,7 +356,7 @@ public class TempResidenceDFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea lyDoTar;
     private javax.swing.JTextField maGiayTamTruJtf;
-    private javax.swing.JTextField soCmtJtf;
+    private javax.swing.JTextField soCMTJtf;
     private javax.swing.JTextField soDienThoaiJtf;
     private com.toedter.calendar.JDateChooser tuNgayDc;
    

@@ -13,7 +13,6 @@ import java.util.List;
 import static java.awt.event.KeyEvent.*;
 
 public abstract class SuggestionUtility extends JTextField {
-
 	private static final long serialVersionUID = 1L;
 	private JPopupMenu popupMenu;
     private JList<String> listComp;
@@ -66,7 +65,7 @@ public abstract class SuggestionUtility extends JTextField {
         popupMenu = new JPopupMenu();
         listModel = new DefaultListModel<>();
         listComp = new JList<>(listModel);
-        listComp.setFont(new Font("Tohama", 0, 12));
+        listComp.setFont(new Font("Tohama", 0, 15));
         listComp.setBounds(0, 0, 500, 500);
         listComp.setBorder(BorderFactory.createEmptyBorder(0, 2, 5, 2));
         listComp.setFocusable(false);
