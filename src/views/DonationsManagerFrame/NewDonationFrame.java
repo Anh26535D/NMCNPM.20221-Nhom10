@@ -34,7 +34,6 @@ public class NewDonationFrame extends JFrame {
 	private JFrame parentFrame;
 	private PhiUngHoBean phiUngHoBean;
 	private AddNewDonationController controller;
-	private JTextField soTienJtf;
 	private JTextField tenJtf;
 	private JButton CancelBtn;
 	private JButton CreateBtn;
@@ -58,7 +57,7 @@ public class NewDonationFrame extends JFrame {
 	}
 
 	private void init() {
-		setTitle("Thêm khoản phí");
+		setTitle("Thêm phí ủng hộ");
 		setBounds(100, 100, 650, 450);
 		contentPane = new JPanel();
 
@@ -85,25 +84,9 @@ public class NewDonationFrame extends JFrame {
 		panel.add(lblNewLabel);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
 
-		JLabel lblNewLabel_1 = new JLabel("Số tiền cần nộp trên 1 người");
-		lblNewLabel_1.setBounds(10, 108, 576, 20);
-		panel.add(lblNewLabel_1);
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-
-		soTienJtf = new JTextField();
-		soTienJtf.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		soTienJtf.setBounds(10, 138, 576, 40);
-		panel.add(soTienJtf);
-		soTienJtf.setColumns(10);
-
-		JLabel lblNewLabel_2 = new JLabel("Đợt thu");
-		lblNewLabel_2.setBounds(10, 205, 576, 20);
-		panel.add(lblNewLabel_2);
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
-
 		tenJtf = new JTextField();
 		tenJtf.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		tenJtf.setBounds(10, 40, 576, 40);
+		tenJtf.setBounds(10, 40, 576, 235);
 		panel.add(tenJtf);
 		tenJtf.setColumns(10);
 
@@ -143,21 +126,12 @@ public class NewDonationFrame extends JFrame {
 
 	private void CancelBtnActionPerformed(ActionEvent evt) {
 		tenJtf.setText("");
-		soTienJtf.setText("");
 	}
 
 	private boolean validateForm() {
 		String tenPhi = tenJtf.getText();
-		String soTien = soTienJtf.getText();
-		if (tenPhi.trim().isEmpty() || soTien.trim().isEmpty()) {
+		if (tenPhi.trim().isEmpty()) {
 			JOptionPane.showMessageDialog(rootPane, "Vui lòng nhập hết các trường bắt buộc", "Warning",
-					JOptionPane.WARNING_MESSAGE);
-			return false;
-		}
-		try {
-			long d = Long.parseLong(soTien);
-		} catch (Exception e) {
-			JOptionPane.showMessageDialog(rootPane, "Số tiền không thể chứa các ký tự", "Warning",
 					JOptionPane.WARNING_MESSAGE);
 			return false;
 		}
@@ -168,9 +142,6 @@ public class NewDonationFrame extends JFrame {
 		if (validateForm()) {
 			DonationModel temp = this.phiUngHoBean.getDonationModel();
 			temp.setTen_khoan_thu(tenJtf.getText());
-			;
-			temp.setSo_tien(Integer.parseInt(soTienJtf.getText()));
-			temp.setIdNguoiTao(LoginController.currentUser.getID());
 			try {
 				if (this.controller.newDonation(this.phiUngHoBean)) {
 					JOptionPane.showMessageDialog(null, "Thêm thành công!!");
