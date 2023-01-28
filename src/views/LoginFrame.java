@@ -60,9 +60,9 @@ public class LoginFrame extends JFrame {
 		loginPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Sign In");
+		JLabel lblNewLabel = new JLabel("Sign in");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Sitka Banner", Font.PLAIN, 24));
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		lblNewLabel.setBounds(10, 10, 438, 54);
 		panel.add(lblNewLabel);
 		

@@ -87,7 +87,7 @@ public abstract class AddressSuggestion extends JFrame {
 		panel_1.setLayout(null);
 
 		houseJtf = new JTextField();
-		houseJtf.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		houseJtf.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		houseJtf.setBounds(157, 10, 499, 41);
 		panel_1.add(houseJtf);
 		houseJtf.setColumns(10);
@@ -175,11 +175,11 @@ public abstract class AddressSuggestion extends JFrame {
 				cancelAction();
 			}
 		});
-		cancelBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
+		cancelBtn.setFont(new Font("Tahoma", Font.BOLD, 18));
 		cancelBtn.setBackground(new Color(147, 112, 219));
 		cancelBtn.setForeground(new Color(255, 255, 255));
 		cancelBtn.setBorderPainted(false);
-		cancelBtn.setBounds(400, 340, 114, 44);
+		cancelBtn.setBounds(383, 350, 114, 44);
 		panel.add(cancelBtn);
 
 		JButton acceptBtn = new JButton("Đồng ý");
@@ -206,11 +206,11 @@ public abstract class AddressSuggestion extends JFrame {
 				acceptAction();
 			}
 		});
-		acceptBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
+		acceptBtn.setFont(new Font("Tahoma", Font.BOLD, 18));
 		acceptBtn.setBackground(new Color(147, 112, 219));
 		acceptBtn.setForeground(new Color(255, 255, 255));
 		acceptBtn.setBorderPainted(false);
-		acceptBtn.setBounds(550, 340, 114, 44);
+		acceptBtn.setBounds(529, 350, 114, 44);
 		panel.add(acceptBtn);
 	}
 

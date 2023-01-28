@@ -6,6 +6,7 @@ import javax.swing.UIManager;
 import views.LoginFrame;
 
 public class Main {
+
 	public static Calendar calendar = Calendar.getInstance();
 
 	public static void main(String[] args) {

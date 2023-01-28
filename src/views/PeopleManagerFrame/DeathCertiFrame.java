@@ -1,28 +1,34 @@
 package views.PeopleManagerFrame;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Font;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.List;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.border.LineBorder;
+import controllers.NhanKhauManagerController.KhaiTuController;
+import services.CitizenIdService;
+import utility.SuggestionUtility;
 import javax.swing.GroupLayout;
-import javax.swing.JButton;
-import javax.swing.JComponent;
 
+// khong check cmt dc
 public class DeathCertiFrame extends javax.swing.JFrame {
 
 
     private JFrame parentJFrame = null;
+    private KhaiTuController controller = null;
     
     public DeathCertiFrame(JFrame parentJFrame) {
     	getContentPane().setBackground(new Color(255, 255, 255));
         initComponents();
         this.parentJFrame = parentJFrame;
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        setTitle("Khai tử");
         parentJFrame.setEnabled(false);
         
         this.addWindowListener(new WindowAdapter() {
@@ -32,7 +38,71 @@ public class DeathCertiFrame extends javax.swing.JFrame {
             }
             
         });
+//    	this.soCMTngkhai.addKeyListener(new KeyAdapter() {
+//			@Override
+//			public void keyPressed(KeyEvent e) {
+//				// neu keycode == 10 ~ enter
+//				if (e.getKeyCode() == 10) {
+//					checkCMT();
+//				}
+//			}
+//		});
+//    	this.soCMTngchet.addKeyListener(new KeyAdapter() {
+//			@Override
+//			public void keyPressed(KeyEvent e) {
+//				// neu keycode == 10 ~ enter
+//				if (e.getKeyCode() == 10) {
+//					checkCMT1();
+//				}
+//			}
+//		});
+//    }
+//    
+//		private void checkCMT() {
+//			String tempCMT = this.soCMTngkhai.getText().trim();
+//			if (tempCMT.isEmpty()) {
+//				JOptionPane.showMessageDialog(null, "Vui lòng nhập So CMT", "Warning!!", JOptionPane.WARNING_MESSAGE);
+//				return;
+//			} else {
+//				try {
+//					long cmt = Long.parseLong(tempCMT);
+//				} catch (Exception e) {
+//					JOptionPane.showMessageDialog(null, "Vui lòng nhập So CMT đúng định dạng!", "Warning!!",
+//							JOptionPane.WARNING_MESSAGE);
+//					return;
+//				}
+//			}
+//		}
+//	
+//			private void checkCMT1() {
+//				String tempCMT = this.soCMTngchet.getText().trim();
+//				if (tempCMT.isEmpty()) {
+//					JOptionPane.showMessageDialog(null, "Vui lòng nhập So CMT", "Warning!!", JOptionPane.WARNING_MESSAGE);
+//					return;
+//				} else {
+//					try {
+//						long cmt = Long.parseLong(tempCMT);
+//					} catch (Exception e) {
+//						JOptionPane.showMessageDialog(null, "Vui lòng nhập So CMT đúng định dạng!", "Warning!!",
+//								JOptionPane.WARNING_MESSAGE);
+//						return;
+//					}
+//				}				
+//				int tempID = controller.checkCMT(this.soCMTngkhai.getText());
+//				if (tempID != -1) {
+//					// khong cho phep sua lai gia tri
+//					this.soCMTngkhai.setEditable(false);
+//					JOptionPane.showMessageDialog(this, "OK!!");
+//				} else {
+//					if (JOptionPane.showConfirmDialog(null, "Không tìm thấy nhân khẩu trong hệ thống!! Thử lại?", "Warning!!",
+//							JOptionPane.OK_CANCEL_OPTION) != 0) {
+//						close();
+//					}
+//				}
+//
     }
+    
+    
     
     private void close() {
         if (JOptionPane.showConfirmDialog(this, "Are you sure to close??", "Confirm", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
@@ -44,67 +114,83 @@ public class DeathCertiFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     
     private void initComponents() {
-
+		soCMTngkhai = new SuggestionUtility(false) {
+			
+			@Override
+			public List<String> getSuggestions(String textContent) {
+				CitizenIdService cidService = new CitizenIdService();
+				return cidService.search(textContent);
+			}
+		};
+		soCMTngkhai.setBounds(163, 11, 274, 30);
+		     
+		soCMTngchet = new SuggestionUtility(false) {
+			
+			@Override
+			public List<String> getSuggestions(String textContent) {
+				CitizenIdService cidService = new CitizenIdService();
+				return cidService.search(textContent);
+			}
+		};
+        soCMTngchet.setBounds(163, 61, 274, 30);
         jPanel1 = new javax.swing.JPanel();
         jPanel1.setEnabled(false);
         jPanel1.setBackground(new Color(240, 248, 255));
         jLabel1 = new javax.swing.JLabel();
         jLabel1.setBounds(10, 10, 143, 30);
-        jTextField1 = new javax.swing.JTextField();
-        jTextField1.setBounds(163, 11, 274, 30);
         jLabel2 = new javax.swing.JLabel();
-        jLabel2.setBounds(10, 114, 110, 30);
+        jLabel2.setBounds(10, 114, 126, 30);
         jTextField2 = new javax.swing.JTextField();
         jTextField2.setBackground(new Color(255, 255, 255));
         jTextField2.setBounds(138, 115, 418, 30);
         jButton2 = new javax.swing.JButton();
-        jButton2.setBounds(450, 380, 106, 25);
+        jButton2.setBounds(450, 372, 106, 30);
         jButton3 = new javax.swing.JButton();
-        jButton3.setBounds(321, 380, 106, 25);
+        jButton3.setBounds(331, 372, 106, 30);
         jLabel4 = new javax.swing.JLabel();
-        jLabel4.setBounds(12, 175, 74, 30);
+        jLabel4.setBounds(12, 175, 89, 30);
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateChooser1.setFont(new Font("Tahoma", Font.PLAIN, 16));
         jDateChooser1.setEnabled(false);
         jDateChooser1.setOpaque(false);
         jDateChooser1.getCalendarButton().setBackground(new Color(255, 255, 255));
         jDateChooser1.setBackground(new Color(255, 255, 255));
         jDateChooser1.setBounds(138, 175, 418, 30);
         jLabel5 = new javax.swing.JLabel();
-        jLabel5.setBounds(10, 223, 76, 30);
+        jLabel5.setBounds(10, 223, 91, 30);
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jDateChooser2.setFont(new Font("Tahoma", Font.PLAIN, 16));
         jDateChooser2.setEnabled(false);
         jDateChooser2.getCalendarButton().setBackground(new Color(255, 255, 255));
         jDateChooser2.setBackground(new Color(255, 255, 255));
         jDateChooser2.setBounds(138, 223, 418, 30);
         jLabel6 = new javax.swing.JLabel();
-        jLabel6.setBounds(10, 271, 79, 30);
+        jLabel6.setBounds(10, 271, 91, 30);
         jScrollPane1 = new javax.swing.JScrollPane();
         jScrollPane1.setBounds(137, 271, 419, 91);
         jTextArea1 = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
-        jButton1.setBounds(450, 10, 76, 30);
+        jButton1.setBounds(443, 10, 83, 30);
         jLabel3 = new javax.swing.JLabel();
         jLabel3.setBounds(536, 10, 32, 32);
         jLabel7 = new javax.swing.JLabel();
         jLabel7.setBounds(10, 60, 140, 30);
-        jTextField3 = new javax.swing.JTextField();
-        jTextField3.setBounds(163, 61, 274, 30);
         jButton4 = new javax.swing.JButton();
-        jButton4.setBounds(450, 60, 76, 30);
+        jButton4.setBounds(443, 60, 83, 30);
         jLabel8 = new javax.swing.JLabel();
         jLabel8.setBounds(536, 58, 32, 32);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tohama", 1, 14));  
+        jLabel1.setFont(new Font("Tahoma", Font.PLAIN, 16));  
         jLabel1.setText("Số CMT người khai:");
 
-        jTextField1.setFont(new java.awt.Font("Tohama", 0, 14));  
+        soCMTngkhai.setFont(new Font("Tahoma", Font.PLAIN, 16));  
 
-        jLabel2.setFont(new java.awt.Font("Tohama", 1, 14));  
+        jLabel2.setFont(new Font("Tahoma", Font.PLAIN, 16));  
         jLabel2.setText("Số giấy khai tử:");
 
-        jTextField2.setFont(new java.awt.Font("Tohama", 0, 14));  
+        jTextField2.setFont(new Font("Tahoma", Font.PLAIN, 16));  
         jTextField2.setEnabled(false);
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,17 +223,17 @@ public class DeathCertiFrame extends javax.swing.JFrame {
 	
       
 
-        jLabel4.setFont(new java.awt.Font("Tohama", 1, 14));  
+        jLabel4.setFont(new Font("Tahoma", Font.PLAIN, 16));  
         jLabel4.setText("Ngày khai:");
 
-        jLabel5.setFont(new java.awt.Font("Tohama", 1, 14));  
+        jLabel5.setFont(new Font("Tahoma", Font.PLAIN, 16));  
         jLabel5.setText("Ngày chết:");
 
-        jLabel6.setFont(new java.awt.Font("Tohama", 1, 14));  
+        jLabel6.setFont(new Font("Tahoma", Font.PLAIN, 16));  
         jLabel6.setText("Lý do chết:");
 
         jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Tohama", 0, 14));  
+        jTextArea1.setFont(new Font("Tahoma", Font.PLAIN, 16));  
         jTextArea1.setRows(5);
         jTextArea1.setEnabled(false);
         jScrollPane1.setViewportView(jTextArea1);
@@ -155,7 +241,7 @@ public class DeathCertiFrame extends javax.swing.JFrame {
         jButton1.setBorderPainted(false);
 		jButton1.setForeground(new Color(255, 255, 255));
 		jButton1.setBackground(new Color(147, 112, 219));
-        jButton1.setFont(new java.awt.Font("Tohama", 0, 14));  
+        jButton1.setFont(new Font("Tahoma", Font.BOLD, 14));  
         jButton1.setText("Check");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,15 +252,15 @@ public class DeathCertiFrame extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/checked.png")));  
         jLabel3.setEnabled(false);
 
-        jLabel7.setFont(new java.awt.Font("Tohama", 1, 14));  
+        jLabel7.setFont(new Font("Tahoma", Font.PLAIN, 16));  
         jLabel7.setText("Số CMT người chết:");
 
-        jTextField3.setFont(new java.awt.Font("Tohama", 0, 14));  
+        soCMTngchet.setFont(new Font("Tahoma", Font.PLAIN, 16));  
 
         jButton4.setBorderPainted(false);
 		jButton4.setForeground(new Color(255, 255, 255));
 		jButton4.setBackground(new Color(147, 112, 219));
-        jButton4.setFont(new java.awt.Font("Tohama", 0, 14));  
+        jButton4.setFont(new Font("Tahoma", Font.BOLD, 14));  
         jButton4.setText("Check");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -214,9 +300,9 @@ public class DeathCertiFrame extends javax.swing.JFrame {
         jPanel1.add(jLabel6);
         jPanel1.add(jScrollPane1);
         jPanel1.add(jLabel1);
-        jPanel1.add(jTextField1);
+        jPanel1.add(soCMTngkhai);
         jPanel1.add(jLabel7);
-        jPanel1.add(jTextField3);
+        jPanel1.add(soCMTngchet);
         jPanel1.add(jButton1);
         jPanel1.add(jLabel3);
         jPanel1.add(jButton4);
@@ -257,8 +343,8 @@ public class DeathCertiFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField soCMTngkhai;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    // End of variables declaration//GEN-END:variables
+    private javax.swing.JTextField soCMTngchet;
+    
 }

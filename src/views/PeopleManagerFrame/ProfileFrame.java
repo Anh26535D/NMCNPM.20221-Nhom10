@@ -57,19 +57,21 @@ public class ProfileFrame extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         tieuSuPanel = new javax.swing.JPanel();
+        tieuSuPanel.setFont(new Font("Tahoma", Font.PLAIN, 16));
         tieuSuPanel.setBackground(new Color(255, 255, 255));
-        tieuSuPanel.setBounds(10, 47, 675, 206);
+        tieuSuPanel.setBounds(10, 47, 675, 190);
         jLabel1 = new javax.swing.JLabel();
-        jLabel1.setBounds(10, 10, 119, 27);
+        jLabel1.setBounds(10, 10, 143, 27);
         giaDinhPanel = new javax.swing.JPanel();
+        giaDinhPanel.setFont(new Font("Tahoma", Font.PLAIN, 16));
         giaDinhPanel.setBackground(new Color(255, 255, 255));
-        giaDinhPanel.setBounds(10, 319, 675, 213);
+        giaDinhPanel.setBounds(10, 319, 675, 190);
         jLabel2 = new javax.swing.JLabel();
-        jLabel2.setBounds(10, 275, 119, 27);
+        jLabel2.setBounds(10, 275, 143, 27);
         acceptBtn = new javax.swing.JButton();
-        acceptBtn.setBounds(561, 550, 100, 27);
+        acceptBtn.setBounds(531, 532, 120, 30);
         cancelBtn = new javax.swing.JButton();
-        cancelBtn.setBounds(432, 550, 100, 27);
+        cancelBtn.setBounds(388, 532, 120, 30);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,7 +88,7 @@ public class ProfileFrame extends javax.swing.JFrame {
             .addGap(0, 220, Short.MAX_VALUE)
         );
 
-        jLabel1.setFont(new Font("Tahoma", Font.BOLD, 15)); // NOI18N
+        jLabel1.setFont(new Font("Tahoma", Font.BOLD, 18)); // NOI18N
         jLabel1.setText("Tiểu sử:");
 
         javax.swing.GroupLayout giaDinhPanelLayout = new javax.swing.GroupLayout(giaDinhPanel);
@@ -100,7 +102,7 @@ public class ProfileFrame extends javax.swing.JFrame {
             .addGap(0, 220, Short.MAX_VALUE)
         );
 
-        jLabel2.setFont(new Font("Tahoma", Font.BOLD, 16)); // NOI18N
+        jLabel2.setFont(new Font("Tahoma", Font.BOLD, 18)); // NOI18N
         jLabel2.setText("Gia đình:");
 
         acceptBtn.setText("Xác nhận");
@@ -110,7 +112,7 @@ public class ProfileFrame extends javax.swing.JFrame {
             }
         });
         acceptBtn.setBackground(new Color(147, 112, 219));
-        acceptBtn.setFont(new Font("Tahoma", Font.BOLD, 14));
+        acceptBtn.setFont(new Font("Tahoma", Font.BOLD, 16));
         acceptBtn.setForeground(new Color(255, 255, 255));
         acceptBtn.setBorderPainted(false);
 
@@ -122,21 +124,21 @@ public class ProfileFrame extends javax.swing.JFrame {
             }
         });
         cancelBtn.setBackground(new Color(147, 112, 219));
-        cancelBtn.setFont(new Font("Tahoma", Font.BOLD, 14));
+        cancelBtn.setFont(new Font("Tahoma", Font.BOLD, 16));
 		cancelBtn.setForeground(new Color(255, 255, 255));
 		cancelBtn.setBorderPainted(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         layout.setHorizontalGroup(
-        	layout.createParallelGroup(Alignment.LEADING)
-        		.addGroup(Alignment.TRAILING, layout.createSequentialGroup()
+        	layout.createParallelGroup(Alignment.TRAILING)
+        		.addGroup(layout.createSequentialGroup()
         			.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         			.addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, 699, GroupLayout.PREFERRED_SIZE)
         			.addContainerGap())
         );
         layout.setVerticalGroup(
-        	layout.createParallelGroup(Alignment.LEADING)
-        		.addGroup(Alignment.TRAILING, layout.createSequentialGroup()
+        	layout.createParallelGroup(Alignment.TRAILING)
+        		.addGroup(layout.createSequentialGroup()
         			.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         			.addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, 591, GroupLayout.PREFERRED_SIZE)
         			.addContainerGap())
