@@ -44,7 +44,7 @@ public class FeesPanel extends JPanel {
 	}
 	
 	private void init() {
-		setBorder(new LineBorder(new Color(204, 153, 255), 2, true));
+		setBorder(new LineBorder(new Color(240, 255, 255)));
 		setBackground(new Color(255, 255, 255));
 		setBounds(0, 0, 806, 593);
 		setLayout(null);
