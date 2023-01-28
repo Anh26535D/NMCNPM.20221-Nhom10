@@ -43,21 +43,15 @@ public class PeoplePanel extends javax.swing.JPanel {
     }
 
     private void init() {
-    	setBorder(new LineBorder(new Color(240, 255, 255)));
-		setBackground(new Color(255, 255, 255));
+    	setBorder(new EmptyBorder(0, 0, 0, 0));
+		setBackground(new Color(249, 250, 254));
 		setBounds(0, 0, 806, 593);
 		setLayout(null);
-
-        JPanel panel_2 = new JPanel();
-        panel_2.setBorder(new LineBorder(new Color(153, 102, 255), 2));
-        panel_2.setBackground(new Color(224, 255, 255));
-        panel_2.setBounds(10, 10, 786, 43);
-        add(panel_2);
                         
 	    JPanel panel = new JPanel();
 	    panel.setBorder(new LineBorder(new Color(147, 112, 219), 2, true));
 	    panel.setBackground(new Color(230, 230, 250));
-	    panel.setBounds(10, 63, 786, 146);
+	    panel.setBounds(10, 10, 786, 146);
 	    add(panel);
 	    panel.setLayout(null);
 	    
@@ -68,7 +62,7 @@ public class PeoplePanel extends javax.swing.JPanel {
 		addNewBtn.setBackground(new Color(102, 102, 255));
 		addNewBtn.setBorderPainted(false);
         addNewBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
-        addNewBtn.setBounds(10, 20, 130, 40);
+        addNewBtn.setBounds(10, 85, 130, 40);
         addNewBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addNewBtnActionPerformed(evt);
@@ -81,7 +75,7 @@ public class PeoplePanel extends javax.swing.JPanel {
         tamVangBtn.setForeground(new Color(255, 255, 255));
         tamVangBtn.setBackground(new Color(102, 102, 255));
         tamVangBtn.setBorderPainted(false);
-        tamVangBtn.setBounds(366, 20, 130, 40);
+        tamVangBtn.setBounds(365, 85, 130, 40);
         tamVangBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
         tamVangBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,7 +89,7 @@ public class PeoplePanel extends javax.swing.JPanel {
         tamTruBtn.setForeground(new Color(255, 255, 255));
         tamTruBtn.setBackground(new Color(102, 102, 255));
         tamTruBtn.setBorderPainted(false);
-        tamTruBtn.setBounds(506, 20, 130, 40);                                                
+        tamTruBtn.setBounds(505, 85, 130, 40);                                                
         tamTruBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
 	    tamTruBtn.addActionListener(new java.awt.event.ActionListener() {
 	        public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,7 +103,7 @@ public class PeoplePanel extends javax.swing.JPanel {
         khaiTuBtn.setForeground(new Color(255, 255, 255));
         khaiTuBtn.setBackground(new Color(102, 102, 255));
         khaiTuBtn.setBorderPainted(false);
-        khaiTuBtn.setBounds(646, 20, 130, 40);                                      
+        khaiTuBtn.setBounds(646, 85, 130, 40);                                      
         khaiTuBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
         khaiTuBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,7 +118,7 @@ public class PeoplePanel extends javax.swing.JPanel {
         jtfSearch.setFont(new Font("Tahoma", Font.PLAIN, 15));
         jtfSearch.setColumns(10);
         jtfSearch.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(153, 102, 255), null, null, null), new EmptyBorder(0, 10, 0, 0)));
-        jtfSearch.setBounds(10, 93, 766, 43);
+        jtfSearch.setBounds(10, 20, 766, 43);
         jtfSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfSearchActionPerformed(evt);
@@ -153,12 +147,12 @@ public class PeoplePanel extends javax.swing.JPanel {
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(204, 102, 255), null, null, null));
 		panel_1.setBackground(new Color(204, 204, 255));
-		panel_1.setBounds(10, 219, 786, 364);
+		panel_1.setBounds(10, 166, 786, 417);
 		add(panel_1);
 		panel_1.setLayout(null);
 		
 		tablePanel = new JPanel();
-		tablePanel.setBounds(10, 10, 766, 344);
+		tablePanel.setBounds(10, 10, 766, 397);
 		tablePanel.setBackground(new Color(255, 255, 255));
 		tablePanel.setLayout(null);
 		panel_1.add(tablePanel);

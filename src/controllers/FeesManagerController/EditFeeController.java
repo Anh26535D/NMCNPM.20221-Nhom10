@@ -14,6 +14,7 @@ public class EditFeeController {
 	}
 
 	public boolean editFee(PhiBatBuocBean phiBatBuocBean, int idFee) throws SQLException, ClassNotFoundException{
-		return feesService.editFee(phiBatBuocBean, idFee);
+		if (idFee != -1) return feesService.editFee(phiBatBuocBean, idFee);
+		return false;
 	}
 }

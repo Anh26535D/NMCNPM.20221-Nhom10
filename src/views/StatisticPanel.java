@@ -10,6 +10,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
+import javax.swing.border.EmptyBorder;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 
@@ -40,7 +41,6 @@ public class StatisticPanel extends javax.swing.JPanel {
 
 	private JFrame parentFrame;
 	private StatisticPanelController controller;
-	private JPanel panel;
 	private JPanel panel_1;
 	private JPanel panel_2;
 	private JPanel tableJpn;
@@ -54,22 +54,15 @@ public class StatisticPanel extends javax.swing.JPanel {
 	}
 
 	private void init() {
-		setBorder(new LineBorder(new Color(240, 255, 255), 1));
-		setBackground(new Color(255, 255, 255));
+		setBorder(new EmptyBorder(0, 0, 0, 0));
+		setBackground(new Color(249, 250, 254));
 		setBounds(0, 0, 806, 593);
 		setLayout(null);
-
-		panel = new JPanel();
-		panel.setBorder(new LineBorder(new Color(153, 102, 255), 2));
-		panel.setBackground(new Color(224, 255, 255));
-		panel.setBounds(10, 10, 786, 43);
-		panel.setLayout(null);
-		add(panel);
 		
 		panel_1 = new JPanel();
 		panel_1.setBackground(new Color(230, 230, 255));
 		panel_1.setBorder(new LineBorder(new Color(147, 112, 219), 2, true));
-		panel_1.setBounds(10, 63, 786, 146);
+		panel_1.setBounds(10, 10, 786, 146);
 		panel_1.setLayout(null);
 		add(panel_1);
 		
@@ -191,13 +184,13 @@ public class StatisticPanel extends javax.swing.JPanel {
 		panel_2.setLayout(null);
 		panel_2.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(204, 102, 255), null, null, null));
 		panel_2.setBackground(new Color(204, 204, 255));
-		panel_2.setBounds(10, 219, 786, 364);
+		panel_2.setBounds(10, 166, 786, 417);
 		add(panel_2);
 
 		tableJpn = new JPanel();
 		tableJpn.setLayout(null);
 		tableJpn.setBackground(Color.WHITE);
-		tableJpn.setBounds(10, 10, 766, 344);
+		tableJpn.setBounds(10, 10, 766, 397);
 		panel_2.add(tableJpn);
 		
 
