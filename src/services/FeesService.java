@@ -101,6 +101,41 @@ public class FeesService {
 		return false;
 	}
 	
+	public boolean editFee(PhiBatBuocBean phiBatBuocBean, int idFee){
+		FeesModel fee = phiBatBuocBean.getFeesModel();
+		Connection connection;
+		try {
+			connection = SQLConnection.getDbConnection();
+			String query = 
+					"UPDATE phi_bat_buoc "
+					+ " SET"
+					+ " ten_khoan_thu = ?,"
+					+ " so_tien = ?,"
+					+ " dot_thu = ?"
+					+ " WHERE ID = ?;";
+			PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+			preparedStatement.setString(1, fee.getTen_khoan_thu());
+			preparedStatement.setInt(2, fee.getSo_tien());
+			preparedStatement.setString(3, fee.getDot_thu());
+	        preparedStatement.setInt(4, idFee);
+
+			preparedStatement.executeUpdate();
+			ResultSet rs = preparedStatement.getGeneratedKeys();
+			if (rs.next()) {
+				return true;
+			}
+			connection.close();
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 	public Integer getNeed(HoKhauBean householdBean, FeesModel feesModel) {
 		Connection connection;
 		try {
