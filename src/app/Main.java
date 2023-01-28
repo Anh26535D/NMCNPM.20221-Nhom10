@@ -13,9 +13,9 @@ public class Main {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 
 		} catch (Exception e) {
+
 		}
 		LoginFrame loginFrame = new LoginFrame();
 		loginFrame.setVisible(true);
 	}
-
 }

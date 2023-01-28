@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.sql.Date;
 import java.util.List;
 
 import javax.swing.JOptionPane;
@@ -70,21 +71,32 @@ public class FeesService {
 		return list;
 	}
 
-	public boolean newFee(PhiBatBuocBean phiBatBuocBean) throws SQLException, ClassNotFoundException {
+	public boolean newFee(PhiBatBuocBean phiBatBuocBean){
 		FeesModel fee = phiBatBuocBean.getFeesModel();
-		Connection connection = SQLConnection.getDbConnection();
+		Connection connection;
+		try {
+			connection = SQLConnection.getDbConnection();
+			String query = "INSERT INTO phi_bat_buoc ( ten_khoan_thu, so_tien, dot_thu, ngay_tao, idNguoiTao)" + " values (?, ?, ?, ?, ?)";
+			PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+			preparedStatement.setString(1, fee.getTen_khoan_thu());
+			preparedStatement.setInt(2, fee.getSo_tien());
+			preparedStatement.setString(3, fee.getDot_thu());
+	        preparedStatement.setDate(4, new Date(app.Main.calendar.getTime().getTime()));
+	        preparedStatement.setInt(5, LoginService.currentUser.getID());
 
-		String query = "INSERT INTO phi_bat_buoc ( ten_khoan_thu, so_tien, dot_thu)" + " values (?, ?, ?)";
-		PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-		preparedStatement.setString(1, fee.getTen_khoan_thu());
-		preparedStatement.setInt(2, fee.getSo_tien());
-		preparedStatement.setString(3, fee.getDot_thu());
-
-		preparedStatement.executeUpdate();
-		ResultSet rs = preparedStatement.getGeneratedKeys();
-		connection.close();
-		if (rs.next()) {
-			return true;
+			preparedStatement.executeUpdate();
+			ResultSet rs = preparedStatement.getGeneratedKeys();
+			if (rs.next()) {
+				return true;
+			}
+			connection.close();
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return false;
 	}

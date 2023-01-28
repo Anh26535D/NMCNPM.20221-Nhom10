@@ -1,23 +1,27 @@
 package models;
 
+import java.sql.Date;
+
 public class FeesModel {
 
 	private int ID;
 	private String ten_khoan_thu;
 	private int so_tien;
 	private String dot_thu;
+	private Date ngay_tao;
 	private int idNguoiTao;
 	
 	public FeesModel() {
 	}
 	
-	public FeesModel(int iD, String ten_khoan_thu, int so_tien, String dot_thu, int idNguoiTao) {
+	public FeesModel(int iD, String ten_khoan_thu, int so_tien, String dot_thu, Date ngay_tao, int idNguoiTao) {
 		super();
 		ID = iD;
 		this.ten_khoan_thu = ten_khoan_thu;
 		this.so_tien = so_tien;
 		this.dot_thu = dot_thu;
 		this.idNguoiTao = idNguoiTao;
+		this.ngay_tao = ngay_tao;
 	}
 	
 	public int getID() {
@@ -32,6 +36,11 @@ public class FeesModel {
 	public String getDot_thu() {
 		return dot_thu;
 	}
+	
+	public Date getNgay_tao() {
+		return ngay_tao;
+	}
+	
 	public int getIdNguoiTao() {
 		return idNguoiTao;
 	}
@@ -46,6 +55,9 @@ public class FeesModel {
 	}
 	public void setDot_thu(String dot_thu) {
 		this.dot_thu = dot_thu;
+	}
+	public void setNgay_Tao(Date ngay_tao) {
+		this.ngay_tao = ngay_tao;
 	}
 	public void setIdNguoiTao(int idNguoiTao) {
 		this.idNguoiTao = idNguoiTao;

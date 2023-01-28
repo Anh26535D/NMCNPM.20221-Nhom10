@@ -44,7 +44,7 @@ public class StatisticDonationsController {
 	private JComboBox<String> selectStateJcb;
 	private final HoKhauService hoKhauService = new HoKhauService();
 	private final ClassTableModel tableModelHoKhau = new ClassTableModel();
-	private final String COLUMNS[] = { "Mã hộ khẩu", "Họ tên chủ hộ", "Địa chỉ", "Đã nộp", "Cần nộp", "Trạng thái" };
+	private final String COLUMNS[] = { "Mã hộ khẩu", "Họ tên chủ hộ", "Địa chỉ", "Đã ủng hộ"};
 	private JFrame parentJFrame;
 
 	public StatisticDonationsController(JPanel tableJpn, JTextField searchJtf, JComboBox<String> selectStateJcb, PhiUngHoBean selectedDonation) {
@@ -102,14 +102,6 @@ public class StatisticDonationsController {
 		return paids;
 	}
 
-	public List<Integer> allNeeds(List<HoKhauBean> householdBeans, DonationModel donationsModel) {
-		List<Integer> needs = new ArrayList<Integer>();
-		for (int i = 0; i < householdBeans.size(); ++i) {
-			needs.add(donationsService.getNeed(householdBeans.get(i), donationsModel));
-		}
-		return needs;
-	}
-
 	public List<Boolean> allPaidStates(List<Integer> paids, List<Integer> needs) {
 		List<Boolean> paidStates = new ArrayList<Boolean>();
 		for (int i = 0; i < paids.size(); ++i) {
@@ -158,10 +150,8 @@ public class StatisticDonationsController {
 
 	public void setData() {
 		List<Integer> paids = allPaids(list, donationsModel);
-		List<Integer> needs = allNeeds(list, donationsModel);
-		List<Boolean> paidStates = allPaidStates(paids, needs);
 		String conditions = StringService.covertToString((String)this.selectStateJcb.getSelectedItem());
-		DefaultTableModel model = tableModelHoKhau.setHouseholdTable(list, paids, needs, paidStates, COLUMNS, conditions);
+		DefaultTableModel model = tableModelHoKhau.setHouseholdTable(list, paids, COLUMNS, conditions);
 		JTable table = new JTable(model) {
 			private static final long serialVersionUID = 1L;
 

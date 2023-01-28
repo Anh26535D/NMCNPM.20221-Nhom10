@@ -134,7 +134,7 @@ public class ClassTableModel {
 		donations.forEach((DonationModel donation) -> {
 			obj[0] = donation.getID();
 			obj[1] = donation.getTen_khoan_thu();
-			obj[2] = donation.getSo_tien();
+			obj[2] = donation.getNgay_Tao();
 			obj[3] = donationsService.getPaidDonation(donation);
 			dtm.addRow(obj);
 		});

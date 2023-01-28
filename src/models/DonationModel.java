@@ -1,20 +1,22 @@
 package models;
 
+import java.sql.Date;
+
 public class DonationModel {
 
 	private int ID;
 	private String ten_khoan_thu;
-	private int so_tien;
+	private Date ngay_tao;
 	private int idNguoiTao;
 
 	public DonationModel() {
 	}
 
-	public DonationModel(int iD, String ten_khoan_thu, int so_tien, int idNguoiTao) {
+	public DonationModel(int iD, String ten_khoan_thu, Date ngay_tao, int idNguoiTao) {
 		super();
 		ID = iD;
 		this.ten_khoan_thu = ten_khoan_thu;
-		this.so_tien = so_tien;
+		this.ngay_tao = ngay_tao;
 		this.idNguoiTao = idNguoiTao;
 	}
 
@@ -26,8 +28,8 @@ public class DonationModel {
 		return ten_khoan_thu;
 	}
 
-	public int getSo_tien() {
-		return so_tien;
+	public Date getNgay_Tao() {
+		return ngay_tao;
 	}
 
 	public int getIdNguoiTao() {
@@ -42,8 +44,8 @@ public class DonationModel {
 		this.ten_khoan_thu = ten_khoan_thu;
 	}
 
-	public void setSo_tien(int so_tien) {
-		this.so_tien = so_tien;
+	public void setNgay_tao(Date ngay_tao) {
+		this.ngay_tao = ngay_tao;
 	}
 
 	public void setIdNguoiTao(int idNguoiTao) {
