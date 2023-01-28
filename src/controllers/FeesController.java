@@ -39,6 +39,8 @@ public class FeesController {
     private ClassTableModel classTableModel = null;
     private final String[] COLUMNS = {"ID", "Tên khoản thu", "Số tiền/1 người", "Đợt thu", "Đã thu"};
     private JFrame parentFrame;
+    
+    private JTable table;
 
     public FeesController(JPanel jpnView, JTextField jtfSearch) {
         this.jpnView = jpnView;
@@ -88,7 +90,7 @@ public class FeesController {
         });
         
         DefaultTableModel model = classTableModel.setTableFees(listItem, COLUMNS);
-        JTable table = new JTable(model) {
+        table = new JTable(model) {
             private static final long serialVersionUID = 1L;
 
 			@Override
@@ -151,6 +153,12 @@ public class FeesController {
         jpnView.add(scroll);
         jpnView.validate();
         jpnView.repaint();
+    }
+    
+    public int getSelectedIdFee() {
+    	int column = 0;
+    	int row = this.table.getSelectedRow();
+    	return Integer.parseInt(this.table.getModel().getValueAt(row, column).toString());
     }
     
     public void refreshData() {
