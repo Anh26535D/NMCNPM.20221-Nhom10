@@ -96,11 +96,11 @@ public class DonationsService {
 			String maHoKhau = household.getMaHoKhau();
 			int idKhoanThu = donationModel.getID();
 			String paid = 
-					"SELECT SUM(so_tien) AS tong_tien FROM nop_tien"
-					+ " JOIN nhan_khau ON nhan_khau.ID = nop_tien.idNhanKhau"
+					"SELECT SUM(so_tien) AS tong_tien FROM ung_ho"
+					+ " JOIN nhan_khau ON nhan_khau.ID = ung_ho.idNhanKhau"
 					+ " JOIN thanh_vien_cua_ho ON thanh_vien_cua_ho.idNhanKhau = nhan_khau.ID"
 					+ " JOIN ho_khau ON ho_khau.ID = thanh_vien_cua_ho.idHoKhau"
-					+ " WHERE ho_khau.maHoKhau = '" + maHoKhau + "' AND nop_tien.idKhoanThu = " + idKhoanThu  + ";";
+					+ " WHERE ho_khau.maHoKhau = '" + maHoKhau + "' AND ung_ho.idKhoanThu = " + idKhoanThu  + ";";
 			try {
 				Statement st = connection.createStatement();
 				ResultSet rs = st.executeQuery(paid);
@@ -125,8 +125,8 @@ public class DonationsService {
 			connection = SQLConnection.getDbConnection();
 			int idKhoanThu = donationModel.getID();
 			String paid = 
-					"SELECT SUM(so_tien) AS tong_tien FROM nop_tien"
-					+ " WHERE nop_tien.idKhoanThu = " + idKhoanThu  + ";";
+					"SELECT SUM(so_tien) AS tong_tien FROM ung_ho"
+					+ " WHERE ung_ho.idKhoanThu = " + idKhoanThu  + ";";
 			try {
 				Statement st = connection.createStatement();
 				ResultSet rs = st.executeQuery(paid);

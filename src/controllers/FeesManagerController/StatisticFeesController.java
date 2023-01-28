@@ -160,8 +160,7 @@ public class StatisticFeesController {
 		List<Integer> paids = allPaids(list, feesModel);
 		List<Integer> needs = allNeeds(list, feesModel);
 		List<Boolean> paidStates = allPaidStates(paids, needs);
-		String conditions = StringService.covertToString((String)this.selectStateJcb.getSelectedItem());
-		DefaultTableModel model = tableModelHoKhau.setHouseholdTable(list, paids, needs, paidStates, COLUMNS, conditions);
+		DefaultTableModel model = tableModelHoKhau.setHouseholdTable(list, paids, needs, paidStates, COLUMNS);
 		JTable table = new JTable(model) {
 			private static final long serialVersionUID = 1L;
 

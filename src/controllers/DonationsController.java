@@ -37,7 +37,7 @@ public class DonationsController {
     private DonationsService donationsService;
     private List<PhiUngHoBean> listPhiUngHoBeans;
     private ClassTableModel classTableModel = null;
-    private final String[] COLUMNS = {"ID", "Tên khoản thu", "Số tiền", "Đã thu"};
+    private final String[] COLUMNS = {"ID", "Tên khoản thu", "Ngày lập", "Đã thu"};
     private JFrame parentFrame;
 
     public DonationsController(JPanel jpnView, JTextField jtfSearch) {

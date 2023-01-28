@@ -150,8 +150,7 @@ public class StatisticDonationsController {
 
 	public void setData() {
 		List<Integer> paids = allPaids(list, donationsModel);
-		String conditions = StringService.covertToString((String)this.selectStateJcb.getSelectedItem());
-		DefaultTableModel model = tableModelHoKhau.setHouseholdTable(list, paids, COLUMNS, conditions);
+		DefaultTableModel model = tableModelHoKhau.setHouseholdDonationTable(list, paids, COLUMNS);
 		JTable table = new JTable(model) {
 			private static final long serialVersionUID = 1L;
 

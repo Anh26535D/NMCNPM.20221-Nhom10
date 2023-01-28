@@ -142,7 +142,7 @@ public class ClassTableModel {
 	}
 
 
-	public DefaultTableModel setHouseholdTable(List<HoKhauBean> households, List<Integer> paids, List<Integer> needs, List<Boolean> paidStates, String[] columns, String conditions) {
+	public DefaultTableModel setHouseholdTable(List<HoKhauBean> households, List<Integer> paids, List<Integer> needs, List<Boolean> paidStates, String[] columns) {
 		int len_cols = columns.length;
 		int len_rows = households.size();
 		DefaultTableModel dtm = getSampleTableModel(columns);
@@ -159,6 +159,22 @@ public class ClassTableModel {
 			} else {
 				obj[5] = "-";
 			}
+			dtm.addRow(obj);
+		}
+		return dtm;
+	}
+	
+	public DefaultTableModel setHouseholdDonationTable(List<HoKhauBean> households, List<Integer> paids, String[] columns) {
+		int len_cols = columns.length;
+		int len_rows = households.size();
+		DefaultTableModel dtm = getSampleTableModel(columns);
+
+		Object[] obj = new Object[len_cols];
+		for (int i = 0; i < len_rows; ++i) {
+			obj[0] = households.get(i).getHoKhauModel().getMaHoKhau();
+			obj[1] = households.get(i).getChuHo().getHoTen();
+			obj[2] = households.get(i).getHoKhauModel().getDiaChi();
+			obj[3] = paids.get(i);
 			dtm.addRow(obj);
 		}
 		return dtm;
