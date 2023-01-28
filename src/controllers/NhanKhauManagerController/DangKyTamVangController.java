@@ -7,10 +7,6 @@ import javax.swing.JOptionPane;
 import models.TamVangModel;
 import services.SQLConnection;
 
-/**
- *
- * @author Hai
- */
 public class DangKyTamVangController {
     
     public int checkCMT(String cmt) {

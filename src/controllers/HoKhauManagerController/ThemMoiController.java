@@ -32,7 +32,7 @@ public class ThemMoiController {
         JTable table_mem = new JTable(model_mem){
             @Override
             public boolean editCellAt(int row, int column, EventObject e) {
-                return false;   //To change body of generated methods, choose Tools | Templates.
+                return false; 
             }
         };
         table_mem.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));

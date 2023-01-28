@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 import bean.HoKhauBean;
+import bean.NhanKhauBean;
 import models.HoKhauModel;
 import models.NhanKhauModel;
 import models.ThanhVienCuaHoModel;
@@ -210,15 +211,7 @@ public class HoKhauService {
         return list;
     }
     
-    /**
-     * ham tao moi ho khau va up date lai thong tin nhan khau co trong ho cu
-     * @param hoKhauBean ho khau moi duoc tach ra
-     */
     public void tachHoKhau(HoKhauBean hoKhauBean) {
-        /**
-         * xoa cac thanh vien co trong moi ra khoi bang thanh_vien_cua_ho
-         */
-        
         // xoa chu ho
         String query = "DELETE FROM thanh_vien_cua_ho WHERE idNhanKhau = " + hoKhauBean.getChuHo().getID();   
         try {
@@ -241,9 +234,6 @@ public class HoKhauService {
             }
         });
         
-        /**
-         * tao ho khau moi voi hoKhauBean
-         */
         try {
             this.addNew(hoKhauBean);
             JOptionPane.showMessageDialog(null, "Thêm thành công!");
@@ -251,6 +241,7 @@ public class HoKhauService {
             System.out.println("services.HoKhauService.tachHoKhau()");
         } 
     }
+    
     public void chuyenDi(int idhoKhau, String noiChuyenDen, String lyDoChuyen) {
         String sql = "UPDATE ho_khau SET lyDoChuyen = '"
                 + lyDoChuyen
@@ -270,5 +261,31 @@ public class HoKhauService {
             System.out.println("services.HoKhauService.chuyenDi()");
             System.out.println(e.getMessage());
         }
+    }
+    
+    public List<NhanKhauBean> allPeopleInHousehold(String maHoKhau) {
+        List<NhanKhauBean> list = new ArrayList<>();
+        try {
+            Connection connection = SQLConnection.getDbConnection();
+            String query = 
+            		  "SELECT ID, hoTen FROM nhan_khau"
+					+ "JOIN thanh_vien_cua_ho ON thanh_vien_cua_ho.idNhanKhau = nhan_khau.ID"
+					+ "JOIN ho_khau ON ho_khau.ID = thanh_vien_cua_ho.idHoKhau"
+					+ "WHERE ho_khau.maHoKhau = '" + maHoKhau + "';";
+            PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()){
+                NhanKhauBean personInHousehold = new NhanKhauBean();
+                NhanKhauModel personModel = personInHousehold.getNhanKhauModel();
+                personModel.setID(rs.getInt("ID"));
+                personModel.setHoTen(rs.getString("hoTen"));
+                list.add(personInHousehold);
+            }
+            preparedStatement.close();
+            connection.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return list;
     }
 }

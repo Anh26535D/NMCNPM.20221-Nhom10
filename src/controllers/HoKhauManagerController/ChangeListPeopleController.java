@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
 import bean.MemOfFamily;
 import bean.NhanKhauBean;
 import services.HoKhauService;
-import services.NhanKhauService;
+import services.PeopleService;
 import utility.TableModelHoKhau;
 
 public class ChangeListPeopleController {
@@ -33,7 +33,7 @@ public class ChangeListPeopleController {
     private JPanel memJpn;
     private List<MemOfFamily> listMember;
     private List<NhanKhauBean> listPeople;
-    private final NhanKhauService nhanKhauService = new NhanKhauService();
+    private final PeopleService peopleService = new PeopleService();
     private final HoKhauService hoKhauService= new HoKhauService();
     private final TableModelHoKhau tableModelHoKhau = new TableModelHoKhau();
     private final String[] COLUMNS_1 = {"Họ tên", "Giới tính", "Ngày sinh", "Địa chỉ hiện nay", "Số CMT"};
@@ -41,19 +41,9 @@ public class ChangeListPeopleController {
     private NhanKhauBean peopleSelected;
     private MemOfFamily memSelected;
     
-    /**
-     * Create Controller of ChangeListPeopleJframe
-     * 
-     * @param listMember
-     * @param addBtn
-     * @param removeBtn
-     * @param searchJtf
-     * @param peopleJpn
-     * @param memJpn
-     */
     public ChangeListPeopleController(List<MemOfFamily> listMember, JButton addBtn, JButton removeBtn, JTextField searchJtf, JPanel peopleJpn, JPanel memJpn) {
         this.listMember = listMember;
-        this.listPeople = nhanKhauService.getListNhanKhau();
+        this.listPeople = peopleService.getListNhanKhau();
         this.addBtn = addBtn;
         this.removeBtn = removeBtn;
         this.searchJtf = searchJtf;
@@ -68,21 +58,21 @@ public class ChangeListPeopleController {
             @Override
             public void insertUpdate(DocumentEvent e) {
                 String key = searchJtf.getText();
-                listPeople = nhanKhauService.search(key.trim());
+                listPeople = peopleService.search(key.trim());
                 setData();
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
                 String key = searchJtf.getText();
-                listPeople = nhanKhauService.search(key.trim());
+                listPeople = peopleService.search(key.trim());
                 setData();
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
                 String key = searchJtf.getText();
-                listPeople = nhanKhauService.search(key.trim());
+                listPeople = peopleService.search(key.trim());
                 setData();
             }
         });
@@ -141,7 +131,7 @@ public class ChangeListPeopleController {
         JTable table_people = new JTable(model_people){
             @Override
             public boolean editCellAt(int row, int column, EventObject e) {
-                return false;   //To change body of generated methods, choose Tools | Templates.
+                return false; 
             }
         };
         
@@ -149,10 +139,9 @@ public class ChangeListPeopleController {
         JTable table_mem = new JTable(model_mem){
             @Override
             public boolean editCellAt(int row, int column, EventObject e) {
-                return false;   //To change body of generated methods, choose Tools | Templates.
+                return false;
             }
         };
-        // thiet ke bang
         
         table_people.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
         table_people.getTableHeader().setPreferredSize(new Dimension(100, 30));

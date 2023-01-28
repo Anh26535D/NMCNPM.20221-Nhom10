@@ -21,7 +21,6 @@ import utility.ClassTableModel;
 import java.sql.Date;
 import java.util.Vector;
 
-
 public class TieuSuController {
     private NhanKhauBean nhanKhauBean;
     private JPanel tieuSuJpn;
@@ -39,13 +38,12 @@ public class TieuSuController {
         this.classTableModel = new ClassTableModel();
     }
 
-    
-    
+ 
     public void setDataTable() {
         this.modelTieuSu =  this.classTableModel.setTableTieuSu(this.nhanKhauBean.getListTieuSuModels(), COLUMNS_TIEU_SU);
         this.modelGiaDinh = this.classTableModel.setTableGiaDinh(this.nhanKhauBean.getListGiaDinhModels(), COLUMNS_GIA_DINH);
         JTable tableTieuSu = new JTable(modelTieuSu) {
-            // nue sua hoan thien dong cuoi cua row thi tu gen them 1 row moi
+ 
             @Override
             public void editingStopped(ChangeEvent e) {
                 int row = getEditingRow();
@@ -53,7 +51,6 @@ public class TieuSuController {
                 super.editingStopped(e);
                 if (row == getRowCount() - 1 && col == getColumnCount() - 1)
                 {
-                    // thay doi vung nho heap
                     modelTieuSu.addRow(new Object[] {"", "", "", "", ""});
                 }
             }
@@ -67,7 +64,6 @@ public class TieuSuController {
                 super.editingStopped(e);
                 if (row == getRowCount() - 1 && col == getColumnCount() - 1)
                 {
-                    // thay doi vung nho heap
                     modelGiaDinh.addRow(new Object[] {"", "", "", "", "", ""});
                 }
             }

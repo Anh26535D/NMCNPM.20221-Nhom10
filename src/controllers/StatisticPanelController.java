@@ -21,7 +21,7 @@ import javax.swing.table.TableCellRenderer;
 
 import bean.NhanKhauBean;
 import models.NhanKhauModel;
-import services.NhanKhauService;
+import services.PeopleService;
 import services.StringService;
 import utility.ClassTableModel;
 
@@ -34,7 +34,7 @@ public class StatisticPanelController {
     private JTextField tuNamJtf;
     private JTextField denNamJtf;
     private JPanel jpnView;
-    private NhanKhauService nhanKhauService;
+    private PeopleService peopleService;
     private List<NhanKhauBean> listNhanKhauBeans;
     private ClassTableModel classTableModel;
     private final String[] COLUMNS = {"ID", "Họ tên", "Ngày sinh", "Giới tính", "Địa chỉ hiện nay"};
@@ -47,9 +47,9 @@ public class StatisticPanelController {
         this.tuNamJtf = tuNamJtf;
         this.denNamJtf = denNamJtf;
         this.jpnView = jpnView;
-        this.nhanKhauService = new NhanKhauService();
+        this.peopleService = new PeopleService();
         this.listNhanKhauBeans = new ArrayList<>();
-        this.listNhanKhauBeans = this.nhanKhauService.getListNhanKhau();
+        this.listNhanKhauBeans = this.peopleService.getListNhanKhau();
         this.classTableModel = new ClassTableModel();
     }
     
@@ -66,7 +66,7 @@ public class StatisticPanelController {
         int denTuoi = 200;
         int tuNam = 0;
         int denNam = 2100;
-        String gender = StringService.covertToString((String)this.GenderJcb.getSelectedItem());
+        String gender = (String)this.GenderJcb.getSelectedItem().toString();
         String status = StringService.covertToString((String)this.StatusJcb.getSelectedItem());
         try {
             if (!this.tuTuoiJtf.getText().trim().isEmpty()) {
@@ -88,7 +88,7 @@ public class StatisticPanelController {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(denTuoiJtf, "Vui lòng nhập đúng kiểu dữ liệu!!", "Warring", JOptionPane.ERROR_MESSAGE);
         }
-        this.listNhanKhauBeans = this.nhanKhauService.statisticNhanKhau(tuTuoi, denTuoi, gender, status, tuNam, denNam);
+        this.listNhanKhauBeans = this.peopleService.statisticNhanKhau(tuTuoi, denTuoi, gender, status, tuNam, denNam);
         setDataTable();
     }
     

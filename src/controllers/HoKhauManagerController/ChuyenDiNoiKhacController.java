@@ -20,10 +20,6 @@ import bean.HoKhauBean;
 import services.HoKhauService;
 import utility.TableModelHoKhau;
 
-/**
- *
- * @author Hai
- */
 public class ChuyenDiNoiKhacController {
     private HoKhauBean hoKhauBean;
     private final HoKhauService hoKhauService = new HoKhauService();

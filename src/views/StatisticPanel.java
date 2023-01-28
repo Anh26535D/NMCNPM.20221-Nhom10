@@ -51,7 +51,6 @@ public class StatisticPanel extends javax.swing.JPanel {
 		init();
 		this.controller = new StatisticPanelController(GenderJcb, StatusJcb, tuTuoiJtf, denTuoiJtf, tuNamJtf, denNamJtf, tableJpn);
 		this.controller.setDataTable();
-
 	}
 
 	private void init() {
@@ -213,6 +212,6 @@ public class StatisticPanel extends javax.swing.JPanel {
 
 	private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
 		this.controller.setData();
-	}// GEN-LAST:event_jButton1ActionPerformed
+	}
 
 }

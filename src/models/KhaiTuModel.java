@@ -2,10 +2,6 @@ package models;
 
 import java.util.Date;
 
-/**
- *
- * @author Hai
- */
 public class KhaiTuModel {
     private int ID;
     private String soGiayKhaiTu;

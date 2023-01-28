@@ -74,10 +74,7 @@ public class NewPeopleFrame extends JFrame {
 	private javax.swing.JComboBox<String> gioiTinhCbb;
 	private JButton thuongTruBtn;
 
-	
-    /**
-     * @wbp.parser.constructor
-     */
+
     public NewPeopleFrame(JFrame parentJFrame) {
     	init();
         this.parentController = new PeoplePanelController(){
@@ -103,6 +100,7 @@ public class NewPeopleFrame extends JFrame {
             
         });
     }
+
 
 	public NewPeopleFrame(PeoplePanelController parentController, JFrame parentJFrame) {
         init();
@@ -596,7 +594,7 @@ public class NewPeopleFrame extends JFrame {
             temp.setNoiLamViec(noiLamViecTxb.getText());
             temp.setIdNguoiTao(LoginController.currentUser.getID());
             try {
-                if (this.controller.addNewPeople(this.nhanKhauBean)) {
+                if (this.controller.newPeople(this.nhanKhauBean)) {
                     JOptionPane.showMessageDialog(null, "Thêm thành công!!");
                     close();
                     parentController.refreshData();

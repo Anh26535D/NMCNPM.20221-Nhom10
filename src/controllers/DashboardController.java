@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 
 import bean.DanhMucBean;
 import views.HouseholdPanel;
+import views.DonationsPanel;
+import views.FeesPanel;
 import views.HomePagePanel;
 import views.PeoplePanel;
 import views.StatisticPanel;
@@ -52,6 +54,12 @@ public class DashboardController {
                     break;
                 case "ThongKe":
                     view = new StatisticPanel(this.jfrMain);
+                    break;
+                case "ThuPhi":
+                    view = new FeesPanel(this.jfrMain);
+                    break;
+                case "UngHo":
+                    view = new DonationsPanel(this.jfrMain);
                     break;
                 //any more
                 default:
@@ -116,6 +124,12 @@ public class DashboardController {
                     break;
                 case "ThongKe":
                     view = new StatisticPanel(this.jfrMain);
+                    break;
+                case "ThuPhi":
+                    view = new FeesPanel(this.jfrMain);
+                    break;
+                case "UngHo":
+                    view = new DonationsPanel(this.jfrMain);
                     break;
                 default:
                     break;

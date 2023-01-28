@@ -8,11 +8,8 @@ import javax.swing.JOptionPane;
 import models.TamTruModel;
 import services.SQLConnection;
 
-/**
- *
- * @author Hai
- */
 public class DangKyTamTruController {
+	
     public int checkCMT(String cmt) {
         try {
             Connection connection = SQLConnection.getDbConnection();
