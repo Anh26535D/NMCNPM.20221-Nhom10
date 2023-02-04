@@ -25,7 +25,7 @@ import javax.swing.table.TableCellRenderer;
 
 
 import bean.PhiUngHoBean;
-import models.DonationModel;
+import models.DonationsModel;
 import services.DonationsService;
 import utility.ClassTableModel;
 import views.DonationsManagerFrame.StatisticDonationsFrame;
@@ -39,6 +39,7 @@ public class DonationsController {
     private ClassTableModel classTableModel = null;
     private final String[] COLUMNS = {"ID", "Tên khoản thu", "Ngày lập", "Đã thu"};
     private JFrame parentFrame;
+	private JTable table;
 
     public DonationsController(JPanel jpnView, JTextField jtfSearch) {
         this.jpnView = jpnView;
@@ -82,13 +83,13 @@ public class DonationsController {
     }
     
     public void setData() {
-        List<DonationModel> listItem = new ArrayList<>();
+        List<DonationsModel> listItem = new ArrayList<>();
         this.listPhiUngHoBeans.forEach(nhankhau -> {
             listItem.add(nhankhau.getDonationModel());
         });
         
         DefaultTableModel model = classTableModel.setTableDonations(listItem, COLUMNS);
-        JTable table = new JTable(model) {
+        table = new JTable(model) {
             private static final long serialVersionUID = 1L;
 
 			@Override
@@ -153,8 +154,15 @@ public class DonationsController {
         jpnView.repaint();
     }
     
+    public int getSelectedIdDonation() {
+    	int column = 0;
+    	int row = this.table.getSelectedRow();
+    	return Integer.parseInt(this.table.getModel().getValueAt(row, column).toString());
+    }
     public void refreshData() {
         this.listPhiUngHoBeans = this.donationsService.allDonations();
         setData();
     }
+
+
 }

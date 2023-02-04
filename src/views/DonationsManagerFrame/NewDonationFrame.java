@@ -16,16 +16,13 @@ import controllers.DonationsController;
 import controllers.LoginController;
 import controllers.DonationsManagerController.AddNewDonationController;
 
-import models.DonationModel;
+import models.DonationsModel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.Font;
 
 public class NewDonationFrame extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private JPanel contentPane;
@@ -140,7 +137,7 @@ public class NewDonationFrame extends JFrame {
 
 	private void CreateBtnActionPerformed(java.awt.event.ActionEvent evt) {
 		if (validateForm()) {
-			DonationModel temp = this.phiUngHoBean.getDonationModel();
+			DonationsModel temp = this.phiUngHoBean.getDonationModel();
 			temp.setTen_khoan_thu(tenJtf.getText());
 			try {
 				if (this.controller.newDonation(this.phiUngHoBean)) {

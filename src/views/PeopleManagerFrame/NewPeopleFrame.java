@@ -74,7 +74,6 @@ public class NewPeopleFrame extends JFrame {
 	private javax.swing.JComboBox<String> gioiTinhCbb;
 	private JButton thuongTruBtn;
 
-
     public NewPeopleFrame(JFrame parentJFrame) {
     	init();
         this.parentController = new PeoplePanelController(){
@@ -100,6 +99,7 @@ public class NewPeopleFrame extends JFrame {
             
         });
     }
+
 
 
 	public NewPeopleFrame(PeoplePanelController parentController, JFrame parentJFrame) {

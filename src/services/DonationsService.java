@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 import bean.HoKhauBean;
 import bean.PhiUngHoBean;
-import models.DonationModel;
+import models.DonationsModel;
 import models.HoKhauModel;
 
 public class DonationsService {
@@ -27,7 +27,7 @@ public class DonationsService {
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
 				PhiUngHoBean donationBean = new PhiUngHoBean();
-				DonationModel donation = donationBean.getDonationModel();
+				DonationsModel donation = donationBean.getDonationModel();
 				donation.setID(rs.getInt("ID"));
 				donation.setTen_khoan_thu(rs.getString("ten_khoan_thu"));
 				donation.setNgay_tao(rs.getDate("ngay_Tao"));
@@ -55,7 +55,7 @@ public class DonationsService {
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
 				PhiUngHoBean donationBean = new PhiUngHoBean();
-				DonationModel donation = donationBean.getDonationModel();
+				DonationsModel donation = donationBean.getDonationModel();
 				donation.setID(rs.getInt("ID"));
 				donation.setTen_khoan_thu(rs.getString("ten_khoan_thu"));
 				donation.setNgay_tao(rs.getDate("ngay_Tao"));
@@ -70,7 +70,7 @@ public class DonationsService {
 	}
 
 	public boolean newDonation(PhiUngHoBean phiUngHoBean) throws SQLException, ClassNotFoundException {
-		DonationModel donation = phiUngHoBean.getDonationModel();
+		DonationsModel donation = phiUngHoBean.getDonationModel();
 		Connection connection = SQLConnection.getDbConnection();
 
 		String query = "INSERT INTO phi_ung_ho ( ten_khoan_thu, ngay_tao, idNguoiTao)" + " values (?, ?, ?)";
@@ -87,8 +87,75 @@ public class DonationsService {
 		}
 		return false;
 	}
+	public boolean editDonation(PhiUngHoBean phiUngHoBean, int idDonation){
+		DonationsModel donation = phiUngHoBean.getDonationModel();
+		Connection connection;
+		try {
+			connection = SQLConnection.getDbConnection();
+			String query = 
+					"UPDATE phi_ung_ho "
+					+ " SET"
+					+ " ten_khoan_thu = ?"
+					+ " WHERE ID = ?;";
+			PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+			preparedStatement.setString(1, donation.getTen_khoan_thu());
+			preparedStatement.setInt(2, idDonation);
+
+			preparedStatement.executeUpdate();
+			ResultSet rs = preparedStatement.getGeneratedKeys();
+			if (rs.next()) {
+				return true;
+			}
+			connection.close();
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+	public Integer getNeed(HoKhauBean householdBean, DonationsModel DonationsModel) {
+		Connection connection;
+		try {
+			connection = SQLConnection.getDbConnection();
+			HoKhauModel household = householdBean.getHoKhauModel();
+			String maHoKhau = household.getMaHoKhau();
+			int idPhiThu = DonationsModel.getID();
+			String query_get_num_of_people_in_household = "SELECT COUNT(*) AS so_luong_nk_trong_hk FROM nhan_khau"
+					+ " JOIN thanh_vien_cua_ho ON thanh_vien_cua_ho.idNhanKhau = nhan_khau.ID"
+					+ " JOIN ho_khau ON ho_khau.ID = thanh_vien_cua_ho.idHoKhau" + " WHERE ho_khau.maHoKhau = '"
+					+ maHoKhau + "';";
+			String query_get_basic_Donation = "SELECT so_tien FROM phi_bat_buoc"
+					+ " WHERE ID = " + idPhiThu + ";";
+			try {
+				Statement st = connection.createStatement();
+				ResultSet rs = st.executeQuery(query_get_num_of_people_in_household);
+				rs.next();
+				int num_of_people_in_household = rs.getInt("so_luong_nk_trong_hk");
+
+				rs = st.executeQuery(query_get_basic_Donation);
+				rs.next();
+				int basic_Donation = rs.getInt("so_tien");
+
+				connection.close();
+				
+				return basic_Donation*num_of_people_in_household;
+			
+			} catch (SQLException e) {
+				exceptionHandle(e.getMessage());
+			}
+		} catch (ClassNotFoundException e1) {
+			exceptionHandle(e1.getMessage());
+		} catch (SQLException e1) {
+			exceptionHandle(e1.getMessage());
+		}
+		return -1;
+	}
 	
-	public Integer getPaid(HoKhauBean householdBean, DonationModel donationModel) {
+	public Integer getPaid(HoKhauBean householdBean, DonationsModel donationModel) {
 		Connection connection;
 		try {
 			connection = SQLConnection.getDbConnection();
@@ -118,8 +185,9 @@ public class DonationsService {
 		}
 		return -1;
 	}
+
 	
-	public Integer getPaidDonation(DonationModel donationModel) {
+	public Integer getPaidDonation(DonationsModel donationModel) {
 		Connection connection;
 		try {
 			connection = SQLConnection.getDbConnection();

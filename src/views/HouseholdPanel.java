@@ -9,6 +9,7 @@ import controllers.HouseholdPanelController;
 
 import views.HouseholdManagerFrame.NewHouseholdFrame;
 import views.HouseholdManagerFrame.ChangeResidence;
+import views.HouseholdManagerFrame.EditHouseholdFrame;
 import views.HouseholdManagerFrame.HouseholdSeper;
 
 import javax.swing.JTextField;
@@ -33,6 +34,8 @@ public class HouseholdPanel extends JPanel {
     private JPanel tableJpn;
     private JButton tachHoKhauBtn;
     private JButton themMoiBtn;
+    private JButton suaBtn;
+    
     // End of variables declaration//GEN-END:variables
 
 	public HouseholdPanel(JFrame parentFrame) {
@@ -68,6 +71,21 @@ public class HouseholdPanel extends JPanel {
 		themMoiBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
 		themMoiBtn.setBounds(10, 20, 130, 40);
 		panel_1.add(themMoiBtn);
+		
+		
+		suaBtn = new JButton("Sửa");
+        suaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                suaBtnActionPerformed(evt);
+            }
+        });
+		suaBtn.setBorder(new LineBorder(new Color(153, 102, 255), 4, true));
+		suaBtn.setForeground(new Color(255, 255, 255));
+		suaBtn.setBackground(new Color(102, 102, 255));
+		suaBtn.setBorderPainted(false);
+		suaBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
+		suaBtn.setBounds(150, 20, 130, 40);
+		panel_1.add(suaBtn);
 		
 		tachHoKhauBtn = new JButton("Tách hộ khẩu");
         tachHoKhauBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -163,6 +181,12 @@ public class HouseholdPanel extends JPanel {
         themMoiHoKhau.setLocationRelativeTo(null);
         themMoiHoKhau.setResizable(false);
         themMoiHoKhau.setVisible(true);
+    }//GEN-LAST:event_themMoiBtnActionPerformed
+    private void suaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themMoiBtnActionPerformed
+        EditHouseholdFrame suaHoKhau = new EditHouseholdFrame(this.parentFrame);
+        suaHoKhau.setLocationRelativeTo(null);
+        suaHoKhau.setResizable(false);
+        suaHoKhau.setVisible(true);
     }//GEN-LAST:event_themMoiBtnActionPerformed
 
     private void tachHoKhauBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tachHoKhauBtnActionPerformed

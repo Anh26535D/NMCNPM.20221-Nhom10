@@ -39,6 +39,7 @@ public class ChangeListPeopleJframe extends javax.swing.JFrame {
     public ChangeListPeopleJframe(List<MemOfFamily> listMember, JFrame parentJFrame) {
     	getContentPane().setBackground(new Color(255, 255, 255));
         initComponents();
+        this.setTitle("Sửa danh sách");
         this.listMember = listMember;
         this.listMemberTemp = new ArrayList<>();
         this.listMemberTemp.addAll(listMember);

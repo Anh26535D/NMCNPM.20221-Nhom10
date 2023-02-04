@@ -13,6 +13,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import controllers.DonationsController;
+import views.DonationsManagerFrame.EditDonationFrame;
 import views.DonationsManagerFrame.NewDonationFrame;
 
 import javax.swing.JButton;
@@ -28,6 +29,8 @@ public class DonationsPanel extends JPanel {
 	private JPanel tablePanel;
 	private JTextField jtfSearch;
 	private JButton addNewBtn;
+	private JButton editBtn;
+	
 
 	public DonationsPanel(JFrame parentFrame) {
 		this.parentFrame = parentFrame;
@@ -56,21 +59,34 @@ public class DonationsPanel extends JPanel {
 		addNewBtn.setBackground(new Color(102, 102, 255));
 		addNewBtn.setBorderPainted(false);
         addNewBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
-        addNewBtn.setBounds(10, 20, 106, 40);
+        addNewBtn.setBounds(10, 20, 85, 40);
         addNewBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addNewBtnActionPerformed(evt);
             }
         });
         panel.add(addNewBtn);
-		
+        
+        editBtn = new JButton("Sửa");
+		editBtn.setBorder(new LineBorder(new Color(153, 102, 255), 4, true));
+		editBtn.setForeground(new Color(255, 255, 255));
+		editBtn.setBackground(new Color(102, 102, 255));
+		editBtn.setBorderPainted(false);
+        editBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
+        editBtn.setBounds(105, 20, 85, 40);
+        editBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editBtnActionPerformed(evt);
+            }
+        });
+        panel.add(editBtn);
 		jtfSearch = new JTextField("Search");
         jtfSearch.setSelectionColor(new Color(204, 153, 255));
         jtfSearch.setForeground(Color.GRAY);
         jtfSearch.setFont(new Font("Tahoma", Font.PLAIN, 15));
         jtfSearch.setColumns(10);
         jtfSearch.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(153, 102, 255), null, null, null), new EmptyBorder(0, 10, 0, 0)));
-        jtfSearch.setBounds(126, 19, 650, 43);
+        jtfSearch.setBounds(200, 19, 576, 43);
         jtfSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfSearchActionPerformed(evt);
@@ -115,6 +131,12 @@ public class DonationsPanel extends JPanel {
     	addNewDonationFrame.setLocationRelativeTo(null);
     	addNewDonationFrame.setResizable(false);
         addNewDonationFrame.setVisible(true);
+    }
+    private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {
+    	EditDonationFrame editDonationFrame = new EditDonationFrame(this.controller, this.parentFrame);
+    	editDonationFrame.setLocationRelativeTo(null);
+    	editDonationFrame.setResizable(false);
+        editDonationFrame.setVisible(true);
     }
 	
     private void jtfSearchActionPerformed(java.awt.event.ActionEvent evt) {

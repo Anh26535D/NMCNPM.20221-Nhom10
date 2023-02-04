@@ -53,6 +53,39 @@ public class HoKhauService {
         connection.close();
         return true;
     }
+    public boolean edit(HoKhauBean hoKhauBean) throws ClassNotFoundException, SQLException{
+        Connection connection = SQLConnection.getDbConnection();
+        String query = "INSERT INTO ho_khau(maHoKhau, idChuHo, maKhuVuc, diaChi, ngayLap)" 
+                    + " values (?, ?, ?, ?, GETDATE())";
+        PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+        preparedStatement.setString(1, hoKhauBean.getHoKhauModel().getMaHoKhau());
+        preparedStatement.setInt(2, hoKhauBean.getChuHo().getID());
+        preparedStatement.setString(3, hoKhauBean.getHoKhauModel().getMaKhuVuc());
+        preparedStatement.setString(4, hoKhauBean.getHoKhauModel().getDiaChi());
+
+        preparedStatement.executeUpdate();
+        ResultSet rs = preparedStatement.getGeneratedKeys();
+        if (rs.next()) {
+            int genID = rs.getInt(1);
+            String sql = "INSERT INTO thanh_vien_cua_ho(idNhanKhau, idHoKhau, quanHeVoiChuHo)" 
+                            + " values (?, ?, ?)";
+            hoKhauBean.getListThanhVienCuaHo().forEach((ThanhVienCuaHoModel thanhVien) -> {     
+                try { 
+                    PreparedStatement preStatement = connection.prepareStatement(sql);
+                    preStatement.setInt(1, thanhVien.getIdNhanKhau());
+                    preStatement.setInt(2, genID);
+                    preStatement.setString(3, thanhVien.getQuanHeVoiChuHo());
+                    preStatement.executeUpdate();
+                } catch (SQLException ex) {
+                    Logger.getLogger(HoKhauService.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            });
+        }
+        preparedStatement.close();
+        connection.close();
+        return true;
+    }
     
     
     public boolean checkPerson(int id) {

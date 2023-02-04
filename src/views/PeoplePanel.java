@@ -3,6 +3,7 @@ package views;
 import controllers.PeoplePanelController;
 import views.PeopleManagerFrame.NewPeopleFrame;
 import views.PeopleManagerFrame.DeathCertiFrame;
+import views.PeopleManagerFrame.EditPeopleFrame;
 import views.PeopleManagerFrame.TempAbsenceDFrame;
 import views.PeopleManagerFrame.TempResidenceDFrame;
 
@@ -28,6 +29,7 @@ public class PeoplePanel extends javax.swing.JPanel {
     private JFrame parentJFrame;
     
     private javax.swing.JButton addNewBtn;
+    private javax.swing.JButton editBtn;
     private javax.swing.JButton khaiTuBtn;
     private javax.swing.JPanel tablePanel;
     private javax.swing.JButton tamTruBtn;
@@ -75,6 +77,20 @@ public class PeoplePanel extends javax.swing.JPanel {
             }
         });
         panel.add(addNewBtn);
+        
+        editBtn = new JButton("Sửa");
+		editBtn.setBorder(new LineBorder(new Color(153, 102, 255), 4, true));
+		editBtn.setForeground(new Color(255, 255, 255));
+		editBtn.setBackground(new Color(102, 102, 255));
+		editBtn.setBorderPainted(false);
+        editBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
+        editBtn.setBounds(150, 20, 130, 40);
+        editBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editBtnActionPerformed(evt);
+            }
+        });
+        panel.add(editBtn);
 	            
         tamVangBtn = new JButton("ĐK tạm vắng");
         tamVangBtn.setBorder(new LineBorder(new Color(153, 102, 255), 4, true));
@@ -171,6 +187,12 @@ public class PeoplePanel extends javax.swing.JPanel {
         addNewPeopleFrame.setResizable(false);
         addNewPeopleFrame.setVisible(true);
     }//GEN-LAST:event_addNewBtnActionPerformed
+    private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
+    	EditPeopleFrame editPeopleFrame = new EditPeopleFrame(this.controller, this.parentJFrame);
+        editPeopleFrame.setLocationRelativeTo(null);
+        editPeopleFrame.setResizable(false);
+        editPeopleFrame.setVisible(true);
+    }//GEN-LAST:event_editBtnActionPerformed
 
     private void tamVangBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tamVangBtnActionPerformed
         TempAbsenceDFrame tempAbsenceDFrame = new TempAbsenceDFrame(this.parentJFrame);

@@ -4,7 +4,7 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 import bean.HoKhauBean;
-import models.DonationModel;
+import models.DonationsModel;
 import models.FeesModel;
 import models.GiaDinhModel;
 import models.NhanKhauModel;
@@ -125,16 +125,16 @@ public class ClassTableModel {
 		return dtm;
 	}
 	
-	public DefaultTableModel setTableDonations(List<DonationModel> donations, String[] columns) {
+	public DefaultTableModel setTableDonations(List<DonationsModel> donations, String[] columns) {
 		int len_cols = columns.length;
 		DefaultTableModel dtm = getSampleTableModel(columns);
 		Object[] obj;
 		obj = new Object[len_cols];
 		DonationsService donationsService = new DonationsService();
-		donations.forEach((DonationModel donation) -> {
+		donations.forEach((DonationsModel donation) -> {
 			obj[0] = donation.getID();
 			obj[1] = donation.getTen_khoan_thu();
-			obj[2] = donation.getNgay_Tao();
+			obj[2] = donation.getNgay_tao();
 			obj[3] = donationsService.getPaidDonation(donation);
 			dtm.addRow(obj);
 		});
