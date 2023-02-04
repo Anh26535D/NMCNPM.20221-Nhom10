@@ -122,7 +122,7 @@ public class StatisticFeesController {
 		return paidStates;
 	}
 	
-	private int numOfCompletePaids(List<Boolean> allPaidStates) {
+	public int numOfCompletePaids(List<Boolean> allPaidStates) {
 		int cnt = 0;
 		for(Boolean state:allPaidStates) {
 			if (state.equals(Boolean.TRUE)) {

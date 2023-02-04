@@ -27,7 +27,7 @@ public class HomePagePanel extends JPanel {
 	
 	public HomePagePanel() {
         init();
-        this.cotroller = new HomeController(tongNhanKhauLb, tongHoKhauLb, nhanKhauTamTruLb, nhanKhauTamVangLb);
+        this.cotroller = new HomeController(tongNhanKhauLb, tongHoKhauLb, nhanKhauTamTruLb, nhanKhauTamVangLb, noPaidFees);
         this.cotroller.setData();
 		
 	}
