@@ -23,6 +23,7 @@ public class HomePagePanel extends JPanel {
     private JLabel nhanKhauTamVangLb;
     private JLabel tongHoKhauLb;
     private JLabel tongNhanKhauLb;
+    private JLabel noPaidFees;
 	
 	public HomePagePanel() {
         init();
@@ -224,26 +225,19 @@ public class HomePagePanel extends JPanel {
 		jPanel1_1.setBounds(40, 355, 320, 210);
 		panel.add(jPanel1_1);
 		
-		JPanel panel_1_4 = new JPanel();
-		panel_1_4.setLayout(null);
-		panel_1_4.setBorder(new EmptyBorder(0, 0, 0, 0));
-		panel_1_4.setBackground(Color.WHITE);
-		panel_1_4.setBounds(10, 10, 300, 190);
-		jPanel1_1.add(panel_1_4);
+		noPaidFees = new JLabel("0");
+		noPaidFees.setBounds(55, 50, 210, 40);
+		jPanel1_1.add(noPaidFees);
+		noPaidFees.setHorizontalAlignment(SwingConstants.CENTER);
+		noPaidFees.setFont(new Font("Tahoma", Font.BOLD, 20));
+		noPaidFees.setBorder(null);
 		
 		JLabel jLabel2_2 = new JLabel("Hộ chưa nộp phí đợt này");
-		jLabel2_2.setBounds(55, 70, 210, 69);
-		panel_1_4.add(jLabel2_2);
+		jLabel2_2.setBounds(55, 100, 210, 69);
+		jPanel1_1.add(jLabel2_2);
 		jLabel2_2.setHorizontalAlignment(SwingConstants.CENTER);
 		jLabel2_2.setFont(new Font("Tahoma", Font.BOLD, 15));
 		jLabel2_2.setBorder(null);
 		jLabel2_2.setBackground(Color.WHITE);
-		
-		JLabel tongNhanKhauLb_1 = new JLabel("0");
-		tongNhanKhauLb_1.setBounds(55, 25, 210, 40);
-		panel_1_4.add(tongNhanKhauLb_1);
-		tongNhanKhauLb_1.setHorizontalAlignment(SwingConstants.CENTER);
-		tongNhanKhauLb_1.setFont(new Font("Tahoma", Font.BOLD, 20));
-		tongNhanKhauLb_1.setBorder(null);
 	}
 }
