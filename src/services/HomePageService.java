@@ -3,6 +3,7 @@ package services;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import controllers.HomeController;
 
@@ -14,43 +15,104 @@ public class HomePageService {
 		this.homeController = homeController;
 	}
 	
-	public void setData() {
-        try {
-            Connection connection = SQLConnection.getDbConnection();
-            String query = "SELECT COUNT(*) AS tong FROM nhan_khau";
-            PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
-            ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()){
-                this.homeController.getTongNhanKhauLb().setText(String.valueOf(rs.getInt("tong")));
-            }
-            preparedStatement.close();
-            
-            query = "SELECT COUNT(*) AS tong FROM ho_khau";
-            preparedStatement = (PreparedStatement)connection.prepareStatement(query);
-            rs = preparedStatement.executeQuery();
-            while (rs.next()){
-                this.homeController.getTongHoKhauLb().setText(String.valueOf(rs.getInt("tong")));
-            }
-            preparedStatement.close();
-            
-            query = "SELECT COUNT(*) AS tong FROM tam_tru WHERE denNgay < NOW()";
-            preparedStatement = (PreparedStatement)connection.prepareStatement(query);
-            rs = preparedStatement.executeQuery();
-            while (rs.next()){
-                this.homeController.getNhanKhauTamTruLb().setText(String.valueOf(rs.getInt("tong")));
-            }
-            preparedStatement.close();
-            
-            query = "SELECT COUNT(*) AS tong FROM tam_vang WHERE denNgay < NOW()";
-            preparedStatement = (PreparedStatement)connection.prepareStatement(query);
-            rs = preparedStatement.executeQuery();
-            while (rs.next()){
-                this.homeController.getNhanKhauTamVangLb().setText(String.valueOf(rs.getInt("tong")));
-            }
-            preparedStatement.close();
-            
-            connection.close();
-        } catch (Exception e) {
-        }
+	public int getTongNhanKhau() {
+		int result = 0;
+		try {
+			Connection connection = SQLConnection.getDbConnection();
+	        String query = "SELECT COUNT(*) AS tong FROM nhan_khau";
+	        PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
+	        ResultSet rs = preparedStatement.executeQuery();
+	        while (rs.next()){
+	        	result = rs.getInt("tong");
+	        }
+	        preparedStatement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+        return result;
+	}
+	
+	public int getTongHoKhau() {
+		int result = 0;
+		try {
+			Connection connection = SQLConnection.getDbConnection();
+	        String query = "SELECT COUNT(*) AS tong FROM ho_khau";
+	        PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
+	        ResultSet rs = preparedStatement.executeQuery();
+	        while (rs.next()){
+	        	result = rs.getInt("tong");
+	        }
+	        preparedStatement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+        return result;
+	}
+	
+	public int getTongTamTru() {
+		int result = 0;
+		try {
+			Connection connection = SQLConnection.getDbConnection();
+	        String query = "SELECT COUNT(*) AS tong FROM tam_tru WHERE denNgay < GETDATE()";
+	        PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
+	        ResultSet rs = preparedStatement.executeQuery();
+	        while (rs.next()){
+	        	result = rs.getInt("tong");
+	        }
+	        preparedStatement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+        return result;
+	}
+	
+	public int getTongTamVang() {
+		int result = 0;
+		try {
+			Connection connection = SQLConnection.getDbConnection();
+	        String query = "SELECT COUNT(*) AS tong FROM tam_vang WHERE denNgay < GETDATE()";
+	        PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
+	        ResultSet rs = preparedStatement.executeQuery();
+	        while (rs.next()){
+	        	result = rs.getInt("tong");
+	        }
+	        preparedStatement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+        return result;
+	}
+	
+	
+	public int getTongHoKhauConThieu() {
+		int result = 0;
+		try {
+			Connection connection = SQLConnection.getDbConnection();
+	        String query = "SELECT COUNT(*) AS tong FROM tam_vang WHERE denNgay < GETDATE()";
+	        PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
+	        ResultSet rs = preparedStatement.executeQuery();
+	        while (rs.next()){
+	        	result = rs.getInt("tong");
+	        }
+	        preparedStatement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+        return result;
 	}
 }

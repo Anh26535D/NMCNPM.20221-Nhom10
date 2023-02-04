@@ -199,5 +199,5 @@ public class StatisticPanelController {
         this.denNamJtf = denNamJtf;
     }
     
-    
+
 }

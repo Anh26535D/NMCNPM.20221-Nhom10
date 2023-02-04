@@ -15,6 +15,7 @@ import bean.HoKhauBean;
 import bean.PhiBatBuocBean;
 import models.FeesModel;
 import models.HoKhauModel;
+import models.PayFeeModel;
 
 public class FeesService {
 
@@ -229,6 +230,34 @@ public class FeesService {
 			e1.printStackTrace();
 		}
 		return -1;
+	}
+	
+	public boolean payFee(PayFeeModel payFeeModel, int idFee){
+		Connection connection;
+		try {
+			connection = SQLConnection.getDbConnection();
+			String query = "INSERT INTO nop_phi( idNhanKhau, idPhiThu, ngay_nop, so_tien)" + " values (?, ?, ?, ?)";
+			PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+			preparedStatement.setInt(1, payFeeModel.getIdNhanKhau());
+			preparedStatement.setInt(2, idFee);
+	        preparedStatement.setDate(3, new Date(app.Main.calendar.getTime().getTime()));
+	        preparedStatement.setInt(4, payFeeModel.getSo_tien());
+
+			preparedStatement.executeUpdate();
+			ResultSet rs = preparedStatement.getGeneratedKeys();
+			if (rs.next()) {
+				return true;
+			}
+			connection.close();
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 	private void exceptionHandle(String message) {
