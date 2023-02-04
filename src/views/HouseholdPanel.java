@@ -46,15 +46,15 @@ public class HouseholdPanel extends JPanel {
 	}
 	
 	private void init() {
-		setBorder(new LineBorder(new Color(204, 153, 255), 2, true));
-		setBackground(new Color(255, 255, 255));
+		setBorder(new EmptyBorder(0, 0, 0, 0));
+		setBackground(new Color(249, 250, 254));
 		setBounds(0, 0, 806, 593);
 		setLayout(null);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new LineBorder(new Color(147, 112, 219), 2, true));
 		panel_1.setBackground(new Color(230, 230, 250));
-		panel_1.setBounds(10, 63, 786, 146);
+		panel_1.setBounds(10, 10, 786, 146);
 		add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -69,7 +69,7 @@ public class HouseholdPanel extends JPanel {
 		themMoiBtn.setBackground(new Color(102, 102, 255));
 		themMoiBtn.setBorderPainted(false);
 		themMoiBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
-		themMoiBtn.setBounds(10, 20, 130, 40);
+		themMoiBtn.setBounds(10, 85, 130, 40);
 		panel_1.add(themMoiBtn);
 		
 		
@@ -98,7 +98,7 @@ public class HouseholdPanel extends JPanel {
 		tachHoKhauBtn.setForeground(new Color(255, 255, 255));
 		tachHoKhauBtn.setBorderPainted(false);
 		tachHoKhauBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
-		tachHoKhauBtn.setBounds(506, 20, 130, 40);
+		tachHoKhauBtn.setBounds(506, 85, 130, 40);
 		panel_1.add(tachHoKhauBtn);
 		
 		chuyenDiBtn = new JButton("Chuyển nơi ở");
@@ -112,7 +112,7 @@ public class HouseholdPanel extends JPanel {
 		chuyenDiBtn.setForeground(new Color(255, 255, 255));
 		chuyenDiBtn.setBorderPainted(false);;
 		chuyenDiBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
-		chuyenDiBtn.setBounds(646, 20, 130, 40);
+		chuyenDiBtn.setBounds(646, 85, 130, 40);
 		panel_1.add(chuyenDiBtn);
 		
 		jtfSearch = new JTextField("Search");
@@ -142,25 +142,19 @@ public class HouseholdPanel extends JPanel {
 		jtfSearch.setSelectionColor(new Color(204, 153, 255));
 		jtfSearch.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		jtfSearch.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(153, 102, 255), null, null, null), new EmptyBorder(0, 10, 0, 0)));
-		jtfSearch.setBounds(10, 93, 766, 43);
+		jtfSearch.setBounds(10, 20, 766, 43);
 		panel_1.add(jtfSearch);
 		jtfSearch.setColumns(10);
-		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBorder(new LineBorder(new Color(153, 102, 255), 2));
-		panel_2.setBackground(new Color(224, 255, 255));
-		panel_2.setBounds(10, 10, 786, 43);
-		add(panel_2);
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(204, 102, 255), null, null, null));
 		panel.setBackground(new Color(204, 204, 255));
-		panel.setBounds(10, 219, 786, 364);
+		panel.setBounds(10, 166, 786, 417);
 		add(panel);
 		panel.setLayout(null);
 		
 		tableJpn = new JPanel();
-		tableJpn.setBounds(10, 10, 766, 344);
+		tableJpn.setBounds(10, 10, 766, 397);
 		tableJpn.setBackground(new Color(255, 255, 255));
 		tableJpn.setLayout(null);
 		panel.add(tableJpn);
