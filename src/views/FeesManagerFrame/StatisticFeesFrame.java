@@ -25,6 +25,7 @@ import models.FeesModel;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 public class StatisticFeesFrame extends JFrame {
 
@@ -43,6 +44,7 @@ public class StatisticFeesFrame extends JFrame {
 	private JTextField jtfSearch;
 	private JButton filterBtn;
 	private JComboBox<String> selectStateJcb;
+	private JLabel summaryLbl;
 
 	public StatisticFeesFrame(JFrame parentFrame, PhiBatBuocBean selectedFee) {
 		this.parentFrame = parentFrame;
@@ -65,7 +67,7 @@ public class StatisticFeesFrame extends JFrame {
 			}
 		});
 
-		controller = new StatisticFeesController(tablePanel, jtfSearch, selectStateJcb, selectedFee);
+		controller = new StatisticFeesController(tablePanel, jtfSearch, selectStateJcb, selectedFee, summaryLbl);
 		controller.setParentJFrame(parentFrame);
 		controller.setData();
 	}
@@ -154,6 +156,12 @@ public class StatisticFeesFrame extends JFrame {
 			}
 		});
         jPanel1.add(filterBtn);
+        
+        summaryLbl = new JLabel("New label");
+        summaryLbl.setBorder(new EmptyBorder(0, 30, 0, 0));
+        summaryLbl.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        summaryLbl.setBounds(10, 10, 855, 47);
+        jPanel1.add(summaryLbl);
 	}
 
     private void jtfSearchActionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,5 +170,4 @@ public class StatisticFeesFrame extends JFrame {
     private void filterBtnActioPerformed() {
     	this.controller.setData();
     }
-    
 }

@@ -13,6 +13,7 @@ import java.util.List;
 
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -42,18 +43,21 @@ public class StatisticFeesController {
 	private FeesModel feesModel;
 	private FeesService feesService;
 	private JComboBox<String> selectStateJcb;
+	private JLabel summaryLbl;
+	
 	private final HoKhauService hoKhauService = new HoKhauService();
 	private final ClassTableModel tableModelHoKhau = new ClassTableModel();
 	private final String COLUMNS[] = { "Mã hộ khẩu", "Họ tên chủ hộ", "Địa chỉ", "Đã nộp", "Cần nộp", "Trạng thái" };
 	private JFrame parentJFrame;
 
-	public StatisticFeesController(JPanel tableJpn, JTextField searchJtf, JComboBox<String> selectStateJcb, PhiBatBuocBean selectedFee) {
+	public StatisticFeesController(JPanel tableJpn, JTextField searchJtf, JComboBox<String> selectStateJcb, PhiBatBuocBean selectedFee, JLabel summaryLbl) {
 		this.searchJtf = searchJtf;
 		this.tableJpn = tableJpn;
 		this.feesModel = selectedFee.getFeesModel();
 		this.feesService = new FeesService();
 		this.list = hoKhauService.getListHoKhau();
 		this.selectStateJcb = selectStateJcb;
+		this.summaryLbl = summaryLbl;
 		initAction();
 	}
 	
@@ -117,7 +121,17 @@ public class StatisticFeesController {
 		}
 		return paidStates;
 	}
-
+	
+	private int numOfCompletePaids(List<Boolean> allPaidStates) {
+		int cnt = 0;
+		for(Boolean state:allPaidStates) {
+			if (state.equals(Boolean.TRUE)) {
+				cnt += 1;
+			}
+		}
+		return cnt;
+	}
+	
 	private JTable setStyleTable(JTable table) {
 		// Set style for table header
 		JTableHeader header = table.getTableHeader();
@@ -160,6 +174,7 @@ public class StatisticFeesController {
 		List<Integer> paids = allPaids(list, feesModel);
 		List<Integer> needs = allNeeds(list, feesModel);
 		List<Boolean> paidStates = allPaidStates(paids, needs);
+		this.summaryLbl.setText("Số hộ khẩu đã nộp là: " + Integer.toString(numOfCompletePaids(paidStates)));
 		DefaultTableModel model = tableModelHoKhau.setHouseholdTable(list, paids, needs, paidStates, COLUMNS);
 		JTable table = new JTable(model) {
 			private static final long serialVersionUID = 1L;
@@ -220,5 +235,6 @@ public class StatisticFeesController {
 	public void setTableJpn(JPanel tableJpn) {
 		this.tableJpn = tableJpn;
 	}
+	
 
 }
