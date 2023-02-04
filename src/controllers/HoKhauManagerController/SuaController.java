@@ -53,6 +53,7 @@ public class SuaController {
     }
     
     public void edit(HoKhauBean hoKhauBean) throws ClassNotFoundException, SQLException{
-        this.hoKhauService.edit(hoKhauBean);
+    	this.hoKhauService.edit(hoKhauBean);
     }
+
 }
