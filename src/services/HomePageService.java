@@ -59,7 +59,7 @@ public class HomePageService {
 		int result = 0;
 		try {
 			Connection connection = SQLConnection.getDbConnection();
-	        String query = "SELECT COUNT(*) AS tong FROM tam_tru WHERE denNgay < NOW()";
+	        String query = "SELECT COUNT(*) AS tong FROM tam_tru WHERE denNgay < GETDATE()";
 	        PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
 	        ResultSet rs = preparedStatement.executeQuery();
 	        while (rs.next()){
@@ -79,7 +79,7 @@ public class HomePageService {
 		int result = 0;
 		try {
 			Connection connection = SQLConnection.getDbConnection();
-	        String query = "SELECT COUNT(*) AS tong FROM tam_vang WHERE denNgay < NOW()";
+	        String query = "SELECT COUNT(*) AS tong FROM tam_vang WHERE denNgay < GETDATE()";
 	        PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
 	        ResultSet rs = preparedStatement.executeQuery();
 	        while (rs.next()){
@@ -100,7 +100,7 @@ public class HomePageService {
 		int result = 0;
 		try {
 			Connection connection = SQLConnection.getDbConnection();
-	        String query = "SELECT COUNT(*) AS tong FROM tam_vang WHERE denNgay < NOW()";
+	        String query = "SELECT COUNT(*) AS tong FROM tam_vang WHERE denNgay < GETDATE()";
 	        PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
 	        ResultSet rs = preparedStatement.executeQuery();
 	        while (rs.next()){

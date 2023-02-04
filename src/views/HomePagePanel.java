@@ -44,13 +44,6 @@ public class HomePagePanel extends JPanel {
 		panel.setBounds(10, 10, 786, 584);
 		add(panel);
 		panel.setLayout(null);
-		
-        JPanel panel_4 = new JPanel();
-        panel_4.setBorder(new EmptyBorder(0, 0, 0, 0));
-        panel_4.setBounds(65, 10, 678, 36);
-        add(panel_4);
-        panel_4.setBackground(new Color(249, 250, 254));
-        panel_4.setLayout(null);
 
 		JPanel jPanel1 = new JPanel();
 		jPanel1.setBackground(new Color(255, 255, 255));
@@ -159,19 +152,19 @@ public class HomePagePanel extends JPanel {
 		panel_2_2.setBounds(88, 10, 222, 80);
 		jPanel5.add(panel_2_2);
 		
-		nhanKhauTamTruLb = new JLabel("Số nhân khẩu tạm trú");
-		nhanKhauTamTruLb.setHorizontalAlignment(SwingConstants.LEFT);
-		nhanKhauTamTruLb.setFont(new Font("Tahoma", Font.BOLD, 15));
-		nhanKhauTamTruLb.setBorder(null);
-		nhanKhauTamTruLb.setBackground(Color.WHITE);
-		nhanKhauTamTruLb.setBounds(10, 0, 202, 40);
-		panel_2_2.add(nhanKhauTamTruLb);
+		JLabel nhanKhauTamTruLbl = new JLabel("Số nhân khẩu tạm trú");
+		nhanKhauTamTruLbl.setHorizontalAlignment(SwingConstants.LEFT);
+		nhanKhauTamTruLbl.setFont(new Font("Tahoma", Font.BOLD, 15));
+		nhanKhauTamTruLbl.setBorder(null);
+		nhanKhauTamTruLbl.setBackground(Color.WHITE);
+		nhanKhauTamTruLbl.setBounds(10, 0, 202, 40);
+		panel_2_2.add(nhanKhauTamTruLbl);
 		
-		JLabel tongNhanKhauLb_2 = new JLabel("0");
-		tongNhanKhauLb_2.setBounds(10, 40, 202, 40);
-		panel_2_2.add(tongNhanKhauLb_2);
-		tongNhanKhauLb_2.setFont(new Font("Tahoma", Font.BOLD, 20));
-		tongNhanKhauLb_2.setBorder(null);
+		nhanKhauTamTruLb = new JLabel("0");
+		nhanKhauTamTruLb.setBounds(10, 40, 202, 40);
+		panel_2_2.add(nhanKhauTamTruLb);
+		nhanKhauTamTruLb.setFont(new Font("Tahoma", Font.BOLD, 20));
+		nhanKhauTamTruLb.setBorder(null);
 		
 		JPanel jPanel7 = new JPanel();
 		jPanel7.setLayout(null);

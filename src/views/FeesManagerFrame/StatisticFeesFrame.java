@@ -45,6 +45,7 @@ public class StatisticFeesFrame extends JFrame {
 	private JButton filterBtn;
 	private JComboBox<String> selectStateJcb;
 	private JLabel summaryLbl;
+	private JButton payBtn;
 
 	public StatisticFeesFrame(JFrame parentFrame, PhiBatBuocBean selectedFee) {
 		this.parentFrame = parentFrame;
@@ -160,8 +161,25 @@ public class StatisticFeesFrame extends JFrame {
         summaryLbl = new JLabel("New label");
         summaryLbl.setBorder(new EmptyBorder(0, 30, 0, 0));
         summaryLbl.setFont(new Font("Tahoma", Font.PLAIN, 15));
-        summaryLbl.setBounds(10, 10, 855, 47);
+        summaryLbl.setBounds(10, 10, 727, 47);
         jPanel1.add(summaryLbl);
+        
+        payBtn = new JButton("Nộp");
+        payBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				payBtnActionPerformed(e);
+			}
+		});
+        payBtn.setForeground(Color.WHITE);
+        payBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
+        payBtn.setBorderPainted(false);
+        payBtn.setBorder(new LineBorder(new Color(153, 102, 255), 4, true));
+        payBtn.setBackground(new Color(102, 102, 255));
+        payBtn.setBounds(747, 10, 118, 45);
+        jPanel1.add(payBtn);
 	}
 
     private void jtfSearchActionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,5 +187,12 @@ public class StatisticFeesFrame extends JFrame {
     
     private void filterBtnActioPerformed() {
     	this.controller.setData();
+    }
+    
+    private void payBtnActionPerformed(ActionEvent evt) {
+    	PayFeeFrame payFeeFrame = new PayFeeFrame(this.controller, this.parentFrame, this.selectedFee);
+    	payFeeFrame.setLocationRelativeTo(null);
+    	payFeeFrame.setResizable(false);
+    	payFeeFrame.setVisible(true);
     }
 }

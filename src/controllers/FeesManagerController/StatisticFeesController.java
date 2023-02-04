@@ -236,5 +236,8 @@ public class StatisticFeesController {
 		this.tableJpn = tableJpn;
 	}
 	
+    public void refreshData() {
+        setData();
+    }
 
 }
