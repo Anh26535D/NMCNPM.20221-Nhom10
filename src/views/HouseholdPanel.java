@@ -84,7 +84,7 @@ public class HouseholdPanel extends JPanel {
 		suaBtn.setBackground(new Color(102, 102, 255));
 		suaBtn.setBorderPainted(false);
 		suaBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
-		suaBtn.setBounds(150, 20, 130, 40);
+		suaBtn.setBounds(148, 85, 130, 40);
 		panel_1.add(suaBtn);
 		
 		tachHoKhauBtn = new JButton("Tách hộ khẩu");
@@ -189,4 +189,5 @@ public class HouseholdPanel extends JPanel {
         tachHoKhau.setResizable(false);
         tachHoKhau.setVisible(true);
     }//GEN-LAST:event_tachHoKhauBtnActionPerformed
+    
 }

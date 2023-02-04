@@ -34,6 +34,8 @@ public class HouseholdPanelController {
     private final TableModelHoKhau tableModelHoKhau = new TableModelHoKhau();
     private final String COLUMNS[] = {"Mã hộ khẩu", "Họ tên chủ hộ", "Địa chỉ"}; 
     private JFrame parentJFrame;
+    
+    private JTable table;
 
     public HouseholdPanelController(JTextField searchJtf, JPanel tableJpn) {
         this.searchJtf = searchJtf;
@@ -83,7 +85,7 @@ public class HouseholdPanelController {
     public void setData() {
         DefaultTableModel model = tableModelHoKhau.setTableHoKhau(list, COLUMNS);
         
-        JTable table = new JTable(model) {
+        table = new JTable(model) {
             private static final long serialVersionUID = 1L;
 
 			@Override
@@ -174,5 +176,5 @@ public class HouseholdPanelController {
     public void setTableJpn(JPanel tableJpn) {
         this.tableJpn = tableJpn;
     }
-    
+
 }

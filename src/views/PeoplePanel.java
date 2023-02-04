@@ -78,7 +78,7 @@ public class PeoplePanel extends javax.swing.JPanel {
 		editBtn.setBackground(new Color(102, 102, 255));
 		editBtn.setBorderPainted(false);
         editBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
-        editBtn.setBounds(150, 20, 130, 40);
+        editBtn.setBounds(150, 85, 130, 40);
         editBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editBtnActionPerformed(evt);
