@@ -2,17 +2,17 @@ package models;
 
 import java.sql.Date;
 
-public class DonationModel {
+public class DonationsModel {
 
 	private int ID;
 	private String ten_khoan_thu;
 	private Date ngay_tao;
 	private int idNguoiTao;
 
-	public DonationModel() {
+	public DonationsModel() {
 	}
 
-	public DonationModel(int iD, String ten_khoan_thu, Date ngay_tao, int idNguoiTao) {
+	public DonationsModel(int iD, String ten_khoan_thu, Date ngay_tao, int idNguoiTao) {
 		super();
 		ID = iD;
 		this.ten_khoan_thu = ten_khoan_thu;
@@ -28,13 +28,16 @@ public class DonationModel {
 		return ten_khoan_thu;
 	}
 
-	public Date getNgay_Tao() {
+	public Date getNgay_tao() {
 		return ngay_tao;
 	}
+
 
 	public int getIdNguoiTao() {
 		return idNguoiTao;
 	}
+
+
 
 	public void setID(int iD) {
 		ID = iD;
@@ -51,5 +54,7 @@ public class DonationModel {
 	public void setIdNguoiTao(int idNguoiTao) {
 		this.idNguoiTao = idNguoiTao;
 	}
+
+
 
 }

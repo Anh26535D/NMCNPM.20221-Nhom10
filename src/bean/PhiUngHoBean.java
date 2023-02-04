@@ -3,25 +3,25 @@ package bean;
 import java.util.ArrayList;
 import java.util.List;
 
-import models.DonationModel;
+import models.DonationsModel;
 
 public class PhiUngHoBean {
 
-    private DonationModel donationModel;
-    private List<DonationModel> donationModels;
+    private DonationsModel donationModel;
+    private List<DonationsModel> donationModels;
     
     public PhiUngHoBean() {
-        this.donationModel = new DonationModel();
-        this.donationModels = new ArrayList<DonationModel>();
+        this.donationModel = new DonationsModel();
+        this.donationModels = new ArrayList<DonationsModel>();
 	}
     
-	public PhiUngHoBean(DonationModel donationModel, List<DonationModel> donationModels) {
+	public PhiUngHoBean(DonationsModel donationModel, List<DonationsModel> donationModels) {
 		super();
 		this.donationModel = donationModel;
 		this.donationModels = donationModels;
 	}
     
-    public DonationModel getDonationModel() {
+    public DonationsModel getDonationModel() {
         return donationModel;
     }
 

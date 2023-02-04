@@ -157,6 +157,7 @@ public class TempAbsenceDFrame extends javax.swing.JFrame {
 				return null;
 			}
 		};
+        noiTamTruJtf.setEnabled(false);
 		noiTamTruJtf.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		noiTamTruJtf.setEditable(false);
 		noiTamTruJtf.setBounds(200, 143, 311, 30);
@@ -256,7 +257,6 @@ public class TempAbsenceDFrame extends javax.swing.JFrame {
 		jLabel3.setText("Mã giấy tạm vắng:");
 
 		maGiayTamVangJtf.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		maGiayTamVangJtf.setEnabled(false);
 		maGiayTamVangJtf.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				maGiayTamVangJtfActionPerformed(evt);
@@ -275,8 +275,6 @@ public class TempAbsenceDFrame extends javax.swing.JFrame {
 		jLabel6.setForeground(new java.awt.Color(255, 0, 0));
 		jLabel6.setText("(*)");
 
-		tuNgayJdc.setEnabled(false);
-
 		jLabel7.setFont(new java.awt.Font("Tohama", 0, 14));
 		jLabel7.setForeground(new java.awt.Color(255, 0, 0));
 		jLabel7.setText("(*)");
@@ -286,8 +284,6 @@ public class TempAbsenceDFrame extends javax.swing.JFrame {
 
 		jLabel9.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		jLabel9.setText("Đến ngày:");
-
-		denNgayJdc.setEnabled(false);
 
 		jLabel10.setFont(new java.awt.Font("Tohama", 0, 14));
 		jLabel10.setForeground(new java.awt.Color(255, 0, 0));
@@ -328,9 +324,9 @@ public class TempAbsenceDFrame extends javax.swing.JFrame {
 		jPanel1.add(jLabel11);
 		jPanel1.add(jScrollPane1);
 		lyDoJta = new javax.swing.JTextArea();
+		lyDoJta.setEnabled(false);
 		lyDoJta.setLineWrap(true);
 		jScrollPane1.setViewportView(lyDoJta);
-		lyDoJta.setEnabled(false);
 		
 				lyDoJta.setColumns(20);
 				lyDoJta.setFont(new Font("Tahoma", Font.PLAIN, 16));

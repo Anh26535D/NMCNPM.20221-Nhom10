@@ -1,6 +1,7 @@
 
 package views.PeopleManagerFrame;
 
+import controllers.PeoplePanelController;
 import controllers.NhanKhauManagerController.DangKyTamTruController;
 
 import java.awt.Color;
@@ -23,6 +24,8 @@ public class TempResidenceDFrame extends javax.swing.JFrame {
     private JFrame parentFrame;
     private DangKyTamTruController controller;
     private TamTruModel tamTruModel;
+	private Object tuNgayJdc;
+	private Object lyDoJta;
 
     public TempResidenceDFrame() {
     	getContentPane().setIgnoreRepaint(true);
@@ -62,13 +65,26 @@ public class TempResidenceDFrame extends javax.swing.JFrame {
             try {
                 long temp = Long.parseLong(cmt);
                 if (cmt.trim().length() != 9 && cmt.trim().length() != 12) {
-                    throw new Exception("Sai dinh dang");
+                    throw new Exception("Sai định dạng");
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Vui lòng nhập đúng định dạng số CMT!", "Warning", JOptionPane.WARNING_MESSAGE);
             }
         }
-        return true;
+        
+        int tempID = controller.checkCMT(this.soCMTJtf.getText());
+        
+		if (tempID != -1) {
+			// khong cho phep sua lai gia tri
+			this.soCMTJtf.setEditable(false);
+			this.availableIcon.setEnabled(true);
+			this.maGiayTamTruJtf.setEnabled(false);
+			this.tamTruModel.setIdNhanKhau(tempID);
+			this.availableIcon.setEnabled(true);
+			JOptionPane.showMessageDialog(this, "OK!!");
+		} 
+		
+		return true;
     }
   
     @SuppressWarnings("unchecked")
@@ -162,8 +178,7 @@ public class TempResidenceDFrame extends javax.swing.JFrame {
         jLabel3.setFont(new Font("Tahoma", Font.PLAIN, 16));  
         jLabel3.setText("Mã giấy tạm trú:");
 
-        maGiayTamTruJtf.setFont(new Font("Tahoma", Font.PLAIN, 16));  
-        maGiayTamTruJtf.setEnabled(false);
+        maGiayTamTruJtf.setFont(new Font("Tahoma", Font.PLAIN, 16));
         maGiayTamTruJtf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 maGiayTamTruJtfActionPerformed(evt);
@@ -174,8 +189,7 @@ public class TempResidenceDFrame extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 0, 0));
         jLabel4.setText("(*)");
 
-        soDienThoaiJtf.setFont(new Font("Tahoma", Font.PLAIN, 16));  
-        soDienThoaiJtf.setEnabled(false);
+        soDienThoaiJtf.setFont(new Font("Tahoma", Font.PLAIN, 16));
         soDienThoaiJtf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 soDienThoaiJtfActionPerformed(evt);
@@ -189,8 +203,6 @@ public class TempResidenceDFrame extends javax.swing.JFrame {
         jLabel6.setFont(new Font("Tahoma", Font.PLAIN, 16));  
         jLabel6.setText("Số điện thoại:");
 
-        tuNgayDc.setEnabled(false);
-
         jLabel7.setFont(new Font("Tahoma", Font.PLAIN, 16));  
         jLabel7.setText("Từ ngày:");
 
@@ -201,8 +213,6 @@ public class TempResidenceDFrame extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Tohama", 0, 14));  
         jLabel9.setForeground(new java.awt.Color(255, 0, 0));
         jLabel9.setText("(*)");
-
-        denNgayDc.setEnabled(false);
 
         jLabel10.setFont(new Font("Tahoma", Font.PLAIN, 16));  
         jLabel10.setText("Đến ngày:");

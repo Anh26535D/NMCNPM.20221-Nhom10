@@ -15,6 +15,8 @@ import controllers.NhanKhauManagerController.KhaiTuController;
 import services.CitizenIdService;
 import utility.SuggestionUtility;
 import javax.swing.GroupLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 // khong check cmt dc
 public class DeathCertiFrame extends javax.swing.JFrame {
@@ -150,6 +152,10 @@ public class DeathCertiFrame extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel4.setBounds(12, 175, 89, 30);
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateChooser1.getCalendarButton().addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        	}
+        });
         jDateChooser1.setFont(new Font("Tahoma", Font.PLAIN, 16));
         jDateChooser1.setEnabled(false);
         jDateChooser1.setOpaque(false);

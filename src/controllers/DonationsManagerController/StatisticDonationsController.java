@@ -26,7 +26,7 @@ import javax.swing.table.TableCellRenderer;
 
 import bean.HoKhauBean;
 import bean.PhiUngHoBean;
-import models.DonationModel;
+import models.DonationsModel;
 import services.DonationsService;
 import services.HoKhauService;
 import services.PeopleService;
@@ -39,7 +39,7 @@ public class StatisticDonationsController {
 	private List<HoKhauBean> list;
 	private JTextField searchJtf;
 	private JPanel tableJpn;
-	private DonationModel donationsModel;
+	private DonationsModel donationsModel;
 	private DonationsService donationsService;
 	private JComboBox<String> selectStateJcb;
 	private final HoKhauService hoKhauService = new HoKhauService();
@@ -94,7 +94,7 @@ public class StatisticDonationsController {
 		});
 	}
 
-	public List<Integer> allPaids(List<HoKhauBean> householdBeans, DonationModel donationsModel) {
+	public List<Integer> allPaids(List<HoKhauBean> householdBeans, DonationsModel donationsModel) {
 		List<Integer> paids = new ArrayList<Integer>();
 		for (int i = 0; i < householdBeans.size(); ++i) {
 			paids.add(donationsService.getPaid(householdBeans.get(i), donationsModel));

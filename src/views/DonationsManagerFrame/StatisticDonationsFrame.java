@@ -20,7 +20,7 @@ import javax.swing.border.LineBorder;
 
 import bean.PhiUngHoBean;
 import controllers.DonationsManagerController.StatisticDonationsController;
-import models.DonationModel;
+import models.DonationsModel;
 
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -37,11 +37,12 @@ public class StatisticDonationsFrame extends JFrame {
 	private StatisticDonationsController controller;
 	private JFrame parentFrame;
 	private PhiUngHoBean selectedDonation;
-	private DonationModel donationsModel;
+	private DonationsModel donationsModel;
 
 	private JPanel tablePanel;
 	private JTextField jtfSearch;
 	private JButton filterBtn;
+	private JButton tongnopBtn;;
 	private JComboBox<String> selectStateJcb;
 
 	public StatisticDonationsFrame(JFrame parentFrame, PhiUngHoBean selectedDonation) {
@@ -95,7 +96,7 @@ public class StatisticDonationsFrame extends JFrame {
 		jtfSearch.setBorder(
 				new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(153, 102, 255), null, null, null),
 						new EmptyBorder(0, 10, 0, 0)));
-		jtfSearch.setBounds(10, 67, 600, 43);
+		jtfSearch.setBounds(10, 67, 472, 43);
 		jtfSearch.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				jtfSearchActionPerformed(evt);
@@ -131,8 +132,8 @@ public class StatisticDonationsFrame extends JFrame {
 		selectStateJcb = new JComboBox<String>();
 		selectStateJcb.setForeground(Color.BLACK);
 		selectStateJcb.setBackground(new Color(255, 255, 255));
-		selectStateJcb.setFont(new Font("Tahoma", Font.BOLD, 10));
-		selectStateJcb.setBounds(620, 67, 117, 43);
+		selectStateJcb.setFont(new Font("Tahoma", Font.BOLD, 15));
+		selectStateJcb.setBounds(492, 67, 117, 43);
 		selectStateJcb.setModel(new DefaultComboBoxModel<>(
 				new String[] {"Tất cả", "Đã nộp", "Còn thiếu"}
 			)
@@ -145,7 +146,7 @@ public class StatisticDonationsFrame extends JFrame {
 		filterBtn.setBackground(new Color(102, 102, 255));
 		filterBtn.setBorderPainted(false);
 		filterBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
-		filterBtn.setBounds(747, 67, 118, 43);
+		filterBtn.setBounds(619, 67, 118, 43);
 		filterBtn.addActionListener(new ActionListener() {
 			
 			@Override
@@ -154,6 +155,22 @@ public class StatisticDonationsFrame extends JFrame {
 			}
 		});
         jPanel1.add(filterBtn);
+        
+        tongnopBtn = new JButton("Tổng thu");
+        tongnopBtn.setForeground(Color.WHITE);
+        tongnopBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
+        tongnopBtn.setBorderPainted(false);
+        tongnopBtn.setBorder(new LineBorder(new Color(153, 102, 255), 4, true));
+        tongnopBtn.setBackground(new Color(102, 102, 255));
+        tongnopBtn.setBounds(747, 67, 118, 43);
+        tongnopBtn.addActionListener(new ActionListener() {
+			
+			@Override
+		public void actionPerformed(ActionEvent e) {	
+				tongnopBtnActioPerformed();
+			}
+		});
+        jPanel1.add(tongnopBtn);
 	}
 
     private void jtfSearchActionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,5 +179,7 @@ public class StatisticDonationsFrame extends JFrame {
     private void filterBtnActioPerformed() {
     	this.controller.setData();
     }
-    
+    private void tongnopBtnActioPerformed() {
+    	this.controller.setData();
+    }
 }
