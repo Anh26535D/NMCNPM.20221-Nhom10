@@ -29,6 +29,7 @@ import utility.TableModelHoKhau;
 
 import views.HouseholdManagerFrame.HouseholdSeper;
 import views.infoViews.InfoJframe;
+
 public class TachHoKhauController {
     private JTextField searchJtf;
     private JPanel tableTopJpn;
@@ -45,67 +46,70 @@ public class TachHoKhauController {
     private JButton acceptBtn;
     private final HoKhauService hoKhauService = new HoKhauService();
     private JFrame tachHoKhauJFrame;
-    
+
     private List<HoKhauBean> listHoKhau;
     private final List<MemOfFamily> listThanhVienTrongHoMoi = new ArrayList<>();
     private List<MemOfFamily> listThanhVien;
     private final TableModelHoKhau tableModelHoKhau = new TableModelHoKhau();
     private final String[] COLUMNS_NK = {"Họ tên", "Ngày sinh", "Quan hệ với chủ hộ"};
-    private final String[] COLUNMS = {"Mã hộ khẩu", "Họ tên chủ hộ", "Địa chỉ"}; 
+    private final String[] COLUNMS = {"Mã hộ khẩu", "Họ tên chủ hộ", "Địa chỉ"};
     private HoKhauBean hoKhauSelected;
     private MemOfFamily thanhVienSeclected;
     private MemOfFamily thanhVienHoMoiSeclected;
     private final HoKhauBean hoKhauMoi = new HoKhauBean();
-    
+
     public TachHoKhauController(JFrame tachHoKhauJFrame) {
         this.tachHoKhauJFrame = tachHoKhauJFrame;
     }
-    
+
     public void init() {
         listHoKhau = this.hoKhauService.getListHoKhau();
         setData();
-        
+
         searchJtf.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                String key = searchJtf.getText().trim();
-                if (key.isEmpty()) {
+                String key = searchJtf.getText();
+                if (!key.trim().equals("") && !key.trim().equals("Search")) {
+                    listHoKhau = hoKhauService.search(key.trim());
+                    setData();
+                } else if (key.trim().equals("")) {
                     listHoKhau = hoKhauService.getListHoKhau();
-                } else {
-                    listHoKhau = hoKhauService.search(key);
+                    setData();
                 }
-                setData();
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                String key = searchJtf.getText().trim();
-                if (key.isEmpty()) {
+                String key = searchJtf.getText();
+                if (!key.trim().equals("") && !key.trim().equals("Search")) {
+                    listHoKhau = hoKhauService.search(key.trim());
+                    setData();
+                } else if (key.trim().equals("")) {
                     listHoKhau = hoKhauService.getListHoKhau();
-                } else {
-                    listHoKhau = hoKhauService.search(key);
+                    setData();
                 }
-                setData();
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                String key = searchJtf.getText().trim();
-                if (key.isEmpty()) {
+                String key = searchJtf.getText();
+                if (!key.trim().equals("") && !key.trim().equals("Search")) {
+                    listHoKhau = hoKhauService.search(key.trim());
+                    setData();
+                } else if (key.trim().equals("")) {
                     listHoKhau = hoKhauService.getListHoKhau();
-                } else {
-                    listHoKhau = hoKhauService.search(key);
+                    setData();
                 }
-                setData();
             }
         });
-        
+
         addBtn.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 try {
                     boolean isInHoMoi = false;
-                    for(ThanhVienCuaHoModel item : hoKhauMoi.getListThanhVienCuaHo()) {
+                    for (ThanhVienCuaHoModel item : hoKhauMoi.getListThanhVienCuaHo()) {
                         if (item.getIdNhanKhau() == thanhVienSeclected.getNhanKhau().getNhanKhauModel().getID()) {
                             isInHoMoi = true;
                         }
@@ -114,7 +118,7 @@ public class TachHoKhauController {
                         JOptionPane.showMessageDialog(null, "Nhân khẩu đã nằm trong hộ mới.");
                     } else {
                         String quanHeVoiChuHo = "";
-                        while (quanHeVoiChuHo.trim().isEmpty()) {                        
+                        while (quanHeVoiChuHo.trim().isEmpty()) {
                             quanHeVoiChuHo = JOptionPane.showInputDialog(null, "Nhập quan hệ với chủ hộ: ", thanhVienSeclected.getNhanKhau().getNhanKhauModel().getHoTen(), 0);
                         }
                         if (quanHeVoiChuHo.equalsIgnoreCase("Chủ hộ")) {
@@ -133,7 +137,7 @@ public class TachHoKhauController {
                 }
             }
         });
-        
+
         removeBtn.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -149,31 +153,31 @@ public class TachHoKhauController {
                 } catch (Exception exception) {
                 }
             }
-            
+
         });
-        
+
         acceptBtn.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if (maKhuVucJtf.getText().trim().isEmpty() 
-                        || diaChiJtf.getText().trim().isEmpty() 
-                        || maHoKhauMoiJtf.getText().trim().isEmpty() 
+                if (maKhuVucJtf.getText().trim().isEmpty()
+                        || diaChiJtf.getText().trim().isEmpty()
+                        || maHoKhauMoiJtf.getText().trim().isEmpty()
                         || chuHoMoiJtf.getText().trim().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Vui lòng nhập hết các trường bắt buộc!");
                 } else {
                     hoKhauMoi.getHoKhauModel().setDiaChi(diaChiJtf.getText().trim());
-                    hoKhauMoi.getHoKhauModel().setMaHoKhau( maHoKhauMoiJtf.getText().trim());
+                    hoKhauMoi.getHoKhauModel().setMaHoKhau(maHoKhauMoiJtf.getText().trim());
                     hoKhauMoi.getHoKhauModel().setMaKhuVuc(maKhuVucJtf.getText().trim());
                     hoKhauService.tachHoKhau(hoKhauMoi);
-                    HouseholdSeper tachHoKhau = (HouseholdSeper)tachHoKhauJFrame;
+                    HouseholdSeper tachHoKhau = (HouseholdSeper) tachHoKhauJFrame;
                     tachHoKhau.getParentJFrame().setEnabled(true);
                     tachHoKhau.dispose();
                 }
             }
-            
+
         });
     }
-    
+
     public void setData() {
         TableModel hokhau_model = this.tableModelHoKhau.setTableHoKhau(listHoKhau, COLUNMS);
         JTable table = new JTable(hokhau_model) {
@@ -188,13 +192,13 @@ public class TachHoKhauController {
         table.validate();
         table.repaint();
         table.setFont(new Font("Arial", Font.PLAIN, 14));
-        
+
         table.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 HoKhauBean temp = listHoKhau.get(table.getSelectedRow());
                 if (e.getClickCount() > 1) {
-                	InfoJframe infoJframe = new InfoJframe(temp.toString(), tachHoKhauJFrame);
+                    InfoJframe infoJframe = new InfoJframe(temp.toString(), tachHoKhauJFrame);
                     infoJframe.setLocationRelativeTo(null);
                     infoJframe.setVisible(true);
                 } else {
@@ -204,9 +208,9 @@ public class TachHoKhauController {
                     setDataChoose();
                 }
             }
-            
+
         });
-        
+
         JScrollPane scroll = new JScrollPane();
         scroll.getViewport().add(table);
         scroll.getViewport().setBackground(Color.white);
@@ -217,7 +221,7 @@ public class TachHoKhauController {
         tableTopJpn.validate();
         tableTopJpn.repaint();
     }
-    
+
     public void setDataChoose() {
         listThanhVien = new ArrayList<>();
         for (int i = 0; i < hoKhauSelected.getListNhanKhauModels().size(); i++) {
@@ -227,13 +231,13 @@ public class TachHoKhauController {
             listThanhVien.add(temp);
         }
         DefaultTableModel model = tableModelHoKhau.setTableMember(listThanhVien, COLUMNS_NK);
-        
+
         JTable table = new JTable(model) {
             @Override
             public boolean editCellAt(int row, int column, EventObject e) {
                 return false;
             }
-            
+
         };
         table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
         table.getTableHeader().setPreferredSize(new Dimension(100, 30));
@@ -241,15 +245,15 @@ public class TachHoKhauController {
         table.validate();
         table.repaint();
         table.setFont(new Font("Arial", Font.PLAIN, 14));
-        
+
         table.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 thanhVienSeclected = listThanhVien.get(table.getSelectedRow());
             }
-            
+
         });
-        
+
         JScrollPane scroll = new JScrollPane();
         scroll.getViewport().add(table);
         scroll.getViewport().setBackground(Color.white);
@@ -260,9 +264,9 @@ public class TachHoKhauController {
         tableBotJpn.validate();
         tableBotJpn.repaint();
     }
-    
+
     public void setDataHoMoi() {
-        
+
         listThanhVienTrongHoMoi.clear();
         for (int i = 0; i < hoKhauMoi.getListNhanKhauModels().size(); i++) {
             MemOfFamily temp = new MemOfFamily();
@@ -271,13 +275,13 @@ public class TachHoKhauController {
             listThanhVienTrongHoMoi.add(temp);
         }
         DefaultTableModel model = tableModelHoKhau.setTableMember(listThanhVienTrongHoMoi, COLUMNS_NK);
-        
+
         JTable table = new JTable(model) {
             @Override
             public boolean editCellAt(int row, int column, EventObject e) {
                 return false;
             }
-            
+
         };
         table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
         table.getTableHeader().setPreferredSize(new Dimension(100, 30));
@@ -285,15 +289,15 @@ public class TachHoKhauController {
         table.validate();
         table.repaint();
         table.setFont(new Font("Arial", Font.PLAIN, 14));
-        
+
         table.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 thanhVienHoMoiSeclected = listThanhVienTrongHoMoi.get(table.getSelectedRow());
             }
-            
+
         });
-        
+
         JScrollPane scroll = new JScrollPane();
         scroll.getViewport().add(table);
         scroll.getViewport().setBackground(Color.white);
