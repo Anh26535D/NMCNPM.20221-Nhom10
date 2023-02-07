@@ -3,6 +3,7 @@ package controllers.FeesManagerController;
 import java.sql.SQLException;
 
 import bean.PhiBatBuocBean;
+import models.FeesModel;
 import services.FeesService;
 
 public class AddNewFeeController {
@@ -15,5 +16,9 @@ public class AddNewFeeController {
 
 	public boolean newFee(PhiBatBuocBean phiBatBuocBean) throws SQLException, ClassNotFoundException{
 		return feesService.newFee(phiBatBuocBean);
+	}
+
+	public  boolean checkDuplicate(FeesModel value){
+		return  feesService.checkDuplicate(value);
 	}
 }

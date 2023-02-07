@@ -107,9 +107,9 @@ public class StatisticDonationsFrame extends JFrame {
 		jtfSearch.addFocusListener(new FocusListener() {
 			@Override
 			public void focusGained(FocusEvent e) {
-				if (jtfSearch.getText().equals("Search")) {
+				if (jtfSearch.getText().trim().equals("Search")) {
+					jtfSearch.setForeground(Color.black);
 					jtfSearch.setText("");
-					jtfSearch.setForeground(Color.BLACK);
 				}
 			}
 

@@ -29,7 +29,7 @@ import utility.ClassTableModel;
 import views.infoViews.InfoJframe;
 
 public class PeoplePanelController {
-    
+
     private JPanel jpnView;
     private JTextField jtfSearch;
     private PeopleService peopleService;
@@ -49,72 +49,87 @@ public class PeoplePanelController {
 
     public PeoplePanelController() {
     }
-    
-    public void initAction(){
+
+    public void initAction() {
         this.jtfSearch.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
                 String key = jtfSearch.getText();
-                listNhanKhauBeans = peopleService.search(key.trim());
-                setData();
+                if (!key.trim().equals("") && !key.trim().equals("Search")) {
+                    listNhanKhauBeans = peopleService.search(key.trim());
+                    setData();
+                } else if (key.trim().equals("")) {
+                    listNhanKhauBeans = peopleService.getListNhanKhau();
+                    setData();
+                }
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
                 String key = jtfSearch.getText();
-                listNhanKhauBeans = peopleService.search(key.trim());
-                setData();
+                if (!key.trim().equals("") && !key.trim().equals("Search")) {
+                    listNhanKhauBeans = peopleService.search(key.trim());
+                    setData();
+                } else if (key.trim().equals("")) {
+                    listNhanKhauBeans = peopleService.getListNhanKhau();
+                    setData();
+                }
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
                 String key = jtfSearch.getText();
-                listNhanKhauBeans = peopleService.search(key.trim());
-                setData();
+                if (!key.trim().equals("") && !key.trim().equals("Search")) {
+                    listNhanKhauBeans = peopleService.search(key.trim());
+                    setData();
+                } else if (key.trim().equals("")) {
+                    listNhanKhauBeans = peopleService.getListNhanKhau();
+                    setData();
+                }
             }
         });
     }
-    
+
     public void setData() {
         List<NhanKhauModel> listItem = new ArrayList<>();
         this.listNhanKhauBeans.forEach(nhankhau -> {
             listItem.add(nhankhau.getNhanKhauModel());
         });
-        
+
         DefaultTableModel model = classTableModel.setTableNhanKhau(listItem, COLUMNS);
         JTable table = new JTable(model) {
             private static final long serialVersionUID = 1L;
 
-			@Override
+            @Override
             public boolean editCellAt(int row, int column, EventObject e) {
                 return false;
             }
-			
+
             @Override
-	        public Component prepareRenderer(TableCellRenderer renderer,int row,int column){
-	            Component comp=super.prepareRenderer(renderer,row, column);
-	           int modelRow=convertRowIndexToModel(row);
-	           if(!isRowSelected(modelRow))
-	               comp.setBackground(Color.WHITE);
-	           else
-	               comp.setBackground(new Color(102, 102, 255));
-	           return comp;
-	        }
-            
+            public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
+                Component comp = super.prepareRenderer(renderer, row, column);
+                int modelRow = convertRowIndexToModel(row);
+                if (!isRowSelected(modelRow))
+                    comp.setBackground(Color.WHITE);
+                else
+                    comp.setBackground(new Color(102, 102, 255));
+                return comp;
+            }
+
         };
-       
+
         //Set style for table header
         JTableHeader header = table.getTableHeader();
         header.setReorderingAllowed(false);
         header.setResizingAllowed(false);
         header.setFont(new Font("Tahoma", Font.BOLD, 15));
-        
+
         header.setOpaque(false);
         header.setBackground(new Color(230, 230, 255));
         header.setForeground(Color.black);
-        
+
         header.setPreferredSize(new Dimension(100, 50));
-        
+
         //Set style for table content
         table.setRowHeight(30);
         table.validate();
@@ -135,9 +150,9 @@ public class PeoplePanelController {
                     infoJframe.setVisible(true);
                 }
             }
-            
+
         });
-        
+
         JScrollPane scroll = new JScrollPane();
         scroll.getViewport().setBackground(Color.white);
         scroll.getViewport().add(table);
@@ -151,11 +166,12 @@ public class PeoplePanelController {
     public void setParentJFrame(JFrame parentJFrame) {
         this.parentJFrame = parentJFrame;
     }
-    
+
     public void refreshData() {
         this.listNhanKhauBeans = this.peopleService.getListNhanKhau();
         setData();
     }
+
     public JPanel getJpnView() {
         return jpnView;
     }
@@ -171,5 +187,5 @@ public class PeoplePanelController {
     public void setJtfSearch(JTextField jtfSearch) {
         this.jtfSearch = jtfSearch;
     }
-    
+
 }
