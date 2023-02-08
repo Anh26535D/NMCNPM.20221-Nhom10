@@ -7,93 +7,85 @@ import javax.swing.JPanel;
 
 public class InfoJframe extends javax.swing.JFrame {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 	private String content;
-    private JFrame parentJFrame;
+	private JFrame parentJFrame;
 
-    public InfoJframe(String content, JFrame parentJFrame) {
-        initComponents();
-        this.content = content;
-        this.contentJlb.setText(content);
-        this.parentJFrame = parentJFrame;
-        parentJFrame.setEnabled(false);
-        this.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                close();
-            }
-            
-        });
-        this.setTitle("Thông tin chi tiết");
-    }
-    
-    public void close() {
-        this.parentJFrame.setEnabled(true);
-        dispose();
-    }
+	private javax.swing.JLabel contentJlb;
+	private javax.swing.JPanel jPanel1;
+	private javax.swing.JScrollPane jScrollPane1;
 
-    private void initComponents() {
+	public InfoJframe(String content, JFrame parentJFrame) {
+		initComponents();
+		this.content = content;
+		this.contentJlb.setText(content);
+		this.parentJFrame = parentJFrame;
+		parentJFrame.setEnabled(false);
+		this.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				close();
+			}
 
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        contentJlb = new javax.swing.JLabel();
+		});
+		this.setTitle("Thông tin chi tiết");
+	}
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+	public void close() {
+		this.parentJFrame.setEnabled(true);
+		dispose();
+	}
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+	private void initComponents() {
 
-        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+		jPanel1 = new javax.swing.JPanel();
+		jScrollPane1 = new javax.swing.JScrollPane();
+		contentJlb = new javax.swing.JLabel();
 
-        contentJlb.setBackground(new java.awt.Color(255, 255, 255));
-        contentJlb.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        contentJlb.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        contentJlb.setText("jLabel1");
-        contentJlb.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jScrollPane1.setViewportView(contentJlb);
+		setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 704, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)
-        );
+		jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+		jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
 
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
+		contentJlb.setBackground(new java.awt.Color(255, 255, 255));
+		contentJlb.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+		contentJlb.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+		contentJlb.setText("jLabel1");
+		contentJlb.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+		jScrollPane1.setViewportView(contentJlb);
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel contentJlb;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    // End of variables declaration//GEN-END:variables
-    public String getContent() {
-        return content;
-    }
+		javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+		jPanel1.setLayout(jPanel1Layout);
+		jPanel1Layout.setHorizontalGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 704, Short.MAX_VALUE));
+		jPanel1Layout.setVerticalGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE));
 
-    public void setContent(String content) {
-        this.content = content;
-    }
+		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+		getContentPane().setLayout(layout);
+		layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(
+				jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
+		layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(
+				jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
 
-    public JPanel getjPanel1() {
-        return jPanel1;
-    }
+		pack();
+	}// </editor-fold>//GEN-END:initComponents
 
-    public void setjPanel1(JPanel jPanel1) {
-        this.jPanel1 = jPanel1;
-    }
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public JPanel getjPanel1() {
+		return jPanel1;
+	}
+
+	public void setjPanel1(JPanel jPanel1) {
+		this.jPanel1 = jPanel1;
+	}
+
 }
