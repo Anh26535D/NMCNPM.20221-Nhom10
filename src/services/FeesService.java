@@ -127,7 +127,6 @@ public class FeesService {
             }
             connection.close();
 			preparedStatement.executeUpdate();
-			ResultSet rs = preparedStatement.getGeneratedKeys();
 			if (rs.next()) {
 				return true;
 			}
