@@ -181,6 +181,10 @@ public class NewFeeFrame extends JFrame {
 			temp.setSo_tien(Integer.parseInt(soTienJtf.getText()));
 			temp.setDot_thu(dotThuJtf.getText());
 			temp.setIdNguoiTao(LoginController.currentUser.getID());
+			if(this.controller.checkDuplicate(temp)){
+				JOptionPane.showMessageDialog(null,"Phí đã tồn tại!!");
+				return;
+			}
 			try {
 				if (this.controller.newFee(this.phiBatBuocBean)) {
 					JOptionPane.showMessageDialog(null, "Thêm thành công!!");

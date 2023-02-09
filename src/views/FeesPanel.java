@@ -25,42 +25,43 @@ import javax.swing.JLabel;
 
 public class FeesPanel extends JPanel {
 
-	private static final long serialVersionUID = 1L;
-	private FeesController controller;
-	
-	private JFrame parentFrame;
-	
-	private JPanel tablePanel;
-	private JTextField jtfSearch;
-	private JButton addNewBtn;
-	private JButton editBtn;
+    private static final long serialVersionUID = 1L;
+    private FeesController controller;
 
-	public FeesPanel(JFrame parentFrame) {
-		this.parentFrame = parentFrame;
-		init();
-	    controller = new FeesController(tablePanel, jtfSearch);
+    private JFrame parentFrame;
+
+    private JPanel tablePanel;
+    private JTextField jtfSearch;
+    private JButton addNewBtn;
+    private JButton editBtn;
+
+    public FeesPanel(JFrame parentFrame) {
+        this.parentFrame = parentFrame;
+        init();
+        controller = new FeesController(tablePanel, jtfSearch);
         controller.setParentFrame(parentFrame);
         controller.setData();
-	}
-	
-	private void init() {
-		setBorder(new EmptyBorder(0, 0, 0, 0));
-		setBackground(new Color(249, 250, 254));
-		setBounds(0, 0, 806, 593);
-		setLayout(null);
-		
-	    JPanel panel = new JPanel();
-	    panel.setBorder(new LineBorder(new Color(147, 112, 219), 2, true));
-	    panel.setBackground(new Color(230, 230, 250));
-	    panel.setBounds(10, 10, 786, 80);
-	    add(panel);
-	    panel.setLayout(null);
-	    
+    }
+
+    private void init() {
+        setBorder(new EmptyBorder(0, 0, 0, 0));
+        setBackground(new Color(249, 250, 254));
+        setBounds(0, 0, 806, 593);
+        setLayout(null);
+
+        JPanel panel = new JPanel();
+        panel.setBorder(new LineBorder(new Color(147, 112, 219), 2, true));
+        panel.setBackground(new Color(230, 230, 250));
+        panel.setBounds(10, 10, 786, 80);
+        add(panel);
+        panel.setLayout(null);
+
+
         addNewBtn = new JButton("Mới");
-		addNewBtn.setBorder(new LineBorder(new Color(153, 102, 255), 4, true));
-		addNewBtn.setForeground(new Color(255, 255, 255));
-		addNewBtn.setBackground(new Color(102, 102, 255));
-		addNewBtn.setBorderPainted(false);
+        addNewBtn.setBorder(new LineBorder(new Color(153, 102, 255), 4, true));
+        addNewBtn.setForeground(new Color(255, 255, 255));
+        addNewBtn.setBackground(new Color(102, 102, 255));
+        addNewBtn.setBorderPainted(false);
         addNewBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
         addNewBtn.setBounds(10, 20, 85, 40);
         addNewBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -69,7 +70,7 @@ public class FeesPanel extends JPanel {
             }
         });
         panel.add(addNewBtn);
-        
+
         editBtn = new JButton("Sửa");
         editBtn.setBorder(new LineBorder(new Color(153, 102, 255), 4, true));
         editBtn.setForeground(new Color(255, 255, 255));
@@ -79,12 +80,13 @@ public class FeesPanel extends JPanel {
         editBtn.setBounds(105, 20, 85, 40);
         editBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-            	editBtnActionPerformed(evt);
+                editBtnActionPerformed(evt);
             }
         });
         panel.add(editBtn);
-		
-		jtfSearch = new JTextField("Search");
+
+        jtfSearch = new JTextField("Search");
+
         jtfSearch.setSelectionColor(new Color(204, 153, 255));
         jtfSearch.setForeground(Color.GRAY);
         jtfSearch.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -97,53 +99,55 @@ public class FeesPanel extends JPanel {
             }
         });
 
-		jtfSearch.setForeground(Color.GRAY);
-		jtfSearch.addFocusListener(new FocusListener() {
-		    @Override
-		    public void focusGained(FocusEvent e) {
-		        if (jtfSearch.getText().equals("Search")) {
-		        	jtfSearch.setText("");
-		        	jtfSearch.setForeground(Color.BLACK);
-		        }
-		    }
-		    @Override
-		    public void focusLost(FocusEvent e) {
-		        if (jtfSearch.getText().isEmpty()) {
-		        	jtfSearch.setForeground(Color.GRAY);
-		        	jtfSearch.setText("Search");
-		        }
-		    }
-		    });
+        jtfSearch.setForeground(Color.GRAY);
+        jtfSearch.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (jtfSearch.getText().trim().equals("Search")) {
+                    jtfSearch.setForeground(Color.black);
+                    jtfSearch.setText("");
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (jtfSearch.getText().isEmpty()) {
+                    jtfSearch.setForeground(Color.GRAY);
+                    jtfSearch.setText("Search");
+                }
+            }
+        });
         panel.add(jtfSearch);
-		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(204, 102, 255), null, null, null));
-		panel_1.setBackground(new Color(204, 204, 255));
-		panel_1.setBounds(10, 100, 786, 483);
-		add(panel_1);
-		panel_1.setLayout(null);
-		
-		tablePanel = new JPanel();
-		tablePanel.setBounds(10, 10, 766, 463);
-		tablePanel.setBackground(new Color(255, 255, 255));
-		tablePanel.setLayout(null);
-		panel_1.add(tablePanel);
-	}
-	
+
+        JPanel panel_1 = new JPanel();
+        panel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(204, 102, 255), null, null, null));
+        panel_1.setBackground(new Color(204, 204, 255));
+        panel_1.setBounds(10, 100, 786, 483);
+        add(panel_1);
+        panel_1.setLayout(null);
+
+        tablePanel = new JPanel();
+        tablePanel.setBounds(10, 10, 766, 463);
+        tablePanel.setBackground(new Color(255, 255, 255));
+        tablePanel.setLayout(null);
+        panel_1.add(tablePanel);
+    }
+
     private void addNewBtnActionPerformed(java.awt.event.ActionEvent evt) {
-    	NewFeeFrame addNewFeeFrame = new NewFeeFrame(this.controller, this.parentFrame);
+        NewFeeFrame addNewFeeFrame = new NewFeeFrame(this.controller, this.parentFrame);
         addNewFeeFrame.setLocationRelativeTo(null);
         addNewFeeFrame.setResizable(false);
         addNewFeeFrame.setVisible(true);
     }
-    
+
     private void editBtnActionPerformed(ActionEvent evt) {
-    	EditFeeFrame editFeeFrame = new EditFeeFrame(this.controller, this.parentFrame);
-    	editFeeFrame.setLocationRelativeTo(null);
-    	editFeeFrame.setResizable(false);
-    	editFeeFrame.setVisible(true);
+        EditFeeFrame editFeeFrame = new EditFeeFrame(this.controller, this.parentFrame);
+        editFeeFrame.setLocationRelativeTo(null);
+        editFeeFrame.setResizable(false);
+        editFeeFrame.setVisible(true);
     }
-	
+
+
     private void jtfSearchActionPerformed(java.awt.event.ActionEvent evt) {
     }
 }

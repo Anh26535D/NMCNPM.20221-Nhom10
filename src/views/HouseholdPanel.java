@@ -18,16 +18,18 @@ import javax.swing.JFrame;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.Font;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 
 public class HouseholdPanel extends JPanel {
-	private static final long serialVersionUID = 1L;
-	
-	private JFrame parentFrame;
+    private static final long serialVersionUID = 1L;
+
+    private JFrame parentFrame;
     private HouseholdPanelController controller;
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private JButton chuyenDiBtn;
     private JTextField jtfSearch;
@@ -38,8 +40,8 @@ public class HouseholdPanel extends JPanel {
     
     // End of variables declaration//GEN-END:variables
 
-	public HouseholdPanel(JFrame parentFrame) {
-		this.parentFrame = parentFrame;
+    public HouseholdPanel(JFrame parentFrame) {
+        this.parentFrame = parentFrame;
         init();
         controller = new HouseholdPanelController(jtfSearch, tableJpn);
         controller.setParentJFrame(parentFrame);
@@ -59,6 +61,7 @@ public class HouseholdPanel extends JPanel {
 		panel_1.setLayout(null);
 		
 		themMoiBtn = new JButton("Mới");
+
         themMoiBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 themMoiBtnActionPerformed(evt);
@@ -88,6 +91,7 @@ public class HouseholdPanel extends JPanel {
 		panel_1.add(suaBtn);
 		
 		tachHoKhauBtn = new JButton("Tách hộ khẩu");
+
         tachHoKhauBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tachHoKhauBtnActionPerformed(evt);
@@ -102,6 +106,7 @@ public class HouseholdPanel extends JPanel {
 		panel_1.add(tachHoKhauBtn);
 		
 		chuyenDiBtn = new JButton("Chuyển nơi ở");
+
         chuyenDiBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chuyenDiBtnActionPerformed(evt);
@@ -116,6 +121,7 @@ public class HouseholdPanel extends JPanel {
 		panel_1.add(chuyenDiBtn);
 		
 		jtfSearch = new JTextField("Search");
+
         jtfSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfSearchActionPerformed(evt);
@@ -124,20 +130,21 @@ public class HouseholdPanel extends JPanel {
 
 		jtfSearch.setForeground(Color.GRAY);
 		jtfSearch.addFocusListener(new FocusListener() {
-		    @Override
-		    public void focusGained(FocusEvent e) {
-		        if (jtfSearch.getText().equals("Search")) {
-		        	jtfSearch.setText("");
-		        	jtfSearch.setForeground(Color.BLACK);
-		        }
-		    }
-		    @Override
-		    public void focusLost(FocusEvent e) {
-		        if (jtfSearch.getText().isEmpty()) {
-		        	jtfSearch.setForeground(Color.GRAY);
-		        	jtfSearch.setText("Search");
-		        }
-		    }
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (jtfSearch.getText().trim().equals("Search")) {
+                    jtfSearch.setForeground(Color.black);
+                    jtfSearch.setText("");
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (jtfSearch.getText().isEmpty()) {
+                    jtfSearch.setForeground(Color.GRAY);
+                    jtfSearch.setText("Search");
+                }
+            }
 		    });
 		jtfSearch.setSelectionColor(new Color(204, 153, 255));
 		jtfSearch.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -160,6 +167,7 @@ public class HouseholdPanel extends JPanel {
 		panel.add(tableJpn);
 	}
 	
+
     private void jtfSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfSearchActionPerformed
     }//GEN-LAST:event_jtfSearchActionPerformed
 

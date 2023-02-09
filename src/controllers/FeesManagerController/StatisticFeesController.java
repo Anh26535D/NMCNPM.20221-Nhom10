@@ -65,35 +65,38 @@ public class StatisticFeesController {
 		this.searchJtf.getDocument().addDocumentListener(new DocumentListener() {
 			@Override
 			public void insertUpdate(DocumentEvent e) {
-				String key = searchJtf.getText().trim();
-				if (key.isEmpty()) {
+				String key = searchJtf.getText();
+				if (!key.trim().equals("") && !key.trim().equals("Search")) {
+					list = hoKhauService.search(key.trim());
+					setData();
+				} else if (key.trim().equals("")) {
 					list = hoKhauService.getListHoKhau();
-				} else {
-					list = hoKhauService.search(key);
+					setData();
 				}
-				setData();
 			}
 
 			@Override
 			public void removeUpdate(DocumentEvent e) {
-				String key = searchJtf.getText().trim();
-				if (key.isEmpty()) {
+				String key = searchJtf.getText();
+				if (!key.trim().equals("") && !key.trim().equals("Search")) {
+					list = hoKhauService.search(key.trim());
+					setData();
+				} else if (key.trim().equals("")) {
 					list = hoKhauService.getListHoKhau();
-				} else {
-					list = hoKhauService.search(key);
+					setData();
 				}
-				setData();
 			}
 
 			@Override
 			public void changedUpdate(DocumentEvent e) {
-				String key = searchJtf.getText().trim();
-				if (key.isEmpty()) {
+				String key = searchJtf.getText();
+				if (!key.trim().equals("") && !key.trim().equals("Search")) {
+					list = hoKhauService.search(key.trim());
+					setData();
+				} else if (key.trim().equals("")) {
 					list = hoKhauService.getListHoKhau();
-				} else {
-					list = hoKhauService.search(key);
+					setData();
 				}
-				setData();
 			}
 		});
 	}

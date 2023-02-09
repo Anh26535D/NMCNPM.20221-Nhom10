@@ -39,7 +39,7 @@ public class DonationsController {
     private ClassTableModel classTableModel = null;
     private final String[] COLUMNS = {"ID", "Tên khoản thu", "Ngày lập", "Đã thu"};
     private JFrame parentFrame;
-	private JTable table;
+    private JTable table;
 
     public DonationsController(JPanel jpnView, JTextField jtfSearch) {
         this.jpnView = jpnView;
@@ -52,76 +52,91 @@ public class DonationsController {
 
     public DonationsController() {
     }
-    
+
     public void setParentFrame(JFrame parentFrame) {
         this.parentFrame = parentFrame;
     }
-    
-    public void initAction(){
+
+    public void initAction() {
         this.jtfSearch.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
                 String key = jtfSearch.getText();
-                listPhiUngHoBeans = donationsService.searchDonationByID(key.trim());
-                setData();
+                if (!key.trim().equals("") && !key.trim().equals("Search")) {
+                    listPhiUngHoBeans = donationsService.searchDonationByID(key.trim());
+                    setData();
+                } else if (key.trim().equals("")) {
+                    listPhiUngHoBeans = donationsService.allDonations();
+                    setData();
+                }
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
                 String key = jtfSearch.getText();
-                listPhiUngHoBeans = donationsService.searchDonationByID(key.trim());
-                setData();
+                if (!key.trim().equals("") && !key.trim().equals("Search")) {
+                    listPhiUngHoBeans = donationsService.searchDonationByID(key.trim());
+                    setData();
+                } else if (key.trim().equals("")) {
+                    listPhiUngHoBeans = donationsService.allDonations();
+                    setData();
+                }
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
                 String key = jtfSearch.getText();
-                listPhiUngHoBeans = donationsService.searchDonationByID(key.trim());
-                setData();
+                if (!key.trim().equals("") && !key.trim().equals("Search")) {
+                    listPhiUngHoBeans = donationsService.searchDonationByID(key.trim());
+                    setData();
+                } else if (key.trim().equals("")) {
+                    listPhiUngHoBeans = donationsService.allDonations();
+                    setData();
+                }
             }
         });
     }
-    
+
     public void setData() {
         List<DonationsModel> listItem = new ArrayList<>();
         this.listPhiUngHoBeans.forEach(nhankhau -> {
             listItem.add(nhankhau.getDonationModel());
         });
-        
+
         DefaultTableModel model = classTableModel.setTableDonations(listItem, COLUMNS);
         table = new JTable(model) {
             private static final long serialVersionUID = 1L;
 
-			@Override
+            @Override
             public boolean editCellAt(int row, int column, EventObject e) {
                 return false;
             }
-			
+
             @Override
-	        public Component prepareRenderer(TableCellRenderer renderer,int row,int column){
-	            Component comp=super.prepareRenderer(renderer,row, column);
-	           int modelRow=convertRowIndexToModel(row);
-	           if(!isRowSelected(modelRow))
-	               comp.setBackground(Color.WHITE);
-	           else
-	               comp.setBackground(new Color(102, 102, 255));
-	           return comp;
-	        }
-            
+            public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
+                Component comp = super.prepareRenderer(renderer, row, column);
+                int modelRow = convertRowIndexToModel(row);
+                if (!isRowSelected(modelRow))
+                    comp.setBackground(Color.WHITE);
+                else
+                    comp.setBackground(new Color(102, 102, 255));
+                return comp;
+            }
+
         };
-       
+
         //Set style for table header
         JTableHeader header = table.getTableHeader();
         header.setReorderingAllowed(false);
         header.setResizingAllowed(false);
         header.setFont(new Font("Tahoma", Font.BOLD, 15));
-        
+
         header.setOpaque(false);
         header.setBackground(new Color(230, 230, 255));
         header.setForeground(Color.black);
-        
+
         header.setPreferredSize(new Dimension(100, 50));
-        
+
         //Set style for table content
         table.setRowHeight(30);
         table.validate();
@@ -135,15 +150,15 @@ public class DonationsController {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() > 1) {
-                	PhiUngHoBean selectedDonation = listPhiUngHoBeans.get(table.getSelectedRow());
+                    PhiUngHoBean selectedDonation = listPhiUngHoBeans.get(table.getSelectedRow());
                     StatisticDonationsFrame detail = new StatisticDonationsFrame(parentFrame, selectedDonation);
                     detail.setLocationRelativeTo(null);
                     detail.setVisible(true);
                 }
             }
-            
+
         });
-        
+
         JScrollPane scroll = new JScrollPane();
         scroll.getViewport().setBackground(Color.white);
         scroll.getViewport().add(table);
@@ -153,12 +168,13 @@ public class DonationsController {
         jpnView.validate();
         jpnView.repaint();
     }
-    
+
     public int getSelectedIdDonation() {
-    	int column = 0;
-    	int row = this.table.getSelectedRow();
-    	return Integer.parseInt(this.table.getModel().getValueAt(row, column).toString());
+        int column = 0;
+        int row = this.table.getSelectedRow();
+        return Integer.parseInt(this.table.getModel().getValueAt(row, column).toString());
     }
+
     public void refreshData() {
         this.listPhiUngHoBeans = this.donationsService.allDonations();
         setData();
