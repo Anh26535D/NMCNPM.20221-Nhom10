@@ -299,10 +299,10 @@ public class PeopleService {
                     + TuTuoi
                     + " AND ROUND(DATEDIFF(dayofyear, namSinh, GETDATE())/365 , 0) <= "
                     + denTuoi;
-        if (!gender.equalsIgnoreCase("Toan Bo")) {
+        if (!gender.equalsIgnoreCase("Toàn bộ")) {
             query += " AND nhan_khau.gioiTinh = N'" + gender + "'";
         }
-        if (Status.equalsIgnoreCase("Toan bo")) {
+        if (Status.equalsIgnoreCase("Toàn bộ")) {
             query += " AND (tam_tru.denNgay >= GETDATE() OR tam_tru.denNgay IS NULL)"
                     + " AND (tam_vang.denNgay <= GETDATE() OR tam_vang.denNgay IS NULL)";
         } else if (Status.equalsIgnoreCase("Thuong tru")) {
