@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 
 import bean.HoKhauBean;
 import bean.PhiBatBuocBean;
+import models.DonateModel;
 import models.FeesModel;
 import models.HoKhauModel;
 import models.PayFeeModel;
@@ -258,6 +259,39 @@ public class FeesService {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	public List<PayFeeModel> payByHouseholdId(int householdId) {
+		List<PayFeeModel> list = new ArrayList<>();
+		try {
+			Connection connection = SQLConnection.getDbConnection();
+			String query = 
+					"SELECT ho_khau.maHoKhau, phi_bat_buoc.ten_khoan_thu, phi_bat_buoc.dot_thu, phi_bat_buoc.so_tien, COUNT(*) AS SoThanhVienTrongHo, SUM(nop_phi.so_tien) AS TongTienDaNop FROM ho_khau\r\n"
+					+ "JOIN thanh_vien_cua_ho ON thanh_vien_cua_ho.idHoKhau = ho_khau.ID\r\n"
+					+ "JOIN nop_phi ON nop_phi.idNhanKhau = thanh_vien_cua_ho.idNhanKhau\r\n"
+					+ "JOIN phi_bat_buoc ON phi_bat_buoc.ID = nop_phi.idPhiThu\r\n"
+					+ "WHERE ho_khau.ID = ?\r\n"
+					+ "GROUP BY ho_khau.maHoKhau, phi_bat_buoc.ten_khoan_thu, phi_bat_buoc.dot_thu, phi_bat_buoc.so_tien;";
+			PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(query);
+			preparedStatement.setInt(1, householdId);
+			ResultSet rs = preparedStatement.executeQuery();
+			while (rs.next()) {
+				PayFeeModel model = new PayFeeModel();
+				model.setMaHoKhau(rs.getString("maHoKhau"));
+				model.setTenKhoanThu(rs.getString("ten_khoan_thu"));
+				model.setDot_thu(rs.getString("dot_thu"));
+				model.setSo_tien(rs.getInt("so_tien"));
+				model.setSoThanhVienCuaHo(rs.getInt("SoThanhVienTrongHo"));
+				model.setTongTienDaNop(rs.getInt("TongTienDaNop"));
+				model.setTongTienCanNop(rs.getInt("so_tien") * rs.getInt("SoThanhVienTrongHo"));
+				list.add(model);
+			}
+			preparedStatement.close();
+			connection.close();
+		} catch (Exception e) {
+			exceptionHandle(e.getMessage());
+		}
+		return list;
 	}
 
 	private void exceptionHandle(String message) {
