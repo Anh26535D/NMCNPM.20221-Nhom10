@@ -14,11 +14,14 @@ import javax.swing.JOptionPane;
 
 import bean.HoKhauBean;
 import bean.NhanKhauBean;
+import models.DonateModel;
 import models.HoKhauModel;
 import models.NhanKhauModel;
 import models.ThanhVienCuaHoModel;
 
 public class HoKhauService {
+	
+	private DonationsService donationService = new DonationsService();
 
     public boolean addNew(HoKhauBean hoKhauBean) throws ClassNotFoundException, SQLException{
         Connection connection = SQLConnection.getDbConnection();
@@ -163,6 +166,8 @@ public class HoKhauService {
                     System.out.println("services.HoKhauService.getListHoKhau()");
                     System.out.println(e.getMessage());
                 }
+                List<DonateModel> donateModel = donationService.donateByHouseholdId(hoKhauModel.getID());
+                temp.setDonateModels(donateModel);
                 list.add(temp);
             }
             preparedStatement.close();
@@ -321,4 +326,5 @@ public class HoKhauService {
         }
         return list;
     }
+
 }
