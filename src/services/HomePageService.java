@@ -100,9 +100,9 @@ public class HomePageService {
         int result = 0;
         try {
             Connection connection = SQLConnection.getDbConnection();
-            String query = "SELECT ho_khau.* FROM ho_khau\n" +
+            String query = "SELECT ho_khau.ID FROM ho_khau\n" +
                     "EXCEPT\n" +
-                    "SELECT ho_khau.*\n" +
+                    "SELECT ho_khau.ID\n" +
                     "FROM nop_phi\n" +
                     "JOIN phi_bat_buoc ON nop_phi.idPhiThu = phi_bat_buoc.ID\n" +
                     "JOIN nhan_khau ON nop_phi.idNhanKhau = nhan_khau.ID\n" +
