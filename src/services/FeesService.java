@@ -121,6 +121,7 @@ public class FeesService {
             preparedStatement.setInt(4, idFee);
 
             preparedStatement.executeUpdate();
+            
             ResultSet rs = preparedStatement.getGeneratedKeys();
             if (rs.next()) {
                 return true;
