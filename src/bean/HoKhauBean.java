@@ -6,6 +6,7 @@ import java.util.List;
 import models.DonateModel;
 import models.HoKhauModel;
 import models.NhanKhauModel;
+import models.PayFeeModel;
 import models.ThanhVienCuaHoModel;
 
 public class HoKhauBean {
@@ -14,13 +15,15 @@ public class HoKhauBean {
     private List<NhanKhauModel> listNhanKhauModels;
     private List<ThanhVienCuaHoModel> listThanhVienCuaHo;
     private List<DonateModel> donateModels;
+    private List<PayFeeModel> payFeeModels;
 
-    public HoKhauBean(HoKhauModel hoKhauModel, NhanKhauModel chuHo, List<NhanKhauModel> listNhanKhauModels, List<ThanhVienCuaHoModel> listThanhVienCuaHo, List<DonateModel> donateModels) {
+    public HoKhauBean(HoKhauModel hoKhauModel, NhanKhauModel chuHo, List<NhanKhauModel> listNhanKhauModels, List<ThanhVienCuaHoModel> listThanhVienCuaHo, List<DonateModel> donateModels, List<PayFeeModel> payFeeModels) {
         this.hoKhauModel = hoKhauModel;
         this.chuHo = chuHo;
         this.listNhanKhauModels = listNhanKhauModels;
         this.listThanhVienCuaHo = listThanhVienCuaHo;
         this.donateModels = donateModels;
+        this.payFeeModels = payFeeModels;
     }
     
     public HoKhauBean() {
@@ -29,7 +32,16 @@ public class HoKhauBean {
         this.listNhanKhauModels = new ArrayList<>();
         this.listThanhVienCuaHo = new ArrayList<>();
         this.donateModels = new ArrayList<>();
+        this.payFeeModels = new ArrayList<>();
     }
+    
+    public List<PayFeeModel> getPayFeeModels() {
+		return payFeeModels;
+	}
+    
+    public void setPayFeeModels(List<PayFeeModel> payFeeModels) {
+		this.payFeeModels = payFeeModels;
+	}
 
     
     public HoKhauModel getHoKhauModel() {
@@ -70,7 +82,6 @@ public class HoKhauBean {
 
     @Override
     public String toString() {
-//        String res = "<html> <style>p {padding: 5px; margin-left: 20px} table, th, td {border: 1px solid black; border-collapse: collapse;} table {width: 80%}</style>";
         String res = "<html>\n"
         		+ "  <style>\n"
         		+ "    html {\n"
@@ -124,7 +135,7 @@ public class HoKhauBean {
                     + "</tr>";
         }
         res += "</table>"
-        	+ "<h4>Dánh sách ủng hộ</h4>"
+        	+ "<h4>Danh sách ủng hộ</h4>"
         	+ "<table>"
         	+ "<tr>"
         	+ "<th>Họ và tên người nộp</th>"
@@ -157,6 +168,45 @@ public class HoKhauBean {
                     + "</tr>";
         }
         res += "</table>";
+        
+        res += "</table>"
+            	+ "<h4>Danh sách phí đã nộp</h4>"
+            	+ "<table>"
+            	+ "<tr>"
+            	+ "<th>Mã hộ khẩu</th>"
+            	+ "<th>Tên khoản thu</th>"
+            	+ "<th>Đợt thu</th>"
+            	+ "<th>Số tiền</th>"
+            	+ "<th>Số thành viên trong hộ</th>"
+            	+ "<th>Tổng số tiền đã nộp</th>"
+            	+ "<th>Tổng số tiền cần nộp</th>"
+            	+ "</tr>";
+            for (int i = 0; i < payFeeModels .size(); i++) {
+                res += "<tr>"
+                        + "<td>"
+                        + payFeeModels.get(i).getMaHoKhau()
+                        + "</td>"
+                        + "<td>"
+                        + payFeeModels.get(i).getTenKhoanThu()
+                        + "</td>"
+                        + "<td>"
+                        + payFeeModels.get(i).getDot_thu()
+                        + "</td>"
+                        + "<td>"
+                        + payFeeModels.get(i).getSo_tien()
+                        + "</td>"
+                        + "<td>"
+                        + payFeeModels.get(i).getSoThanhVienCuaHo()
+                        + "</td>"
+                        + "<td>"
+                        + payFeeModels.get(i).getTongTienDaNop()
+                        + "</td>"
+                        + "<td>"
+                        + payFeeModels.get(i).getTongTienCanNop()
+                        + "</td>"
+                        + "</tr>";
+            }
+            res += "</table>";
         
         
         res += "</div></html>";

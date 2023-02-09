@@ -17,11 +17,13 @@ import bean.NhanKhauBean;
 import models.DonateModel;
 import models.HoKhauModel;
 import models.NhanKhauModel;
+import models.PayFeeModel;
 import models.ThanhVienCuaHoModel;
 
 public class HoKhauService {
 	
 	private DonationsService donationService = new DonationsService();
+	private FeesService feeService = new FeesService();
 
     public boolean addNew(HoKhauBean hoKhauBean) throws ClassNotFoundException, SQLException{
         Connection connection = SQLConnection.getDbConnection();
@@ -167,7 +169,9 @@ public class HoKhauService {
                     System.out.println(e.getMessage());
                 }
                 List<DonateModel> donateModel = donationService.donateByHouseholdId(hoKhauModel.getID());
+                List<PayFeeModel> payFeeModel = feeService.payByHouseholdId(hoKhauModel.getID());
                 temp.setDonateModels(donateModel);
+                temp.setPayFeeModels(payFeeModel);
                 list.add(temp);
             }
             preparedStatement.close();

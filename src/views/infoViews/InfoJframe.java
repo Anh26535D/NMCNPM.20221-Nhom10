@@ -28,7 +28,7 @@ public class InfoJframe extends javax.swing.JFrame {
 			}
 
 		});
-		this.setTitle("Thông tin chi tiết");
+		this.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 	}
 
 	public void close() {
@@ -37,17 +37,28 @@ public class InfoJframe extends javax.swing.JFrame {
 	}
 
 	private void initComponents() {
-
-		jPanel1 = new javax.swing.JPanel();
+		this.setResizable(false);
+		this.setTitle("Thông tin chi tiết");
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setBounds(350, 200, 1000, 500);
+		this.setLocationRelativeTo(null);
+		
+		getContentPane().setLayout(null);
+		
 		jScrollPane1 = new javax.swing.JScrollPane();
-		contentJlb = new javax.swing.JLabel();
-
-		setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-		jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
+		jScrollPane1.setBounds(0, 0, 986, 463);
 		jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+		jScrollPane1.getVerticalScrollBar().setUnitIncrement(1);
+		
+		jPanel1 = new javax.swing.JPanel();
+		jPanel1.setLayout(null);
+		jPanel1.add(jScrollPane1);
+		jPanel1.setBounds(0, 0, 986, 463);
+		jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+		getContentPane().add(jPanel1);
+		
 
+		contentJlb = new javax.swing.JLabel();
 		contentJlb.setBackground(new java.awt.Color(255, 255, 255));
 		contentJlb.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 		contentJlb.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -55,21 +66,6 @@ public class InfoJframe extends javax.swing.JFrame {
 		contentJlb.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 		jScrollPane1.setViewportView(contentJlb);
 
-		javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-		jPanel1.setLayout(jPanel1Layout);
-		jPanel1Layout.setHorizontalGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 704, Short.MAX_VALUE));
-		jPanel1Layout.setVerticalGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE));
-
-		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-		getContentPane().setLayout(layout);
-		layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(
-				jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
-		layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(
-				jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
-
-		pack();
 	}// </editor-fold>//GEN-END:initComponents
 
 	public String getContent() {
