@@ -277,7 +277,7 @@ public class DonationsService {
         Connection connection;
         try {
             connection = SQLConnection.getDbConnection();
-            String query = "INSERT INTO nop_phi( idNhanKhau, idPhiThu, ngay_nop, so_tien)" + " values (?, ?, ?, ?)";
+            String query = "INSERT INTO ung_ho(idNhanKhau, idKhoanThu, ngay_nop, so_tien)" + " values (?, ?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setInt(1, payDonationModel.getIdNhanKhau());
             preparedStatement.setInt(2, idDonation);

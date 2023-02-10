@@ -193,4 +193,5 @@ public class StatisticDonationsFrame extends JFrame {
         payDonationFrame.setResizable(false);
         payDonationFrame.setVisible(true);
     }
+   
 }

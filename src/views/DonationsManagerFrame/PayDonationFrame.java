@@ -15,6 +15,7 @@ import bean.PhiUngHoBean;
 import controllers.DonationsManagerController.PayDonationController;
 import controllers.DonationsManagerController.StatisticDonationsController;
 import models.PayDonationModel;
+import views.FeesManagerFrame.StatisticFeesFrame;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -183,6 +184,7 @@ public class PayDonationFrame extends JFrame {
 		if (JOptionPane.showConfirmDialog(null, "Are you sure to close??", "Warning!!",
 				JOptionPane.YES_NO_OPTION) == 0) {
 			this.parentFrame.setEnabled(true);
+			this.parentController.setData();
 			dispose();
 		}
 	}

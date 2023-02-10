@@ -183,6 +183,7 @@ public class PayFeeFrame extends JFrame {
 		if (JOptionPane.showConfirmDialog(null, "Are you sure to close??", "Warning!!",
 				JOptionPane.YES_NO_OPTION) == 0) {
 			this.parentFrame.setEnabled(true);
+			this.parentController.setData();
 			dispose();
 		}
 	}

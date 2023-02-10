@@ -195,4 +195,5 @@ public class StatisticFeesFrame extends JFrame {
         payFeeFrame.setResizable(false);
         payFeeFrame.setVisible(true);
     }
+    
 }
