@@ -290,12 +290,20 @@ public class FeesService {
         Connection connection;
         try {
             connection = SQLConnection.getDbConnection();
-            String query = "INSERT INTO nop_phi( idNhanKhau, idPhiThu, ngay_nop, so_tien)" + " values (?, ?, ?, ?)";
+            String query = "IF (SELECT COUNT(*) FROM nop_phi WHERE idNhanKhau = ?) > 0\r\n"
+            		+ "	UPDATE nop_phi SET so_tien = ?, ngay_nop = ?\r\n"
+            		+ "	WHERE idNhanKhau = ?;\r\n"
+            		+ "ELSE \r\n"
+            		+ "	INSERT INTO nop_phi( idNhanKhau, idPhiThu, ngay_nop, so_tien) VALUES (?, ?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setInt(1, payFeeModel.getIdNhanKhau());
-            preparedStatement.setInt(2, idFee);
+            preparedStatement.setInt(2, payFeeModel.getSo_tien());
             preparedStatement.setDate(3, new Date(app.Main.calendar.getTime().getTime()));
-            preparedStatement.setInt(4, payFeeModel.getSo_tien());
+            preparedStatement.setInt(4, payFeeModel.getIdNhanKhau());
+            preparedStatement.setInt(5, payFeeModel.getIdNhanKhau());
+            preparedStatement.setInt(6, idFee);
+            preparedStatement.setDate(7, new Date(app.Main.calendar.getTime().getTime()));
+            preparedStatement.setInt(8, payFeeModel.getSo_tien());
 
             preparedStatement.executeUpdate();
             ResultSet rs = preparedStatement.getGeneratedKeys();

@@ -33,16 +33,15 @@ public class TempAbsenceDFrame extends javax.swing.JFrame {
 	private JFrame parentJFrame = null;
 	private DangKyTamVangController controller = null;
 	private TamVangModel tamVangModel = new TamVangModel();
-	   //a
-    private AddressSuggestion addrSuggestion;
-    private AddressModel addrModel = new AddressModel();
-    private JTextField JtxReceiveAddress;
+	private AddressSuggestion addrSuggestion;
+	private AddressModel addrModel = new AddressModel();
+	private JTextField JtxReceiveAddress;
 
 	public TempAbsenceDFrame(JFrame parentJFrame) {
 		getContentPane().setBackground(new Color(255, 255, 255));
 		initComponents();
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		setTitle("Đăng ký tạm vắng");
+
 		controller = new DangKyTamVangController();
 		this.parentJFrame = parentJFrame;
 		parentJFrame.setEnabled(false);
@@ -113,43 +112,42 @@ public class TempAbsenceDFrame extends javax.swing.JFrame {
 	}
 
 	private void initComponents() {
-
+		setTitle("Đăng ký tạm vắng");
 		jPanel1 = new javax.swing.JPanel();
 		jPanel1.setBackground(new Color(240, 248, 255));
 		acceptBtn = new javax.swing.JButton();
 		acceptBtn.setBounds(464, 422, 114, 30);
 		CancelBtn = new javax.swing.JButton();
 		CancelBtn.setBounds(320, 422, 114, 30);
-		
+
 		soCMTjtf = new SuggestionUtility(false) {
-			
+
 			@Override
 			public List<String> getSuggestions(String textContent) {
 				CitizenIdService cidService = new CitizenIdService();
 				return cidService.search(textContent);
 			}
 		};
-		soCMTjtf.setBounds(145, 22, 297, 30);
-		
+		soCMTjtf.setBounds(200, 25, 242, 30);
+
 		jLabel1 = new javax.swing.JLabel();
-		jLabel1.setBounds(54, 21, 81, 30);
+		jLabel1.setBounds(20, 25, 90, 30);
 		jLabel2 = new javax.swing.JLabel();
-		jLabel2.setBounds(452, 21, 15, 30);
+		jLabel2.setBounds(543, 21, 15, 30);
 		checkBtn = new javax.swing.JButton();
-		checkBtn.setBounds(477, 21, 81, 30);
+		checkBtn.setBounds(452, 25, 81, 30);
 		availableIcon = new javax.swing.JLabel();
-		availableIcon.setBounds(568, 21, 32, 32);
+		availableIcon.setBounds(91, 25, 32, 32);
 		jLabel3 = new javax.swing.JLabel();
-		jLabel3.setBounds(54, 93, 136, 30);
+		jLabel3.setBounds(20, 93, 136, 30);
 		maGiayTamVangJtf = new javax.swing.JTextField();
 		maGiayTamVangJtf.setBounds(200, 94, 333, 30);
 		jLabel4 = new javax.swing.JLabel();
 		jLabel4.setBounds(543, 93, 15, 30);
 		jLabel5 = new javax.swing.JLabel();
-		jLabel5.setBounds(54, 142, 136, 30);
-		
-		
-        noiTamTruJtf = new SuggestionUtility(false) {
+		jLabel5.setBounds(20, 142, 136, 30);
+
+		noiTamTruJtf = new SuggestionUtility(false) {
 			private static final long serialVersionUID = 1L;
 
 			@Override
@@ -157,12 +155,12 @@ public class TempAbsenceDFrame extends javax.swing.JFrame {
 				return null;
 			}
 		};
-        noiTamTruJtf.setEnabled(false);
+		noiTamTruJtf.setEnabled(false);
 		noiTamTruJtf.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		noiTamTruJtf.setEditable(false);
 		noiTamTruJtf.setBounds(200, 143, 311, 30);
 		jPanel1.add(noiTamTruJtf);
-		
+
 		JButton noiTamTruBtn = new JButton("+");
 		noiTamTruBtn.setFont(new Font("Tahoma", Font.PLAIN, 16));
 
@@ -173,9 +171,9 @@ public class TempAbsenceDFrame extends javax.swing.JFrame {
 
 			}
 		});
-		noiTamTruBtn.setBounds(513, 145, 20, 30);   
+		noiTamTruBtn.setBounds(513, 145, 20, 30);
 		jPanel1.add(noiTamTruBtn);
-		
+
 		jLabel6 = new javax.swing.JLabel();
 		jLabel6.setBounds(543, 142, 15, 30);
 		tuNgayJdc = new com.toedter.calendar.JDateChooser();
@@ -184,9 +182,9 @@ public class TempAbsenceDFrame extends javax.swing.JFrame {
 		jLabel7 = new javax.swing.JLabel();
 		jLabel7.setBounds(543, 191, 15, 30);
 		jLabel8 = new javax.swing.JLabel();
-		jLabel8.setBounds(54, 191, 136, 30);
+		jLabel8.setBounds(20, 191, 136, 30);
 		jLabel9 = new javax.swing.JLabel();
-		jLabel9.setBounds(54, 239, 127, 30);
+		jLabel9.setBounds(20, 239, 127, 30);
 		denNgayJdc = new com.toedter.calendar.JDateChooser();
 		denNgayJdc.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		denNgayJdc.setBounds(200, 239, 333, 30);
@@ -195,7 +193,7 @@ public class TempAbsenceDFrame extends javax.swing.JFrame {
 		jScrollPane1 = new javax.swing.JScrollPane();
 		jScrollPane1.setBounds(200, 287, 333, 104);
 		jLabel11 = new javax.swing.JLabel();
-		jLabel11.setBounds(54, 287, 136, 17);
+		jLabel11.setBounds(20, 287, 136, 30);
 		jLabel12 = new javax.swing.JLabel();
 		jLabel12.setBounds(543, 280, 15, 30);
 
@@ -270,7 +268,6 @@ public class TempAbsenceDFrame extends javax.swing.JFrame {
 		jLabel5.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		jLabel5.setText("Nơi tạm trú:");
 
-
 		jLabel6.setFont(new java.awt.Font("Tohama", 0, 14));
 		jLabel6.setForeground(new java.awt.Color(255, 0, 0));
 		jLabel6.setText("(*)");
@@ -297,18 +294,12 @@ public class TempAbsenceDFrame extends javax.swing.JFrame {
 		jLabel12.setText("(*)");
 
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-		layout.setHorizontalGroup(
-			layout.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, layout.createSequentialGroup()
-					.addGap(20)
-					.addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))
-		);
+		layout.setHorizontalGroup(layout.createParallelGroup(Alignment.TRAILING).addGroup(Alignment.LEADING,
+				layout.createSequentialGroup().addContainerGap()
+						.addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE).addContainerGap()));
 		layout.setVerticalGroup(
-			layout.createParallelGroup(Alignment.LEADING)
-				.addGroup(layout.createSequentialGroup()
-					.addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
-					.addGap(20))
-		);
+				layout.createParallelGroup(Alignment.LEADING).addGroup(layout.createSequentialGroup().addContainerGap()
+						.addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE).addContainerGap()));
 		jPanel1.setLayout(null);
 		jPanel1.add(jLabel1);
 		jPanel1.add(soCMTjtf);
@@ -327,10 +318,10 @@ public class TempAbsenceDFrame extends javax.swing.JFrame {
 		lyDoJta.setEnabled(false);
 		lyDoJta.setLineWrap(true);
 		jScrollPane1.setViewportView(lyDoJta);
-		
-				lyDoJta.setColumns(20);
-				lyDoJta.setFont(new Font("Tahoma", Font.PLAIN, 16));
-				lyDoJta.setRows(5);
+
+		lyDoJta.setColumns(20);
+		lyDoJta.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lyDoJta.setRows(5);
 		jPanel1.add(tuNgayJdc);
 		jPanel1.add(denNgayJdc);
 		jPanel1.add(jLabel6);
@@ -409,19 +400,19 @@ public class TempAbsenceDFrame extends javax.swing.JFrame {
 	private javax.swing.JTextField maGiayTamVangJtf;
 	private javax.swing.JTextField soCMTjtf;
 	private com.toedter.calendar.JDateChooser tuNgayJdc;
-	
-	private SuggestionUtility noiTamTruJtf;
-	
-	private void getAddressAction() {
-			addrSuggestion = new AddressSuggestion(this,addrModel) {
-				private static final long serialVersionUID = 1L;
 
-				@Override
-				public void emmitToParent() {
-					String address= this.getAddress();
-					JtxReceiveAddress.setText(address);
-				}
-			};
-			addrSuggestion.setVisible(true);
-	    }
+	private SuggestionUtility noiTamTruJtf;
+
+	private void getAddressAction() {
+		addrSuggestion = new AddressSuggestion(this, addrModel) {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void emmitToParent() {
+				String address = this.getAddress();
+				JtxReceiveAddress.setText(address);
+			}
+		};
+		addrSuggestion.setVisible(true);
+	}
 }

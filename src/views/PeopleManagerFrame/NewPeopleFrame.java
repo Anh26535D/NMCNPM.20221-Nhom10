@@ -102,6 +102,9 @@ public class NewPeopleFrame extends JFrame {
 
 
 
+	/**
+	 * @wbp.parser.constructor
+	 */
 	public NewPeopleFrame(PeoplePanelController parentController, JFrame parentJFrame) {
         init();
 		this.parentController = parentController;
@@ -391,7 +394,7 @@ public class NewPeopleFrame extends JFrame {
 		jPanel1.add(lblNewLabel_1_1_6_1);
 		
 		gioiTinhCbb = new JComboBox<String>();
-		gioiTinhCbb.setBounds(616, 72, 113, 30);
+		gioiTinhCbb.setBounds(616, 72, 240, 30);
 		gioiTinhCbb.addItem("Nam");		
 		gioiTinhCbb.addItem("Nữ");
 		gioiTinhCbb.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -451,7 +454,7 @@ public class NewPeopleFrame extends JFrame {
 				getAddressAction();	
 			}
 		});
-		diaChiBtn.setBounds(836, 237, 20, 30);
+		diaChiBtn.setBounds(836, 236, 20, 30);
 		jPanel1.add(diaChiBtn);
 		
 		trinhDoChuyenMonTxb = new JTextField();
@@ -472,8 +475,8 @@ public class NewPeopleFrame extends JFrame {
 		noiLamViecTxb.setBounds(616, 359, 240, 30);
 		jPanel1.add(noiLamViecTxb);
 		
-		khacBtn = new JButton("Khác...");
-		khacBtn.setBounds(150, 415, 127, 30);
+		khacBtn = new JButton(". . .");
+		khacBtn.setBounds(24, 415, 83, 30);
 
 		khacBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

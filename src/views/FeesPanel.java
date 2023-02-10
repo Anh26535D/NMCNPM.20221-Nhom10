@@ -96,41 +96,41 @@ public class FeesPanel extends JPanel {
 		tablePanel.setBackground(new Color(255, 255, 255));
 		tablePanel.setLayout(null);
 		panel_1.add(tablePanel);
-		
-				jtfSearch = new JTextField("Search");
-				jtfSearch.setBounds(10, 10, 766, 43);
-				panel_1.add(jtfSearch);
-				
-						jtfSearch.setSelectionColor(new Color(204, 153, 255));
-						jtfSearch.setForeground(Color.GRAY);
-						jtfSearch.setFont(new Font("Tahoma", Font.PLAIN, 15));
-						jtfSearch.setColumns(10);
-						jtfSearch.setBorder(
-								new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null), new EmptyBorder(0, 10, 0, 0)));
-						jtfSearch.addActionListener(new java.awt.event.ActionListener() {
-							public void actionPerformed(java.awt.event.ActionEvent evt) {
-								jtfSearchActionPerformed(evt);
-							}
-						});
-						
-								jtfSearch.setForeground(Color.GRAY);
-								jtfSearch.addFocusListener(new FocusListener() {
-									@Override
-									public void focusGained(FocusEvent e) {
-										if (jtfSearch.getText().trim().equals("Search")) {
-											jtfSearch.setForeground(Color.black);
-											jtfSearch.setText("");
-										}
-									}
 
-									@Override
-									public void focusLost(FocusEvent e) {
-										if (jtfSearch.getText().isEmpty()) {
-											jtfSearch.setForeground(Color.GRAY);
-											jtfSearch.setText("Search");
-										}
-									}
-								});
+		jtfSearch = new JTextField("Search");
+		jtfSearch.setBounds(10, 10, 766, 43);
+		panel_1.add(jtfSearch);
+
+		jtfSearch.setSelectionColor(new Color(204, 153, 255));
+		jtfSearch.setForeground(Color.GRAY);
+		jtfSearch.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		jtfSearch.setColumns(10);
+		jtfSearch.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null),
+				new EmptyBorder(0, 10, 0, 0)));
+		jtfSearch.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				jtfSearchActionPerformed(evt);
+			}
+		});
+
+		jtfSearch.setForeground(Color.GRAY);
+		jtfSearch.addFocusListener(new FocusListener() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (jtfSearch.getText().trim().equals("Search")) {
+					jtfSearch.setForeground(Color.black);
+					jtfSearch.setText("");
+				}
+			}
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				if (jtfSearch.getText().isEmpty()) {
+					jtfSearch.setForeground(Color.GRAY);
+					jtfSearch.setText("Search");
+				}
+			}
+		});
 	}
 
 	private void addNewBtnActionPerformed(java.awt.event.ActionEvent evt) {

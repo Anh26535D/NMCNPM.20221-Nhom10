@@ -237,7 +237,7 @@ public class DashBoardFrame extends JFrame {
 		LogoutBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
 		LogoutBtn.setBorder(new LineBorder(new Color(255, 204, 255), 1, true));
 		LogoutBtn.setBackground(new Color(102, 153, 255));
-		LogoutBtn.setBounds(5, 565, 120, 30);
+		LogoutBtn.setBounds(5, 565, 120, 28);
 		jpnMenu.add(LogoutBtn);
 
 		jpnBean = new JPanel();

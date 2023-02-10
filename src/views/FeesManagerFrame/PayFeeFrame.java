@@ -2,6 +2,7 @@ package views.FeesManagerFrame;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -11,10 +12,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import bean.NhanKhauBean;
 import bean.PhiBatBuocBean;
 import controllers.FeesManagerController.PayFeeController;
 import controllers.FeesManagerController.StatisticFeesController;
 import models.PayFeeModel;
+import views.HouseholdManagerFrame.ChoosePeople;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -34,11 +37,14 @@ public class PayFeeFrame extends JFrame {
 	private PhiBatBuocBean selectedFee;
 	private PayFeeController controller;
 	private PayFeeModel payFeeModel;
+	private NhanKhauBean selectPerson;
 	
 	private JTextField soTienJtf;
-	private JTextField tenJtf;
+	private JTextField idSelectedPersonJtf;
 	private JButton CancelBtn;
 	private JButton CreateBtn;
+	private JTextField nameSelectedPersonJtf;
+	private JButton selectPersonBtn;
 
 	public PayFeeFrame(StatisticFeesController parentController, JFrame parentJFrame, PhiBatBuocBean selectedFee) {
 		init();
@@ -46,6 +52,7 @@ public class PayFeeFrame extends JFrame {
 		this.parentFrame = parentJFrame;
 		this.parentFrame.setEnabled(false);
 		this.selectedFee = selectedFee;
+		this.selectPerson = new NhanKhauBean();
 		controller = new PayFeeController();
 		this.payFeeModel = new PayFeeModel();
 
@@ -83,26 +90,48 @@ public class PayFeeFrame extends JFrame {
 		panel.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Người nộp");
-		lblNewLabel.setBounds(10, 10, 576, 20);
+		lblNewLabel.setBounds(10, 10, 86, 20);
 		panel.add(lblNewLabel);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
 
 		JLabel lblNewLabel_1 = new JLabel("Số tiền");
-		lblNewLabel_1.setBounds(10, 108, 576, 20);
+		lblNewLabel_1.setBounds(10, 90, 576, 20);
 		panel.add(lblNewLabel_1);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 
 		soTienJtf = new JTextField();
 		soTienJtf.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		soTienJtf.setBounds(10, 138, 576, 40);
+		soTienJtf.setBounds(10, 120, 576, 40);
 		panel.add(soTienJtf);
 		soTienJtf.setColumns(10);
 
-		tenJtf = new JTextField();
-		tenJtf.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		tenJtf.setBounds(10, 40, 576, 40);
-		panel.add(tenJtf);
-		tenJtf.setColumns(10);
+		idSelectedPersonJtf = new JTextField();
+		idSelectedPersonJtf.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		idSelectedPersonJtf.setBounds(10, 40, 116, 40);
+		panel.add(idSelectedPersonJtf);
+		idSelectedPersonJtf.setColumns(10);
+		
+		selectPersonBtn = new JButton("Select");
+		selectPersonBtn.setForeground(Color.WHITE);
+		selectPersonBtn.setFont(new Font("Tahoma", Font.BOLD, 14));
+		selectPersonBtn.setBorderPainted(false);
+		selectPersonBtn.setBackground(new Color(147, 112, 219));
+		selectPersonBtn.setBounds(509, 10, 77, 20);
+		selectPersonBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				selectPersonAction(e);
+			}
+		});
+		panel.add(selectPersonBtn);
+		
+		nameSelectedPersonJtf = new JTextField();
+		nameSelectedPersonJtf.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		nameSelectedPersonJtf.setColumns(10);
+		nameSelectedPersonJtf.setBounds(136, 40, 450, 40);
+		panel.add(nameSelectedPersonJtf);
 
 		JPanel panel_3 = new JPanel();
 		panel_3.setBorder(new EmptyBorder(0, 0, 0, 0));
@@ -139,12 +168,12 @@ public class PayFeeFrame extends JFrame {
 	}
 
 	private void CancelBtnActionPerformed(ActionEvent evt) {
-		tenJtf.setText("");
+		idSelectedPersonJtf.setText("");
 		soTienJtf.setText("");
 	}
 
 	private boolean validateForm() {
-		String tenNguoiNop = tenJtf.getText();
+		String tenNguoiNop = idSelectedPersonJtf.getText();
 		String soTien = soTienJtf.getText();
 		if (tenNguoiNop.trim().isEmpty() || soTien.trim().isEmpty()) {
 			JOptionPane.showMessageDialog(rootPane, "Vui lòng nhập hết các trường bắt buộc", "Warning",
@@ -163,7 +192,7 @@ public class PayFeeFrame extends JFrame {
 
 	private void CreateBtnActionPerformed(java.awt.event.ActionEvent evt) {
 		if (validateForm()) {
-			this.payFeeModel.setIdNhanKhau(Integer.parseInt(tenJtf.getText()));;
+			this.payFeeModel.setIdNhanKhau(Integer.parseInt(idSelectedPersonJtf.getText()));;
 			this.payFeeModel.setSo_tien(Integer.parseInt(soTienJtf.getText()));
 			try {
 				if (this.controller.payFee(this.payFeeModel, this.selectedFee.getFeesModel().getID())) {
@@ -188,5 +217,15 @@ public class PayFeeFrame extends JFrame {
 		}
 	}
 	
+	public void setDataPerson() {
+		this.idSelectedPersonJtf.setText(Integer.toString(selectPerson.getNhanKhauModel().getID()));
+		this.nameSelectedPersonJtf.setText(selectPerson.getNhanKhauModel().getHoTen());
+	}
 	
+	private void selectPersonAction(ActionEvent e) {
+        ChoosePayPersonFrame choosePeople = new ChoosePayPersonFrame(this.selectPerson, this);
+        choosePeople.setLocationRelativeTo(null);
+        choosePeople.setResizable(false);
+        choosePeople.setVisible(true);
+	}
 }
