@@ -123,10 +123,10 @@ public class DonationsService {
 		try {
 			Connection connection = SQLConnection.getDbConnection();
 			String query = 
-					"SELECT ho_khau.maHoKhau, phi_ung_ho.ten_khoan_thu, phi_ung_ho.so_tien, COUNT(*) AS SoThanhVienTrongHo, SUM(nop_phi.so_tien) AS TongTienDaNop FROM ho_khau\r\n"
+					"SELECT ho_khau.maHoKhau, phi_ung_ho.ten_khoan_thu, phi_ung_ho.so_tien, COUNT(*) AS SoThanhVienTrongHo, SUM(ung_ho.so_tien) AS TongTienDaNop FROM ho_khau\r\n"
 					+ "JOIN thanh_vien_cua_ho ON thanh_vien_cua_ho.idHoKhau = ho_khau.ID\r\n"
-					+ "JOIN nop_phi ON nop_phi.idNhanKhau = thanh_vien_cua_ho.idNhanKhau\r\n"
-					+ "JOIN phi_ung_ho ON phi_ung_ho.ID = nop_phi.idPhiThu\r\n"
+					+ "JOIN ung_ho ON ung_ho.idNhanKhau = thanh_vien_cua_ho.idNhanKhau\r\n"
+					+ "JOIN phi_ung_ho ON phi_ung_ho.ID = ung_ho.idPhiThu\r\n"
 					+ "WHERE ho_khau.ID = ?\r\n"
 					+ "GROUP BY ho_khau.maHoKhau, phi_ung_ho.ten_khoan_thu, phi_ung_ho.so_tien;";
 			PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(query);
@@ -277,7 +277,7 @@ public class DonationsService {
         Connection connection;
         try {
             connection = SQLConnection.getDbConnection();
-            String query = "INSERT INTO nop_phi( idNhanKhau, idPhiThu, ngay_nop, so_tien)" + " values (?, ?, ?, ?)";
+            String query = "INSERT INTO ung_ho( idNhanKhau, idKhoanThu, ngay_nop, so_tien)" + " values (?, ?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setInt(1, payDonationModel.getIdNhanKhau());
             preparedStatement.setInt(2, idDonation);
