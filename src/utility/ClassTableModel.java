@@ -142,7 +142,7 @@ public class ClassTableModel {
 	}
 
 
-	public DefaultTableModel setHouseholdTable(List<HoKhauBean> households, List<Integer> paids, List<Integer> needs, List<Boolean> paidStates, String[] columns) {
+	public DefaultTableModel setHouseholdFeeTable(List<HoKhauBean> households, List<Integer> paids, List<Integer> needs, List<Boolean> paidStates, String[] columns) {
 		int len_cols = columns.length;
 		int len_rows = households.size();
 		DefaultTableModel dtm = getSampleTableModel(columns);

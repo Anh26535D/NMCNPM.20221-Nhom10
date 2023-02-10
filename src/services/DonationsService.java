@@ -16,6 +16,8 @@ import bean.PhiUngHoBean;
 import models.DonateModel;
 import models.DonationsModel;
 import models.HoKhauModel;
+import models.PayDonationModel;
+import models.PayDonationModel;
 
 public class DonationsService {
 
@@ -115,6 +117,37 @@ public class DonationsService {
 		}
 		return false;
 	}
+	//
+	public List<PayDonationModel> payByHouseholdId(int householdId) {
+		List<PayDonationModel> list = new ArrayList<>();
+		try {
+			Connection connection = SQLConnection.getDbConnection();
+			String query = 
+					"SELECT ho_khau.maHoKhau, phi_ung_ho.ten_khoan_thu, phi_ung_ho.so_tien, COUNT(*) AS SoThanhVienTrongHo, SUM(nop_phi.so_tien) AS TongTienDaNop FROM ho_khau\r\n"
+					+ "JOIN thanh_vien_cua_ho ON thanh_vien_cua_ho.idHoKhau = ho_khau.ID\r\n"
+					+ "JOIN nop_phi ON nop_phi.idNhanKhau = thanh_vien_cua_ho.idNhanKhau\r\n"
+					+ "JOIN phi_ung_ho ON phi_ung_ho.ID = nop_phi.idPhiThu\r\n"
+					+ "WHERE ho_khau.ID = ?\r\n"
+					+ "GROUP BY ho_khau.maHoKhau, phi_ung_ho.ten_khoan_thu, phi_ung_ho.so_tien;";
+			PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(query);
+			preparedStatement.setInt(1, householdId);
+			ResultSet rs = preparedStatement.executeQuery();
+			while (rs.next()) {
+				PayDonationModel model = new PayDonationModel();
+				model.setMaHoKhau(rs.getString("maHoKhau"));
+				model.setTenKhoanThu(rs.getString("ten_khoan_thu"));
+				model.setSo_tien(rs.getInt("so_tien"));
+				model.setSoThanhVienCuaHo(rs.getInt("SoThanhVienTrongHo"));
+				model.setTongTienDaNop(rs.getInt("TongTienDaNop"));
+				list.add(model);
+			}
+			preparedStatement.close();
+			connection.close();
+		} catch (Exception e) {
+			exceptionHandle(e.getMessage());
+		}
+		return list;
+	}
 
 	public Integer getNeed(HoKhauBean householdBean, DonationsModel DonationsModel) {
 		Connection connection;
@@ -127,7 +160,7 @@ public class DonationsService {
 					+ " JOIN thanh_vien_cua_ho ON thanh_vien_cua_ho.idNhanKhau = nhan_khau.ID"
 					+ " JOIN ho_khau ON ho_khau.ID = thanh_vien_cua_ho.idHoKhau" + " WHERE ho_khau.maHoKhau = '"
 					+ maHoKhau + "';";
-			String query_get_basic_Donation = "SELECT so_tien FROM phi_bat_buoc" + " WHERE ID = " + idPhiThu + ";";
+			String query_get_basic_Donation = "SELECT so_tien FROM phi_ung_ho" + " WHERE ID = " + idPhiThu + ";";
 			try {
 				Statement st = connection.createStatement();
 				ResultSet rs = st.executeQuery(query_get_num_of_people_in_household);
@@ -152,7 +185,7 @@ public class DonationsService {
 		}
 		return -1;
 	}
-
+	
 	public Integer getPaid(HoKhauBean householdBean, DonationsModel donationModel) {
 		Connection connection;
 		try {
@@ -240,6 +273,34 @@ public class DonationsService {
 		}
 		return list;
 	}
+	public boolean payDonation(PayDonationModel payDonationModel, int idDonation) {
+        Connection connection;
+        try {
+            connection = SQLConnection.getDbConnection();
+            String query = "INSERT INTO nop_phi( idNhanKhau, idPhiThu, ngay_nop, so_tien)" + " values (?, ?, ?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setInt(1, payDonationModel.getIdNhanKhau());
+            preparedStatement.setInt(2, idDonation);
+            preparedStatement.setDate(3, new Date(app.Main.calendar.getTime().getTime()));
+            preparedStatement.setInt(4, payDonationModel.getSo_tien());
+
+            preparedStatement.executeUpdate();
+            ResultSet rs = preparedStatement.getGeneratedKeys();
+            if (rs.next()) {
+                return true;
+            }
+            connection.close();
+
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 
 	private void exceptionHandle(String message) {
 		JOptionPane.showMessageDialog(null, message, "Warning", JOptionPane.ERROR_MESSAGE);

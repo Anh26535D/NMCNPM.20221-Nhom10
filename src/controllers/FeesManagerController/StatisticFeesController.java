@@ -178,7 +178,7 @@ public class StatisticFeesController {
 		List<Integer> needs = allNeeds(list, feesModel);
 		List<Boolean> paidStates = allPaidStates(paids, needs);
 		this.summaryLbl.setText("Số hộ khẩu đã nộp là: " + Integer.toString(numOfCompletePaids(paidStates)));
-		DefaultTableModel model = tableModelHoKhau.setHouseholdTable(list, paids, needs, paidStates, COLUMNS);
+		DefaultTableModel model = tableModelHoKhau.setHouseholdFeeTable(list, paids, needs, paidStates, COLUMNS);
 		JTable table = new JTable(model) {
 			private static final long serialVersionUID = 1L;
 

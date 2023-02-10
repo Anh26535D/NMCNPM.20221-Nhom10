@@ -134,7 +134,7 @@ public class StatisticFeesFrame extends JFrame {
         selectStateJcb = new JComboBox<String>();
         selectStateJcb.setForeground(Color.BLACK);
         selectStateJcb.setBackground(new Color(255, 255, 255));
-        selectStateJcb.setFont(new Font("Tahoma", Font.BOLD, 10));
+        selectStateJcb.setFont(new Font("Tahoma", Font.BOLD, 15));
         selectStateJcb.setBounds(620, 67, 117, 43);
         selectStateJcb.setModel(new DefaultComboBoxModel<>(
                         new String[]{"Tất cả", "Đã nộp", "Còn thiếu"}
