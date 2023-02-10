@@ -94,18 +94,17 @@ public class ChoosePeopleController {
             @Override
             public void mouseClicked(MouseEvent e) {
 //                JOptionPane.showConfirmDialog(null, table.getSelectedRow());
-                if (e.getClickCount() > 1) {
-                    JOptionPane.showMessageDialog(null, "aa");
-                }
-                NhanKhauBean temp = list.get(table.getSelectedRow());
-                if (hoKhauService.checkPerson(temp.getNhanKhauModel().getID())) {
-                    nhanKhauBean.setNhanKhauModel(temp.getNhanKhauModel());
-                    nhanKhauBean.setChungMinhThuModel(temp.getChungMinhThuModel());
-                    nhanKhauBean.setListGiaDinhModels(temp.getListGiaDinhModels());
-                    nhanKhauBean.setListTieuSuModels(temp.getListTieuSuModels());
-                    selectedJtf.setText(nhanKhauBean.getNhanKhauModel().getHoTen());
-                } else {
-                    JOptionPane.showMessageDialog(null, "Nhân khẩu đã nằm trong hộ khẩu khác!", "Warning", JOptionPane.NO_OPTION);
+                if (e.getClickCount() >= 1) {
+	                NhanKhauBean temp = list.get(table.getSelectedRow());
+	                if (hoKhauService.checkPerson(temp.getNhanKhauModel().getID())) {
+	                    nhanKhauBean.setNhanKhauModel(temp.getNhanKhauModel());
+	                    nhanKhauBean.setChungMinhThuModel(temp.getChungMinhThuModel());
+	                    nhanKhauBean.setListGiaDinhModels(temp.getListGiaDinhModels());
+	                    nhanKhauBean.setListTieuSuModels(temp.getListTieuSuModels());
+	                    selectedJtf.setText(nhanKhauBean.getNhanKhauModel().getHoTen());
+	                } else {
+	                    JOptionPane.showMessageDialog(null, "Nhân khẩu đã nằm trong hộ khẩu khác!", "Warning", JOptionPane.NO_OPTION);
+	                }
                 }
             }
         });
