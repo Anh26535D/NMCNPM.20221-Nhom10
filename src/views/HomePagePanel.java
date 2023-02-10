@@ -40,7 +40,7 @@ public class HomePagePanel extends JPanel {
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new EmptyBorder(0, 0, 0, 0));
-		panel.setBackground(new Color(249, 250, 254));
+		panel.setBackground(new Color(135, 206, 250));
 		panel.setBounds(10, 10, 786, 584);
 		add(panel);
 		panel.setLayout(null);
@@ -48,7 +48,7 @@ public class HomePagePanel extends JPanel {
 		JPanel jPanel1 = new JPanel();
 		jPanel1.setBackground(new Color(255, 255, 255));
 		jPanel1.setBorder(new LineBorder(new Color(255, 255, 255), 1, true));
-		jPanel1.setBounds(40, 90, 320, 240);
+		jPanel1.setBounds(40, 67, 320, 230);
 		panel.add(jPanel1);
 		jPanel1.setLayout(null);
 		
@@ -60,7 +60,7 @@ public class HomePagePanel extends JPanel {
 		panel_1.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel(new ImageIcon(HomePagePanel.class.getResource("/icons/network.png")));
-		lblNewLabel.setBounds(0, 0, 100, 100);
+		lblNewLabel.setBounds(-10, 0, 100, 100);
 		panel_1.add(lblNewLabel);
 		
 		JPanel panel_3 = new JPanel();
@@ -89,7 +89,7 @@ public class HomePagePanel extends JPanel {
 		jPanel3.setLayout(null);
 		jPanel3.setBorder(new EmptyBorder(0, 0, 0, 0));
 		jPanel3.setBackground(new Color(255, 255, 255));
-		jPanel3.setBounds(420, 90, 320, 240);
+		jPanel3.setBounds(420, 67, 320, 230);
 		panel.add(jPanel3);
 		
 		JPanel panel_1_1 = new JPanel();
@@ -130,7 +130,7 @@ public class HomePagePanel extends JPanel {
 		jPanel5.setLayout(null);
 		jPanel5.setBorder(new EmptyBorder(0, 0, 0, 0));
 		jPanel5.setBackground(new Color(204, 204, 255));
-		jPanel5.setBounds(420, 355, 320, 100);
+		jPanel5.setBounds(420, 334, 320, 100);
 		panel.add(jPanel5);
 		
 		JPanel panel_1_2 = new JPanel();
@@ -170,7 +170,7 @@ public class HomePagePanel extends JPanel {
 		jPanel7.setLayout(null);
 		jPanel7.setBorder(new EmptyBorder(0, 0, 0, 0));
 		jPanel7.setBackground(new Color(204, 204, 255));
-		jPanel7.setBounds(420, 465, 320, 100);
+		jPanel7.setBounds(420, 444, 320, 100);
 		panel.add(jPanel7);
 		
 		JPanel panel_1_3 = new JPanel();
@@ -207,7 +207,7 @@ public class HomePagePanel extends JPanel {
 		jLabel2_3.setBackground(Color.WHITE);
 		
 		JLabel lblNewLabel_4 = new JLabel("Welcome !!!");
-		lblNewLabel_4.setBounds(40, 10, 678, 60);
+		lblNewLabel_4.setBounds(40, 10, 678, 45);
 		panel.add(lblNewLabel_4);
 		lblNewLabel_4.setFont(new Font("Snap ITC", Font.PLAIN, 25));
 		
@@ -215,22 +215,34 @@ public class HomePagePanel extends JPanel {
 		jPanel1_1.setLayout(null);
 		jPanel1_1.setBorder(new LineBorder(new Color(255, 255, 255), 1, true));
 		jPanel1_1.setBackground(Color.WHITE);
-		jPanel1_1.setBounds(40, 355, 320, 210);
+		jPanel1_1.setBounds(40, 317, 320, 230);
 		panel.add(jPanel1_1);
 		
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBorder(new LineBorder(new Color(204, 204, 255)));
+		panel_2.setBackground(new Color(255, 255, 255));
+		panel_2.setBounds(55, 112, 210, 94);
+		jPanel1_1.add(panel_2);
+		panel_2.setLayout(null);
+		
 		noPaidFees = new JLabel("0");
-		noPaidFees.setBounds(55, 50, 210, 40);
-		jPanel1_1.add(noPaidFees);
+		noPaidFees.setBounds(0, 0, 210, 40);
+		panel_2.add(noPaidFees);
 		noPaidFees.setHorizontalAlignment(SwingConstants.CENTER);
 		noPaidFees.setFont(new Font("Tahoma", Font.BOLD, 20));
 		noPaidFees.setBorder(null);
 		
 		JLabel jLabel2_2 = new JLabel("Hộ chưa nộp phí đợt này");
-		jLabel2_2.setBounds(55, 100, 210, 69);
-		jPanel1_1.add(jLabel2_2);
+		jLabel2_2.setBounds(0, 54, 210, 40);
+		panel_2.add(jLabel2_2);
 		jLabel2_2.setHorizontalAlignment(SwingConstants.CENTER);
 		jLabel2_2.setFont(new Font("Tahoma", Font.BOLD, 15));
 		jLabel2_2.setBorder(null);
 		jLabel2_2.setBackground(Color.WHITE);
+		
+		JLabel lblNewLabel_5 = new JLabel(new ImageIcon(HomePagePanel.class.getResource("/icons/chnopphi6060.png")));
+		lblNewLabel_5.setBounds(105, 2, 100, 100);
+		jPanel1_1.add(lblNewLabel_5);
 	}
 }

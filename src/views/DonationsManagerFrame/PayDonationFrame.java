@@ -1,4 +1,4 @@
-package views.FeesManagerFrame;
+package views.DonationsManagerFrame;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -11,16 +11,17 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import bean.PhiBatBuocBean;
-import controllers.FeesManagerController.PayFeeController;
-import controllers.FeesManagerController.StatisticFeesController;
-import models.PayFeeModel;
+import bean.PhiUngHoBean;
+import controllers.DonationsManagerController.PayDonationController;
+import controllers.DonationsManagerController.StatisticDonationsController;
+import models.PayDonationModel;
+import views.FeesManagerFrame.StatisticFeesFrame;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.Font;
 
-public class PayFeeFrame extends JFrame {
+public class PayDonationFrame extends JFrame {
 
 	/**
 	 * 
@@ -29,25 +30,25 @@ public class PayFeeFrame extends JFrame {
 
 	private JPanel contentPane;
 
-	private StatisticFeesController parentController;
+	private StatisticDonationsController parentController;
 	private JFrame parentFrame;
-	private PhiBatBuocBean selectedFee;
-	private PayFeeController controller;
-	private PayFeeModel payFeeModel;
+	private PhiUngHoBean selectedDonation;
+	private PayDonationController controller;
+	private PayDonationModel payDonationModel;
 	
 	private JTextField soTienJtf;
 	private JTextField tenJtf;
 	private JButton CancelBtn;
 	private JButton CreateBtn;
 
-	public PayFeeFrame(StatisticFeesController parentController, JFrame parentJFrame, PhiBatBuocBean selectedFee) {
+	public PayDonationFrame(StatisticDonationsController parentController, JFrame parentJFrame, PhiUngHoBean selectedDonation) {
 		init();
 		this.parentController = parentController;
 		this.parentFrame = parentJFrame;
 		this.parentFrame.setEnabled(false);
-		this.selectedFee = selectedFee;
-		controller = new PayFeeController();
-		this.payFeeModel = new PayFeeModel();
+		this.selectedDonation = selectedDonation;
+		controller = new PayDonationController();
+		this.payDonationModel = new PayDonationModel();
 
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
@@ -60,7 +61,7 @@ public class PayFeeFrame extends JFrame {
 	}
 
 	private void init() {
-		setTitle("Nộp phí");
+		setTitle("Ủng hộ");
 		setBounds(100, 100, 650, 310);
 		contentPane = new JPanel();
 
@@ -163,10 +164,10 @@ public class PayFeeFrame extends JFrame {
 
 	private void CreateBtnActionPerformed(java.awt.event.ActionEvent evt) {
 		if (validateForm()) {
-			this.payFeeModel.setIdNhanKhau(Integer.parseInt(tenJtf.getText()));;
-			this.payFeeModel.setSo_tien(Integer.parseInt(soTienJtf.getText()));
+			this.payDonationModel.setIdNhanKhau(Integer.parseInt(tenJtf.getText()));;
+			this.payDonationModel.setSo_tien(Integer.parseInt(soTienJtf.getText()));
 			try {
-				if (this.controller.payFee(this.payFeeModel, this.selectedFee.getFeesModel().getID())) {
+				if (this.controller.payDonation(this.payDonationModel, this.selectedDonation.getDonationModel().getID())) {
 					JOptionPane.showMessageDialog(null, "Thêm thành công!!");
 					close();
 					parentController.refreshData();

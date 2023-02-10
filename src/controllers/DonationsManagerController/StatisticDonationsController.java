@@ -13,6 +13,7 @@ import java.util.List;
 
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -29,8 +30,6 @@ import bean.PhiUngHoBean;
 import models.DonationsModel;
 import services.DonationsService;
 import services.HoKhauService;
-import services.PeopleService;
-import services.StringService;
 import utility.ClassTableModel;
 import views.infoViews.InfoJframe;
 
@@ -46,14 +45,16 @@ public class StatisticDonationsController {
     private final ClassTableModel tableModelHoKhau = new ClassTableModel();
     private final String COLUMNS[] = {"Mã hộ khẩu", "Họ tên chủ hộ", "Địa chỉ", "Đã ủng hộ"};
     private JFrame parentJFrame;
+    private JLabel summaryLbl;
 
-    public StatisticDonationsController(JPanel tableJpn, JTextField searchJtf, JComboBox<String> selectStateJcb, PhiUngHoBean selectedDonation) {
+    public StatisticDonationsController(JPanel tableJpn, JTextField searchJtf, JComboBox<String> selectStateJcb, PhiUngHoBean selectedDonation, JLabel summaryLbl) {
         this.searchJtf = searchJtf;
         this.tableJpn = tableJpn;
         this.donationsModel = selectedDonation.getDonationModel();
         this.donationsService = new DonationsService();
         this.list = hoKhauService.getListHoKhau();
         this.selectStateJcb = selectStateJcb;
+        this.summaryLbl = summaryLbl;
         initAction();
     }
 
@@ -98,20 +99,30 @@ public class StatisticDonationsController {
     }
 
     public List<Integer> allPaids(List<HoKhauBean> householdBeans, DonationsModel donationsModel) {
-        List<Integer> paids = new ArrayList<Integer>();
-        for (int i = 0; i < householdBeans.size(); ++i) {
-            paids.add(donationsService.getPaid(householdBeans.get(i), donationsModel));
-        }
-        return paids;
-    }
+		List<Integer> paids = new ArrayList<Integer>();
+		for (int i = 0; i < householdBeans.size(); ++i) {
+			paids.add(donationsService.getPaid(householdBeans.get(i), donationsModel));
+		}
+		return paids;
+	}
 
-    public List<Boolean> allPaidStates(List<Integer> paids, List<Integer> needs) {
+    public List<Boolean> allPaidStates(List<Integer> paids) {
         List<Boolean> paidStates = new ArrayList<Boolean>();
         for (int i = 0; i < paids.size(); ++i) {
-            paidStates.add(paids.get(i) >= needs.get(i));
+            paidStates.add(paids.get(i) > 0);
         }
         return paidStates;
     }
+	public int numOfCompletePaids(List<Boolean> allPaidStates) {
+		int cnt = 0;
+		for(Boolean state:allPaidStates) {
+			if (state.equals(Boolean.TRUE)) {
+				cnt += 1;
+			}
+		}
+		return cnt;
+	}
+	
 
     private JTable setStyleTable(JTable table) {
         // Set style for table header
@@ -153,11 +164,11 @@ public class StatisticDonationsController {
 
     public void setData() {
         List<Integer> paids = allPaids(list, donationsModel);
-        DefaultTableModel model = tableModelHoKhau.setHouseholdDonationTable(list, paids, COLUMNS);
+        List<Boolean> paidStates = allPaidStates(paids);
+		this.summaryLbl.setText("Số hộ khẩu đã ủng hộ là: " + Integer.toString(numOfCompletePaids(paidStates)));
+		DefaultTableModel model = tableModelHoKhau.setHouseholdDonationTable(list, paids, COLUMNS);
         JTable table = new JTable(model) {
             private static final long serialVersionUID = 1L;
-
-            @Override
             public boolean editCellAt(int row, int column, EventObject e) {
                 return false;
             }
@@ -213,5 +224,9 @@ public class StatisticDonationsController {
     public void setTableJpn(JPanel tableJpn) {
         this.tableJpn = tableJpn;
     }
+    public void refreshData() {
+        setData();
+    }
+
 
 }
