@@ -18,6 +18,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import bean.PhiUngHoBean;
+import controllers.DonationsController;
 import controllers.DonationsManagerController.StatisticDonationsController;
 import models.DonationsModel;
 import views.DonationsManagerFrame.PayDonationFrame;
@@ -39,6 +40,8 @@ public class StatisticDonationsFrame extends JFrame {
 	private JFrame parentFrame;
 	private PhiUngHoBean selectedDonation;
 	private DonationsModel donationsModel;
+	
+	private DonationsController rootController;
 
 	private JPanel tablePanel;
 	private JTextField jtfSearch;
@@ -47,10 +50,11 @@ public class StatisticDonationsFrame extends JFrame {
 	private JLabel summaryLbl;
 	private JButton payBtn;
 
-	public StatisticDonationsFrame(JFrame parentFrame, PhiUngHoBean selectedDonation) {
+	public StatisticDonationsFrame(JFrame parentFrame, PhiUngHoBean selectedDonation, DonationsController rootController) {
 		this.parentFrame = parentFrame;
 		this.selectedDonation = selectedDonation;
 		this.donationsModel = selectedDonation.getDonationModel();
+		this.rootController = rootController;
 
 		init();
 
@@ -63,6 +67,7 @@ public class StatisticDonationsFrame extends JFrame {
 				if (JOptionPane.showConfirmDialog(null, "Are you sure to close??", "Confirm",
 						JOptionPane.YES_NO_OPTION) == 0) {
 					parentFrame.setEnabled(true);
+					rootController.refreshData();
 					dispose();
 				}
 			}
