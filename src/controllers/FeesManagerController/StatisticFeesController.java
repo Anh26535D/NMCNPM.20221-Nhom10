@@ -7,6 +7,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.EventObject;
 import java.util.List;
@@ -28,10 +29,7 @@ import javax.swing.table.TableCellRenderer;
 import bean.HoKhauBean;
 import bean.PhiBatBuocBean;
 import models.FeesModel;
-import services.FeesService;
-import services.HoKhauService;
-import services.PeopleService;
-import services.StringService;
+import services.*;
 import utility.ClassTableModel;
 import views.infoViews.InfoJframe;
 
@@ -44,10 +42,10 @@ public class StatisticFeesController {
 	private FeesService feesService;
 	private JComboBox<String> selectStateJcb;
 	private JLabel summaryLbl;
-	
+
 	private final HoKhauService hoKhauService = new HoKhauService();
 	private final ClassTableModel tableModelHoKhau = new ClassTableModel();
-	private final String COLUMNS[] = { "Mã hộ khẩu", "Họ tên chủ hộ", "Địa chỉ", "Đã nộp", "Cần nộp", "Trạng thái" };
+	private final String COLUMNS[] = {"Mã hộ khẩu", "Họ tên chủ hộ", "Địa chỉ", "Đã nộp", "Cần nộp", "Trạng thái"};
 	private JFrame parentJFrame;
 
 	public StatisticFeesController(JPanel tableJpn, JTextField searchJtf, JComboBox<String> selectStateJcb, PhiBatBuocBean selectedFee, JLabel summaryLbl) {
@@ -58,9 +56,13 @@ public class StatisticFeesController {
 		this.list = hoKhauService.getListHoKhau();
 		this.selectStateJcb = selectStateJcb;
 		this.summaryLbl = summaryLbl;
+		List<Integer> paids = allPaids(list, feesModel);
+		List<Integer> needs = allNeeds(list, feesModel);
+		List<Boolean> paidStates = allPaidStates(paids, needs);
+		this.summaryLbl.setText("Số hộ khẩu đã nộp là: " + Integer.toString(numOfCompletePaids(paidStates)));
 		initAction();
 	}
-	
+
 	public void initAction() {
 		this.searchJtf.getDocument().addDocumentListener(new DocumentListener() {
 			@Override
@@ -124,17 +126,17 @@ public class StatisticFeesController {
 		}
 		return paidStates;
 	}
-	
+
 	public int numOfCompletePaids(List<Boolean> allPaidStates) {
 		int cnt = 0;
-		for(Boolean state:allPaidStates) {
+		for (Boolean state : allPaidStates) {
 			if (state.equals(Boolean.TRUE)) {
 				cnt += 1;
 			}
 		}
 		return cnt;
 	}
-	
+
 	private JTable setStyleTable(JTable table) {
 		// Set style for table header
 		JTableHeader header = table.getTableHeader();
@@ -169,7 +171,7 @@ public class StatisticFeesController {
 				}
 			}
 		});
-		
+
 		return table;
 	}
 
@@ -177,7 +179,6 @@ public class StatisticFeesController {
 		List<Integer> paids = allPaids(list, feesModel);
 		List<Integer> needs = allNeeds(list, feesModel);
 		List<Boolean> paidStates = allPaidStates(paids, needs);
-		this.summaryLbl.setText("Số hộ khẩu đã nộp là: " + Integer.toString(numOfCompletePaids(paidStates)));
 		DefaultTableModel model = tableModelHoKhau.setHouseholdFeeTable(list, paids, needs, paidStates, COLUMNS);
 		JTable table = new JTable(model) {
 			private static final long serialVersionUID = 1L;
@@ -198,7 +199,7 @@ public class StatisticFeesController {
 				return comp;
 			}
 		};
-		
+
 		table = setStyleTable(table);
 
 		JScrollPane scroll = new JScrollPane();
@@ -238,9 +239,19 @@ public class StatisticFeesController {
 	public void setTableJpn(JPanel tableJpn) {
 		this.tableJpn = tableJpn;
 	}
-	
-    public void refreshData() {
-        setData();
-    }
 
+	public void refreshData() {
+		setData();
+	}
+
+	public void filterFee(FeesModel fee, String condition)  {
+		if (condition.equals(new String("Tất cả"))){
+			this.list = hoKhauService.getListHoKhau();
+			setData();
+		} else {
+			this.list=feesService.getListWithFilter(fee,condition);
+			setData();
+		}
+	}
 }
+

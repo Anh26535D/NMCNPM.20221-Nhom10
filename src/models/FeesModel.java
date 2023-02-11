@@ -36,6 +36,14 @@ public class FeesModel {
 	public String getDot_thu() {
 		return dot_thu;
 	}
+
+	public String getMonthDotThu(){
+		return dot_thu.split("-")[1];
+	}
+
+	public String getYearDotThu(){
+		return dot_thu.split("-")[0];
+	}
 	
 	public Date getNgay_tao() {
 		return ngay_tao;

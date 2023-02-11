@@ -4,13 +4,13 @@ import java.sql.*;
 
 public class SQLConnection {
 //	Anh Dam
+   public static String serverName = "DESKTOP-04NMIDF\\\\SQLEXPRESS";
 
- //   public static String serverName = "DESKTOP-04NMIDF\\\\SQLEXPRESS";
 //	Quan
-	public static String serverName = "DESKTOP-2M64U04\\\\SQLEXPRESS";
+//	public static String serverName = "DESKTOP-2M64U04\\\\SQLEXPRESS";
 
-    ////  Hieu
-//    public static String serverName = "127.0.0.1";
+//  Hieu
+//  public static String serverName = "127.0.0.1";
     
     public static String databaseName = "quan_ly_nhan_khau";
     public static String userName = "sa";

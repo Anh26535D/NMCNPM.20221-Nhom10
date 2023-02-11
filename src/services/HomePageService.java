@@ -116,7 +116,7 @@ public class HomePageService {
             while (rs.next()) {
                 result++;
             }
-            preparedStatement.close();
+            connection.close();
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
