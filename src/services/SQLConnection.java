@@ -5,7 +5,7 @@ import java.sql.*;
 public class SQLConnection {
 //	Anh Dam
 
-//    public static String serverName = "DESKTOP-04NMIDF\\\\SQLEXPRESS";
+ //   public static String serverName = "DESKTOP-04NMIDF\\\\SQLEXPRESS";
 //	Quan
 	public static String serverName = "DESKTOP-2M64U04\\\\SQLEXPRESS";
 

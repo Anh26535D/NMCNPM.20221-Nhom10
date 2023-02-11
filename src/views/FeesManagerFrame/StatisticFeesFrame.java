@@ -19,6 +19,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import bean.PhiBatBuocBean;
+import controllers.FeesController;
 import controllers.FeesManagerController.StatisticFeesController;
 import models.FeesModel;
 
@@ -39,6 +40,7 @@ public class StatisticFeesFrame extends JFrame {
     private JFrame parentFrame;
     private PhiBatBuocBean selectedFee;
     private FeesModel feesModel;
+    private FeesController rootController;
 
     private JPanel tablePanel;
     private JTextField jtfSearch;
@@ -47,10 +49,11 @@ public class StatisticFeesFrame extends JFrame {
     private JLabel summaryLbl;
     private JButton payBtn;
 
-    public StatisticFeesFrame(JFrame parentFrame, PhiBatBuocBean selectedFee) {
+    public StatisticFeesFrame(JFrame parentFrame, PhiBatBuocBean selectedFee, FeesController rootController) {
         this.parentFrame = parentFrame;
         this.selectedFee = selectedFee;
         this.feesModel = selectedFee.getFeesModel();
+        this.rootController = rootController;
 
         init();
 
@@ -63,6 +66,7 @@ public class StatisticFeesFrame extends JFrame {
                 if (JOptionPane.showConfirmDialog(null, "Are you sure to close??", "Confirm",
                         JOptionPane.YES_NO_OPTION) == 0) {
                     parentFrame.setEnabled(true);
+                    rootController.refreshData();
                     dispose();
                 }
             }
@@ -195,4 +199,5 @@ public class StatisticFeesFrame extends JFrame {
         payFeeFrame.setResizable(false);
         payFeeFrame.setVisible(true);
     }
+    
 }

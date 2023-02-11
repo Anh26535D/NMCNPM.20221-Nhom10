@@ -137,4 +137,8 @@ public class DonationsPanel extends JPanel {
 
     private void jtfSearchActionPerformed(java.awt.event.ActionEvent evt) {
     }
+    
+    public void refreshData() {
+    	controller.setData();
+    }
 }
