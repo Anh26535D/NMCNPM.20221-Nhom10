@@ -190,7 +190,7 @@ public class StatisticFeesFrame extends JFrame {
     }
 
     private void filterBtnActioPerformed() {
-        this.controller.setData();
+        this.controller.filterFee(selectedFee.getFeesModel(),selectStateJcb.getSelectedItem().toString());
     }
 
     private void payBtnActionPerformed(ActionEvent evt) {

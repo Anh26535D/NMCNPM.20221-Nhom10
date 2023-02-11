@@ -123,7 +123,7 @@ public class LoginFrame extends JFrame {
 	
 	private void login() {
         String userName = txbUserName.getText();
-        String password = String.valueOf(txbPasswd.getPassword());
+        String password = String.copyValueOf(txbPasswd.getPassword());
         try {
             if (this.cont.login(userName, password)) {
                 this.dispose();

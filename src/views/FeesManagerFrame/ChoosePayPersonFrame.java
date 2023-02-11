@@ -107,9 +107,9 @@ public class ChoosePayPersonFrame extends javax.swing.JFrame {
 		searchJtf.addFocusListener(new FocusListener() {
 			@Override
 			public void focusGained(FocusEvent e) {
-				if (searchJtf.getText().equals("Search")) {
+				if (searchJtf.getText().trim().equals("Search")) {
+					searchJtf.setForeground(Color.black);
 					searchJtf.setText("");
-					searchJtf.setForeground(Color.BLACK);
 				}
 			}
 
