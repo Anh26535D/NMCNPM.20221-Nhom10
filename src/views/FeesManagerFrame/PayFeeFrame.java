@@ -89,8 +89,8 @@ public class PayFeeFrame extends JFrame {
 		jPanel1.add(panel);
 		panel.setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("Người nộp");
-		lblNewLabel.setBounds(10, 10, 86, 20);
+		JLabel lblNewLabel = new JLabel("ID người nộp");
+		lblNewLabel.setBounds(10, 10, 116, 20);
 		panel.add(lblNewLabel);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
 
@@ -116,7 +116,7 @@ public class PayFeeFrame extends JFrame {
 		selectPersonBtn.setFont(new Font("Tahoma", Font.BOLD, 14));
 		selectPersonBtn.setBorderPainted(false);
 		selectPersonBtn.setBackground(new Color(147, 112, 219));
-		selectPersonBtn.setBounds(509, 10, 77, 20);
+		selectPersonBtn.setBounds(509, 0, 77, 25);
 		selectPersonBtn.addActionListener(new ActionListener() {
 			
 			@Override
