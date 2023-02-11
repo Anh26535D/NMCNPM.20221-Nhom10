@@ -20,7 +20,7 @@ import bean.PhiUngHoBean;
 import controllers.DonationsManagerController.PayDonationController;
 import controllers.DonationsManagerController.StatisticDonationsController;
 import models.PayDonationModel;
-import views.FeesManagerFrame.ChoosePayPersonFrame;
+import views.DonationsManagerFrame.ChoosePayDonationPersonFrame;
 
 public class PayDonationFrame extends JFrame {
 
@@ -219,7 +219,7 @@ public class PayDonationFrame extends JFrame {
 	}
 	
 	private void selectPersonAction(ActionEvent e) {
-        ChoosePayPersonFrame choosePeople = new ChoosePayPersonFrame(this.selectPerson, this);
+        ChoosePayDonationPersonFrame choosePeople = new ChoosePayDonationPersonFrame(this.selectPerson, this);
         choosePeople.setLocationRelativeTo(null);
         choosePeople.setResizable(false);
         choosePeople.setVisible(true);

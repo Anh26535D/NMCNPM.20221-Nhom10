@@ -1,9 +1,9 @@
-package views.FeesManagerFrame;
+package views.DonationsManagerFrame;
 
 import bean.NhanKhauBean;
-import controllers.FeesManagerController.ChoosePayPersonController;
+import controllers.DonationsManagerController.ChoosePayDonationPersonController;
 import controllers.HoKhauManagerController.ChoosePeopleController;
-import views.FeesManagerFrame.PayFeeFrame;
+import views.DonationsManagerFrame.PayDonationFrame;
 
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -21,13 +21,13 @@ import java.awt.Font;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.GroupLayout;
 
-public class ChoosePayPersonFrame extends javax.swing.JFrame {
+public class ChoosePayDonationPersonFrame extends javax.swing.JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private NhanKhauBean nhanKhauBean;
 	private NhanKhauBean nhanKhauBeanTemp;
 	private JFrame parentJFrame;
-	private final ChoosePayPersonController controller;
+	private final ChoosePayDonationPersonController controller;
 
 	private javax.swing.JButton cancelBtn;
 	private javax.swing.JButton confirmBtn;
@@ -36,7 +36,7 @@ public class ChoosePayPersonFrame extends javax.swing.JFrame {
 	private javax.swing.JTextField selectedJtf;
 	private javax.swing.JPanel tableJpn;
 
-	public ChoosePayPersonFrame(NhanKhauBean nhanKhauBean, JFrame parentJframe) {
+	public ChoosePayDonationPersonFrame(NhanKhauBean nhanKhauBean, JFrame parentJframe) {
 
 		initComponents();
 		this.nhanKhauBean = nhanKhauBean;
@@ -44,7 +44,7 @@ public class ChoosePayPersonFrame extends javax.swing.JFrame {
 		this.nhanKhauBeanTemp = new NhanKhauBean();
 		parentJframe.setEnabled(false);
 
-		controller = new ChoosePayPersonController(this.nhanKhauBeanTemp, searchJtf, selectedJtf, tableJpn);
+		controller = new ChoosePayDonationPersonController(this.nhanKhauBeanTemp, searchJtf, selectedJtf, tableJpn);
 
 		this.addWindowListener(new WindowAdapter() {
 			@Override
@@ -194,8 +194,8 @@ public class ChoosePayPersonFrame extends javax.swing.JFrame {
 		this.nhanKhauBean.setListGiaDinhModels(this.nhanKhauBeanTemp.getListGiaDinhModels());
 		this.nhanKhauBean.setListTieuSuModels(this.nhanKhauBeanTemp.getListTieuSuModels());
 		this.parentJFrame.setEnabled(true);
-		PayFeeFrame payFee = (PayFeeFrame) this.parentJFrame;
-		payFee.setDataPerson();
+		PayDonationFrame payDonation = (PayDonationFrame) this.parentJFrame;
+		payDonation.setDataPerson();
 		dispose();
 	}
 

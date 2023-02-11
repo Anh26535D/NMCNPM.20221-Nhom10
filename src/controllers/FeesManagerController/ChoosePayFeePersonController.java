@@ -22,7 +22,7 @@ import services.HoKhauService;
 import services.PeopleService;
 import utility.TableModelHoKhau;
 
-public class ChoosePayPersonController {
+public class ChoosePayFeePersonController {
 	private NhanKhauBean nhanKhauBean;
 	private JTextField searchJtf;
 	private JTextField selectedJtf;
@@ -40,7 +40,7 @@ public class ChoosePayPersonController {
 	 * @param selectedJtf
 	 * @param tableJPanel
 	 */
-	public ChoosePayPersonController(NhanKhauBean nhanKhauBean, JTextField searchJtf, JTextField selectedJtf,
+	public ChoosePayFeePersonController(NhanKhauBean nhanKhauBean, JTextField searchJtf, JTextField selectedJtf,
 			JPanel tableJPanel) {
 		this.nhanKhauBean = nhanKhauBean;
 		this.searchJtf = searchJtf;

@@ -223,7 +223,7 @@ public class PayFeeFrame extends JFrame {
 	}
 	
 	private void selectPersonAction(ActionEvent e) {
-        ChoosePayPersonFrame choosePeople = new ChoosePayPersonFrame(this.selectPerson, this);
+        ChoosePayFeePersonFrame choosePeople = new ChoosePayFeePersonFrame(this.selectPerson, this);
         choosePeople.setLocationRelativeTo(null);
         choosePeople.setResizable(false);
         choosePeople.setVisible(true);

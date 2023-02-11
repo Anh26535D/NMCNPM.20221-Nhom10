@@ -17,7 +17,6 @@ import models.DonateModel;
 import models.DonationsModel;
 import models.HoKhauModel;
 import models.PayDonationModel;
-import models.PayDonationModel;
 
 public class DonationsService {
 
@@ -185,6 +184,21 @@ public class DonationsService {
 		}
 		return -1;
 	}
+    public boolean checkDuplicate(DonationsModel value) {
+        try {
+            Connection connection = SQLConnection.getDbConnection();
+            String query = "SELECT * FROM phi_ung_ho" + "WHERE ten_khoan_thu = N'" + value.getTen_khoan_thu() + "'" + "LIMIT 1";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet rs = preparedStatement.executeQuery();
+            if (rs.next()) {
+                return false;
+            }
+        } catch (SQLException | ClassNotFoundException error) {
+            error.printStackTrace();
+            return false;
+        }
+        return true;
+    }
 	
 	public Integer getPaid(HoKhauBean householdBean, DonationsModel donationModel) {
 		Connection connection;
