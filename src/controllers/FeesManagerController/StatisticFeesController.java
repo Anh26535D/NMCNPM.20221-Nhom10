@@ -245,13 +245,24 @@ public class StatisticFeesController {
 	}
 
 	public void filterFee(FeesModel fee, String condition)  {
-		if (condition.equals(new String("Tất cả"))){
-			this.list = hoKhauService.getListHoKhau();
-			setData();
-		} else {
-			this.list=feesService.getListWithFilter(fee,condition);
-			setData();
+		this.list =hoKhauService.getListHoKhau();
+		if(!condition.equals(new String("Tất cả"))) {
+			List<Integer> paids = allPaids(list, feesModel);
+			List<Integer> needs = allNeeds(list, feesModel);
+			List<Boolean> paidStates = allPaidStates(paids, needs);
+			List<HoKhauBean> temp = new ArrayList<>();
+			int len_rows = list.size();
+			for (int i = 0; i < len_rows; ++i) {
+				if (paidStates.get(i).equals(Boolean.TRUE) && condition.equals(new String("Đã nộp")) ) {
+					temp.add(list.get(i));
+				} else if (paidStates.get(i).equals(Boolean.FALSE) && condition.equals(new String("Còn thiếu")) ) {
+					temp.add(list.get(i));
+				}
+			}
+			this.list.clear();
+			list.addAll(temp);
 		}
+		setData();
 	}
 }
 
