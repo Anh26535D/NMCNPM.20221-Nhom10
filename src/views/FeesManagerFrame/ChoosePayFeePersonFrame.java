@@ -1,7 +1,7 @@
 package views.FeesManagerFrame;
 
 import bean.NhanKhauBean;
-import controllers.FeesManagerController.ChoosePayPersonController;
+import controllers.FeesManagerController.ChoosePayFeePersonController;
 import controllers.HoKhauManagerController.ChoosePeopleController;
 import views.FeesManagerFrame.PayFeeFrame;
 
@@ -21,13 +21,13 @@ import java.awt.Font;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.GroupLayout;
 
-public class ChoosePayPersonFrame extends javax.swing.JFrame {
+public class ChoosePayFeePersonFrame extends javax.swing.JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private NhanKhauBean nhanKhauBean;
 	private NhanKhauBean nhanKhauBeanTemp;
 	private JFrame parentJFrame;
-	private final ChoosePayPersonController controller;
+	private final ChoosePayFeePersonController controller;
 
 	private javax.swing.JButton cancelBtn;
 	private javax.swing.JButton confirmBtn;
@@ -36,7 +36,7 @@ public class ChoosePayPersonFrame extends javax.swing.JFrame {
 	private javax.swing.JTextField selectedJtf;
 	private javax.swing.JPanel tableJpn;
 
-	public ChoosePayPersonFrame(NhanKhauBean nhanKhauBean, JFrame parentJframe) {
+	public ChoosePayFeePersonFrame(NhanKhauBean nhanKhauBean, JFrame parentJframe) {
 
 		initComponents();
 		this.nhanKhauBean = nhanKhauBean;
@@ -44,7 +44,7 @@ public class ChoosePayPersonFrame extends javax.swing.JFrame {
 		this.nhanKhauBeanTemp = new NhanKhauBean();
 		parentJframe.setEnabled(false);
 
-		controller = new ChoosePayPersonController(this.nhanKhauBeanTemp, searchJtf, selectedJtf, tableJpn);
+		controller = new ChoosePayFeePersonController(this.nhanKhauBeanTemp, searchJtf, selectedJtf, tableJpn);
 
 		this.addWindowListener(new WindowAdapter() {
 			@Override
