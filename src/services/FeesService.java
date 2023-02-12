@@ -326,27 +326,27 @@ public class FeesService {
             Connection connection = SQLConnection.getDbConnection();
             String query;
             if (condition.equals(new String("Đã nộp"))) {
-                query = "SELECT ho_khau.*\n" +
+                query = "SELECT * FROM ho_khau WHERE ID in (SELECT ho_khau.ID\n" +
                         "FROM nop_phi\n" +
                         "JOIN phi_bat_buoc ON nop_phi.idPhiThu = phi_bat_buoc.ID\n" +
                         "JOIN nhan_khau ON nop_phi.idNhanKhau = nhan_khau.ID\n" +
                         "JOIN thanh_vien_cua_ho ON thanh_vien_cua_ho.idNhanKhau = nhan_khau.ID\n" +
                         "JOIN ho_khau ON ho_khau.ID = thanh_vien_cua_ho.idHoKhau\n" +
                         "WHERE MONTH(nop_phi.ngay_nop)=? and YEAR(nop_phi.ngay_nop)=?\n" +
-                        "GROUP BY ho_khau.*,phi_bat_buoc.so_tien\n" +
-                        "HAVING phi_bat_buoc.so_tien * (SELECT COUNT(*) FROM thanh_vien_cua_ho as F2 WHERE ho_khau.ID = F2.idHoKhau) <= SUM(nop_phi.so_tien)";
+                        "GROUP BY ho_khau.ID,phi_bat_buoc.so_tien\n" +
+                        "HAVING phi_bat_buoc.so_tien * (SELECT COUNT(*) FROM thanh_vien_cua_ho as F2 WHERE ho_khau.ID = F2.idHoKhau) <= SUM(nop_phi.so_tien))";
             }else {
-                query = "SELECT ho_khau.*FROM ho_khau\n" +
-                        "EXCEPT\n" +
-                        "SELECT ho_khau.*\n" +
-                        "FROM nop_phi\n" +
-                        "JOIN phi_bat_buoc ON nop_phi.idPhiThu = phi_bat_buoc.ID\n" +
-                        "JOIN nhan_khau ON nop_phi.idNhanKhau = nhan_khau.ID\n" +
-                        "JOIN thanh_vien_cua_ho ON thanh_vien_cua_ho.idNhanKhau = nhan_khau.ID\n" +
-                        "JOIN ho_khau ON ho_khau.ID = thanh_vien_cua_ho.idHoKhau\n" +
-                        "WHERE MONTH(nop_phi.ngay_nop)=? and YEAR(nop_phi.ngay_nop)=?\n" +
-                        "GROUP BY ho_khau.*,phi_bat_buoc.so_tien\n" +
-                        "HAVING phi_bat_buoc.so_tien * (SELECT COUNT(*) FROM thanh_vien_cua_ho as F2 WHERE ho_khau.ID = F2.idHoKhau) <= SUM(nop_phi.so_tien)";
+                query = "SELECT * FROM ho_khau AS hk1\r\n"
+                		+ "WHERE hk1.ID NOT IN ( \r\n"
+                		+ "SELECT ho_khau.ID\r\n"
+                		+ "FROM nop_phi \r\n"
+                		+ "JOIN phi_bat_buoc ON nop_phi.idPhiThu = phi_bat_buoc.ID \r\n"
+                		+ "JOIN nhan_khau ON nop_phi.idNhanKhau = nhan_khau.ID \r\n"
+                		+ "JOIN thanh_vien_cua_ho ON thanh_vien_cua_ho.idNhanKhau = nhan_khau.ID \r\n"
+                		+ "JOIN ho_khau ON ho_khau.ID = thanh_vien_cua_ho.idHoKhau \r\n"
+                		+ "WHERE MONTH(nop_phi.ngay_nop)=? and YEAR(nop_phi.ngay_nop)=?\r\n"
+                		+ "GROUP BY ho_khau.ID, phi_bat_buoc.so_tien \r\n"
+                		+ "HAVING phi_bat_buoc.so_tien * (SELECT COUNT(*) FROM thanh_vien_cua_ho as F2 WHERE ho_khau.ID = F2.idHoKhau) <= SUM(nop_phi.so_tien))";
             }
             PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(query);
             preparedStatement.setString(1,fee.getMonthDotThu());
