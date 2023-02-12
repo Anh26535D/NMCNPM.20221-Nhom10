@@ -40,7 +40,7 @@ public class HomePagePanel extends JPanel {
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new EmptyBorder(0, 0, 0, 0));
-		panel.setBackground(new Color(135, 206, 250));
+		panel.setBackground(new Color(102, 153, 255));
 		panel.setBounds(10, 10, 786, 584);
 		add(panel);
 		panel.setLayout(null);
@@ -129,7 +129,7 @@ public class HomePagePanel extends JPanel {
 		JPanel jPanel5 = new JPanel();
 		jPanel5.setLayout(null);
 		jPanel5.setBorder(new EmptyBorder(0, 0, 0, 0));
-		jPanel5.setBackground(new Color(204, 204, 255));
+		jPanel5.setBackground(Color.WHITE);
 		jPanel5.setBounds(420, 334, 320, 100);
 		panel.add(jPanel5);
 		
@@ -169,7 +169,7 @@ public class HomePagePanel extends JPanel {
 		JPanel jPanel7 = new JPanel();
 		jPanel7.setLayout(null);
 		jPanel7.setBorder(new EmptyBorder(0, 0, 0, 0));
-		jPanel7.setBackground(new Color(204, 204, 255));
+		jPanel7.setBackground(Color.WHITE);
 		jPanel7.setBounds(420, 444, 320, 100);
 		panel.add(jPanel7);
 		

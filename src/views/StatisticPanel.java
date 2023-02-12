@@ -62,7 +62,7 @@ public class StatisticPanel extends javax.swing.JPanel {
 
 		panel_1 = new JPanel();
 		panel_1.setBackground(Color.WHITE);
-		panel_1.setBorder(new LineBorder(new Color(147, 112, 219), 1, true));
+		panel_1.setBorder(new EmptyBorder(0, 0, 0, 0));
 		panel_1.setBounds(10, 10, 786, 146);
 		panel_1.setLayout(null);
 		add(panel_1);
