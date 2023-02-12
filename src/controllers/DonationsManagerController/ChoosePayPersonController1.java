@@ -56,22 +56,37 @@ public class ChoosePayPersonController1 {
 			@Override
 			public void insertUpdate(DocumentEvent e) {
 				String key = searchJtf.getText();
-				list = peopleService.search(key.trim());
-				setData();
+				if (!key.trim().equals("") && !key.trim().equals("Search")) {
+					list = peopleService.search(key.trim());
+					setData();
+				} else if (key.trim().equals("")) {
+					list = peopleService.getListNhanKhau();
+					setData();
+				}
 			}
 
 			@Override
 			public void removeUpdate(DocumentEvent e) {
 				String key = searchJtf.getText();
-				list = peopleService.search(key.trim());
-				setData();
+				if (!key.trim().equals("") && !key.trim().equals("Search")) {
+					list = peopleService.search(key.trim());
+					setData();
+				} else if (key.trim().equals("")) {
+					list = peopleService.getListNhanKhau();
+					setData();
+				}
 			}
 
 			@Override
 			public void changedUpdate(DocumentEvent e) {
 				String key = searchJtf.getText();
-				list = peopleService.search(key.trim());
-				setData();
+				if (!key.trim().equals("") && !key.trim().equals("Search")) {
+					list = peopleService.search(key.trim());
+					setData();
+				} else if (key.trim().equals("")) {
+					list = peopleService.getListNhanKhau();
+					setData();
+				}
 			}
 		});
 	}
