@@ -1,4 +1,4 @@
-package controllers.FeesManagerController;
+package controllers.DonationsManagerController;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -22,7 +22,7 @@ import services.HoKhauService;
 import services.PeopleService;
 import utility.TableModelHoKhau;
 
-public class ChoosePayPersonController {
+public class ChoosePayDonationPersonController {
 	private NhanKhauBean nhanKhauBean;
 	private JTextField searchJtf;
 	private JTextField selectedJtf;
@@ -40,7 +40,7 @@ public class ChoosePayPersonController {
 	 * @param selectedJtf
 	 * @param tableJPanel
 	 */
-	public ChoosePayPersonController(NhanKhauBean nhanKhauBean, JTextField searchJtf, JTextField selectedJtf,
+	public ChoosePayDonationPersonController(NhanKhauBean nhanKhauBean, JTextField searchJtf, JTextField selectedJtf,
 			JPanel tableJPanel) {
 		this.nhanKhauBean = nhanKhauBean;
 		this.searchJtf = searchJtf;
@@ -56,37 +56,22 @@ public class ChoosePayPersonController {
 			@Override
 			public void insertUpdate(DocumentEvent e) {
 				String key = searchJtf.getText();
-				if (!key.trim().equals("") && !key.trim().equals("Search")) {
-					list = peopleService.search(key.trim());
-					setData();
-				} else if (key.trim().equals("")) {
-					list = peopleService.getListNhanKhau();
-					setData();
-				}
+				list = peopleService.search(key.trim());
+				setData();
 			}
 
 			@Override
 			public void removeUpdate(DocumentEvent e) {
 				String key = searchJtf.getText();
-				if (!key.trim().equals("") && !key.trim().equals("Search")) {
-					list = peopleService.search(key.trim());
-					setData();
-				} else if (key.trim().equals("")) {
-					list = peopleService.getListNhanKhau();
-					setData();
-				}
+				list = peopleService.search(key.trim());
+				setData();
 			}
 
 			@Override
 			public void changedUpdate(DocumentEvent e) {
 				String key = searchJtf.getText();
-				if (!key.trim().equals("") && !key.trim().equals("Search")) {
-					list = peopleService.search(key.trim());
-					setData();
-				} else if (key.trim().equals("")) {
-					list = peopleService.getListNhanKhau();
-					setData();
-				}
+				list = peopleService.search(key.trim());
+				setData();
 			}
 		});
 	}
