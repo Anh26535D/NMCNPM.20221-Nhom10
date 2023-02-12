@@ -15,8 +15,12 @@ import bean.HoKhauBean;
 import bean.PhiUngHoBean;
 import models.DonateModel;
 import models.DonationsModel;
+import models.FeesModel;
 import models.HoKhauModel;
+import models.NhanKhauModel;
 import models.PayDonationModel;
+import models.PayFeeModel;
+import models.ThanhVienCuaHoModel;
 
 public class DonationsService {
 
@@ -148,42 +152,6 @@ public class DonationsService {
 		return list;
 	}
 
-	public Integer getNeed(HoKhauBean householdBean, DonationsModel DonationsModel) {
-		Connection connection;
-		try {
-			connection = SQLConnection.getDbConnection();
-			HoKhauModel household = householdBean.getHoKhauModel();
-			String maHoKhau = household.getMaHoKhau();
-			int idPhiThu = DonationsModel.getID();
-			String query_get_num_of_people_in_household = "SELECT COUNT(*) AS so_luong_nk_trong_hk FROM nhan_khau"
-					+ " JOIN thanh_vien_cua_ho ON thanh_vien_cua_ho.idNhanKhau = nhan_khau.ID"
-					+ " JOIN ho_khau ON ho_khau.ID = thanh_vien_cua_ho.idHoKhau" + " WHERE ho_khau.maHoKhau = '"
-					+ maHoKhau + "';";
-			String query_get_basic_Donation = "SELECT so_tien FROM phi_ung_ho" + " WHERE ID = " + idPhiThu + ";";
-			try {
-				Statement st = connection.createStatement();
-				ResultSet rs = st.executeQuery(query_get_num_of_people_in_household);
-				rs.next();
-				int num_of_people_in_household = rs.getInt("so_luong_nk_trong_hk");
-
-				rs = st.executeQuery(query_get_basic_Donation);
-				rs.next();
-				int basic_Donation = rs.getInt("so_tien");
-
-				connection.close();
-
-				return basic_Donation * num_of_people_in_household;
-
-			} catch (SQLException e) {
-				exceptionHandle(e.getMessage());
-			}
-		} catch (ClassNotFoundException e1) {
-			exceptionHandle(e1.getMessage());
-		} catch (SQLException e1) {
-			exceptionHandle(e1.getMessage());
-		}
-		return -1;
-	}
     public boolean checkDuplicate(DonationsModel value) {
         try {
             Connection connection = SQLConnection.getDbConnection();
@@ -314,8 +282,7 @@ public class DonationsService {
         }
         return false;
     }
-
-
+	
 	private void exceptionHandle(String message) {
 		JOptionPane.showMessageDialog(null, message, "Warning", JOptionPane.ERROR_MESSAGE);
 	}

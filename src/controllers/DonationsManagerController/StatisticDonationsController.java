@@ -28,6 +28,7 @@ import javax.swing.table.TableCellRenderer;
 import bean.HoKhauBean;
 import bean.PhiUngHoBean;
 import models.DonationsModel;
+import models.FeesModel;
 import services.DonationsService;
 import services.HoKhauService;
 import utility.ClassTableModel;
@@ -227,6 +228,24 @@ public class StatisticDonationsController {
     public void refreshData() {
         setData();
     }
+    
+	public void filterDonation(DonationsModel donation, String condition)  {
+		this.list = hoKhauService.getListHoKhau();
+		if(!condition.equals(new String("Tất cả"))) {
+			List<Integer> paids = allPaids(list, donation);
+			List<Boolean> paidStates = allPaidStates(paids);
+			List<HoKhauBean> temp = new ArrayList<>();
+			int len_rows = list.size();
+			for (int i = 0; i < len_rows; ++i) {
+				if (paidStates.get(i).equals(Boolean.TRUE) && condition.equals(new String("Đã nộp")) ) {
+					temp.add(list.get(i));
+				}
+			}
+			this.list.clear();
+			list.addAll(temp);
+		}
+		setData();
+	}
 
 
 }

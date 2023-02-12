@@ -245,7 +245,7 @@ public class StatisticFeesController {
 	}
 
 	public void filterFee(FeesModel fee, String condition)  {
-		this.list =hoKhauService.getListHoKhau();
+		this.list = hoKhauService.getListHoKhau();
 		if(!condition.equals(new String("Tất cả"))) {
 			List<Integer> paids = allPaids(list, feesModel);
 			List<Integer> needs = allNeeds(list, feesModel);

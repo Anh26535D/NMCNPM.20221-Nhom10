@@ -142,7 +142,7 @@ public class StatisticDonationsFrame extends JFrame {
 		selectStateJcb.setFont(new Font("Tahoma", Font.BOLD, 15));
 		selectStateJcb.setBounds(620, 67, 117, 43);
 		selectStateJcb.setModel(new DefaultComboBoxModel<>(
-				new String[] {"Tất cả", "Đã nộp", "Còn thiếu"}
+				new String[] {"Tất cả", "Đã nộp"}
 			)
 		);
 		jPanel1.add(selectStateJcb);
@@ -190,7 +190,7 @@ public class StatisticDonationsFrame extends JFrame {
     }
     
     private void filterBtnActioPerformed() {
-    	this.controller.setData();
+        this.controller.filterDonation(selectedDonation.getDonationModel(),selectStateJcb.getSelectedItem().toString());
     }
     private void payBtnActionPerformed(ActionEvent evt) {
         PayDonationFrame payDonationFrame = new PayDonationFrame(this.controller, this.parentFrame, this.selectedDonation);
