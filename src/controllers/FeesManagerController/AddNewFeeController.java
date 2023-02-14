@@ -2,7 +2,7 @@ package controllers.FeesManagerController;
 
 import java.sql.SQLException;
 
-import bean.PhiBatBuocBean;
+import beans.PhiBatBuocBean;
 import models.FeesModel;
 import services.FeesService;
 

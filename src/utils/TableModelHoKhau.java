@@ -1,11 +1,11 @@
-package utility;
+package utils;
 
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
-import bean.HoKhauBean;
-import bean.MemOfFamily;
-import bean.NhanKhauBean;
+import beans.HoKhauBean;
+import beans.MemOfFamily;
+import beans.NhanKhauBean;
 
 public class TableModelHoKhau {
     public DefaultTableModel setTableNhanKhau(List<NhanKhauBean> listItem, String[] listColumn) {

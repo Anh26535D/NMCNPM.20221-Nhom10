@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import bean.MemOfFamily;
+
 import java.awt.Color;
 import java.awt.Font;
 
@@ -18,6 +18,8 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+
+import beans.MemOfFamily;
 
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;

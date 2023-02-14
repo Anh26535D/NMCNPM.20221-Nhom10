@@ -3,7 +3,7 @@ package views.HouseholdManagerFrame;
 
 import controllers.HoKhauManagerController.TachHoKhauController;
 import models.AddressModel;
-import utility.SuggestionUtility;
+import utils.SuggestionUtility;
 import views.AddressSuggestion;
 
 import java.awt.event.*;

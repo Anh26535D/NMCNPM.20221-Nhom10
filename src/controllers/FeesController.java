@@ -23,10 +23,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 
-import bean.PhiBatBuocBean;
+import beans.PhiBatBuocBean;
 import models.FeesModel;
 import services.FeesService;
-import utility.ClassTableModel;
+import utils.ClassTableModel;
 import views.FeesManagerFrame.StatisticFeesFrame;
 
 public class FeesController {

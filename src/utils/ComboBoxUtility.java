@@ -1,4 +1,4 @@
-package utility;
+package utils;
 
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicComboBoxUI;

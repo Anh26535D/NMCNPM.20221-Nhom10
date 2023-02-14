@@ -6,7 +6,8 @@ import javax.swing.border.EmptyBorder;
 
 import controllers.AddressController;
 import models.AddressModel;
-import utility.SuggestionUtility;
+import utils.ComboBoxUtility;
+import utils.SuggestionUtility;
 import views.PeopleManagerFrame.NewPeopleFrame;
 
 import java.awt.Color;
@@ -28,7 +29,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.List;
 import javax.swing.JComboBox;
-import utility.ComboBoxUtility;
 
 public abstract class AddressSuggestion extends JFrame {
 

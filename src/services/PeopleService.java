@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-import bean.NhanKhauBean;
+import beans.NhanKhauBean;
 import models.ChungMinhThuModel;
 import models.GiaDinhModel;
 import models.NhanKhauModel;

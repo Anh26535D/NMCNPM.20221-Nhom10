@@ -22,10 +22,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 
-import bean.NhanKhauBean;
+import beans.NhanKhauBean;
 import models.NhanKhauModel;
 import services.PeopleService;
-import utility.ClassTableModel;
+import utils.ClassTableModel;
 import views.infoViews.InfoJframe;
 
 public class PeoplePanelController {

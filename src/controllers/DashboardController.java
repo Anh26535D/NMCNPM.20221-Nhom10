@@ -8,7 +8,7 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import bean.DanhMucBean;
+import beans.DanhMucBean;
 import views.HouseholdPanel;
 import views.DonationsPanel;
 import views.FeesPanel;

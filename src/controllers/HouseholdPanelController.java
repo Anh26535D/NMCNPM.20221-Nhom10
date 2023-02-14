@@ -21,9 +21,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 
-import bean.HoKhauBean;
+import beans.HoKhauBean;
 import services.HoKhauService;
-import utility.TableModelHoKhau;
+import utils.TableModelHoKhau;
 import views.infoViews.InfoJframe;
 
 public class HouseholdPanelController {

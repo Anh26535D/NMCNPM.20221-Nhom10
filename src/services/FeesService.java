@@ -10,8 +10,8 @@ import java.util.concurrent.Executor;
 
 import javax.swing.JOptionPane;
 
-import bean.HoKhauBean;
-import bean.PhiBatBuocBean;
+import beans.HoKhauBean;
+import beans.PhiBatBuocBean;
 import models.*;
 
 public class FeesService {

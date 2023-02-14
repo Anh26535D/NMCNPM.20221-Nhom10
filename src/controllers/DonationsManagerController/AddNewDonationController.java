@@ -2,8 +2,8 @@ package controllers.DonationsManagerController;
 
 import java.sql.SQLException;
 
-import bean.PhiBatBuocBean;
-import bean.PhiUngHoBean;
+import beans.PhiBatBuocBean;
+import beans.PhiUngHoBean;
 import services.DonationsService;
 
 public class AddNewDonationController {

@@ -14,10 +14,11 @@ import javax.swing.JTable;
 import javax.swing.event.ChangeEvent;
 import javax.swing.table.DefaultTableModel;
 
-import bean.NhanKhauBean;
+import beans.NhanKhauBean;
 import models.GiaDinhModel;
 import models.TieuSuModel;
-import utility.ClassTableModel;
+import utils.ClassTableModel;
+
 import java.sql.Date;
 import java.util.Vector;
 

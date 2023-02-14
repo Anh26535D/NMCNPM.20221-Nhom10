@@ -17,10 +17,10 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 
-import bean.NhanKhauBean;
+import beans.NhanKhauBean;
 import services.HoKhauService;
 import services.PeopleService;
-import utility.TableModelHoKhau;
+import utils.TableModelHoKhau;
 
 public class ChoosePayDonationPersonController {
 	private NhanKhauBean nhanKhauBean;

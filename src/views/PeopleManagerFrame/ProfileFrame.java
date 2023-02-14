@@ -5,9 +5,10 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
-import bean.NhanKhauBean;
 import javax.swing.GroupLayout.Alignment;
+
+import beans.NhanKhauBean;
+
 import javax.swing.GroupLayout;
 import java.awt.Color;
 import java.awt.Font;

@@ -12,8 +12,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-import bean.HoKhauBean;
-import bean.NhanKhauBean;
+import beans.HoKhauBean;
+import beans.NhanKhauBean;
 import models.DonateModel;
 import models.HoKhauModel;
 import models.NhanKhauModel;

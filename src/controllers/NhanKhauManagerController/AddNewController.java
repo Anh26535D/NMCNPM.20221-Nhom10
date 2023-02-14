@@ -2,7 +2,7 @@ package controllers.NhanKhauManagerController;
 
 import java.sql.SQLException;
 
-import bean.NhanKhauBean;
+import beans.NhanKhauBean;
 import services.PeopleService;
 
 public class AddNewController {

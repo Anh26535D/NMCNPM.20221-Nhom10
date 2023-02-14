@@ -25,13 +25,13 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 
-import bean.HoKhauBean;
-import bean.PhiUngHoBean;
+import beans.HoKhauBean;
+import beans.PhiUngHoBean;
 import models.DonationsModel;
 import models.FeesModel;
 import services.DonationsService;
 import services.HoKhauService;
-import utility.ClassTableModel;
+import utils.ClassTableModel;
 import views.infoViews.InfoJframe;
 
 public class StatisticDonationsController {
