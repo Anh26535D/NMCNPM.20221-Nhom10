@@ -26,7 +26,7 @@
 	</build>
 
 	<dependencies>
-		<!-- https://mvnrepository.com/artifact/com.toedter/jcalendar -->
+
 		<dependency>
 			<groupId>com.toedter</groupId>
 			<artifactId>jcalendar</artifactId>
