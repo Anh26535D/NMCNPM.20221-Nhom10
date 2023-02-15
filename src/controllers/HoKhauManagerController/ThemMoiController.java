@@ -12,11 +12,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import bean.HoKhauBean;
-import bean.MemOfFamily;
-import bean.NhanKhauBean;
+import beans.HoKhauBean;
+import beans.MemOfFamily;
+import beans.NhanKhauBean;
 import services.HoKhauService;
-import utility.TableModelHoKhau;
+import utils.TableModelHoKhau;
 
 public class ThemMoiController {
     private NhanKhauBean chuHo;

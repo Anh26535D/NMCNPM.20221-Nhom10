@@ -6,7 +6,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import utility.SuggestionUtility;
 import views.AddressSuggestion;
 import controllers.LoginController;
 import controllers.PeoplePanelController;
@@ -14,11 +13,12 @@ import controllers.NhanKhauManagerController.AddNewController;
 import models.AddressModel;
 import models.ChungMinhThuModel;
 import models.NhanKhauModel;
+import utils.SuggestionUtility;
 
 import javax.swing.JComboBox;
 import com.toedter.calendar.JDateChooser;
 
-import bean.NhanKhauBean;
+import beans.NhanKhauBean;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;

@@ -14,14 +14,14 @@ import javax.swing.JButton;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
-import bean.HoKhauBean;
-import bean.MemOfFamily;
-import bean.NhanKhauBean;
+import beans.HoKhauBean;
+import beans.MemOfFamily;
+import beans.NhanKhauBean;
 import controllers.HoKhauManagerController.ThemMoiController;
 import models.AddressModel;
 import models.ThanhVienCuaHoModel;
 import services.CitizenIdService;
-import utility.SuggestionUtility;
+import utils.SuggestionUtility;
 import views.AddressSuggestion;
 
 import java.awt.event.ActionEvent;

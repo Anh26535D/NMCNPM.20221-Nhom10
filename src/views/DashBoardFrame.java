@@ -18,13 +18,14 @@ import java.awt.Color;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 
-import bean.DanhMucBean;
 import controllers.DashboardController;
 
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.border.MatteBorder;
+
+import beans.DanhMucBean;
 
 public class DashBoardFrame extends JFrame {
 

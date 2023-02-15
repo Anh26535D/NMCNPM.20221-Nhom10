@@ -2,6 +2,7 @@ package services;
 
 import controllers.LoginController;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,8 +13,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-import bean.HoKhauBean;
-import bean.NhanKhauBean;
+import beans.HoKhauBean;
+import beans.NhanKhauBean;
 import models.DonateModel;
 import models.HoKhauModel;
 import models.NhanKhauModel;
@@ -34,6 +35,9 @@ public class HoKhauService {
         preparedStatement.setInt(2, hoKhauBean.getChuHo().getID());
         preparedStatement.setString(3, hoKhauBean.getHoKhauModel().getMaKhuVuc());
         preparedStatement.setString(4, hoKhauBean.getHoKhauModel().getDiaChi());
+        //thieu
+        java.sql.Date ngayLap = new java.sql.Date(app.Main.calendar.getTime().getTime());
+		preparedStatement.setDate(5, ngayLap);
 
         preparedStatement.executeUpdate();
         ResultSet rs = preparedStatement.getGeneratedKeys();
@@ -58,28 +62,40 @@ public class HoKhauService {
         connection.close();
         return true;
     }
-    public boolean edit(HoKhauBean hoKhauBean) throws ClassNotFoundException, SQLException{
+    public boolean editHoKhau(HoKhauBean hoKhauBean, int idHoKhau) throws ClassNotFoundException, SQLException{
         Connection connection = SQLConnection.getDbConnection();
-        String query = "INSERT INTO ho_khau(maHoKhau, idChuHo, maKhuVuc, diaChi, ngayLap)" 
-                    + " values (?, ?, ?, ?, GETDATE())";
+        String query = "UPDATE ho_khau "
+    	        + " SET" 
+    	        + " maHoKhau = ?,"
+    	        + " idChuHo = ?,"
+    	        + " maKhuVuc = ?,"
+    	        + " diaChi = ?,"
+    	        + " ngayLap = ?"
+    	        + " WHERE ID = ?;";
         PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
         preparedStatement.setString(1, hoKhauBean.getHoKhauModel().getMaHoKhau());
         preparedStatement.setInt(2, hoKhauBean.getChuHo().getID());
         preparedStatement.setString(3, hoKhauBean.getHoKhauModel().getMaKhuVuc());
         preparedStatement.setString(4, hoKhauBean.getHoKhauModel().getDiaChi());
+        java.sql.Date ngayLap = new java.sql.Date(app.Main.calendar.getTime().getTime());
+		preparedStatement.setDate(5, ngayLap);
+        preparedStatement.setInt(6, idHoKhau);
 
         preparedStatement.executeUpdate();
         ResultSet rs = preparedStatement.getGeneratedKeys();
         if (rs.next()) {
-            int genID = rs.getInt(1);
-            String sql = "INSERT INTO thanh_vien_cua_ho(idNhanKhau, idHoKhau, quanHeVoiChuHo)" 
-                            + " values (?, ?, ?)";
+            String sql = "UPDATE thanh_vien_cua_ho"
+            		+ " SET"
+            		+ " idNhanKhau = ?,"
+            		+ " quanHeVoiChuHo"
+            		+ " WHERE ID = ?;";
+            
             hoKhauBean.getListThanhVienCuaHo().forEach((ThanhVienCuaHoModel thanhVien) -> {     
                 try { 
                     PreparedStatement preStatement = connection.prepareStatement(sql);
                     preStatement.setInt(1, thanhVien.getIdNhanKhau());
-                    preStatement.setInt(2, genID);
-                    preStatement.setString(3, thanhVien.getQuanHeVoiChuHo());
+                    preStatement.setString(2, thanhVien.getQuanHeVoiChuHo());
+                    preStatement.setInt(3, idHoKhau);
                     preStatement.executeUpdate();
                 } catch (SQLException ex) {
                     Logger.getLogger(HoKhauService.class.getName()).log(Level.SEVERE, null, ex);

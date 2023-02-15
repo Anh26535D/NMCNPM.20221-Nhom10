@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import bean.MemOfFamily;
+
 import java.awt.Color;
 import java.awt.Font;
 
@@ -18,6 +18,8 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+
+import beans.MemOfFamily;
 
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -92,7 +94,8 @@ public class ChangeListPeopleJframe extends javax.swing.JFrame {
         Jpanel1.setLayout(null);
         searchJtf = new javax.swing.JTextField();
         searchJtf.setBounds(64, 26, 501, 37);
-        searchJtf.setForeground(new Color(255, 255, 255));
+        searchJtf.setForeground(Color.GRAY);
+        searchJtf.setForeground(new Color(192, 192, 192));
 		searchJtf.addFocusListener(new FocusListener() {
 		    @Override
 		    public void focusGained(FocusEvent e) {
@@ -109,8 +112,8 @@ public class ChangeListPeopleJframe extends javax.swing.JFrame {
 		        }
 		    }
 		    });
-		searchJtf.setSelectionColor(new Color(255, 255, 255));
-		searchJtf.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		searchJtf.setSelectionColor(new Color(186, 85, 211));
+		searchJtf.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		searchJtf.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(153, 102, 255), null, null, null), new EmptyBorder(0, 10, 0, 0)));
 		searchJtf.setColumns(10);
         Jpanel1.add(searchJtf);

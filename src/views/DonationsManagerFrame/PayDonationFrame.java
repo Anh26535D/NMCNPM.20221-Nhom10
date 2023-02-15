@@ -15,8 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import bean.NhanKhauBean;
-import bean.PhiUngHoBean;
+import beans.NhanKhauBean;
+import beans.PhiUngHoBean;
 import controllers.DonationsManagerController.PayDonationController;
 import controllers.DonationsManagerController.StatisticDonationsController;
 import models.PayDonationModel;

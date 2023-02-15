@@ -13,7 +13,8 @@ import javax.swing.JOptionPane;
 import javax.swing.GroupLayout.Alignment;
 import controllers.NhanKhauManagerController.KhaiTuController;
 import services.CitizenIdService;
-import utility.SuggestionUtility;
+import utils.SuggestionUtility;
+
 import javax.swing.GroupLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;

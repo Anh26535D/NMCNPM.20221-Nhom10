@@ -2,7 +2,7 @@ package views.HouseholdManagerFrame;
 
 import controllers.HoKhauManagerController.ChuyenDiNoiKhacController;
 import models.AddressModel;
-import utility.SuggestionUtility;
+import utils.SuggestionUtility;
 import views.AddressSuggestion;
 
 import java.awt.event.ActionEvent;
@@ -15,9 +15,6 @@ import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
-import bean.HoKhauBean;
-
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -25,6 +22,8 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+
+import beans.HoKhauBean;
 
 import java.awt.Color;
 import java.awt.Font;

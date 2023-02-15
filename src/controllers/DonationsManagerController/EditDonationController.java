@@ -2,7 +2,7 @@ package controllers.DonationsManagerController;
 
 import java.sql.SQLException;
 
-import bean.PhiUngHoBean;
+import beans.PhiUngHoBean;
 import services.DonationsService;
 
 public class EditDonationController {

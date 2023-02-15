@@ -18,7 +18,7 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
-import bean.PhiBatBuocBean;
+import beans.PhiBatBuocBean;
 import controllers.FeesController;
 import controllers.FeesManagerController.StatisticFeesController;
 import models.FeesModel;

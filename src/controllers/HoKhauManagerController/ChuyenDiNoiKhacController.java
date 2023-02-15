@@ -16,9 +16,9 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 
-import bean.HoKhauBean;
+import beans.HoKhauBean;
 import services.HoKhauService;
-import utility.TableModelHoKhau;
+import utils.TableModelHoKhau;
 
 public class ChuyenDiNoiKhacController {
     private HoKhauBean hoKhauBean;

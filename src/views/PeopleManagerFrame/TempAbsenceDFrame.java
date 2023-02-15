@@ -17,7 +17,7 @@ import javax.swing.JTextField;
 import models.AddressModel;
 import models.TamVangModel;
 import services.CitizenIdService;
-import utility.SuggestionUtility;
+import utils.SuggestionUtility;
 import views.AddressSuggestion;
 
 import javax.swing.GroupLayout.Alignment;

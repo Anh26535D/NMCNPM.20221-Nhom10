@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import bean.PhiUngHoBean;
+import beans.PhiUngHoBean;
 import controllers.DonationsController;
 import controllers.LoginController;
 import controllers.DonationsManagerController.AddNewDonationController;

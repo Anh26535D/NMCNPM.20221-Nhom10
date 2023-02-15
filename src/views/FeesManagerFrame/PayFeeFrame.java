@@ -12,8 +12,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import bean.NhanKhauBean;
-import bean.PhiBatBuocBean;
+import beans.NhanKhauBean;
+import beans.PhiBatBuocBean;
 import controllers.FeesManagerController.PayFeeController;
 import controllers.FeesManagerController.StatisticFeesController;
 import models.PayFeeModel;

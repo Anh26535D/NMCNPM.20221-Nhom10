@@ -11,8 +11,8 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import bean.HoKhauBean;
-import bean.PhiUngHoBean;
+import beans.HoKhauBean;
+import beans.PhiUngHoBean;
 import models.DonateModel;
 import models.DonationsModel;
 import models.FeesModel;

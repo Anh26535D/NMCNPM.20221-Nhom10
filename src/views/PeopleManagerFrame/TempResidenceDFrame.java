@@ -14,7 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import models.TamTruModel;
 import services.CitizenIdService;
-import utility.SuggestionUtility;
+import utils.SuggestionUtility;
 
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.GroupLayout;

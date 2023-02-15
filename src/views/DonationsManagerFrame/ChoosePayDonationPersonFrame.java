@@ -1,6 +1,5 @@
 package views.DonationsManagerFrame;
 
-import bean.NhanKhauBean;
 import controllers.DonationsManagerController.ChoosePayDonationPersonController;
 import controllers.HoKhauManagerController.ChoosePeopleController;
 import views.DonationsManagerFrame.PayDonationFrame;
@@ -15,6 +14,8 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+
+import beans.NhanKhauBean;
 
 import java.awt.Color;
 import java.awt.Font;

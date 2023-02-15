@@ -2,7 +2,7 @@ package controllers.NhanKhauManagerController;
 
 import java.sql.SQLException;
 
-import bean.NhanKhauBean;
+import beans.NhanKhauBean;
 import services.PeopleService;
 
 public class EditController {
@@ -11,7 +11,7 @@ public class EditController {
 	public EditController() {
 		this.peopleService = new PeopleService();
 	}
-    public boolean editPeople(NhanKhauBean nhanKhauBean) throws SQLException, ClassNotFoundException{
-    	return this.peopleService.editPeople(nhanKhauBean);
+    public boolean editPeople(NhanKhauBean nhanKhauBean, int idNhanKhau) throws SQLException, ClassNotFoundException{
+    	return this.peopleService.editPeople(nhanKhauBean, idNhanKhau);
     }
 }

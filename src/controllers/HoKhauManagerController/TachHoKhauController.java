@@ -21,12 +21,11 @@ import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
-import bean.HoKhauBean;
-import bean.MemOfFamily;
+import beans.HoKhauBean;
+import beans.MemOfFamily;
 import models.ThanhVienCuaHoModel;
 import services.HoKhauService;
-import utility.TableModelHoKhau;
-
+import utils.TableModelHoKhau;
 import views.HouseholdManagerFrame.HouseholdSeper;
 import views.infoViews.InfoJframe;
 

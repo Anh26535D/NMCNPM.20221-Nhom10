@@ -23,10 +23,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 
-import bean.PhiUngHoBean;
+import beans.PhiUngHoBean;
 import models.DonationsModel;
 import services.DonationsService;
-import utility.ClassTableModel;
+import utils.ClassTableModel;
 import views.DonationsManagerFrame.StatisticDonationsFrame;
 
 public class DonationsController {
