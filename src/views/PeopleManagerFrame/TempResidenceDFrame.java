@@ -77,10 +77,8 @@ public class TempResidenceDFrame extends javax.swing.JFrame {
 		if (tempID != -1) {
 			// khong cho phep sua lai gia tri
 			this.soCMTJtf.setEditable(false);
-			this.availableIcon.setEnabled(true);
 			this.maGiayTamTruJtf.setEnabled(false);
 			this.tamTruModel.setIdNhanKhau(tempID);
-			this.availableIcon.setEnabled(true);
 			JOptionPane.showMessageDialog(this, "OK!!");
 		} 
 		
@@ -108,7 +106,7 @@ public class TempResidenceDFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel1.setBounds(10, 23, 63, 30);
         checkBtn = new javax.swing.JButton();
-        checkBtn.setBounds(370, 23, 85, 30);
+        checkBtn.setBounds(375, 23, 85, 30);
         jLabel2 = new javax.swing.JLabel();
         jLabel2.setBounds(343, 23, 15, 30);
         jLabel3 = new javax.swing.JLabel();
@@ -145,8 +143,6 @@ public class TempResidenceDFrame extends javax.swing.JFrame {
         acceptBtn.setBounds(370, 401, 112, 30);
         cancelBtn = new javax.swing.JButton();
         cancelBtn.setBounds(234, 401, 112, 30);
-        availableIcon = new javax.swing.JLabel();
-        availableIcon.setBounds(465, 23, 32, 32);
      
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -243,9 +239,6 @@ public class TempResidenceDFrame extends javax.swing.JFrame {
 		cancelBtn.setForeground(new Color(255, 255, 255));
 		cancelBtn.setBorderPainted(false);
 
-        availableIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/checked.png")));  
-        availableIcon.setEnabled(false);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         layout.setHorizontalGroup(
         	layout.createParallelGroup(Alignment.LEADING)
@@ -267,7 +260,6 @@ public class TempResidenceDFrame extends javax.swing.JFrame {
         jPanel1.add(soCMTJtf);
         jPanel1.add(jLabel2);
         jPanel1.add(checkBtn);
-        jPanel1.add(availableIcon);
         jPanel1.add(jLabel3);
         jPanel1.add(jLabel6);
         jPanel1.add(jLabel7);
@@ -303,7 +295,6 @@ public class TempResidenceDFrame extends javax.swing.JFrame {
                 this.tamTruModel.setIdNhanKhau(idNhanKhau);
                 soCMTJtf.setEnabled(false);
                 checkBtn.setEnabled(false);
-                availableIcon.setEnabled(true);
                 maGiayTamTruJtf.setEnabled(true);
                 soDienThoaiJtf.setEnabled(true);
                 tuNgayDc.setEnabled(true);
@@ -347,7 +338,6 @@ public class TempResidenceDFrame extends javax.swing.JFrame {
         }
     }
     private javax.swing.JButton acceptBtn;
-    private javax.swing.JLabel availableIcon;
     private javax.swing.JButton cancelBtn;
     private javax.swing.JButton checkBtn;
     private com.toedter.calendar.JDateChooser denNgayDc;

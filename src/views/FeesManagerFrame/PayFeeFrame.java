@@ -38,7 +38,7 @@ public class PayFeeFrame extends JFrame {
 	private PayFeeController controller;
 	private PayFeeModel payFeeModel;
 	private NhanKhauBean selectPerson;
-	
+
 	private JTextField soTienJtf;
 	private JTextField idSelectedPersonJtf;
 	private JButton CancelBtn;
@@ -110,7 +110,7 @@ public class PayFeeFrame extends JFrame {
 		idSelectedPersonJtf.setBounds(10, 40, 116, 40);
 		panel.add(idSelectedPersonJtf);
 		idSelectedPersonJtf.setColumns(10);
-		
+
 		selectPersonBtn = new JButton("Select");
 		selectPersonBtn.setForeground(Color.WHITE);
 		selectPersonBtn.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -118,7 +118,7 @@ public class PayFeeFrame extends JFrame {
 		selectPersonBtn.setBackground(new Color(147, 112, 219));
 		selectPersonBtn.setBounds(509, 0, 77, 25);
 		selectPersonBtn.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
@@ -126,7 +126,7 @@ public class PayFeeFrame extends JFrame {
 			}
 		});
 		panel.add(selectPersonBtn);
-		
+
 		nameSelectedPersonJtf = new JTextField();
 		nameSelectedPersonJtf.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		nameSelectedPersonJtf.setColumns(10);
@@ -182,6 +182,11 @@ public class PayFeeFrame extends JFrame {
 		}
 		try {
 			long d = Long.parseLong(soTien);
+			if (d <= 0) {
+				JOptionPane.showMessageDialog(rootPane, "Số tiền không hợp lệ", "Warning",
+						JOptionPane.WARNING_MESSAGE);
+				return false;
+			}
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(rootPane, "Số tiền không thể chứa các ký tự", "Warning",
 					JOptionPane.WARNING_MESSAGE);
@@ -192,7 +197,8 @@ public class PayFeeFrame extends JFrame {
 
 	private void CreateBtnActionPerformed(java.awt.event.ActionEvent evt) {
 		if (validateForm()) {
-			this.payFeeModel.setIdNhanKhau(Integer.parseInt(idSelectedPersonJtf.getText()));;
+			this.payFeeModel.setIdNhanKhau(Integer.parseInt(idSelectedPersonJtf.getText()));
+			;
 			this.payFeeModel.setSo_tien(Integer.parseInt(soTienJtf.getText()));
 			try {
 				if (this.controller.payFee(this.payFeeModel, this.selectedFee.getFeesModel().getID())) {
@@ -216,16 +222,16 @@ public class PayFeeFrame extends JFrame {
 			dispose();
 		}
 	}
-	
+
 	public void setDataPerson() {
 		this.idSelectedPersonJtf.setText(Integer.toString(selectPerson.getNhanKhauModel().getID()));
 		this.nameSelectedPersonJtf.setText(selectPerson.getNhanKhauModel().getHoTen());
 	}
-	
+
 	private void selectPersonAction(ActionEvent e) {
-        ChoosePayFeePersonFrame choosePeople = new ChoosePayFeePersonFrame(this.selectPerson, this);
-        choosePeople.setLocationRelativeTo(null);
-        choosePeople.setResizable(false);
-        choosePeople.setVisible(true);
+		ChoosePayFeePersonFrame choosePeople = new ChoosePayFeePersonFrame(this.selectPerson, this);
+		choosePeople.setLocationRelativeTo(null);
+		choosePeople.setResizable(false);
+		choosePeople.setVisible(true);
 	}
 }

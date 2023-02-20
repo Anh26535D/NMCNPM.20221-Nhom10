@@ -10,6 +10,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.EventObject;
 import java.util.List;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -37,6 +38,7 @@ public class PeoplePanelController {
     private ClassTableModel classTableModel = null;
     private final String[] COLUMNS = {"ID", "Họ tên", "Ngày sinh", "Giới tính", "Địa chỉ hiện nay"};
     private JFrame parentJFrame;
+    private JTable table;
 
     public PeoplePanelController(JPanel jpnView, JTextField jtfSearch) {
         this.jpnView = jpnView;
@@ -97,7 +99,7 @@ public class PeoplePanelController {
         });
 
         DefaultTableModel model = classTableModel.setTableNhanKhau(listItem, COLUMNS);
-        JTable table = new JTable(model) {
+        table = new JTable(model) {
             private static final long serialVersionUID = 1L;
 
             @Override
@@ -162,6 +164,12 @@ public class PeoplePanelController {
         jpnView.validate();
         jpnView.repaint();
     }
+	public int getSelectedIdNhanKhau() {
+		int column = 0;
+		int row = this.table.getSelectedRow();
+		return Integer.parseInt(this.table.getModel().getValueAt(row, column).toString());
+	}
+
 
     public void setParentJFrame(JFrame parentJFrame) {
         this.parentJFrame = parentJFrame;
@@ -187,5 +195,6 @@ public class PeoplePanelController {
     public void setJtfSearch(JTextField jtfSearch) {
         this.jtfSearch = jtfSearch;
     }
+
 
 }

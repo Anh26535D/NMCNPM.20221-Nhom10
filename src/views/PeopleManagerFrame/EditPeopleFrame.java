@@ -1,5 +1,6 @@
 package views.PeopleManagerFrame;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.swing.JFrame;
@@ -519,6 +520,7 @@ public class EditPeopleFrame extends JFrame {
 		EditBtn.setForeground(new Color(255, 255, 255));
 		EditBtn.setBorderPainted(false);
 		jPanel1.add(EditBtn);
+		this.namSinhDateC.setMaxSelectableDate(new Date());
 
 	}
 	
@@ -597,7 +599,7 @@ public class EditPeopleFrame extends JFrame {
             temp.setNoiLamViec(noiLamViecTxb.getText());
             temp.setIdNguoiTao(LoginController.currentUser.getID());
             try {
-                if (this.controller.editPeople(this.nhanKhauBean)) {
+                if (this.controller.editPeople(this.nhanKhauBean, parentController.getSelectedIdNhanKhau())) {
                     JOptionPane.showMessageDialog(null, "Sửa thành công!!");
                     close();
                     parentController.refreshData();

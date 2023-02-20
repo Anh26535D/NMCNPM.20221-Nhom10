@@ -1,33 +1,30 @@
 package views.HouseholdManagerFrame;
 
-import controllers.HoKhauManagerController.ChangeListPeopleController;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
-import java.awt.Color;
-import java.awt.Font;
-
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.GroupLayout;
-import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import beans.MemOfFamily;
+import controllers.HoKhauManagerController.ChangeListPeopleController;
 
-import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JPanel;
-
-public class ChangeListPeopleJframe extends javax.swing.JFrame {
+public class ChangeEditListPeopleJframe extends javax.swing.JFrame {
 
     /**
 	 * 
@@ -38,7 +35,7 @@ public class ChangeListPeopleJframe extends javax.swing.JFrame {
     private ChangeListPeopleController controller;
     private JFrame parentJframe;
 
-    public ChangeListPeopleJframe(List<MemOfFamily> listMember, JFrame parentJFrame) {
+    public ChangeEditListPeopleJframe(List<MemOfFamily> listMember, JFrame parentJFrame) {
     	getContentPane().setBackground(new Color(255, 255, 255));
         initComponents();
         this.setTitle("Sửa danh sách");
@@ -185,7 +182,7 @@ public class ChangeListPeopleJframe extends javax.swing.JFrame {
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {
         this.listMember.clear();
         this.listMember.addAll(this.listMemberTemp);
-        NewHouseholdFrame themMoiHoKhau = (NewHouseholdFrame)this.parentJframe;
+        EditHouseholdFrame themMoiHoKhau = (EditHouseholdFrame)this.parentJframe;
         themMoiHoKhau.setDataThanhVien();
         close();
     }

@@ -45,7 +45,11 @@ public class HouseholdPanelController {
         initAction();
     }
 
-    public void initAction() {
+    public HouseholdPanelController() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public void initAction() {
         this.searchJtf.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
@@ -152,6 +156,16 @@ public class HouseholdPanelController {
         tableJpn.validate();
         tableJpn.repaint();
     }
+	public int getSelectedIdHoKhau() {
+		int column = 0;
+		int row = this.table.getSelectedRow();
+		return Integer.parseInt(this.table.getModel().getValueAt(row, column).toString());
+	}
+    public void refreshData() {
+        this.list = this.hoKhauService.getListHoKhau();
+        setData();
+    }
+
 
     public void setParentJFrame(JFrame parentJFrame) {
         this.parentJFrame = parentJFrame;
@@ -180,5 +194,7 @@ public class HouseholdPanelController {
     public void setTableJpn(JPanel tableJpn) {
         this.tableJpn = tableJpn;
     }
+
+
 
 }
