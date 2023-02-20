@@ -29,7 +29,7 @@ public class HoKhauService {
     public boolean addNew(HoKhauBean hoKhauBean) throws ClassNotFoundException, SQLException{
         Connection connection = SQLConnection.getDbConnection();
         String query = "INSERT INTO ho_khau(maHoKhau, idChuHo, maKhuVuc, diaChi, ngayLap)" 
-                    + " values (?, ?, ?, ?, GETDATE())";
+                    + " values (?, ?, ?, ?, ?)";
         PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
         preparedStatement.setString(1, hoKhauBean.getHoKhauModel().getMaHoKhau());
         preparedStatement.setInt(2, hoKhauBean.getChuHo().getID());
