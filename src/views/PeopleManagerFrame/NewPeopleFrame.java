@@ -1,5 +1,6 @@
 package views.PeopleManagerFrame;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.swing.JFrame;
@@ -519,6 +520,7 @@ public class NewPeopleFrame extends JFrame {
 		CreateBtn.setForeground(new Color(255, 255, 255));
 		CreateBtn.setBorderPainted(false);
 		jPanel1.add(CreateBtn);
+		this.namSinhDateC.setMaxSelectableDate(new Date());
 
 	}
 	

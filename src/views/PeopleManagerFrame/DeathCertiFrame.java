@@ -131,7 +131,6 @@ public class DeathCertiFrame extends javax.swing.JFrame {
 			}
 		});
 		jDateChooser1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		jDateChooser1.setEnabled(false);
 		jDateChooser1.setOpaque(false);
 		jDateChooser1.getCalendarButton().setBackground(new Color(255, 255, 255));
 		jDateChooser1.setBackground(new Color(255, 255, 255));
@@ -140,7 +139,6 @@ public class DeathCertiFrame extends javax.swing.JFrame {
 		jLabel5.setBounds(10, 223, 91, 30);
 		jDateChooser2 = new com.toedter.calendar.JDateChooser();
 		jDateChooser2.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		jDateChooser2.setEnabled(false);
 		jDateChooser2.getCalendarButton().setBackground(new Color(255, 255, 255));
 		jDateChooser2.setBackground(new Color(255, 255, 255));
 		jDateChooser2.setBounds(138, 223, 418, 30);
@@ -167,7 +165,6 @@ public class DeathCertiFrame extends javax.swing.JFrame {
 		jLabel2.setText("Số giấy khai tử:");
 
 		jTextField2.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		jTextField2.setEnabled(false);
 		jTextField2.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				jTextField2ActionPerformed(evt);
