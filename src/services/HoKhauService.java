@@ -35,7 +35,6 @@ public class HoKhauService {
         preparedStatement.setInt(2, hoKhauBean.getChuHo().getID());
         preparedStatement.setString(3, hoKhauBean.getHoKhauModel().getMaKhuVuc());
         preparedStatement.setString(4, hoKhauBean.getHoKhauModel().getDiaChi());
-        //thieu
         java.sql.Date ngayLap = new java.sql.Date(app.Main.calendar.getTime().getTime());
 		preparedStatement.setDate(5, ngayLap);
 
