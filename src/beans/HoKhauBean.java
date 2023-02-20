@@ -1,6 +1,7 @@
 package beans;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import models.DonateModel;
@@ -212,5 +213,6 @@ public class HoKhauBean {
         res += "</div></html>";
         return res;
     }
+
 
 }

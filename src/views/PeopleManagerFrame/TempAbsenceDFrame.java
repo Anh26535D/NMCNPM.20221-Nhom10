@@ -92,7 +92,6 @@ public class TempAbsenceDFrame extends javax.swing.JFrame {
 		if (tempID != -1) {
 			// khong cho phep sua lai gia tri
 			this.soCMTjtf.setEditable(false);
-			this.availableIcon.setEnabled(true);
 			this.maGiayTamVangJtf.setEnabled(true);
 			this.noiTamTruJtf.setEnabled(true);
 			this.tuNgayJdc.setEnabled(true);
@@ -100,7 +99,6 @@ public class TempAbsenceDFrame extends javax.swing.JFrame {
 			this.lyDoJta.setEnabled(true);
 
 			this.tamVangModel.setIdNhanKhau(tempID);
-			this.availableIcon.setEnabled(true);
 			JOptionPane.showMessageDialog(this, "OK!!");
 		} else {
 			if (JOptionPane.showConfirmDialog(null, "Không tìm thấy nhân khẩu trong hệ thống!! Thử lại?", "Warning!!",
@@ -135,8 +133,6 @@ public class TempAbsenceDFrame extends javax.swing.JFrame {
 		jLabel2.setBounds(543, 21, 15, 30);
 		checkBtn = new javax.swing.JButton();
 		checkBtn.setBounds(452, 25, 81, 30);
-		availableIcon = new javax.swing.JLabel();
-		availableIcon.setBounds(91, 25, 32, 32);
 		jLabel3 = new javax.swing.JLabel();
 		jLabel3.setBounds(20, 93, 136, 30);
 		maGiayTamVangJtf = new javax.swing.JTextField();
@@ -247,9 +243,6 @@ public class TempAbsenceDFrame extends javax.swing.JFrame {
 		checkBtn.setForeground(new Color(255, 255, 255));
 		checkBtn.setBorderPainted(false);
 
-		availableIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/checked.png")));
-		availableIcon.setEnabled(false);
-
 		jLabel3.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		jLabel3.setText("Mã giấy tạm vắng:");
 
@@ -304,7 +297,6 @@ public class TempAbsenceDFrame extends javax.swing.JFrame {
 		jPanel1.add(soCMTjtf);
 		jPanel1.add(jLabel2);
 		jPanel1.add(checkBtn);
-		jPanel1.add(availableIcon);
 		jPanel1.add(jLabel3);
 		jPanel1.add(maGiayTamVangJtf);
 		jPanel1.add(jLabel4);
@@ -378,7 +370,6 @@ public class TempAbsenceDFrame extends javax.swing.JFrame {
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.JButton CancelBtn;
 	private javax.swing.JButton acceptBtn;
-	private javax.swing.JLabel availableIcon;
 	private javax.swing.JButton checkBtn;
 	private com.toedter.calendar.JDateChooser denNgayJdc;
 	private javax.swing.JLabel jLabel1;

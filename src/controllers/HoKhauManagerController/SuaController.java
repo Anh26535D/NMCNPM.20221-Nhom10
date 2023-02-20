@@ -24,6 +24,7 @@ public class SuaController {
     private JPanel memTableJpn;
     private TableModelHoKhau tableModelHoKhau = new TableModelHoKhau();
     private final HoKhauService hoKhauService = new HoKhauService();
+    private HoKhauService hokhauService;
     private final String[] COLUMNS= {"Họ tên", "Ngày sinh", "Quan hệ với chủ hộ"};
     
     
@@ -52,8 +53,13 @@ public class SuaController {
         tablePanel.repaint();
     }
     
-    public void edit(HoKhauBean hoKhauBean) throws ClassNotFoundException, SQLException{
-    	this.hoKhauService.edit(hoKhauBean);
+    public SuaController() {
+		this.hokhauService = new HoKhauService();
+	}
+    public boolean editHoKhau(HoKhauBean hoKhauBean, int idHoKhau) throws SQLException, ClassNotFoundException{
+    	return this.hokhauService.editHoKhau(hoKhauBean, idHoKhau);
     }
+
+
 
 }

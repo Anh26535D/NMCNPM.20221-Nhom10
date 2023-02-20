@@ -99,13 +99,35 @@ public class PeopleService {
 	        connection.close();
 	        return true;
 	    }
-	 public boolean editPeople(NhanKhauBean nhanKhauBean) throws SQLException, ClassNotFoundException{
+	 public boolean editPeople(NhanKhauBean nhanKhauBean, int idNhanKhau) throws SQLException, ClassNotFoundException{
 	        NhanKhauModel nhanKhau = nhanKhauBean.getNhanKhauModel();
 	        ChungMinhThuModel chungMinhThu = nhanKhauBean.getChungMinhThuModel();
 	        Connection connection = SQLConnection.getDbConnection();
 
-	        String query = "INSERT INTO nhan_khau (hoTen, bietDanh, namSinh, gioiTinh, noiSinh, nguyenQuan, danToc, tonGiao, quocTich, soHoChieu, noiThuongTru, diaChiHienNay, trinhDoHocVan, TrinhDoChuyenMon, bietTiengDanToc, trinhDoNgoaiNgu, ngheNghiep, noiLamViec, idNguoiTao, ngayTao)" 
-	                        + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	        String query = "UPDATE nhan_khau "
+	        + " SET" 
+	        + " hoTen = ?,"
+	        + " bietDanh = ?,"
+	        + " namSinh = ?,"
+	        + " gioiTinh = ?,"
+	        + " noiSinh = ?,"
+	        + " nguyenQuan = ?,"
+	        + " danToc = ?,"
+	        + " tonGiao = ?,"
+	        + " quocTich = ?,"
+	        + " soHoChieu = ?,"
+	        + " noiThuongTru = ?,"
+	        + " diaChiHienNay = ?,"
+	        + " trinhDoHocVan = ?,"
+	        + " TrinhDoChuyenMon = ?,"
+	        + " bietTiengDanToc = ?,"
+	        + " trinhDoNgoaiNgu = ?,"
+	        + " ngheNghiep = ?,"
+	        + " noiLamViec = ?,"
+	        + " idNguoiTao = ?,"
+	        + " ngayTao = ?"
+	        + " WHERE ID = ?;";
+	        
 	        PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 	        preparedStatement.setString(1, nhanKhau.getHoTen());
 	        preparedStatement.setString(2, nhanKhau.getBietDanh());
@@ -129,29 +151,39 @@ public class PeopleService {
 	        preparedStatement.setInt(19, nhanKhau.getIdNguoiTao());
 	        java.sql.Date createDate = new java.sql.Date(app.Main.calendar.getTime().getTime());
 	        preparedStatement.setDate(20, createDate);
+	        preparedStatement.setInt(21, idNhanKhau);
 	        
 	        preparedStatement.executeUpdate();
 	        ResultSet rs = preparedStatement.getGeneratedKeys();
 	        if (rs.next()) {
-	            int genID = rs.getInt(1);
-	            String sql = "INSERT INTO chung_minh_thu(idNhanKhau, soCMT)" 
-	                        + " values (?, ?)";
+	           // int genID = rs.getInt(1);
+	            String sql = "UPDATE chung_minh_thu "
+		        + " SET" 
+		        + " soCMT = ?"
+		        + " WHERE idNhanKhau = ?;";
+		        
 	            PreparedStatement prst = connection.prepareStatement(sql);
-	            prst.setInt(1, genID);
-	            prst.setString(2, chungMinhThu.getSoCMT());
+	            prst.setString(1, chungMinhThu.getSoCMT());
+	            prst.setInt(2, idNhanKhau);
 	            prst.execute();
 	            nhanKhauBean.getListTieuSuModels().forEach(tieuSu -> {
-	                try {
-	                    String sql_tieu_su = "INSERT INTO tieu_su(idNhanKhau, tuNgay, denNgay, diaChi, ngheNghiep, noiLamViec)" 
-	                        + " values (?, ?, ?, ?, ?, ?)";
+	                try {                    
+	        	        String sql_tieu_su = "UPDATE tieu_su "
+	        	    	        + " SET" 
+	        	    	        + " tuNgay = ?,"
+	        	    	        + " denNgay = ?,"
+	        	    	        + " diaChi = ?,"
+	        	    	        + " ngheNghiep = ?,"
+	        	    	        + " noiLamViec = ?"
+	        	    	        + " WHERE ID = ?;";
 	                    PreparedStatement preStatement = connection.prepareStatement(sql_tieu_su);
-	                    preStatement.setInt(1, genID);
 	                    Date tuNgay = new Date(tieuSu.getTuNgay().getTime());
-	                    preStatement.setDate(2, tuNgay);
-	                    preStatement.setDate(3, new Date(tieuSu.getDenNgay().getTime()));
-	                    preStatement.setString(4, tieuSu.getDiaChi());
-	                    preStatement.setString(5, tieuSu.getNgheNghiep());
-	                    preStatement.setString(6, tieuSu.getNoiLamViec());
+	                    preStatement.setDate(1, tuNgay);
+	                    preStatement.setDate(2, new Date(tieuSu.getDenNgay().getTime()));
+	                    preStatement.setString(3, tieuSu.getDiaChi());
+	                    preStatement.setString(4, tieuSu.getNgheNghiep());
+	                    preStatement.setString(5, tieuSu.getNoiLamViec());
+	                    preStatement.setInt(6, idNhanKhau);
 	                    preStatement.execute();
 	                    preStatement.close();
 	                } catch (Exception e) {
@@ -160,20 +192,29 @@ public class PeopleService {
 	            });
 	            nhanKhauBean.getListGiaDinhModels().forEach(giaDinh -> {
 	                try {
-	                    String sql_tieu_su = "INSERT INTO gia_dinh(idNhanKhau, hoTen, namSinh, gioiTinh, quanHeVoiNhanKhau, ngheNghiep, diaChiHienTai)" 
-	                        + " values (?, ?, ?, ?, ?, ?, ?)";
+	                	
+	                	String sql_tieu_su = "UPDATE gia_dinh "
+	        	    	        + " SET" 
+	        	    	        + " hoTen = ?,"
+	        	    	        + " namSinh = ?,"
+	        	    	        + " gioiTinh = ?,"
+	        	    	        + " quanHeVoiNhanKhau = ?,"
+	        	    	        + " ngheNghiep = ?,"
+	        	    	        + " diaChiHienTai = ?"
+	        	    	        + " WHERE ID = ?;";
+	                    
 	                    PreparedStatement preStatement = connection.prepareStatement(sql_tieu_su);
-	                    preStatement.setInt(1, genID);
-	                    preStatement.setString(2, giaDinh.getHoTen());
-	                    preStatement.setDate(3, new Date(giaDinh.getNamSinh().getTime()));
-	                    preStatement.setString(4, giaDinh.getGioiTinh());
-	                    preStatement.setString(5, giaDinh.getQuanHeVoiNhanKhau());
-	                    preStatement.setString(6, giaDinh.getNgheNghiep());
-	                    preStatement.setString(7, giaDinh.getDiaChiHienTai());
+	                    preStatement.setString(1, giaDinh.getHoTen());
+	                    preStatement.setDate(2, new Date(giaDinh.getNamSinh().getTime()));
+	                    preStatement.setString(3, giaDinh.getGioiTinh());
+	                    preStatement.setString(4, giaDinh.getQuanHeVoiNhanKhau());
+	                    preStatement.setString(5, giaDinh.getNgheNghiep());
+	                    preStatement.setString(6, giaDinh.getDiaChiHienTai());
+	                    preStatement.setInt(7, idNhanKhau);
 	                    preStatement.execute();
 	                    preStatement.close();
 	                } catch (Exception e) {
-	                    System.out.println("controllers.NhanKhauManagerController.EditController.addNewPeople()");
+	                    System.out.println("controllers.NhanKhauManagerController.EditController.editPeople()");
 	                }
 	            });
 	        }

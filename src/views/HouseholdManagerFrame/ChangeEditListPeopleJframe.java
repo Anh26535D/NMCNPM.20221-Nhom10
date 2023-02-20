@@ -24,7 +24,7 @@ import javax.swing.border.LineBorder;
 import beans.MemOfFamily;
 import controllers.HoKhauManagerController.ChangeListPeopleController;
 
-public class ChangeListPeopleJframe extends javax.swing.JFrame {
+public class ChangeEditListPeopleJframe extends javax.swing.JFrame {
 
     /**
 	 * 
@@ -35,7 +35,7 @@ public class ChangeListPeopleJframe extends javax.swing.JFrame {
     private ChangeListPeopleController controller;
     private JFrame parentJframe;
 
-    public ChangeListPeopleJframe(List<MemOfFamily> listMember, JFrame parentJFrame) {
+    public ChangeEditListPeopleJframe(List<MemOfFamily> listMember, JFrame parentJFrame) {
     	getContentPane().setBackground(new Color(255, 255, 255));
         initComponents();
         this.setTitle("Sửa danh sách");
@@ -182,7 +182,7 @@ public class ChangeListPeopleJframe extends javax.swing.JFrame {
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {
         this.listMember.clear();
         this.listMember.addAll(this.listMemberTemp);
-        NewHouseholdFrame themMoiHoKhau = (NewHouseholdFrame)this.parentJframe;
+        EditHouseholdFrame themMoiHoKhau = (EditHouseholdFrame)this.parentJframe;
         themMoiHoKhau.setDataThanhVien();
         close();
     }

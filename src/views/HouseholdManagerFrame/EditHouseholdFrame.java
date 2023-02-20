@@ -1,29 +1,7 @@
 package views.HouseholdManagerFrame;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
-import java.awt.Font;
 import java.awt.Color;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.JButton;
-import javax.swing.border.LineBorder;
-import javax.swing.border.TitledBorder;
-
-import beans.HoKhauBean;
-import beans.MemOfFamily;
-import beans.NhanKhauBean;
-import controllers.HoKhauManagerController.SuaController;
-import models.AddressModel;
-import models.ThanhVienCuaHoModel;
-import services.CitizenIdService;
-import utils.SuggestionUtility;
-import views.AddressSuggestion;
-
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -31,10 +9,35 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
+
+import beans.HoKhauBean;
+import beans.MemOfFamily;
+import beans.NhanKhauBean;
+import controllers.HouseholdPanelController;
+import controllers.HoKhauManagerController.SuaController;
+import models.AddressModel;
+import models.ThanhVienCuaHoModel;
+import services.CitizenIdService;
+import utils.SuggestionUtility;
+import views.AddressSuggestion;
+
 public class EditHouseholdFrame extends JFrame {
 
 
 	private static final long serialVersionUID = 1L;
+	
+	private HouseholdPanelController parentController;
+	private JFrame parentFrame;
 	private AddressSuggestion addrSuggestion;
     private AddressModel addrModel = new AddressModel();
     private JTextField JtxReceiveAddress;
@@ -52,41 +55,69 @@ public class EditHouseholdFrame extends JFrame {
     private JButton cancelBtn;
     private SuggestionUtility diaChiJtf;
     private JButton editBtn;
-	private JFrame parentJFrame;
     private NhanKhauBean chuHo = new NhanKhauBean();
     private final List<MemOfFamily> list = new ArrayList<>();
-    private final SuaController controller = new SuaController();
-    private final HoKhauBean hoKhauBean = new HoKhauBean();
+    private SuaController controller;
+    private HoKhauBean hoKhauBean;
+    
+    public EditHouseholdFrame(JFrame parentJFrame) {
+    	init();
+        this.parentController = new HouseholdPanelController(){
+            @Override
+            public void refreshData() {
+            }
+
+            @Override
+            public void initAction() {
+            }
+        };
+        
+        this.parentFrame = parentJFrame;
+        //this.parentFrame.setEnabled(false);
+        this.hoKhauBean = new HoKhauBean();
+        controller = new SuaController();
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                    close();
+            }
+            
+        });
+    }
 
 
-	public EditHouseholdFrame(JFrame parentJFrame) {
+	/**
+	 * @wbp.parser.constructor
+	 */
+ 
+	public EditHouseholdFrame(HouseholdPanelController parentController, JFrame parentJFrame) {
 		init();
-		this.parentJFrame = parentJFrame;
-		this.setResizable(false);
-		this.setTitle("Sửa hộ khẩu");
-        this.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-		this.setBounds(350, 200, 670, 785);
-		this.setLocationRelativeTo(null);
-
+		this.parentController = parentController;
+        this.parentFrame = parentJFrame;
+        //this.parentFrame.setEnabled(false);
+        this.hoKhauBean = new HoKhauBean();
+        controller = new SuaController();
+        
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
                 close();
             }
-            
-        });       
-		parentJFrame.setEnabled(true);
-		this.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        });
 
 		setDataThanhVien();
 	}
 	
 	private void init() {
-
+		setTitle("Sửa hộ khẩu");
+		setBounds(350, 200, 670, 785);
 		contentPane = new JPanel();
+		
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
@@ -329,7 +360,7 @@ public class EditHouseholdFrame extends JFrame {
 	
     private void close() {
         if (JOptionPane.showConfirmDialog(this, "Are you sure to close??", "Confirm", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
-            this.parentJFrame.setEnabled(true);
+            //this.parentFrame.setEnabled(true);
             dispose();
         }
     }
@@ -354,10 +385,10 @@ public class EditHouseholdFrame extends JFrame {
     private void diaChiJtfActionPerformed(java.awt.event.ActionEvent evt) {
     }
     private void selectBtnActionPerformed(java.awt.event.ActionEvent evt) {
-        ChoosePeople choosePeople = new ChoosePeople(this.chuHo, this);
-        choosePeople.setLocationRelativeTo(null);
-        choosePeople.setResizable(false);
-        choosePeople.setVisible(true);
+        ChooseEditPeople chooseEditPeople = new ChooseEditPeople(this.chuHo, this);
+        chooseEditPeople.setLocationRelativeTo(null);
+        chooseEditPeople.setResizable(false);
+        chooseEditPeople.setVisible(true);
     }
     private void tenChuHoJtfActionPerformed(java.awt.event.ActionEvent evt) {
     }
@@ -373,10 +404,10 @@ public class EditHouseholdFrame extends JFrame {
     }
 
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {
-        ChangeListPeopleJframe changeListPeopleJframe = new ChangeListPeopleJframe(list, this);
-        changeListPeopleJframe.setLocationRelativeTo(null);
-        changeListPeopleJframe.setResizable(false);
-        changeListPeopleJframe.setVisible(true);
+        ChangeEditListPeopleJframe changeEditListPeopleJframe = new ChangeEditListPeopleJframe(list, this);
+        changeEditListPeopleJframe.setLocationRelativeTo(null);
+        changeEditListPeopleJframe.setResizable(false);
+        changeEditListPeopleJframe.setVisible(true);
     }
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {
@@ -398,11 +429,14 @@ public class EditHouseholdFrame extends JFrame {
             this.hoKhauBean.getHoKhauModel().setMaKhuVuc(maKhuVucJtf.getText().trim());
             this.hoKhauBean.getHoKhauModel().setDiaChi(diaChiJtf.getText().trim());
             try {
-                this.controller.edit(hoKhauBean);
-                this.parentJFrame.setEnabled(true);
-                dispose();
+                if (this.controller.editHoKhau(this.hoKhauBean, parentController.getSelectedIdHoKhau())) {
+                    JOptionPane.showMessageDialog(null, "Sửa thành công!!");
+                    close();
+                    parentController.refreshData();
+                }
             } catch (Exception e) {
                 System.out.println(e.getMessage());
+                JOptionPane.showMessageDialog(rootPane, "Có lỗi xảy ra. Vui long kiểm tra lại!!", "Warning", JOptionPane.WARNING_MESSAGE);
             }
         }
     }

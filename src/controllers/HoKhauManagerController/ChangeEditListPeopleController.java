@@ -1,4 +1,3 @@
-
 package controllers.HoKhauManagerController;
 
 import java.awt.BorderLayout;
@@ -25,7 +24,7 @@ import services.HoKhauService;
 import services.PeopleService;
 import utils.TableModelHoKhau;
 
-public class ChangeListPeopleController {
+public class ChangeEditListPeopleController {
     
     private JButton addBtn;
     private JButton removeBtn;
@@ -42,7 +41,7 @@ public class ChangeListPeopleController {
     private NhanKhauBean peopleSelected;
     private MemOfFamily memSelected;
     
-    public ChangeListPeopleController(List<MemOfFamily> listMember, JButton addBtn, JButton removeBtn, JTextField searchJtf, JPanel peopleJpn, JPanel memJpn) {
+    public ChangeEditListPeopleController(List<MemOfFamily> listMember, JButton addBtn, JButton removeBtn, JTextField searchJtf, JPanel peopleJpn, JPanel memJpn) {
         this.listMember = listMember;
         this.listPeople = peopleService.getListNhanKhau();
         this.addBtn = addBtn;

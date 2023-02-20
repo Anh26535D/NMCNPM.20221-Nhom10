@@ -33,6 +33,7 @@ public class HouseholdPanel extends JPanel {
 	private JButton tachHoKhauBtn;
 	private JButton themMoiBtn;
 	private JButton suaBtn;
+	private JFrame parentJFrame;
 
 	// End of variables declaration//GEN-END:variables
 
@@ -182,7 +183,7 @@ public class HouseholdPanel extends JPanel {
 	}// GEN-LAST:event_themMoiBtnActionPerformed
 
 	private void suaBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_themMoiBtnActionPerformed
-		EditHouseholdFrame suaHoKhau = new EditHouseholdFrame(this.parentFrame);
+		EditHouseholdFrame suaHoKhau = new EditHouseholdFrame(this.controller, this.parentJFrame);
 		suaHoKhau.setLocationRelativeTo(null);
 		suaHoKhau.setResizable(false);
 		suaHoKhau.setVisible(true);
