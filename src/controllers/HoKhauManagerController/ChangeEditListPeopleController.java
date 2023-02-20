@@ -55,26 +55,41 @@ public class ChangeEditListPeopleController {
     
     public void initAction() {
         this.searchJtf.getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                String key = searchJtf.getText();
-                listPeople = peopleService.search(key.trim());
-                setData();
-            }
+        	@Override
+			public void insertUpdate(DocumentEvent e) {
+				String key = searchJtf.getText();
+				if (!key.trim().equals("") && !key.trim().equals("Search")) {
+					listPeople = peopleService.search(key.trim());
+					setData();
+				} else if (key.trim().equals("")) {
+					listPeople = peopleService.search(key.trim());
+					setData();
+				}
+			}
 
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                String key = searchJtf.getText();
-                listPeople = peopleService.search(key.trim());
-                setData();
-            }
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				String key = searchJtf.getText();
+				if (!key.trim().equals("") && !key.trim().equals("Search")) {
+					listPeople = peopleService.search(key.trim());
+					setData();
+				} else if (key.trim().equals("")) {
+					listPeople = peopleService.search(key.trim());
+					setData();
+				}
+			}
 
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-                String key = searchJtf.getText();
-                listPeople = peopleService.search(key.trim());
-                setData();
-            }
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				String key = searchJtf.getText();
+				if (!key.trim().equals("") && !key.trim().equals("Search")) {
+					listPeople = peopleService.search(key.trim());
+					setData();
+				} else if (key.trim().equals("")) {
+					listPeople = peopleService.search(key.trim());
+					setData();
+				}
+			}
         });
         addBtn.addMouseListener(new MouseAdapter() {
             @Override
