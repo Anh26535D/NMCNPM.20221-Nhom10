@@ -32,12 +32,10 @@ public class DeathCertiFrame extends javax.swing.JFrame {
 	private com.toedter.calendar.JDateChooser jDateChooser2;
 	private javax.swing.JLabel jLabel1;
 	private javax.swing.JLabel jLabel2;
-	private javax.swing.JLabel jLabel3;
 	private javax.swing.JLabel jLabel4;
 	private javax.swing.JLabel jLabel5;
 	private javax.swing.JLabel jLabel6;
 	private javax.swing.JLabel jLabel7;
-	private javax.swing.JLabel jLabel8;
 	private javax.swing.JPanel jPanel1;
 	private javax.swing.JScrollPane jScrollPane1;
 	private javax.swing.JTextArea jTextArea1;
@@ -100,7 +98,7 @@ public class DeathCertiFrame extends javax.swing.JFrame {
 				return cidService.search(textContent);
 			}
 		};
-		soCMTngkhai.setBounds(163, 11, 274, 30);
+		soCMTngkhai.setBounds(163, 11, 300, 30);
 
 		soCMTngchet = new SuggestionUtility(false) {
 
@@ -110,7 +108,7 @@ public class DeathCertiFrame extends javax.swing.JFrame {
 				return cidService.search(textContent);
 			}
 		};
-		soCMTngchet.setBounds(163, 61, 274, 30);
+		soCMTngchet.setBounds(163, 61, 300, 30);
 		jPanel1 = new javax.swing.JPanel();
 		jPanel1.setEnabled(false);
 		jPanel1.setBackground(new Color(240, 248, 255));
@@ -152,15 +150,11 @@ public class DeathCertiFrame extends javax.swing.JFrame {
 		jScrollPane1.setBounds(137, 271, 419, 91);
 		jTextArea1 = new javax.swing.JTextArea();
 		checkBtn1 = new javax.swing.JButton();
-		checkBtn1.setBounds(443, 10, 83, 30);
-		jLabel3 = new javax.swing.JLabel();
-		jLabel3.setBounds(536, 10, 32, 32);
+		checkBtn1.setBounds(473, 10, 83, 30);
 		jLabel7 = new javax.swing.JLabel();
 		jLabel7.setBounds(10, 60, 140, 30);
 		checkBtn2 = new javax.swing.JButton();
-		checkBtn2.setBounds(443, 60, 83, 30);
-		jLabel8 = new javax.swing.JLabel();
-		jLabel8.setBounds(536, 58, 32, 32);
+		checkBtn2.setBounds(473, 60, 83, 30);
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -228,9 +222,6 @@ public class DeathCertiFrame extends javax.swing.JFrame {
 			}
 		});
 
-		jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/checked.png")));
-		jLabel3.setEnabled(false);
-
 		jLabel7.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		jLabel7.setText("Số CMT người chết:");
 
@@ -246,9 +237,6 @@ public class DeathCertiFrame extends javax.swing.JFrame {
 				checkCMTNguoiChet();
 			}
 		});
-
-		jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/checked.png")));
-		jLabel8.setEnabled(false);
 
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
 		layout.setHorizontalGroup(layout.createParallelGroup(Alignment.LEADING)
@@ -275,9 +263,7 @@ public class DeathCertiFrame extends javax.swing.JFrame {
 		jPanel1.add(jLabel7);
 		jPanel1.add(soCMTngchet);
 		jPanel1.add(checkBtn1);
-		jPanel1.add(jLabel3);
 		jPanel1.add(checkBtn2);
-		jPanel1.add(jLabel8);
 
 		pack();
 	}
