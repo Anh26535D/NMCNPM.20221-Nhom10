@@ -178,6 +178,11 @@ public class PayDonationFrame extends JFrame {
 		}
 		try {
 			long d = Long.parseLong(soTien);
+			if (d <= 0) {
+				JOptionPane.showMessageDialog(rootPane, "Số tiền không hợp lệ", "Warning",
+						JOptionPane.WARNING_MESSAGE);
+				return false;
+			}
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(rootPane, "Số tiền không thể chứa các ký tự", "Warning",
 					JOptionPane.WARNING_MESSAGE);
