@@ -15,7 +15,11 @@ public class AddNewFeeController {
 	}
 
 	public boolean newFee(PhiBatBuocBean phiBatBuocBean) throws SQLException, ClassNotFoundException{
-		return feesService.newFee(phiBatBuocBean);
+		FeesModel feeModel = phiBatBuocBean.getFeesModel();
+		if (feeModel.getSo_tien()>=0 && feeModel.getSo_tien()<=10000000) {
+			return feesService.newFee(phiBatBuocBean);
+		}
+		return false;
 	}
 
 	public  boolean checkDuplicate(FeesModel value){

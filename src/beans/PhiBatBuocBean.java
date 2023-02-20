@@ -3,9 +3,7 @@ package beans;
 import java.util.ArrayList;
 import java.util.List;
 
-import models.ChungMinhThuModel;
 import models.FeesModel;
-import models.NhanKhauModel;
 
 public class PhiBatBuocBean {
 

@@ -1,26 +1,25 @@
 package views;
 
-import controllers.PeoplePanelController;
-import views.PeopleManagerFrame.NewPeopleFrame;
-import views.PeopleManagerFrame.DeathCertiFrame;
-import views.PeopleManagerFrame.EditPeopleFrame;
-import views.PeopleManagerFrame.TempAbsenceDFrame;
-import views.PeopleManagerFrame.TempResidenceDFrame;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.border.LineBorder;
 import java.awt.Color;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.EmptyBorder;
 import java.awt.Font;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+
+import controllers.PeoplePanelController;
+import views.PeopleManagerFrame.DeathCertiFrame;
+import views.PeopleManagerFrame.EditPeopleFrame;
+import views.PeopleManagerFrame.NewPeopleFrame;
+import views.PeopleManagerFrame.TempAbsenceDFrame;
+import views.PeopleManagerFrame.TempResidenceDFrame;
 
 public class PeoplePanel extends javax.swing.JPanel {
 

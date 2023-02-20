@@ -2,22 +2,22 @@ package views.PeopleManagerFrame;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.List;
 
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.GroupLayout.Alignment;
+
 import controllers.NhanKhauManagerController.KhaiTuController;
 import services.CitizenIdService;
 import utils.SuggestionUtility;
-
-import javax.swing.GroupLayout;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class DeathCertiFrame extends javax.swing.JFrame {
 

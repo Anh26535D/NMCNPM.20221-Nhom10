@@ -20,7 +20,6 @@ import beans.PhiUngHoBean;
 import controllers.DonationsManagerController.PayDonationController;
 import controllers.DonationsManagerController.StatisticDonationsController;
 import models.PayDonationModel;
-import views.DonationsManagerFrame.ChoosePayDonationPersonFrame;
 
 public class PayDonationFrame extends JFrame {
 
@@ -195,6 +194,9 @@ public class PayDonationFrame extends JFrame {
 					JOptionPane.showMessageDialog(null, "Thêm thành công!!");
 					close();
 					parentController.refreshData();
+				}else {
+					JOptionPane.showMessageDialog(rootPane, "Số tiền nhập có vấn đề", "Warning",
+							JOptionPane.WARNING_MESSAGE);
 				}
 			} catch (Exception e) {
 				System.out.println(e.getMessage());

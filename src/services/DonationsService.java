@@ -15,12 +15,8 @@ import beans.HoKhauBean;
 import beans.PhiUngHoBean;
 import models.DonateModel;
 import models.DonationsModel;
-import models.FeesModel;
 import models.HoKhauModel;
-import models.NhanKhauModel;
 import models.PayDonationModel;
-import models.PayFeeModel;
-import models.ThanhVienCuaHoModel;
 
 public class DonationsService {
 

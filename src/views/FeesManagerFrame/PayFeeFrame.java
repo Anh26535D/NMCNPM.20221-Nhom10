@@ -17,7 +17,6 @@ import beans.PhiBatBuocBean;
 import controllers.FeesManagerController.PayFeeController;
 import controllers.FeesManagerController.StatisticFeesController;
 import models.PayFeeModel;
-import views.HouseholdManagerFrame.ChoosePeople;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -199,6 +198,9 @@ public class PayFeeFrame extends JFrame {
 					JOptionPane.showMessageDialog(null, "Thêm thành công!!");
 					close();
 					parentController.refreshData();
+				}else {
+					JOptionPane.showMessageDialog(rootPane, "Số tiền nhập có vấn đề!!", "Warning",
+							JOptionPane.WARNING_MESSAGE);
 				}
 			} catch (Exception e) {
 				System.out.println(e.getMessage());

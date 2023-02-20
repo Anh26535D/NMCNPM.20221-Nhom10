@@ -1,13 +1,14 @@
 package views.FeesManagerFrame;
 
-import controllers.FeesManagerController.ChoosePayFeePersonController;
-import controllers.HoKhauManagerController.ChoosePeopleController;
-import views.FeesManagerFrame.PayFeeFrame;
-
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.border.BevelBorder;
@@ -16,11 +17,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import beans.NhanKhauBean;
-
-import java.awt.Color;
-import java.awt.Font;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.GroupLayout;
+import controllers.FeesManagerController.ChoosePayFeePersonController;
 
 public class ChoosePayFeePersonFrame extends javax.swing.JFrame {
 

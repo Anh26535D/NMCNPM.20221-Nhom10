@@ -1,28 +1,24 @@
 package views;
 
 import java.awt.Color;
-
-import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
-
-import controllers.HouseholdPanelController;
-
-import views.HouseholdManagerFrame.NewHouseholdFrame;
-import views.HouseholdManagerFrame.ChangeResidence;
-import views.HouseholdManagerFrame.EditHouseholdFrame;
-import views.HouseholdManagerFrame.HouseholdSeper;
-
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JFrame;
+import java.awt.Font;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.awt.Font;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+
+import controllers.HouseholdPanelController;
+import views.HouseholdManagerFrame.ChangeResidence;
+import views.HouseholdManagerFrame.EditHouseholdFrame;
+import views.HouseholdManagerFrame.HouseholdSeper;
+import views.HouseholdManagerFrame.NewHouseholdFrame;
 
 public class HouseholdPanel extends JPanel {
 	private static final long serialVersionUID = 1L;

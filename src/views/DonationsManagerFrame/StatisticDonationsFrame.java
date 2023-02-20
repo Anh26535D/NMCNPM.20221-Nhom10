@@ -8,7 +8,11 @@ import java.awt.event.FocusListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -21,12 +25,6 @@ import beans.PhiUngHoBean;
 import controllers.DonationsController;
 import controllers.DonationsManagerController.StatisticDonationsController;
 import models.DonationsModel;
-import views.DonationsManagerFrame.PayDonationFrame;
-
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JLabel;
 
 public class StatisticDonationsFrame extends JFrame {
 

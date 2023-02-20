@@ -1,13 +1,14 @@
 package views.DonationsManagerFrame;
 
-import controllers.DonationsManagerController.ChoosePayDonationPersonController;
-import controllers.HoKhauManagerController.ChoosePeopleController;
-import views.DonationsManagerFrame.PayDonationFrame;
-
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.border.BevelBorder;
@@ -16,11 +17,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import beans.NhanKhauBean;
-
-import java.awt.Color;
-import java.awt.Font;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.GroupLayout;
+import controllers.DonationsManagerController.ChoosePayDonationPersonController;
 
 public class ChoosePayDonationPersonFrame extends javax.swing.JFrame {
 

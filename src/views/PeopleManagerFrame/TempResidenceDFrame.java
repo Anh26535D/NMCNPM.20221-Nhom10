@@ -1,23 +1,21 @@
 
 package views.PeopleManagerFrame;
 
-import controllers.PeoplePanelController;
-import controllers.NhanKhauManagerController.DangKyTamTruController;
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.List;
 
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
+import controllers.NhanKhauManagerController.DangKyTamTruController;
 import models.TamTruModel;
 import services.CitizenIdService;
 import utils.SuggestionUtility;
-
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.GroupLayout;
 
 public class TempResidenceDFrame extends javax.swing.JFrame {
 

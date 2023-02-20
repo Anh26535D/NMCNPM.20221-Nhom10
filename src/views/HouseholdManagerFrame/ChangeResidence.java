@@ -1,10 +1,7 @@
 package views.HouseholdManagerFrame;
 
-import controllers.HoKhauManagerController.ChuyenDiNoiKhacController;
-import models.AddressModel;
-import utils.SuggestionUtility;
-import views.AddressSuggestion;
-
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -13,23 +10,20 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.List;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.GroupLayout;
-import javax.swing.JButton;
+import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import beans.HoKhauBean;
-
-import java.awt.Color;
-import java.awt.Font;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import controllers.HoKhauManagerController.ChuyenDiNoiKhacController;
+import models.AddressModel;
+import utils.SuggestionUtility;
+import views.AddressSuggestion;
 
 public class ChangeResidence extends javax.swing.JFrame {
 
