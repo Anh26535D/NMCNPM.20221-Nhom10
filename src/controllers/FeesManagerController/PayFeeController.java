@@ -14,7 +14,7 @@ public class PayFeeController {
 	}
 
 	public boolean payFee(PayFeeModel payFeeModel, int idFee) throws SQLException, ClassNotFoundException{
-		if (payFeeModel.getSo_tien()>=0 && payFeeModel.getSo_tien()<=10000000) {
+		if (payFeeModel.getSo_tien()>=0 && payFeeModel.getSo_tien()<=1000000) {
 			return feesService.payFee(payFeeModel, idFee);			
 		}
 		return false;

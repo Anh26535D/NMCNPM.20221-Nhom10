@@ -177,13 +177,13 @@ public class PayDonationFrame extends JFrame {
 		}
 		try {
 			long d = Long.parseLong(soTien);
-			if (d <= 0) {
+			if (d <= 0 || d >= 1000000) {
 				JOptionPane.showMessageDialog(rootPane, "Số tiền không hợp lệ", "Warning",
 						JOptionPane.WARNING_MESSAGE);
 				return false;
 			}
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(rootPane, "Số tiền không thể chứa các ký tự", "Warning",
+			JOptionPane.showMessageDialog(rootPane, "Số tiền sai định dạng hoặc vượt quá phạm vi cho phép", "Warning",
 					JOptionPane.WARNING_MESSAGE);
 			return false;
 		}
@@ -197,10 +197,10 @@ public class PayDonationFrame extends JFrame {
 			try {
 				if (this.controller.payDonation(this.payDonationModel, this.selectedDonation.getDonationModel().getID())) {
 					JOptionPane.showMessageDialog(null, "Thêm thành công!!");
-					close();
+					closeWithNoDiaglog();
 					parentController.refreshData();
 				}else {
-					JOptionPane.showMessageDialog(rootPane, "Số tiền nhập có vấn đề", "Warning",
+					JOptionPane.showMessageDialog(rootPane, "Số tiền nhập không hợp lệ", "Warning",
 							JOptionPane.WARNING_MESSAGE);
 				}
 			} catch (Exception e) {
@@ -218,6 +218,12 @@ public class PayDonationFrame extends JFrame {
 			this.parentController.setData();
 			dispose();
 		}
+	}
+	
+	void closeWithNoDiaglog() {
+		this.parentFrame.setEnabled(true);
+		this.parentController.setData();
+		dispose();
 	}
 	
 	public void setDataPerson() {

@@ -205,7 +205,7 @@ public class DeathCertiFrame extends javax.swing.JFrame {
 		jTextArea1.setColumns(20);
 		jTextArea1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		jTextArea1.setRows(5);
-		jTextArea1.setEnabled(false);
+		jTextArea1.setEnabled(true);
 		jScrollPane1.setViewportView(jTextArea1);
 
 		checkBtn1.setBorderPainted(false);

@@ -1,6 +1,7 @@
 package controllers.NhanKhauManagerController;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -29,16 +30,17 @@ public class KhaiTuController {
     public boolean addNew(KhaiTuModel khaiTuModel) {
         try {
             Connection connection = SQLConnection.getDbConnection();
-            String query = "INSERT INTO khai_tu(idNhanKhau, , lyDo)" + " value (?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO khai_tu(ID,soGiayKhaiTu,idNguoiChet,idNguoiKhai, ngayKhai, ngayChet, lyDoChet)" + " VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-//            preparedStatement.setInt(1, tamTruModel.getIdNhanKhau());
-//            preparedStatement.setString(2, tamTruModel.getMaGiayTamTru());
-//            preparedStatement.setString(3, tamTruModel.getSoDienThoaiNguoiDangKy());
-//            Date tuNgay = new Date(tamTruModel.getTuNgay().getTime());
-//            preparedStatement.setDate(4, tuNgay);
-//            Date denNgay = new Date(tamTruModel.getDenNgay().getTime());
-//            preparedStatement.setDate(5, denNgay);
-//            preparedStatement.setString(6, tamTruModel.getLyDo());
+            preparedStatement.setInt(1, khaiTuModel.getID());
+            preparedStatement.setString(2, khaiTuModel.getSoGiayKhaiTu());
+            preparedStatement.setInt(3, khaiTuModel.getIdNguoiKhai());
+            preparedStatement.setInt(4, khaiTuModel.getIdNguoiChet());
+            Date ngayKhai = new Date(khaiTuModel.getNgayKhai().getTime());
+            preparedStatement.setDate(5, ngayKhai);
+            Date ngayChet = new Date(khaiTuModel.getNgayChet().getTime());
+            preparedStatement.setDate(6, ngayChet);
+            preparedStatement.setString(7, khaiTuModel.getLyDoChet());
             preparedStatement.execute();
             preparedStatement.close();
             connection.close();

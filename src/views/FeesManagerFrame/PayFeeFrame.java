@@ -181,13 +181,13 @@ public class PayFeeFrame extends JFrame {
 		}
 		try {
 			long d = Long.parseLong(soTien);
-			if (d <= 0) {
+			if (d <= 0 || d>= 1000000) {
 				JOptionPane.showMessageDialog(rootPane, "Số tiền không hợp lệ", "Warning",
 						JOptionPane.WARNING_MESSAGE);
 				return false;
 			}
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(rootPane, "Số tiền không thể chứa các ký tự", "Warning",
+			JOptionPane.showMessageDialog(rootPane, "Số tiền sai định dạng hoặc vượt quá phạm vi cho phép", "Warning",
 					JOptionPane.WARNING_MESSAGE);
 			return false;
 		}
@@ -197,15 +197,14 @@ public class PayFeeFrame extends JFrame {
 	private void CreateBtnActionPerformed(java.awt.event.ActionEvent evt) {
 		if (validateForm()) {
 			this.payFeeModel.setIdNhanKhau(Integer.parseInt(idSelectedPersonJtf.getText()));
-			;
 			this.payFeeModel.setSo_tien(Integer.parseInt(soTienJtf.getText()));
 			try {
 				if (this.controller.payFee(this.payFeeModel, this.selectedFee.getFeesModel().getID())) {
 					JOptionPane.showMessageDialog(null, "Thêm thành công!!");
-					close();
+					closeWithNoDiaglog();
 					parentController.refreshData();
 				}else {
-					JOptionPane.showMessageDialog(rootPane, "Số tiền nhập có vấn đề!!", "Warning",
+					JOptionPane.showMessageDialog(rootPane, "Số tiền không hợp lệ!!", "Warning",
 							JOptionPane.WARNING_MESSAGE);
 				}
 			} catch (Exception e) {
@@ -223,6 +222,12 @@ public class PayFeeFrame extends JFrame {
 			this.parentController.setData();
 			dispose();
 		}
+	}
+	
+	void closeWithNoDiaglog() {
+		this.parentFrame.setEnabled(true);
+		this.parentController.setData();
+		dispose();
 	}
 
 	public void setDataPerson() {
