@@ -106,8 +106,7 @@ public class HoKhauService {
         connection.close();
         return true;
     }
-    
-    
+     
     public boolean checkPerson(int id) {
         try {
             Connection connection = SQLConnection.getDbConnection();
