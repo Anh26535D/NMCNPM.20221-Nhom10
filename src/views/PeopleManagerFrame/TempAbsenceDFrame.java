@@ -57,7 +57,6 @@ public class TempAbsenceDFrame extends javax.swing.JFrame {
 		this.soCMTjtf.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				// neu keycode == 10 ~ enter
 				if (e.getKeyCode() == 10) {
 					checkCMT();
 				}
