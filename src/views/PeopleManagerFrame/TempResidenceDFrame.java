@@ -346,6 +346,7 @@ public class TempResidenceDFrame extends javax.swing.JFrame {
 		this.soCMTJtf.setText("");
 		this.maGiayTamTruJtf.setText("");
 		this.soDienThoaiJtf.setText("");
+		close();
 	}// GEN-LAST:event_cancelBtnActionPerformed
 
 	private void acceptBtnActionPerformed(java.awt.event.ActionEvent evt) {

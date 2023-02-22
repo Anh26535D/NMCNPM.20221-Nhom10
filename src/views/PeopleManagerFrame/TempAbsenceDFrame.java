@@ -65,8 +65,11 @@ public class TempAbsenceDFrame extends javax.swing.JFrame {
 	}
 
 	void close() {
-		this.parentJFrame.setEnabled(true);
-		dispose();
+		if (JOptionPane.OK_OPTION == JOptionPane.showConfirmDialog(null, "Are you sure to close?", "Warning!!",
+				JOptionPane.YES_NO_OPTION)) {
+			this.parentJFrame.setEnabled(true);
+			dispose();
+		}
 	}
 
 	private boolean validateForm() {
@@ -356,18 +359,13 @@ public class TempAbsenceDFrame extends javax.swing.JFrame {
 	}// GEN-LAST:event_acceptBtnActionPerformed
 
 	private void CancelBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_CancelBtnActionPerformed
-		if (JOptionPane.showConfirmDialog(null, "Are you sure to close?", "Warning",
-				JOptionPane.OK_CANCEL_OPTION) == 0) {
-			close();
-		}
+		close();
 	}// GEN-LAST:event_CancelBtnActionPerformed
 
 	// kiem tra su ton tai cua nhan khau trong he thong
 	private void checkBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_checkBtnActionPerformed
 		this.checkCMT();
-	}// GEN-LAST:event_checkBtnActionPerformed
-
-	// Variables declaration - do not modify//GEN-BEGIN:variables
+	}
 	private javax.swing.JButton CancelBtn;
 	private javax.swing.JButton acceptBtn;
 	private javax.swing.JButton checkBtn;
