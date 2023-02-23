@@ -17,7 +17,6 @@ import javax.swing.JOptionPane;
 
 import controllers.NhanKhauManagerController.KhaiTuController;
 import models.KhaiTuModel;
-import models.TamVangModel;
 import services.CitizenIdService;
 import utils.SuggestionUtility;
 

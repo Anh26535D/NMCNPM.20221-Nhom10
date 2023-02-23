@@ -105,13 +105,9 @@ public class TempResidenceDFrame extends javax.swing.JFrame {
 						JOptionPane.WARNING_MESSAGE);
 			}
 		}
-
 		int tempID = controller.checkCMT(this.soCMTJtf.getText());
 
 		if (tempID != -1) {
-			// khong cho phep sua lai gia tri
-//			this.soCMTJtf.setEditable(false);
-//			this.maGiayTamTruJtf.setEnabled(false);
 			this.tamTruModel.setIdNhanKhau(tempID);
 			JOptionPane.showMessageDialog(this, "OK!!");
 		}

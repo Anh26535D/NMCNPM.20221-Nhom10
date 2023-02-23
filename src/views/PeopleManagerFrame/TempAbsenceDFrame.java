@@ -1,7 +1,7 @@
 package views.PeopleManagerFrame;
 
-import controllers.NhanKhauManagerController.DangKyTamVangController;
-
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -9,23 +9,19 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.List;
-
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import controllers.NhanKhauManagerController.DangKyTamVangController;
 import models.AddressModel;
 import models.TamVangModel;
 import services.CitizenIdService;
 import utils.SuggestionUtility;
 import views.AddressSuggestion;
-
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.GroupLayout;
-import javax.swing.JButton;
-
-import java.awt.Color;
-import java.awt.Font;
 
 public class TempAbsenceDFrame extends javax.swing.JFrame {
 
