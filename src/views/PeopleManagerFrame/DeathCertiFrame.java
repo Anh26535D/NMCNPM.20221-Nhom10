@@ -283,6 +283,7 @@ public class DeathCertiFrame extends javax.swing.JFrame {
 		}
 		int tempID = controller.checkCMT(this.soCMTngkhai.getText());
 		if (tempID != -1) {
+			this.khaiTuModel.setIdNguoiKhai(tempID);
 			JOptionPane.showMessageDialog(this, "OK!!");
 		} else {
 			if (JOptionPane.showConfirmDialog(null, "Không tìm thấy nhân khẩu trong hệ thống!! Thử lại?", "Warning!!",
@@ -291,7 +292,7 @@ public class DeathCertiFrame extends javax.swing.JFrame {
 			}
 		}
 	}
-	
+
 	private void checkCMTNguoiChet() {
 		String tempCMT = this.soCMTngchet.getText().trim();
 		if (tempCMT.isEmpty()) {
@@ -308,6 +309,7 @@ public class DeathCertiFrame extends javax.swing.JFrame {
 		}
 		int tempID = controller.checkCMT(this.soCMTngchet.getText());
 		if (tempID != -1) {
+			this.khaiTuModel.setIdNguoiChet(tempID);
 			JOptionPane.showMessageDialog(this, "OK!!");
 		} else {
 			if (JOptionPane.showConfirmDialog(null, "Không tìm thấy nhân khẩu trong hệ thống!! Thử lại?", "Warning!!",
@@ -320,9 +322,11 @@ public class DeathCertiFrame extends javax.swing.JFrame {
 	private void soGiayKhaiTuActionPerformed(java.awt.event.ActionEvent evt) {
 		close();
 	}
+
 	private boolean validateForm() {
-		return !(soGiayKhaiTu.getText().trim().isEmpty()|| lyDoChet.getText().trim().isEmpty());
+		return !(soGiayKhaiTu.getText().trim().isEmpty() || lyDoChet.getText().trim().isEmpty());
 	}
+
 	private void confirmActionPerformed(java.awt.event.ActionEvent evt) {
 		if (!validateForm()) {
 			JOptionPane.showMessageDialog(null, "Vui lòng nhập hết các trường bắt buộc!", "Warning!!",
@@ -340,10 +344,9 @@ public class DeathCertiFrame extends javax.swing.JFrame {
 	}
 
 	private void cancelActionPerformed(java.awt.event.ActionEvent evt) {
-		close();
-}
-	
-
-
+		this.soCMTngkhai.setText("");
+		this.soCMTngchet.setText("");
+		this.lyDoChet.setText("");
+	}
 
 }

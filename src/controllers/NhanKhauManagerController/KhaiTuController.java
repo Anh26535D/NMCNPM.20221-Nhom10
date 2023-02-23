@@ -14,7 +14,7 @@ public class KhaiTuController {
     public int checkCMT(String cmt) {
         try {
             Connection connection = SQLConnection.getDbConnection();
-            String query = "SELECT * FROM nhan_khau LEFT JOIN chung_minh_thu ON nhan_khau.ID = chung_minh_thu.idNhanKhau WHERE soCMT = ?";
+            String query = "SELECT nhan_khau.ID FROM nhan_khau LEFT JOIN chung_minh_thu ON nhan_khau.ID = chung_minh_thu.idNhanKhau WHERE soCMT = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, cmt);
             ResultSet rs = preparedStatement.executeQuery();
@@ -30,17 +30,16 @@ public class KhaiTuController {
     public boolean addNew(KhaiTuModel khaiTuModel) {
         try {
             Connection connection = SQLConnection.getDbConnection();
-            String query = "INSERT INTO khai_tu(ID,soGiayKhaiTu,idNguoiChet,idNguoiKhai, ngayKhai, ngayChet, lyDoChet)" + " VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO khai_tu(soGiayKhaiTu,idNguoiChet,idNguoiKhai, ngayKhai, ngayChet, lyDoChet)" + " VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, khaiTuModel.getID());
-            preparedStatement.setString(2, khaiTuModel.getSoGiayKhaiTu());
-            preparedStatement.setInt(3, khaiTuModel.getIdNguoiKhai());
-            preparedStatement.setInt(4, khaiTuModel.getIdNguoiChet());
+            preparedStatement.setString(1, khaiTuModel.getSoGiayKhaiTu());
+            preparedStatement.setInt(2, khaiTuModel.getIdNguoiKhai());
+            preparedStatement.setInt(3, khaiTuModel.getIdNguoiChet());
             Date ngayKhai = new Date(khaiTuModel.getNgayKhai().getTime());
-            preparedStatement.setDate(5, ngayKhai);
+            preparedStatement.setDate(4, ngayKhai);
             Date ngayChet = new Date(khaiTuModel.getNgayChet().getTime());
-            preparedStatement.setDate(6, ngayChet);
-            preparedStatement.setString(7, khaiTuModel.getLyDoChet());
+            preparedStatement.setDate(5, ngayChet);
+            preparedStatement.setString(6, khaiTuModel.getLyDoChet());
             preparedStatement.execute();
             preparedStatement.close();
             connection.close();

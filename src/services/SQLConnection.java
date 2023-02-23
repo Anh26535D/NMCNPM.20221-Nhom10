@@ -10,14 +10,7 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 public class SQLConnection {
-//	Anh Dam
-	// public static String serverName = "DESKTOP-04NMIDF\\\\SQLEXPRESS";
-
-//	Quan
 	public static String serverName = "";
-
-//  Hieu
-//  public static String serverName = "127.0.0.1";
 
 	public static String databaseName = "quan_ly_nhan_khau";
 	public static String userName = "";
