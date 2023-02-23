@@ -1,18 +1,16 @@
 package views;
 
-import javax.swing.JPanel;
 import java.awt.Color;
-import javax.swing.border.LineBorder;
-
-import controllers.HomeController;
+import java.awt.Font;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import java.awt.Font;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
-import javax.swing.Icon;
+import javax.swing.border.LineBorder;
+
+import controllers.HomeController;
 
 public class HomePagePanel extends JPanel {
 	private static final long serialVersionUID = 1L;

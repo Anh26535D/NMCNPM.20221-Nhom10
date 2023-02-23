@@ -13,7 +13,7 @@ public class DangKyTamTruController {
     public int checkCMT(String cmt) {
         try {
             Connection connection = SQLConnection.getDbConnection();
-            String query = "SELECT * FROM nhan_khau LEFT JOIN chung_minh_thu ON nhan_khau.ID = chung_minh_thu.idNhanKhau WHERE soCMT = ?";
+            String query = "SELECT nhan_khau.ID FROM nhan_khau LEFT JOIN chung_minh_thu ON nhan_khau.ID = chung_minh_thu.idNhanKhau WHERE soCMT = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, cmt);
             ResultSet rs = preparedStatement.executeQuery();
@@ -21,6 +21,7 @@ public class DangKyTamTruController {
                 return rs.getInt("ID");
             }
         } catch (Exception e) {
+        	e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Có lỗi xảy ra! vui lòng kiểm tra lại.", "Warning!!", JOptionPane.WARNING_MESSAGE);
         }
         return -1;
@@ -29,7 +30,7 @@ public class DangKyTamTruController {
     public boolean addNew(TamTruModel tamTruModel) {
         try {
             Connection connection = SQLConnection.getDbConnection();
-            String query = "INSERT INTO tam_tru(idNhanKhau, maGiayTamTru, soDienThoaiNguoiDangKy, tuNgay, denNgay, lyDo)" + " value (?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO tam_tru(idNhanKhau, maGiayTamTru, soDienThoaiNguoiDangKy, tuNgay, denNgay, lyDo)" + " VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, tamTruModel.getIdNhanKhau());
             preparedStatement.setString(2, tamTruModel.getMaGiayTamTru());
@@ -44,7 +45,7 @@ public class DangKyTamTruController {
             connection.close();
             return true;
         } catch (Exception e) {
-            System.out.println(e);
+        	e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Có lỗi xảy ra! vui lòng kiểm tra lại.", "Warning!!", JOptionPane.WARNING_MESSAGE);
             return false;
         }

@@ -28,7 +28,7 @@ public class DangKyTamVangController {
     public boolean addNew(TamVangModel tamVangModel) {
         try {
             Connection connection = SQLConnection.getDbConnection();
-            String query = "INSERT INTO tam_vang(idNhanKhau, maGiayTamVang, noiTamTru, tuNgay, denNgay, lyDo)" + " value (?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO tam_vang(idNhanKhau, maGiayTamVang, noiTamTru, tuNgay, denNgay, lyDo)" + " VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, tamVangModel.getIdNhanKhau());
             preparedStatement.setString(2, tamVangModel.getMaGiayTamVang());

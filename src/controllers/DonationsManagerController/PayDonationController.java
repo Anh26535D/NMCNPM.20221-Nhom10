@@ -14,6 +14,9 @@ public class PayDonationController {
 	}
 
 	public boolean payDonation(PayDonationModel payDonationModel, int idDonation) throws SQLException, ClassNotFoundException{
-		return DonationsService.payDonation(payDonationModel, idDonation);
+		if (payDonationModel.getSo_tien()>=0 && payDonationModel.getSo_tien()<=10000000) {
+			return DonationsService.payDonation(payDonationModel, idDonation);
+		}
+		return false;
 	}
 }

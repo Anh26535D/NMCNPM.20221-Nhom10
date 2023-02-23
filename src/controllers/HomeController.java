@@ -1,7 +1,5 @@
 package controllers;
 
-import java.util.List;
-
 import javax.swing.JLabel;
 
 import services.HomePageService;

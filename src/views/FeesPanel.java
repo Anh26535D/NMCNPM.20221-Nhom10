@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
@@ -14,14 +16,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import controllers.FeesController;
-import controllers.PeoplePanelController;
 import views.FeesManagerFrame.EditFeeFrame;
 import views.FeesManagerFrame.NewFeeFrame;
-import views.PeopleManagerFrame.NewPeopleFrame;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 
 public class FeesPanel extends JPanel {
 

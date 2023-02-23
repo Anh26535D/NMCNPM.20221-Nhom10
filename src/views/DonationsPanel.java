@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
@@ -15,9 +17,6 @@ import javax.swing.border.LineBorder;
 import controllers.DonationsController;
 import views.DonationsManagerFrame.EditDonationFrame;
 import views.DonationsManagerFrame.NewDonationFrame;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
 
 public class DonationsPanel extends JPanel {
 

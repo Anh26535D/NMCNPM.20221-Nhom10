@@ -181,8 +181,8 @@ public class NewFeeFrame extends JFrame {
 			temp.setSo_tien(Integer.parseInt(soTienJtf.getText()));
 			temp.setDot_thu(dotThuJtf.getText());
 			temp.setIdNguoiTao(LoginController.currentUser.getID());
-			if(this.controller.checkDuplicate(temp)){
-				JOptionPane.showMessageDialog(null,"Phí đã tồn tại!!");
+			if (this.controller.checkDuplicate(temp)) {
+				JOptionPane.showMessageDialog(null, "Phí đã tồn tại!!");
 				return;
 			}
 			try {
@@ -190,6 +190,9 @@ public class NewFeeFrame extends JFrame {
 					JOptionPane.showMessageDialog(null, "Thêm thành công!!");
 					close();
 					parentController.refreshData();
+				} else {
+					JOptionPane.showMessageDialog(rootPane, "Có vấn đề", "Warning",
+							JOptionPane.WARNING_MESSAGE);
 				}
 			} catch (Exception e) {
 				System.out.println(e.getMessage());

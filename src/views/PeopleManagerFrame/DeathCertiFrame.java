@@ -2,34 +2,37 @@ package views.PeopleManagerFrame;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.List;
 
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.GroupLayout.Alignment;
+
 import controllers.NhanKhauManagerController.KhaiTuController;
+import models.KhaiTuModel;
+import models.TamVangModel;
 import services.CitizenIdService;
 import utils.SuggestionUtility;
-
-import javax.swing.GroupLayout;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class DeathCertiFrame extends javax.swing.JFrame {
 
 	private JFrame parentJFrame = null;
 	private KhaiTuController controller = null;
+	private KhaiTuModel khaiTuModel = new KhaiTuModel();
 
 	private javax.swing.JButton checkBtn1;
-	private javax.swing.JButton jButton2;
-	private javax.swing.JButton jButton3;
+	private javax.swing.JButton confirm;
+	private javax.swing.JButton Cancel;
 	private javax.swing.JButton checkBtn2;
-	private com.toedter.calendar.JDateChooser jDateChooser1;
-	private com.toedter.calendar.JDateChooser jDateChooser2;
+	private com.toedter.calendar.JDateChooser ngayKhai;
+	private com.toedter.calendar.JDateChooser ngayChet;
 	private javax.swing.JLabel jLabel1;
 	private javax.swing.JLabel jLabel2;
 	private javax.swing.JLabel jLabel4;
@@ -38,9 +41,9 @@ public class DeathCertiFrame extends javax.swing.JFrame {
 	private javax.swing.JLabel jLabel7;
 	private javax.swing.JPanel jPanel1;
 	private javax.swing.JScrollPane jScrollPane1;
-	private javax.swing.JTextArea jTextArea1;
+	private javax.swing.JTextArea lyDoChet;
 	private javax.swing.JTextField soCMTngkhai;
-	private javax.swing.JTextField jTextField2;
+	private javax.swing.JTextField soGiayKhaiTu;
 	private javax.swing.JTextField soCMTngchet;
 
 	public DeathCertiFrame(JFrame parentJFrame) {
@@ -116,37 +119,37 @@ public class DeathCertiFrame extends javax.swing.JFrame {
 		jLabel1.setBounds(10, 10, 143, 30);
 		jLabel2 = new javax.swing.JLabel();
 		jLabel2.setBounds(10, 114, 126, 30);
-		jTextField2 = new javax.swing.JTextField();
-		jTextField2.setBackground(new Color(255, 255, 255));
-		jTextField2.setBounds(138, 115, 418, 30);
-		jButton2 = new javax.swing.JButton();
-		jButton2.setBounds(450, 372, 106, 30);
-		jButton3 = new javax.swing.JButton();
-		jButton3.setBounds(331, 372, 106, 30);
+		soGiayKhaiTu = new javax.swing.JTextField();
+		soGiayKhaiTu.setBackground(new Color(255, 255, 255));
+		soGiayKhaiTu.setBounds(138, 115, 418, 30);
+		confirm = new javax.swing.JButton();
+		confirm.setBounds(450, 372, 106, 30);
+		Cancel = new javax.swing.JButton();
+		Cancel.setBounds(331, 372, 106, 30);
 		jLabel4 = new javax.swing.JLabel();
 		jLabel4.setBounds(12, 175, 89, 30);
-		jDateChooser1 = new com.toedter.calendar.JDateChooser();
-		jDateChooser1.getCalendarButton().addActionListener(new ActionListener() {
+		ngayKhai = new com.toedter.calendar.JDateChooser();
+		ngayKhai.getCalendarButton().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		jDateChooser1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		jDateChooser1.setOpaque(false);
-		jDateChooser1.getCalendarButton().setBackground(new Color(255, 255, 255));
-		jDateChooser1.setBackground(new Color(255, 255, 255));
-		jDateChooser1.setBounds(138, 175, 418, 30);
+		ngayKhai.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		ngayKhai.setOpaque(false);
+		ngayKhai.getCalendarButton().setBackground(new Color(255, 255, 255));
+		ngayKhai.setBackground(new Color(255, 255, 255));
+		ngayKhai.setBounds(138, 175, 418, 30);
 		jLabel5 = new javax.swing.JLabel();
 		jLabel5.setBounds(10, 223, 91, 30);
-		jDateChooser2 = new com.toedter.calendar.JDateChooser();
-		jDateChooser2.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		jDateChooser2.getCalendarButton().setBackground(new Color(255, 255, 255));
-		jDateChooser2.setBackground(new Color(255, 255, 255));
-		jDateChooser2.setBounds(138, 223, 418, 30);
+		ngayChet = new com.toedter.calendar.JDateChooser();
+		ngayChet.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		ngayChet.getCalendarButton().setBackground(new Color(255, 255, 255));
+		ngayChet.setBackground(new Color(255, 255, 255));
+		ngayChet.setBounds(138, 223, 418, 30);
 		jLabel6 = new javax.swing.JLabel();
 		jLabel6.setBounds(10, 271, 91, 30);
 		jScrollPane1 = new javax.swing.JScrollPane();
 		jScrollPane1.setBounds(137, 271, 419, 91);
-		jTextArea1 = new javax.swing.JTextArea();
+		lyDoChet = new javax.swing.JTextArea();
 		checkBtn1 = new javax.swing.JButton();
 		checkBtn1.setBounds(473, 10, 83, 30);
 		jLabel7 = new javax.swing.JLabel();
@@ -164,34 +167,34 @@ public class DeathCertiFrame extends javax.swing.JFrame {
 		jLabel2.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		jLabel2.setText("Số giấy khai tử:");
 
-		jTextField2.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		jTextField2.addActionListener(new java.awt.event.ActionListener() {
+		soGiayKhaiTu.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		soGiayKhaiTu.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				jTextField2ActionPerformed(evt);
+				soGiayKhaiTuActionPerformed(evt);
 			}
 		});
 
-		jButton2.setText("Xác nhận");
-		jButton2.addActionListener(new java.awt.event.ActionListener() {
+		confirm.setText("Xác nhận");
+		confirm.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				confirmActionPerformed(evt);
 			}
 		});
-		jButton2.setBackground(new Color(147, 112, 219));
-		jButton2.setFont(new Font("Tahoma", Font.BOLD, 15));
-		jButton2.setForeground(new Color(255, 255, 255));
-		jButton2.setBorderPainted(false);
+		confirm.setBackground(new Color(147, 112, 219));
+		confirm.setFont(new Font("Tahoma", Font.BOLD, 15));
+		confirm.setForeground(new Color(255, 255, 255));
+		confirm.setBorderPainted(false);
 
-		jButton3.setText("Hủy");
-		jButton3.addActionListener(new java.awt.event.ActionListener() {
+		Cancel.setText("Hủy");
+		Cancel.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				cancelActionPerformed(evt);
 			}
 		});
-		jButton3.setBackground(new Color(147, 112, 219));
-		jButton3.setFont(new Font("Tahoma", Font.BOLD, 15));
-		jButton3.setForeground(new Color(255, 255, 255));
-		jButton3.setBorderPainted(false);
+		Cancel.setBackground(new Color(147, 112, 219));
+		Cancel.setFont(new Font("Tahoma", Font.BOLD, 15));
+		Cancel.setForeground(new Color(255, 255, 255));
+		Cancel.setBorderPainted(false);
 
 		jLabel4.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		jLabel4.setText("Ngày khai:");
@@ -202,11 +205,11 @@ public class DeathCertiFrame extends javax.swing.JFrame {
 		jLabel6.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		jLabel6.setText("Lý do chết:");
 
-		jTextArea1.setColumns(20);
-		jTextArea1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		jTextArea1.setRows(5);
-		jTextArea1.setEnabled(false);
-		jScrollPane1.setViewportView(jTextArea1);
+		lyDoChet.setColumns(20);
+		lyDoChet.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lyDoChet.setRows(5);
+		lyDoChet.setEnabled(true);
+		jScrollPane1.setViewportView(lyDoChet);
 
 		checkBtn1.setBorderPainted(false);
 		checkBtn1.setForeground(new Color(255, 255, 255));
@@ -245,14 +248,14 @@ public class DeathCertiFrame extends javax.swing.JFrame {
 						.addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE).addContainerGap()));
 		getContentPane().setLayout(layout);
 		jPanel1.setLayout(null);
-		jPanel1.add(jButton3);
-		jPanel1.add(jButton2);
+		jPanel1.add(Cancel);
+		jPanel1.add(confirm);
 		jPanel1.add(jLabel4);
 		jPanel1.add(jLabel5);
 		jPanel1.add(jLabel2);
-		jPanel1.add(jDateChooser1);
-		jPanel1.add(jTextField2);
-		jPanel1.add(jDateChooser2);
+		jPanel1.add(ngayKhai);
+		jPanel1.add(soGiayKhaiTu);
+		jPanel1.add(ngayChet);
 		jPanel1.add(jLabel6);
 		jPanel1.add(jScrollPane1);
 		jPanel1.add(jLabel1);
@@ -315,16 +318,33 @@ public class DeathCertiFrame extends javax.swing.JFrame {
 		}
 	}
 
-	private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {
+	private void soGiayKhaiTuActionPerformed(java.awt.event.ActionEvent evt) {
 		close();
 	}
-
+	private boolean validateForm() {
+		return !(soGiayKhaiTu.getText().trim().isEmpty()|| lyDoChet.getText().trim().isEmpty());
+	}
 	private void confirmActionPerformed(java.awt.event.ActionEvent evt) {
-		close();
+		if (!validateForm()) {
+			JOptionPane.showMessageDialog(null, "Vui lòng nhập hết các trường bắt buộc!", "Warning!!",
+					JOptionPane.WARNING_MESSAGE);
+		} else {
+			this.khaiTuModel.setSoGiayKhaiTu(this.soGiayKhaiTu.getText().trim());
+			this.khaiTuModel.setNgayKhai(this.ngayKhai.getDate());
+			this.khaiTuModel.setNgayChet(this.ngayChet.getDate());
+			this.khaiTuModel.setLyDoChet(this.lyDoChet.getText().trim());
+			if (this.controller.addNew(this.khaiTuModel)) {
+				JOptionPane.showMessageDialog(null, "Thêm thành công.");
+			}
+			close();
+		}
 	}
 
 	private void cancelActionPerformed(java.awt.event.ActionEvent evt) {
 		close();
-	}
+}
+	
+
+
 
 }
