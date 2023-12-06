@@ -22,10 +22,10 @@ Resident Management Desktop Application is designed to provide a user-friendly i
 
 ## Prerequisites
 
-- Java
-- Apache Maven
-- SQL Server
-- Eclipse
+- Java (use JDK 11) [Download here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html). Remember to set JAVA_HOME in env path.
+- Apache Maven (3.8.6) [Download here](https://maven.apache.org/download.cgi). Remember to set MAVEN_HOME and M2_HOME in env path.
+- SQL Server 2019
+- Eclipse 2022
 
 ## Installation
 
