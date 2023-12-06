@@ -233,7 +233,7 @@ public class StatisticDonationsController {
 		if(!condition.equals(new String("Tất cả"))) {
 			List<Integer> paids = allPaids(list, donation);
 			List<Boolean> paidStates = allPaidStates(paids);
-			List<HoKhauBean> temp = new ArrayList<>();
+			List<HoKhauBean> temp = new ArrayList<HoKhauBean>();
 			int len_rows = list.size();
 			for (int i = 0; i < len_rows; ++i) {
 				if (paidStates.get(i).equals(Boolean.TRUE) && condition.equals(new String("Đã nộp")) ) {

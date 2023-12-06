@@ -48,7 +48,7 @@ public class StatisticPanelController {
         this.denNamJtf = denNamJtf;
         this.jpnView = jpnView;
         this.peopleService = new PeopleService();
-        this.listNhanKhauBeans = new ArrayList<>();
+        this.listNhanKhauBeans = new ArrayList<NhanKhauBean>();
         this.listNhanKhauBeans = this.peopleService.getListNhanKhau();
         this.classTableModel = new ClassTableModel();
     }
@@ -93,7 +93,7 @@ public class StatisticPanelController {
     }
     
     public void setDataTable() {
-        List<NhanKhauModel> listItem = new ArrayList<>();
+        List<NhanKhauModel> listItem = new ArrayList<NhanKhauModel>();
         this.listNhanKhauBeans.forEach(nhankhau -> {
             listItem.add(nhankhau.getNhanKhauModel());
         });

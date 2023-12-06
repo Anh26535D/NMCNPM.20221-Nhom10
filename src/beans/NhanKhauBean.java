@@ -23,8 +23,8 @@ public class NhanKhauBean {
     public NhanKhauBean() {
         this.nhanKhauModel = new NhanKhauModel();
         this.chungMinhThuModel = new ChungMinhThuModel();
-        this.listGiaDinhModels = new ArrayList<>();
-        this.listTieuSuModels = new ArrayList<>();
+        this.listGiaDinhModels = new ArrayList<GiaDinhModel>();
+        this.listTieuSuModels = new ArrayList<TieuSuModel>();
     }
     
     public NhanKhauModel getNhanKhauModel() {

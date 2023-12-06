@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 public class CitizenIdService {
 	
 	   public List<String> getCids() {
-	        List<String> list = new ArrayList<>();
+	        List<String> list = new ArrayList<String>();
 	        try {
 	            Connection connection = SQLConnection.getDbConnection();
 	            String query = "SELECT TOP 10 soCMT FROM chung_minh_thu";
@@ -30,7 +30,7 @@ public class CitizenIdService {
 	    }
 
     public List<String> search(String keyword) {
-        List<String> list = new  ArrayList<>();
+        List<String> list = new  ArrayList<String>();
         if (keyword.trim().isEmpty()) {
             return this.getCids();
         }

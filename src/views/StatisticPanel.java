@@ -73,10 +73,10 @@ public class StatisticPanel extends javax.swing.JPanel {
 		jLabel7.setBounds(10, 20, 100, 30);
 		panel_1.add(jLabel7);
 
-		GenderJcb = new javax.swing.JComboBox<>();
+		GenderJcb = new javax.swing.JComboBox<String>();
 		GenderJcb.setBounds(120, 20, 130, 30);
 		GenderJcb.setFont(new Font("Tahoma", Font.BOLD, 13));
-		GenderJcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Toàn bộ", "Nam", "Nữ" }));
+		GenderJcb.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { "Toàn bộ", "Nam", "Nữ" }));
 		panel_1.add(GenderJcb);
 
 		jLabel1 = new javax.swing.JLabel("Tình trạng:");
@@ -85,10 +85,10 @@ public class StatisticPanel extends javax.swing.JPanel {
 		jLabel1.setFont(new Font("Tahoma", Font.BOLD, 13));
 		panel_1.add(jLabel1);
 
-		StatusJcb = new javax.swing.JComboBox<>();
+		StatusJcb = new javax.swing.JComboBox<String>();
 		StatusJcb.setBounds(410, 20, 130, 30);
 		StatusJcb.setFont(new Font("Tahoma", Font.BOLD, 13));
-		StatusJcb.setModel(new javax.swing.DefaultComboBoxModel<>(
+		StatusJcb.setModel(new javax.swing.DefaultComboBoxModel<String>(
 				new String[] { "Toàn bộ", "Thường trú", "Tạm trú", "Tạm vắng" }));
 		panel_1.add(StatusJcb);
 

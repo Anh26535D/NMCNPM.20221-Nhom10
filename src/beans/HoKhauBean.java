@@ -1,7 +1,6 @@
 package beans;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import models.DonateModel;
@@ -30,10 +29,10 @@ public class HoKhauBean {
     public HoKhauBean() {
         this.hoKhauModel = new HoKhauModel();
         this.chuHo = new NhanKhauModel();
-        this.listNhanKhauModels = new ArrayList<>();
-        this.listThanhVienCuaHo = new ArrayList<>();
-        this.donateModels = new ArrayList<>();
-        this.payFeeModels = new ArrayList<>();
+        this.listNhanKhauModels = new ArrayList<NhanKhauModel>();
+        this.listThanhVienCuaHo = new ArrayList<ThanhVienCuaHoModel>();
+        this.donateModels = new ArrayList<DonateModel>();
+        this.payFeeModels = new ArrayList<PayFeeModel>();
     }
     
     public List<PayFeeModel> getPayFeeModels() {

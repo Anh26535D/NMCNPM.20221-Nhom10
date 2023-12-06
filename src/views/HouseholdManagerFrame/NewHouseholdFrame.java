@@ -54,7 +54,7 @@ public class NewHouseholdFrame extends JFrame {
     private JButton editBtn;
 	private JFrame parentJFrame;
     private NhanKhauBean chuHo = new NhanKhauBean();
-    private final List<MemOfFamily> list = new ArrayList<>();
+    private final List<MemOfFamily> list = new ArrayList<MemOfFamily>();
     private final ThemMoiController controller = new ThemMoiController();
     private final HoKhauBean hoKhauBean = new HoKhauBean();
 

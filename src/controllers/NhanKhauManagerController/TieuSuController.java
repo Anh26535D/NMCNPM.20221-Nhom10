@@ -110,8 +110,8 @@ public class TieuSuController {
     }
     
     public void changeData() {
-        List<TieuSuModel> listTieuSuModels = new ArrayList<>();
-        List<GiaDinhModel> listGiaDinhModels = new ArrayList<>();
+        List<TieuSuModel> listTieuSuModels = new ArrayList<TieuSuModel>();
+        List<GiaDinhModel> listGiaDinhModels = new ArrayList<GiaDinhModel>();
         this.modelTieuSu.getDataVector().forEach((Object t) -> {
             Vector temp = (Vector) t;
             try {

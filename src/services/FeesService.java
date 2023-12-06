@@ -20,7 +20,7 @@ import models.PayFeeModel;
 public class FeesService {
     private DonationsService donationService = new DonationsService();
     public List<PhiBatBuocBean> allFees() {
-        List<PhiBatBuocBean> list = new ArrayList<>();
+        List<PhiBatBuocBean> list = new ArrayList<PhiBatBuocBean>();
         try {
             Connection connection = SQLConnection.getDbConnection();
             String query = "SELECT TOP 100 ID, ten_khoan_thu,so_tien,dot_thu FROM phi_bat_buoc ORDER BY phi_bat_buoc.ID";
@@ -44,7 +44,7 @@ public class FeesService {
     }
 
     public List<PhiBatBuocBean> searchFeeByID(String keyword) {
-        List<PhiBatBuocBean> list = new ArrayList<>();
+        List<PhiBatBuocBean> list = new ArrayList<PhiBatBuocBean>();
         if (keyword.trim().isEmpty()) {
             return this.allFees();
         }
@@ -144,7 +144,7 @@ public class FeesService {
 	}
 	
 	public List<PayFeeModel> payByHouseholdId(int householdId) {
-		List<PayFeeModel> list = new ArrayList<>();
+		List<PayFeeModel> list = new ArrayList<PayFeeModel>();
 		try {
 			Connection connection = SQLConnection.getDbConnection();
 			String query = 

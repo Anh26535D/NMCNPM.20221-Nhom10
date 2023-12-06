@@ -249,7 +249,7 @@ public class StatisticFeesController {
 			List<Integer> paids = allPaids(list, feesModel);
 			List<Integer> needs = allNeeds(list, feesModel);
 			List<Boolean> paidStates = allPaidStates(paids, needs);
-			List<HoKhauBean> temp = new ArrayList<>();
+			List<HoKhauBean> temp = new ArrayList<HoKhauBean>();
 			int len_rows = list.size();
 			for (int i = 0; i < len_rows; ++i) {
 				if (paidStates.get(i).equals(Boolean.TRUE) && condition.equals(new String("Đã nộp")) ) {

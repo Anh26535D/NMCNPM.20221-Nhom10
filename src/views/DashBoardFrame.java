@@ -52,7 +52,7 @@ public class DashBoardFrame extends JFrame {
 	public DashBoardFrame() {
 		init();
 
-		List<DanhMucBean> listDanhMuc = new ArrayList<>();
+		List<DanhMucBean> listDanhMuc = new ArrayList<DanhMucBean>();
 		listDanhMuc.add(new DanhMucBean("TrangChu", Home, jlbTrangChu));
 		listDanhMuc.add(new DanhMucBean("NhanKhau", NhanKhauBtn, jlbNhanKhau));
 		listDanhMuc.add(new DanhMucBean("HoKhau", HoKhauBtn, jlbHoKhau));

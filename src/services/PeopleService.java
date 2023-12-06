@@ -258,7 +258,7 @@ public class PeopleService {
                 query = "SELECT * FROM tieu_su WHERE idNhanKhau = " + idNhanKhau;
                 preparedStatement = (PreparedStatement)connection.prepareStatement(query);
                 rs = preparedStatement.executeQuery();
-                List<TieuSuModel> listTieuSuModels = new ArrayList<>();
+                List<TieuSuModel> listTieuSuModels = new ArrayList<TieuSuModel>();
                 while (rs.next()) {                    
                     TieuSuModel tieuSuModel = new TieuSuModel();
                     tieuSuModel.setID(rs.getInt("ID"));
@@ -276,7 +276,7 @@ public class PeopleService {
                 query = "SELECT * FROM gia_dinh WHERE idNhanKhau = " + idNhanKhau;
                 preparedStatement = (PreparedStatement)connection.prepareStatement(query);
                 rs = preparedStatement.executeQuery();
-                List<GiaDinhModel> listGiaDinhModels = new ArrayList<>();
+                List<GiaDinhModel> listGiaDinhModels = new ArrayList<GiaDinhModel>();
                 while (rs.next()) {
                     GiaDinhModel giaDinhModel = new GiaDinhModel();
                     giaDinhModel.setID(rs.getInt("ID"));
@@ -300,7 +300,7 @@ public class PeopleService {
     }
     
     public List<NhanKhauBean> getListNhanKhau() {
-        List<NhanKhauBean> list = new ArrayList<>();
+        List<NhanKhauBean> list = new ArrayList<NhanKhauBean>();
         try {
             Connection connection = SQLConnection.getDbConnection();
             String query = "SELECT TOP 100 * FROM nhan_khau JOIN chung_minh_thu ON nhan_khau.ID = chung_minh_thu.idNhanKhau ORDER BY nhan_khau.ID";
@@ -330,7 +330,7 @@ public class PeopleService {
     }
     
     public List<NhanKhauBean> statisticNhanKhau(int TuTuoi, int denTuoi, String gender, String Status, int tuNam, int denNam) {
-        List<NhanKhauBean> list = new ArrayList<>();
+        List<NhanKhauBean> list = new ArrayList<NhanKhauBean>();
         
         String query = "SELECT * FROM nhan_khau "
                     + " JOIN chung_minh_thu ON nhan_khau.ID = chung_minh_thu.idNhanKhau"
@@ -395,7 +395,7 @@ public class PeopleService {
                     String sql = "SELECT * FROM tieu_su WHERE idNhanKhau = " + idNhanKhau;
                     PreparedStatement prst = (PreparedStatement)connection.prepareStatement(sql);
                     ResultSet rs_temp = prst.executeQuery();
-                    List<TieuSuModel> listTieuSuModels = new ArrayList<>();
+                    List<TieuSuModel> listTieuSuModels = new ArrayList<TieuSuModel>();
                     while (rs_temp.next()) {                    
                         TieuSuModel tieuSuModel = new TieuSuModel();
                         tieuSuModel.setID(rs_temp.getInt("ID"));
@@ -413,7 +413,7 @@ public class PeopleService {
                     sql = "SELECT * FROM gia_dinh WHERE idNhanKhau = " + idNhanKhau;
                     prst = (PreparedStatement)connection.prepareStatement(sql);
                     rs_temp = prst.executeQuery();
-                    List<GiaDinhModel> listGiaDinhModels = new ArrayList<>();
+                    List<GiaDinhModel> listGiaDinhModels = new ArrayList<GiaDinhModel>();
                     while (rs_temp.next()) {
                         GiaDinhModel giaDinhModel = new GiaDinhModel();
                         giaDinhModel.setID(rs_temp.getInt("ID"));
@@ -443,7 +443,7 @@ public class PeopleService {
      * ham tim kiem nhan khau theo ten
      */
     public List<NhanKhauBean> search(String keyword) {
-        List<NhanKhauBean> list = new  ArrayList<>();
+        List<NhanKhauBean> list = new  ArrayList<NhanKhauBean>();
         if (keyword.trim().isEmpty()) {
             return this.getListNhanKhau();
         }
@@ -484,7 +484,7 @@ public class PeopleService {
     }
     
 	   public List<String> getCids() {
-	        List<String> list = new ArrayList<>();
+	        List<String> list = new ArrayList<String>();
 	        try {
 	            Connection connection = SQLConnection.getDbConnection();
 	            String query = "SELECT TOP 10 soCMT FROM chung_minh_thu";
@@ -503,7 +503,7 @@ public class PeopleService {
 	    }
 
    public List<String> searchByCid(String keyword) {
-       List<String> list = new  ArrayList<>();
+       List<String> list = new  ArrayList<String>();
        if (keyword.trim().isEmpty()) {
            return this.getCids();
        }

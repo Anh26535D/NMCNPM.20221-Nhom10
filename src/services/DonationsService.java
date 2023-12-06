@@ -21,7 +21,7 @@ import models.PayDonationModel;
 public class DonationsService {
 
 	public List<PhiUngHoBean> allDonations() {
-		List<PhiUngHoBean> list = new ArrayList<>();
+		List<PhiUngHoBean> list = new ArrayList<PhiUngHoBean>();
 		try {
 			Connection connection = SQLConnection.getDbConnection();
 			String query = "SELECT TOP 100 ID, ten_khoan_thu, ngay_tao FROM phi_ung_ho ORDER BY phi_ung_ho.ID";
@@ -44,7 +44,7 @@ public class DonationsService {
 	}
 
 	public List<PhiUngHoBean> searchDonationByID(String keyword) {
-		List<PhiUngHoBean> list = new ArrayList<>();
+		List<PhiUngHoBean> list = new ArrayList<PhiUngHoBean>();
 		if (keyword.trim().isEmpty()) {
 			return this.allDonations();
 		}
@@ -118,7 +118,7 @@ public class DonationsService {
 	}
 	//
 	public List<PayDonationModel> payByHouseholdId(int householdId) {
-		List<PayDonationModel> list = new ArrayList<>();
+		List<PayDonationModel> list = new ArrayList<PayDonationModel>();
 		try {
 			Connection connection = SQLConnection.getDbConnection();
 			String query = 
@@ -220,7 +220,7 @@ public class DonationsService {
 	}
 
 	public List<DonateModel> donateByHouseholdId(int householdId) {
-		List<DonateModel> list = new ArrayList<>();
+		List<DonateModel> list = new ArrayList<DonateModel>();
 		try {
 			Connection connection = SQLConnection.getDbConnection();
 			String query = 

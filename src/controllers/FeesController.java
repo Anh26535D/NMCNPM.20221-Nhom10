@@ -98,7 +98,7 @@ public class FeesController {
 	}
 
 	public void setData() {
-		List<FeesModel> listItem = new ArrayList<>();
+		List<FeesModel> listItem = new ArrayList<FeesModel>();
 		this.listPhiBatBuocBeans.forEach(nhankhau -> {
 			listItem.add(nhankhau.getFeesModel());
 		});

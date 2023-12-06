@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 public class AddressService {
 
 	public List<String> searchByWard(String key) {
-		List<String> list = new ArrayList<>();
+		List<String> list = new ArrayList<String>();
 		try {
 			Connection connection = SQLConnection.getDbConnection("vietnamese_provinces");
 			String query = "SELECT DISTINCT TOP 10 name FROM wards " + "WHERE CONTAINS(name, '\"*" + key + "*\"');";
@@ -29,7 +29,7 @@ public class AddressService {
 	}
 
 	public List<String> searchByDistrict(String key) {
-		List<String> list = new ArrayList<>();
+		List<String> list = new ArrayList<String>();
 		try {
 			Connection connection = SQLConnection.getDbConnection("vietnamese_provinces");
 			String query = "SELECT DISTINCT TOP 10 name FROM districts " + "WHERE CONTAINS(name, '\"*" + key + "*\"');";
@@ -47,7 +47,7 @@ public class AddressService {
 	}
 
 	public List<String> searchByProvince(String key) {
-		List<String> list = new ArrayList<>();
+		List<String> list = new ArrayList<String>();
 		try {
 			Connection connection = SQLConnection.getDbConnection("vietnamese_provinces");
 			String query = "SELECT DISTINCT TOP 10 name FROM provinces " + "WHERE CONTAINS(name, '\"*" + key + "*\"');";

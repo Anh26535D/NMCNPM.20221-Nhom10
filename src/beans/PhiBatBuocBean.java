@@ -12,7 +12,7 @@ public class PhiBatBuocBean {
     
     public PhiBatBuocBean() {
         this.feesModel = new FeesModel();
-        this.feesModels = new ArrayList<>();
+        this.feesModels = new ArrayList<FeesModel>();
 	}
     
 	public PhiBatBuocBean(FeesModel feesModel, List<FeesModel> feesModels) {

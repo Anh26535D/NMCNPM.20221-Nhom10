@@ -2,7 +2,6 @@ package services;
 
 import controllers.LoginController;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,7 +26,7 @@ public class HoKhauService {
 	private FeesService feeService = new FeesService();
 
     public boolean addNew(HoKhauBean hoKhauBean) throws ClassNotFoundException, SQLException{
-        Connection connection = SQLConnection.getDbConnection();
+        final Connection connection = SQLConnection.getDbConnection();
         String query = "INSERT INTO ho_khau(maHoKhau, idChuHo, maKhuVuc, diaChi, ngayLap)" 
                     + " values (?, ?, ?, ?, ?)";
         PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
@@ -126,7 +125,7 @@ public class HoKhauService {
     }
      
     public List<HoKhauBean> getListHoKhau() {
-        List<HoKhauBean> list = new ArrayList<>();
+        List<HoKhauBean> list = new ArrayList<HoKhauBean>();
         
         try {
             Connection connection = SQLConnection.getDbConnection();
@@ -198,7 +197,7 @@ public class HoKhauService {
     
     // tim kiem theo ten chu ho va ma ho khau
     public List<HoKhauBean> search(String key) {
-        List<HoKhauBean> list = new ArrayList<>();
+        List<HoKhauBean> list = new ArrayList<HoKhauBean>();
         try {
             Connection connection = SQLConnection.getDbConnection();
             String query = "SELECT * FROM ho_khau "
@@ -320,7 +319,7 @@ public class HoKhauService {
     }
     
     public List<NhanKhauBean> allPeopleInHousehold(String maHoKhau) {
-        List<NhanKhauBean> list = new ArrayList<>();
+        List<NhanKhauBean> list = new ArrayList<NhanKhauBean>();
         try {
             Connection connection = SQLConnection.getDbConnection();
             String query = 

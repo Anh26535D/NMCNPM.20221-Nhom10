@@ -40,7 +40,7 @@ public class ChangeListPeopleJframe extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Sửa danh sách");
         this.listMember = listMember;
-        this.listMemberTemp = new ArrayList<>();
+        this.listMemberTemp = new ArrayList<MemOfFamily>();
         this.listMemberTemp.addAll(listMember);
         this.parentJframe = parentJFrame;
         this.controller = new ChangeListPeopleController(this.listMemberTemp, addBtn, removeBtn, searchJtf, PeopleTableJpn, MemTableJpn);

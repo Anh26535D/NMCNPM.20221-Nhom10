@@ -56,7 +56,7 @@ public class EditHouseholdFrame extends JFrame {
     private SuggestionUtility diaChiJtf;
     private JButton editBtn;
     private NhanKhauBean chuHo = new NhanKhauBean();
-    private final List<MemOfFamily> list = new ArrayList<>();
+    private final List<MemOfFamily> list = new ArrayList<MemOfFamily>();
     private SuaController controller;
     private HoKhauBean hoKhauBean;
     

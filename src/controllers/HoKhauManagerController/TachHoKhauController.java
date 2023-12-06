@@ -47,7 +47,7 @@ public class TachHoKhauController {
     private JFrame tachHoKhauJFrame;
 
     private List<HoKhauBean> listHoKhau;
-    private final List<MemOfFamily> listThanhVienTrongHoMoi = new ArrayList<>();
+    private final List<MemOfFamily> listThanhVienTrongHoMoi = new ArrayList<MemOfFamily>();
     private List<MemOfFamily> listThanhVien;
     private final TableModelHoKhau tableModelHoKhau = new TableModelHoKhau();
     private final String[] COLUMNS_NK = {"Họ tên", "Ngày sinh", "Quan hệ với chủ hộ"};
@@ -222,7 +222,7 @@ public class TachHoKhauController {
     }
 
     public void setDataChoose() {
-        listThanhVien = new ArrayList<>();
+        listThanhVien = new ArrayList<MemOfFamily>();
         for (int i = 0; i < hoKhauSelected.getListNhanKhauModels().size(); i++) {
             MemOfFamily temp = new MemOfFamily();
             temp.getNhanKhau().setNhanKhauModel(hoKhauSelected.getListNhanKhauModels().get(i));

@@ -9,7 +9,7 @@ import beans.NhanKhauBean;
 
 public class TableModelHoKhau {
     public DefaultTableModel setTableNhanKhau(List<NhanKhauBean> listItem, String[] listColumn) {
-        final int columns = listColumn.length;
+        int columns = listColumn.length;
         DefaultTableModel dtm = new DefaultTableModel()  {
             private static final long serialVersionUID = 1L;
 			@Override
@@ -36,7 +36,7 @@ public class TableModelHoKhau {
     }
     
     public DefaultTableModel setTableMember(List<MemOfFamily> listItem, String[] listColumn) {
-        final int columns = listColumn.length;
+        int columns = listColumn.length;
         DefaultTableModel dtm = new DefaultTableModel()  {
             private static final long serialVersionUID = 1L;
 			@Override
@@ -61,7 +61,7 @@ public class TableModelHoKhau {
     }
     
     public DefaultTableModel setTableHoKhau(List<HoKhauBean> listItem, String[] listColumn) {
-        final int columns = listColumn.length;
+        int columns = listColumn.length;
         DefaultTableModel dtm = new DefaultTableModel()  {
             private static final long serialVersionUID = 1L;
 			@Override

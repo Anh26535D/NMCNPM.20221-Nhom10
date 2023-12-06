@@ -97,7 +97,7 @@ public class DonationsController {
 	}
 
 	public void setData() {
-		List<DonationsModel> listItem = new ArrayList<>();
+		List<DonationsModel> listItem = new ArrayList<DonationsModel>();
 		this.listPhiUngHoBeans.forEach(nhankhau -> {
 			listItem.add(nhankhau.getDonationModel());
 		});

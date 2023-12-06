@@ -25,7 +25,7 @@ public class ChoosePayDonationPersonFrame extends javax.swing.JFrame {
 	private NhanKhauBean nhanKhauBean;
 	private NhanKhauBean nhanKhauBeanTemp;
 	private JFrame parentJFrame;
-	private final ChoosePayDonationPersonController controller;
+	private ChoosePayDonationPersonController controller;
 
 	private javax.swing.JButton cancelBtn;
 	private javax.swing.JButton confirmBtn;

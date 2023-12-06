@@ -93,7 +93,7 @@ public class PeoplePanelController {
     }
 
     public void setData() {
-        List<NhanKhauModel> listItem = new ArrayList<>();
+        List<NhanKhauModel> listItem = new ArrayList<NhanKhauModel>();
         this.listNhanKhauBeans.forEach(nhankhau -> {
             listItem.add(nhankhau.getNhanKhauModel());
         });
