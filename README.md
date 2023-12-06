@@ -18,8 +18,7 @@ Resident Management Desktop Application is designed to provide a user-friendly i
 
 - **Desktop Interface**: Utilize a native desktop application for a responsive and intuitive user experience.
 - **Profile Management**: Create, update, and delete resident profiles with ease.
-- **Local Database**: Store resident data locally using an embedded database for offline access.
-- **Export and Import**: Allow users to export and import resident data for backup and transfer.
+- **Fee Management**
 
 ## Prerequisites
 
