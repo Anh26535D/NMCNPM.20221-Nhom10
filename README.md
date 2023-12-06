@@ -35,7 +35,8 @@ Resident Management Desktop Application is designed to provide a user-friendly i
 ## Usage
 
 1. Run all SQL files in the `create_database` folder in the following order: `household_management.sql`, `add_data_household_management.sql`, `fee_management.sql`
-and `add_data_fee_management.sql`
-2. Open the project in Eclipse.
-3. Navigate to `src/app`.
-4. Run the `Main.java` file.
+and `add_data_fee_management.sql`.
+2. Config sql server params in `config.txt`.
+3. Open the project in Eclipse.
+4. Navigate to `src/app`.
+5. Run the `Main.java` file.
