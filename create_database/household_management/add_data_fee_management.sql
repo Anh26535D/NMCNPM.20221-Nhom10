@@ -26,6 +26,6 @@ GO
 
 -- Insert data nop_phi table 
 INSERT INTO nop_phi ( idNhanKhau, idPhiThu, ngay_nop, so_tien) values 
-	( 14, 1, '2023-01-01', 6000),
-	( 15, 1, '2023-01-01', 6000);
+	( 13, 1, '2023-01-01', 6000),
+	( 14, 1, '2023-01-01', 6000);
 GO

@@ -27,7 +27,9 @@ Resident Management Desktop Application is designed to provide a user-friendly i
 
 ## Usage
 
-1. **Create Database**: Run all SQL files in the `create_database` folder in the following order: `household_management.sql`, `add_data_household_management.sql`, `fee_management.sql`
+1. **Create Database**: 
+- Create database `vietnamese_provinces`, run all SQL files in the `create_database/vietnamese_provinces` folder in the following order: `vn_provinces.sql`, `add_data_vn_provinces.sql`, `add_fulltext_vn_provinces.sql`.
+- Create database `quan_ly_nhan_khau`, run all SQL files in the `create_database/household_management` folder in the following order: `household_management.sql`, `add_data_household_management.sql`, `fee_management.sql`.
 and `add_data_fee_management.sql`.
 2. **Setup SQL Server**: Config sql server params in `config.txt`.
 3. **Run App**: Open the project in Eclipse. Navigate to `src/app`. Run the `Main.java` file.
